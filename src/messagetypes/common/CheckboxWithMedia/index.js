@@ -45,7 +45,6 @@ class CheckboxWithMedia extends React.PureComponent {
 
   onChange = checked => {
     const { payload } = this.props.message
-    console.log('checked', checked)
     this.setState({
       checked,
       indeterminate: !!checked.length && checked.length < payload.options.length,
