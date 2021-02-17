@@ -129,7 +129,7 @@ class CheckboxWithMedia extends React.PureComponent {
             <div className={styles.checkboxFooterContainer}>
               <Button
                 size="small"
-                className="ori-t-mrgn-5 ori-btn-fill-primary"
+                className="ori-btn-fill-primary"
                 disabled={checkbox_disabled}
                 onClick={this.onClickSubmit}
               >
