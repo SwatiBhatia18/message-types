@@ -1,6 +1,6 @@
 {
   "name": "message-types",
-  "version": "2.0.1",
+  "version": "2.1.0",
   "description": "A package of message component for chatbot and their dashboard",
   "author": "vivek vaibhav",
   "license": "MIT",
