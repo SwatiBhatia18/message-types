@@ -150,6 +150,7 @@ class CheckboxWithMedia extends React.PureComponent {
           !btn_hidden && payload.buttons && payload.buttons.length > 0 &&
           <Buttons
             buttons={payload.buttons}
+            display_count={payload.btnDisplayCount}
             message={message}
             btn_disabled={btn_disabled}
             handleMsgBtnClick={handleMsgBtnClick}

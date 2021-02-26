@@ -83,7 +83,13 @@ class Offers extends React.PureComponent {
         }
         {
           (payload.buttons) && (payload.buttons.length > 0) && !disable_offer &&
-          <Buttons buttons={payload.buttons} message={message} btn_disabled={btn_disabled} handleMsgBtnClick={handleMsgBtnClick} />
+          <Buttons
+            buttons={payload.buttons}
+            display_count={payload.btnDisplayCount}
+            message={message}
+            btn_disabled={btn_disabled}
+            handleMsgBtnClick={handleMsgBtnClick}
+          />
         }
       </div>
     )

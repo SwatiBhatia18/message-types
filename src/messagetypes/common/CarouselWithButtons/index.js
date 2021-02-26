@@ -153,7 +153,13 @@ class CarouselWithButtons extends React.PureComponent {
                     }
                     {
                       carousel_item.buttons && carousel_item.buttons.length > 0 &&
-                      <Buttons buttons={carousel_item.buttons} message={message} handleMsgBtnClick={handleMsgBtnClick} btn_disabled={btn_disabled} />
+                      <Buttons
+                        buttons={carousel_item.buttons}
+                        display_count={carousel_item.btnDisplayCount}
+                        message={message}
+                        handleMsgBtnClick={handleMsgBtnClick}
+                        btn_disabled={btn_disabled}
+                      />
                     }
                   </div>
                 )
@@ -164,7 +170,13 @@ class CarouselWithButtons extends React.PureComponent {
         {
           !btn_hidden && payload.buttons && payload.buttons.length > 0 &&
           <div className='ori-t-pad-5'>
-            <Buttons buttons={payload.buttons} message={message} btn_disabled={btn_disabled} handleMsgBtnClick={handleMsgBtnClick} />
+            <Buttons
+              buttons={payload.buttons}
+              display_count={payload.btnDisplayCount}
+              message={message}
+              btn_disabled={btn_disabled}
+              handleMsgBtnClick={handleMsgBtnClick}
+            />
           </div>
         }
       </div>

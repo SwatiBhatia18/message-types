@@ -79,13 +79,45 @@ export const checkboxMessage = {
     ],
     buttons: [
       {
-        type: 'custom',
-        subtype: 'checkboxSubmit',
-        text: 'Submit',
-        relayData: {
-          entity: "relay data"
-        }
+        text: "Google",
+        url: "http://www.google.com",
+        postbackRes: ""
       },
+      {
+        text: "select option 3.1",
+        url: "",
+        postbackRes: "opt3.1"
+      },
+      {
+        text: "select option 3.2",
+        url: "",
+        postbackRes: "opt3.2"
+      },
+      {
+        text: "select option 3.3",
+        url: "",
+        postbackRes: "hi"
+      },
+      {
+        text: "Google",
+        url: "http://www.google.com",
+        postbackRes: ""
+      },
+      {
+        text: "select option 4.1",
+        url: "",
+        postbackRes: "opt4.1"
+      },
+      {
+        text: "select option 4.2",
+        url: "",
+        postbackRes: "opt4.2"
+      },
+      {
+        text: "select option 4.3",
+        url: "",
+        postbackRes: "hi"
+      }
     ]
   },
 }
@@ -127,15 +159,47 @@ export const textWithMediaMessage = {
     ],
     buttons: [
       {
-        type: 'custom',
-        subtype: 'checkboxSubmit',
-        text: 'Submit',
-        relayData: {
-          entity: "relay data"
-        }
+        text: "Google",
+        url: "http://www.google.com",
+        postbackRes: ""
       },
+      {
+        text: "select option 3.1",
+        url: "",
+        postbackRes: "opt3.1"
+      },
+      {
+        text: "select option 3.2",
+        url: "",
+        postbackRes: "opt3.2"
+      },
+      {
+        text: "select option 3.3",
+        url: "",
+        postbackRes: "hi"
+      },
+      {
+        text: "Google",
+        url: "http://www.google.com",
+        postbackRes: ""
+      },
+      {
+        text: "select option 4.1",
+        url: "",
+        postbackRes: "opt4.1"
+      },
+      {
+        text: "select option 4.2",
+        url: "",
+        postbackRes: "opt4.2"
+      },
+      {
+        text: "select option 4.3",
+        url: "",
+        postbackRes: "hi"
+      }
     ]
-  },
+  }
 }
 
 export const message = {
