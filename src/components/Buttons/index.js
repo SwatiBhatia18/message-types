@@ -64,7 +64,7 @@ class Buttons extends React.PureComponent {
         {
           !show_all_buttons && buttons.length > display_buttons_count &&
           <p
-            className="ori-font-primary ori-cursor-ptr ori-t-mrgn-5 ori-font-xs"
+            className="ori-font-primary ori-cursor-ptr ori-lr-mrgn-5 ori-b-mrgn-5 ori-font-xs"
             onClick={this.showAllButtons}
           >
             {`show ${buttons.length - display_buttons_count} more `}
@@ -73,7 +73,7 @@ class Buttons extends React.PureComponent {
         {
           show_all_buttons &&
           <p
-            className="ori-font-primary ori-cursor-ptr ori-t-mrgn-5 ori-font-xs"
+            className="ori-font-primary ori-cursor-ptr ori-lr-mrgn-5 ori-b-mrgn-5 ori-font-xs"
             onClick={this.showLessButtons}
           >
             show less
