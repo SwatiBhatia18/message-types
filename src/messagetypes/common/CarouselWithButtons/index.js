@@ -141,7 +141,7 @@ class CarouselWithButtons extends React.PureComponent {
                     }
                     {
                       carousel_item.title && carousel_item.title.trim().length > 0 &&
-                      <p className='ori-t-mrgn-3 ori-no-b-mrgn ori-font-bold ori-lr-pad-5 ori-capitalize ori-word-wrap ori-word-break title'>{carousel_item.title}</p>
+                      <p className='ori-t-mrgn-3 ori-no-b-mrgn ori-font-bold ori-lr-pad-5 ori-word-wrap ori-word-break title'>{carousel_item.title}</p>
                     }
                     {
                       carousel_item.subtitle &&
