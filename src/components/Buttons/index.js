@@ -42,44 +42,46 @@ class Buttons extends React.PureComponent {
     const { btn_disabled, buttons } = this.props
     const { display_buttons_count, show_all_buttons } = this.state
     return (
-      <React.Fragment>
-        <div className={`${styles.buttonsContainer} buttonsContainer`}>
-          {
-            buttons.map((btn, index) => {
-              if (index < display_buttons_count)
-                return (
-                  <Button
-                    key={index}
-                    size="small"
-                    className={`ori-b-mrgn-5 ori-lr-mrgn-5 ori-btn-fill-primary ${styles.button}`}
-                    disabled={btn_disabled}
-                    onClick={this.handleBtnClick.bind(this, btn)}
-                  >
-                    {btn.text}
-                  </Button>
-                )
-            })
-          }
-        </div>
+      <div className={`${styles.buttonsContainer} buttonsContainer`}>
+        {
+          buttons.map((btn, index) => {
+            if (index < display_buttons_count)
+              return (
+                <Button
+                  key={index}
+                  size="small"
+                  className={`ori-b-mrgn-5 ori-lr-mrgn-5 ori-btn-fill-primary ${styles.button}`}
+                  disabled={btn_disabled}
+                  onClick={this.handleBtnClick.bind(this, btn)}
+                >
+                  {btn.text}
+                </Button>
+              )
+          })
+        }
         {
           !show_all_buttons && buttons.length > display_buttons_count &&
-          <p
-            className="ori-font-primary ori-cursor-ptr ori-lr-mrgn-5 ori-b-mrgn-5 ori-font-xs"
+          <Button
+            size="small"
+            className={`ori-b-mrgn-5 ori-lr-mrgn-5 ori-btn-fill-primary ${styles.button}`}
+            disabled={btn_disabled}
             onClick={this.showAllButtons}
           >
             {`show ${buttons.length - display_buttons_count} more `}
-          </p>
+          </Button>
         }
         {
           show_all_buttons &&
-          <p
-            className="ori-font-primary ori-cursor-ptr ori-lr-mrgn-5 ori-b-mrgn-5 ori-font-xs"
+          <Button
+            size="small"
+            className={`ori-b-mrgn-5 ori-lr-mrgn-5 ori-btn-fill-primary ${styles.button}`}
+            disabled={btn_disabled}
             onClick={this.showLessButtons}
           >
             show less
-          </p>
+            </Button>
         }
-      </React.Fragment>
+      </div>
     )
   }
 }
