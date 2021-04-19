@@ -67,7 +67,7 @@ class Buttons extends React.PureComponent {
             disabled={btn_disabled}
             onClick={this.showAllButtons}
           >
-            {`show ${buttons.length - display_buttons_count} more `}
+            show more
           </Button>
         }
         {
