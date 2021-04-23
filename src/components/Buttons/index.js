@@ -50,7 +50,7 @@ class Buttons extends React.PureComponent {
                 <Button
                   key={index}
                   size="small"
-                  className={`ori-b-mrgn-5 ori-lr-mrgn-5 ori-btn-fill-primary ${styles.button}`}
+                  className={`ori-b-mrgn-5 ori-lr-mrgn-5 ori-btn-bubble-inner ${styles.button}`}
                   disabled={btn_disabled}
                   onClick={this.handleBtnClick.bind(this, btn)}
                 >
@@ -63,23 +63,21 @@ class Buttons extends React.PureComponent {
           !show_all_buttons && buttons.length > display_buttons_count &&
           <Button
             size="small"
-            className={`ori-b-mrgn-5 ori-lr-mrgn-5 ori-btn-fill-primary ${styles.button}`}
-            disabled={btn_disabled}
+            className={`ori-b-mrgn-5 ori-lr-mrgn-5 ori-btn-bubble-inner ${styles.button}`}
             onClick={this.showAllButtons}
           >
-            show more
+            Show more
           </Button>
         }
         {
           show_all_buttons &&
           <Button
             size="small"
-            className={`ori-b-mrgn-5 ori-lr-mrgn-5 ori-btn-fill-primary ${styles.button}`}
-            disabled={btn_disabled}
+            className={`ori-b-mrgn-5 ori-lr-mrgn-5 ori-btn-bubble-inner ${styles.button}`}
             onClick={this.showLessButtons}
           >
-            show less
-            </Button>
+            Show less
+          </Button>
         }
       </div>
     )
