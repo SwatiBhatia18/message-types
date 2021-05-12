@@ -11,14 +11,19 @@ import HtmlText from '../../../components/HtmlText'
 class TextWithMedia extends React.PureComponent {
   state = { show_overlay: false, selectedIndex: -1 }
 
-  showOverlay = () => { this.setState({ show_overlay: true }) };
+  showOverlay = () => {
+    const { img_popup_disable } = this.props
+    if (!img_popup_disable)
+      this.setState({ show_overlay: true })
+  };
 
   closeOverlay = () => { this.setState({ show_overlay: false }) };
 
   renderPreviewOverlay = () => {
+    const { img_popup_disable } = this.props
     const { show_overlay } = this.state
     const { payload } = this.props.message
-    if (show_overlay) {
+    if (!img_popup_disable && show_overlay) {
       return (
         <div className={`ori-flex-row ori-flex-jc ori-flex-ac ori-align-full ori-pad-15 ${styles.previewOverlayContainer}`}>
           <div className='ori-bg-white'>
@@ -120,13 +125,15 @@ class TextWithMedia extends React.PureComponent {
 TextWithMedia.propTypes = {
   message: PropTypes.object.isRequired,
   handleMsgBtnClick: PropTypes.func,
+  img_popup_disable: PropTypes.func,
   btn_disabled: PropTypes.bool,
   btn_hidden: PropTypes.bool
 }
 
 TextWithMedia.defaultProps = {
   btn_disabled: false,
-  btn_hidden: false
+  btn_hidden: false,
+  img_popup_disable: false
 }
 
 export { TextWithMedia }
