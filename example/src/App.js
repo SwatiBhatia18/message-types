@@ -1,17 +1,18 @@
-import React, { Component } from 'react'
-import { 
+import React, { Component } from "react"
+import {
   // TextMessage, 
   // TextWithMedia, 
-  // CarouselWithButtons, 
+  CarouselWithButtons,
   // Offers, 
   // RechargeHistory, 
-  CheckboxWithMedia 
-} from 'message-types'
+  // CheckboxWithMedia 
+} from "message-types"
 
 import {
   // textWithMediaMessage,
-  checkboxMessage
-} from './constants'
+  // checkboxMessage,
+  carouselWithButtonsMessage
+} from "./constants"
 
 export default class App extends Component {
   render() {
@@ -20,13 +21,13 @@ export default class App extends Component {
         {/* <TextMessage message={message} show_nlp_snapshot={false} /> */}
         {/* <ListMessage message={message} /> */}
         {/* <TextWithMedia message={textWithMediaMessage} /> */}
-        <CheckboxWithMedia message={checkboxMessage} />
+        {/* <CheckboxWithMedia message={checkboxMessage} /> */}
         {/* <DishtvRecharge message={message} /> */}
         {/* <DishtvRechargeDetails message={message} /> */}
         {/* <UploadFile message={message} /> */}
         {/* <Offers message={message} handleOfferSelection={()=>{}} btn_disabled /> */}
         {/* <RechargeHistory message={message} /> */}
-        {/* <CarouselWithButtons message={message} /> */}
+        <CarouselWithButtons message={carouselWithButtonsMessage} img_popup_disable/>
       </div>
     )
   }

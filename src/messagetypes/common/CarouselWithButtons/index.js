@@ -22,9 +22,17 @@ class CarouselWithButtons extends React.PureComponent {
     })
   }
 
+  showCarouselItem = selected_carousel_item => {
+    this.setState({
+      show_overlay: true,
+      selected_carousel_item
+    })
+  }
+
   renderPreviewOverlay = () => {
     const { show_overlay, selected_carousel_item } = this.state
-    if (show_overlay && selected_carousel_item) {
+    const { img_popup_disable } = this.props
+    if (!img_popup_disable && show_overlay && selected_carousel_item) {
       return (
         <div className={`ori-flex-row ori-flex-jc ori-flex-ac ori-align-full ori-pad-15 ${styles.previewOverlayContainer}`}>
           <div className='ori-bg-white'>
@@ -51,7 +59,7 @@ class CarouselWithButtons extends React.PureComponent {
   }
 
   renderCarouselImage = carousel_item => {
-    const { display_type } = this.props
+    const { display_type, img_popup_disable } = this.props
     if (display_type === 'fixed') {
       return (
         <div
@@ -59,12 +67,7 @@ class CarouselWithButtons extends React.PureComponent {
           style={{
             backgroundImage: `url(${carousel_item.mediaUrl})`
           }}
-          onClick={() => {
-            this.setState({
-              show_overlay: true,
-              selected_carousel_item: carousel_item
-            })
-          }}
+          onClick={() => !img_popup_disable && this.showCarouselItem(carousel_item)}
         />
       )
     }
@@ -74,12 +77,7 @@ class CarouselWithButtons extends React.PureComponent {
           src={carousel_item.mediaUrl}
           alt=''
           className='ori-cursor-ptr ori-full-width'
-          onClick={() => {
-            this.setState({
-              show_overlay: true,
-              selected_carousel_item: carousel_item
-            })
-          }}
+          onClick={() => !img_popup_disable && this.showCarouselItem(carousel_item)}
         />
       )
     }
@@ -89,12 +87,7 @@ class CarouselWithButtons extends React.PureComponent {
         alt=''
         className='ori-cursor-ptr ori-full-width'
         style={{ height: '200px' }}
-        onClick={() => {
-          this.setState({
-            show_overlay: true,
-            selected_carousel_item: carousel_item
-          })
-        }}
+        onClick={() => !img_popup_disable && this.showCarouselItem(carousel_item)}
       />
     )
   }
@@ -140,8 +133,12 @@ class CarouselWithButtons extends React.PureComponent {
                       this.renderCarouselImage(carousel_item)
                     }
                     {
-                      carousel_item.title && carousel_item.title.trim().length > 0 &&
-                      <p className='ori-t-mrgn-3 ori-no-b-mrgn ori-font-bold ori-lr-pad-5 ori-word-wrap ori-word-break title'>{carousel_item.title}</p>
+                      carousel_item.title &&
+                      <HtmlText
+                        text={carousel_item.title}
+                        isHtml={carousel_item.containsHtmlTitle}
+                        textClass="ori-t-mrgn-3 ori-no-b-mrgn ori-font-bold ori-lr-pad-5 ori-word-wrap ori-word-break title"
+                      />
                     }
                     {
                       carousel_item.subtitle &&
@@ -189,12 +186,14 @@ CarouselWithButtons.propTypes = {
   handleMsgBtnClick: PropTypes.func,
   btn_disabled: PropTypes.bool,
   btn_hidden: PropTypes.bool,
-  display_type: PropTypes.string
+  display_type: PropTypes.string,
+  img_popup_disable: PropTypes.bool
 }
 
 CarouselWithButtons.defaultProps = {
   btn_disabled: false,
-  btn_hidden: false
+  btn_hidden: false,
+  img_popup_disable: false
 }
 
 export { CarouselWithButtons }

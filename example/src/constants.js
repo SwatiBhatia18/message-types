@@ -202,6 +202,130 @@ export const textWithMediaMessage = {
   }
 }
 
+export const carouselWithButtonsMessage = {
+  sender: "chatbot",
+  type: "checkbox",
+  inputLock: false,
+  inputLockMessage: "",
+  quickReplies: [],
+  skipLS: false,
+  send_variable_to_apiai: false,
+  sendVariableToLS: false,
+  variable_name: "",
+  delay: 0,
+  payload: {
+    text: "my vc_number is 13124214212. i want to recharge with 100rs. how will i get my recharge_details",
+    title: "carousel title",
+    subtitle: "carousel subtitle",
+    options: [
+      {
+        optionInfo: { key: "option1" },
+        title: "option1 carousel title",
+        subtitle: "option1 carousel subtitle",
+        mediaType: "image",
+        mediaUrl: "http://via.placeholder.com/150x450",
+        buttons: [
+          {
+            text: "Google",
+            url: "http://www.google.com",
+            postbackRes: ""
+          },
+          {
+            text: "select option 1.1",
+            url: "",
+            postbackRes: "opt1.1"
+          },
+          {
+            text: "select option 1.2",
+            url: "",
+            postbackRes: "opt1.2"
+          },
+          {
+            text: "select option 1.3",
+            url: "",
+            postbackRes: "opt1.3"
+          }
+        ]
+      },
+      {
+        optionInfo: { "key": "option2" },
+        title: "option2 carousel title",
+        subtitle: "option2 carousel subtitle",
+        mediaType: "image",
+        mediaUrl: "http://via.placeholder.com/200x100", buttons: [
+          {
+            text: "Google",
+            url: "http://www.google.com",
+            postbackRes: ""
+          },
+          {
+            text: "select option 2.1",
+            url: "",
+            postbackRes: "opt2.1"
+          },
+          {
+            text: "select option 2.2",
+            url: "",
+            postbackRes: "opt2.2"
+          },
+          {
+            text: "select option 2.3",
+            url: "",
+            postbackRes: "hi"
+          }
+        ]
+      },
+      {
+        optionInfo: { "key": "option3" },
+        title: "option3 carousel title",
+        subtitle: "option3 carousel subtitle",
+        mediaType: "image",
+        mediaUrl: "http://via.placeholder.com/200x100",
+        buttons: [
+          {
+            text: "Google",
+            url: "http://www.google.com",
+            postbackRes: ""
+          },
+          {
+            text: "select option 3.1",
+            url: "",
+            postbackRes: "opt3.1"
+          },
+          {
+            text: "select option 3.2",
+            url: "",
+            postbackRes: "opt3.2"
+          },
+          {
+            text: "select option 3.3",
+            url: "",
+            postbackRes: "hi"
+          }
+        ]
+      }
+    ],
+    buttons: [
+      {
+        text: "main button 1",
+        url: "http://www.google.com",
+        b_id: "",
+        postbackRes: ""
+      },
+      {
+        text: "main button 2",
+        b_id: "",
+        postbackRes: "hi"
+      },
+      {
+        text: "main button 3",
+        url: "", b_id: "",
+        postbackRes: ""
+      }
+    ]
+  },
+}
+
 export const message = {
   NLPSnapshot: {
     entitySnapshot: [
@@ -373,7 +497,7 @@ export const message = {
   //   subtitle: "Please select one option from the following in order to proceed",
   //   // checkbox with media options
   //   options: [
-  //     { value: '1', label: 'hello world' },
+  //     { value: "1", label: 'hello world' },
   //     { value: '2', label: 'hii i am vivek' },
   //     { value: '5', label: 'playing cricket in ahmedabad india. do you want to play cricket please tell me' },
   //     { value: '3', label: 'how are you ?' },
