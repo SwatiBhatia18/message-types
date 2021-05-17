@@ -39,7 +39,7 @@ class CarouselWithButtons extends React.PureComponent {
             <img
               src={selected_carousel_item.mediaUrl}
               alt=''
-              style={{ maxWidth: '100%', maxHeight: '70vh' }}
+              style={{ width: '100%', maxHeight: '70vh' }}
             />
             {
               selected_carousel_item.title && selected_carousel_item.title.trim().length > 0 &&
