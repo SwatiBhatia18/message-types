@@ -57,7 +57,7 @@ class RechargeHistory extends React.PureComponent {
 
   render() {
     const { payload } = this.props.message
-    const { btn_disabled, handleMsgBtnClick, message, btn_hidden } = this.props
+    const { btn_disabled, handleMsgBtnClick, message, btn_hidden, default_btn_display_count } = this.props
     return (
       <div className='ori-mt-rechargeHistoryContainer'>
         {

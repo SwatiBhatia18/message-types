@@ -12,7 +12,7 @@ import Buttons from '../../../components/buttons'
 class RechargeDetails extends React.PureComponent {
   render() {
     let { payload } = this.props.message
-    let { btn_disabled, handleMsgBtnClick, message, btn_hidden } = this.props
+    let { btn_disabled, handleMsgBtnClick, message, btn_hidden, default_btn_display_count } = this.props
 
     return (
       <div className='ori-mt-rechargeDetailsContainer'>
