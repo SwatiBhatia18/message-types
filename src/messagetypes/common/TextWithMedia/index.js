@@ -125,7 +125,7 @@ class TextWithMedia extends React.PureComponent {
 TextWithMedia.propTypes = {
   message: PropTypes.object.isRequired,
   handleMsgBtnClick: PropTypes.func,
-  img_popup_disable: PropTypes.func,
+  img_popup_disable: PropTypes.bool,
   btn_disabled: PropTypes.bool,
   btn_hidden: PropTypes.bool,
   default_btn_display_count: PropTypes.number
