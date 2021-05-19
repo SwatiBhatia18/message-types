@@ -58,7 +58,7 @@ class Recharge extends React.PureComponent {
 
   render() {
     const { payload } = this.props.message
-    const { btn_disabled, handleMsgBtnClick, message, btn_hidden } = this.props
+    const { btn_disabled, handleMsgBtnClick, message, btn_hidden, default_btn_display_count } = this.props
 
     return (
       <div className='ori-mt-rechargeContainer'>
@@ -90,7 +90,7 @@ class Recharge extends React.PureComponent {
           !btn_hidden && (payload.buttons) && (payload.buttons.length > 0) &&
           <Buttons 
             buttons={payload.buttons} 
-            display_count={payload.btnDisplayCount}
+            display_count={payload.btnDisplayCount ? payload.btnDisplayCount : default_btn_display_count}
             message={message} 
             btn_disabled={btn_disabled} 
             handleMsgBtnClick={handleMsgBtnClick} 
@@ -105,12 +105,14 @@ Recharge.propTypes = {
   message: PropTypes.object.isRequired,
   handleMsgBtnClick: PropTypes.func,
   btn_disabled: PropTypes.bool,
-  btn_hidden: PropTypes.bool
+  btn_hidden: PropTypes.bool,
+  default_btn_display_count: PropTypes.number
 }
 
 Recharge.defaultProps = {
   btn_disabled: false,
-  btn_hidden: false
+  btn_hidden: false,
+  default_btn_display_count: 4
 }
 
 export { Recharge }

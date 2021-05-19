@@ -88,7 +88,7 @@ class RechargeHistory extends React.PureComponent {
           !btn_hidden && (payload.buttons) && (payload.buttons.length > 0) &&
           <Buttons
             buttons={payload.buttons}
-            display_count={payload.btnDisplayCount}
+            display_count={payload.btnDisplayCount ? payload.btnDisplayCount : default_btn_display_count}
             message={message}
             btn_disabled={btn_disabled}
             handleMsgBtnClick={handleMsgBtnClick}
@@ -103,12 +103,14 @@ RechargeHistory.propTypes = {
   message: PropTypes.object.isRequired,
   handleMsgBtnClick: PropTypes.func,
   btn_disabled: PropTypes.bool,
-  btn_hidden: PropTypes.bool
+  btn_hidden: PropTypes.bool,
+  default_btn_display_count: PropTypes.number
 }
 
 RechargeHistory.defaultProps = {
   btn_disabled: false,
-  btn_hidden: false
+  btn_hidden: false,
+  default_btn_display_count: 4
 }
 
 export { RechargeHistory }

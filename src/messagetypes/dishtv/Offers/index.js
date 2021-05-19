@@ -35,7 +35,7 @@ class Offers extends React.PureComponent {
   };
 
   render() {
-    const { disable_offer, btn_disabled, handleMsgBtnClick, message } = this.props
+    const { disable_offer, btn_disabled, handleMsgBtnClick, message, default_btn_display_count } = this.props
     const { payload } = this.props.message
 
     return (
@@ -85,7 +85,7 @@ class Offers extends React.PureComponent {
           (payload.buttons) && (payload.buttons.length > 0) && !disable_offer &&
           <Buttons
             buttons={payload.buttons}
-            display_count={payload.btnDisplayCount}
+            display_count={payload.btnDisplayCount ? payload.btnDisplayCount : default_btn_display_count}
             message={message}
             btn_disabled={btn_disabled}
             handleMsgBtnClick={handleMsgBtnClick}
@@ -101,11 +101,13 @@ Offers.propTypes = {
   handleOfferSelection: PropTypes.func,
   handleMsgBtnClick: PropTypes.func,
   disable_offer: PropTypes.bool,
-  btn_disabled: PropTypes.bool
+  btn_disabled: PropTypes.bool,
+  default_btn_display_count: PropTypes.number
 }
 
 Offers.defaultProps = {
-  disable_offer: false
+  disable_offer: false,
+  default_btn_display_count: 4
 }
 
 export { Offers }
