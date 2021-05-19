@@ -84,6 +84,7 @@ class CheckboxWithMedia extends React.PureComponent {
       handleMsgBtnClick,
       btn_hidden,
       checkbox_disabled,
+      default_btn_display_count
     } = this.props
 
     return (
@@ -150,7 +151,7 @@ class CheckboxWithMedia extends React.PureComponent {
           !btn_hidden && payload.buttons && payload.buttons.length > 0 &&
           <Buttons
             buttons={payload.buttons}
-            display_count={payload.btnDisplayCount}
+            display_count={payload.btnDisplayCount ? payload.btnDisplayCount : default_btn_display_count}
             message={message}
             btn_disabled={btn_disabled}
             handleMsgBtnClick={handleMsgBtnClick}
@@ -167,13 +168,15 @@ CheckboxWithMedia.propTypes = {
   btn_disabled: PropTypes.bool,
   btn_hidden: PropTypes.bool,
   checkbox_disabled: PropTypes.bool,
-  onSubmitCheckbox: PropTypes.func
+  onSubmitCheckbox: PropTypes.func,
+  default_btn_display_count: PropTypes.number
 }
 
 CheckboxWithMedia.defaultProps = {
   btn_disabled: false,
   btn_hidden: false,
-  checkbox_disabled: false
+  checkbox_disabled: false,
+  default_btn_display_count: 4
 }
 
 export { CheckboxWithMedia }

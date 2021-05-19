@@ -93,7 +93,7 @@ class CarouselWithButtons extends React.PureComponent {
   }
 
   render() {
-    const { btn_disabled, handleMsgBtnClick, message, btn_hidden } = this.props
+    const { btn_disabled, handleMsgBtnClick, message, btn_hidden, default_btn_display_count } = this.props
     const { payload } = this.props.message
 
     return (
@@ -152,7 +152,7 @@ class CarouselWithButtons extends React.PureComponent {
                       carousel_item.buttons && carousel_item.buttons.length > 0 &&
                       <Buttons
                         buttons={carousel_item.buttons}
-                        display_count={carousel_item.btnDisplayCount}
+                        display_count={carousel_item.btnDisplayCount ? carousel_item.btnDisplayCount : default_btn_display_count}
                         message={message}
                         handleMsgBtnClick={handleMsgBtnClick}
                         btn_disabled={btn_disabled}
@@ -169,7 +169,7 @@ class CarouselWithButtons extends React.PureComponent {
           <div className='ori-t-pad-5'>
             <Buttons
               buttons={payload.buttons}
-              display_count={payload.btnDisplayCount}
+              display_count={payload.btnDisplayCount ? payload.btnDisplayCount : default_btn_display_count}
               message={message}
               btn_disabled={btn_disabled}
               handleMsgBtnClick={handleMsgBtnClick}
@@ -187,13 +187,15 @@ CarouselWithButtons.propTypes = {
   btn_disabled: PropTypes.bool,
   btn_hidden: PropTypes.bool,
   display_type: PropTypes.string,
-  img_popup_disable: PropTypes.bool
+  img_popup_disable: PropTypes.bool,
+  default_btn_display_count: PropTypes.number
 }
 
 CarouselWithButtons.defaultProps = {
   btn_disabled: false,
   btn_hidden: false,
-  img_popup_disable: false
+  img_popup_disable: false,
+  default_btn_display_count: 4
 }
 
 export { CarouselWithButtons }

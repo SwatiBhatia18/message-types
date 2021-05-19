@@ -100,7 +100,7 @@ class UploadFile extends React.PureComponent {
   }
 
   render() {
-    const { btn_disabled, message, handleMsgBtnClick, btn_hidden, disabled, accept, uploading } = this.props
+    const { btn_disabled, message, handleMsgBtnClick, btn_hidden, disabled, accept, uploading, default_btn_display_count } = this.props
     const { payload } = this.props.message
     const { file, fileUrl } = this.state
     return (
@@ -136,7 +136,7 @@ class UploadFile extends React.PureComponent {
           !btn_hidden && payload.buttons && payload.buttons.length > 0 &&
           <Buttons
             buttons={payload.buttons}
-            display_count={payload.btnDisplayCount}
+            display_count={payload.btnDisplayCount ? payload.btnDisplayCount : default_btn_display_count}
             message={message}
             btn_disabled={btn_disabled}
             handleMsgBtnClick={handleMsgBtnClick}
@@ -155,7 +155,8 @@ UploadFile.propTypes = {
   disabled: PropTypes.bool,
   uploading: PropTypes.bool,
   handleFileUpload: PropTypes.func,
-  accept: PropTypes.string
+  accept: PropTypes.string,
+  default_btn_display_count: PropTypes.number
 }
 
 UploadFile.defaultProps = {
@@ -163,6 +164,7 @@ UploadFile.defaultProps = {
   btn_hidden: false,
   disabled: false,
   uploading: false,
+  default_btn_display_count: 4,
   handleFileUpload: () => { }
 }
 
