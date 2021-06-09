@@ -50,7 +50,8 @@ class Buttons extends React.PureComponent {
                 <Button
                   key={index}
                   size="small"
-                  className={`ori-b-mrgn-5 ori-lr-mrgn-5 ori-btn-bubble-inner ${styles.button}`}
+                  className={`ori-b-mrgn-5 ${btn.displayType === "paragraph" ? "ori-btn-paragraph" : "ori-lr-mrgn-5 ori-btn-bubble-inner"} ${styles.button}`}
+                  block={btn.displayType === "paragraph"}
                   disabled={btn_disabled}
                   onClick={this.handleBtnClick.bind(this, btn)}
                 >
