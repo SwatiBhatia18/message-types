@@ -117,6 +117,10 @@ class TextWithMedia extends React.PureComponent {
             handleMsgBtnClick={handleMsgBtnClick}
           />
         }
+        {
+          payload.footer &&
+          <div dangerouslySetInnerHTML={{ __html: payload.footer }} />
+        }
       </div>
     )
   }
