@@ -1,6 +1,6 @@
+/* eslint-disable camelcase */
 import React from 'react'
 import PropTypes from 'prop-types'
-import classNames from 'classnames'
 
 import styles from './CustomPagination.module.scss'
 
@@ -9,29 +9,30 @@ const CustomPagination = ({
   current,
   onChange
 }) => {
-  
   const onClickPrev = () => {
-    if (current - 1 > 0)
+    if (current - 1 > 0) {
       onChange(current - 1)
+    }
   }
 
   const onClickNext = () => {
-    if (!next_disabled && current)
+    if (!next_disabled && current) {
       onChange(current + 1)
+    }
   }
 
   return (
     <ul className={styles.customPaginationContainer}>
       <li
-        className={`${styles.paginationItem} ${current === 1 ? "ori-font-light ori-cursor-not-allowed" : ""}`}
+        className={`${styles.paginationItem} ${current === 1 ? 'ori-font-light ori-cursor-not-allowed' : ''}`}
         onClick={onClickPrev}
       >
-        {"<"}
+        {'<'}
       </li>
       {
         current >= 2 &&
         <li
-        className={`${styles.paginationItem} ori-border-default`}
+          className={`${styles.paginationItem} ori-border-default`}
           onClick={onClickPrev}
         >
           {current - 1}
@@ -48,10 +49,10 @@ const CustomPagination = ({
         </li>
       }
       <li
-        className={`${styles.paginationItem} ${next_disabled ? "ori-font-light ori-cursor-not-allowed" : ""}`}
+        className={`${styles.paginationItem} ${next_disabled ? 'ori-font-light ori-cursor-not-allowed' : ''}`}
         onClick={onClickNext}
       >
-        {">"}
+        {'>'}
       </li>
     </ul>
   )
@@ -66,7 +67,7 @@ CustomPagination.propTypes = {
 CustomPagination.defaultProps = {
   current: 1,
   next_disabled: false,
-  onChange: () => {}
+  onChange: () => { }
 }
 
 export default CustomPagination
