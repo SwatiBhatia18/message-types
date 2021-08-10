@@ -1,11 +1,10 @@
 /* eslint-disable camelcase */
 import React from 'react'
 import PropTypes from 'prop-types'
-import isEmpty from 'lodash/isEmpty'
 
 import './index.scss'
 
-import { formattedPrice } from '../../../data/config/utils'
+import { formattedPrice, isEmptyObject } from '../../../data/config/utils'
 
 import InlineItem from '../../../components/inlineitem'
 import Buttons from '../../../components/buttons'
@@ -71,7 +70,7 @@ class RechargeHistory extends React.PureComponent {
           </p>
         }
         {
-          ((payload.data) && !isEmpty(payload.data)) &&
+          ((payload.data) && !isEmptyObject(payload.data)) &&
           <div className='ori-pad-10 ori-font-xs ori-border-light ori-border-radius-3 ori-bg-card historyCardContainer'>
             <div className='ori-b-mrgn-5'>
               <InlineItem title='VC Number' info={payload.data.vc_number} title_bold={true} />

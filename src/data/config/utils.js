@@ -41,3 +41,12 @@ export const linkify = inputText => {
   linkifiedText = linkifiedText.replace(emailPattern, '<a href="mailto:$1">$1</a>')
   return linkifiedText
 }
+
+export const isEmptyObject = obj => {
+  for (var prop in obj) {
+    if (obj.hasOwnProperty(prop)) {
+      return false
+    }
+  }
+  return true
+}

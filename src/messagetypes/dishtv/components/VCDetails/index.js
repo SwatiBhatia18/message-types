@@ -1,7 +1,8 @@
 /* eslint-disable camelcase */
 import React from 'react'
 import PropTypes from 'prop-types'
-import isEmpty from 'lodash/isEmpty'
+
+import { isEmptyObject } from '../../../../data/config/utils'
 
 import InlineItem from '../../../../components/InlineItem'
 
@@ -22,7 +23,7 @@ class VCDetails extends React.PureComponent {
           </div>
         }
         {
-          vc_details.basePack && !isEmpty(vc_details.basePack) &&
+          vc_details.basePack && !isEmptyObject(vc_details.basePack) &&
           <div className='ori-full-width ori-t-pad-10'>
             <p className='ori-font-bold'>Base Pack</p>
             <InlineItem title={vc_details.basePack.name} info={this.formattedPrice(vc_details.basePack.price)} title_bold={false} uppercase={true} />

@@ -1,10 +1,9 @@
 /* eslint-disable camelcase */
 import React from 'react'
 import PropTypes from 'prop-types'
-import isEmpty from 'lodash/isEmpty'
 import Tooltip from 'antd/lib/tooltip'
 
-import { linkify } from '../../../data/config/utils'
+import { linkify, isEmptyObject } from '../../../data/config/utils'
 
 import styles from './TextMessage.module.scss'
 
@@ -15,7 +14,7 @@ class TextMessage extends React.PureComponent {
 
   handleTextClick = () => {
     const { message, show_nlp_snapshot, editMessageNLPSnapshot } = this.props
-    if (editMessageNLPSnapshot && show_nlp_snapshot && message.NLPSnapshot && !isEmpty(message.NLPSnapshot)) {
+    if (editMessageNLPSnapshot && show_nlp_snapshot && message.NLPSnapshot && !isEmptyObject(message.NLPSnapshot)) {
       editMessageNLPSnapshot(message)
     }
   };
@@ -45,7 +44,7 @@ class TextMessage extends React.PureComponent {
 
   render() {
     const { message, show_nlp_snapshot, disable_html_parser } = this.props
-    const intent_visibility = show_nlp_snapshot && message.NLPSnapshot && !isEmpty(message.NLPSnapshot)
+    const intent_visibility = show_nlp_snapshot && message.NLPSnapshot && !isEmptyObject(message.NLPSnapshot)
     const msgText = message.containsHTML || disable_html_parser ? message.payload.text : linkify(message.payload.text)
     return (
       <div className={styles.textMessageContainer} onMouseOver={this.showTooltip} onMouseOut={this.hideTooltip}>

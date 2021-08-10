@@ -1,9 +1,8 @@
 /* eslint-disable camelcase */
 import React from 'react'
 import PropTypes from 'prop-types'
-import isEmpty from 'lodash/isEmpty'
 
-import { formattedPrice } from '../../../data/config/utils'
+import { formattedPrice, isEmptyObject } from '../../../data/config/utils'
 
 import InlineItem from '../../../components/inlineitem'
 import VCDetails from '../components/vcdetails'
@@ -27,7 +26,7 @@ class RechargeDetails extends React.PureComponent {
           </p>
         }
         {
-          ((payload.data) && !isEmpty(payload.data)) &&
+          ((payload.data) && !isEmptyObject(payload.data)) &&
           <div className='ori-bg-card ori-font-xs ori-border-radius-3 ori-border-light'>
             <div className='ori-b-border-light ori-pad-10'>
               {
@@ -40,7 +39,7 @@ class RechargeDetails extends React.PureComponent {
               }
             </div>
             {
-              payload.data.pack_details && !isEmpty(payload.data.pack_details) &&
+              payload.data.pack_details && !isEmptyObject(payload.data.pack_details) &&
               Object.keys(payload.data.pack_details).sort((a, b) => {
                 if (payload.data.pack_details[a].type.toLowerCase() > payload.data.pack_details[b].type.toLowerCase()) return -1
                 if (payload.data.pack_details[a].type.toLowerCase() < payload.data.pack_details[b].type.toLowerCase()) return 1
@@ -76,13 +75,13 @@ class RechargeDetails extends React.PureComponent {
         }
         {
           !btn_hidden && (payload.buttons) && (payload.buttons.length > 0) &&
-          <Buttons 
+          <Buttons
             buttons={payload.buttons}
             display_count={payload.btnDisplayCount ? payload.btnDisplayCount : default_btn_display_count}
-            message={message} 
-            btn_disabled={btn_disabled} 
-            handleMsgBtnClick={handleMsgBtnClick} 
-            />
+            message={message}
+            btn_disabled={btn_disabled}
+            handleMsgBtnClick={handleMsgBtnClick}
+          />
         }
       </div>
     )

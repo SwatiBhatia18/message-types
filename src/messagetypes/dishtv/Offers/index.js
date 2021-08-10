@@ -1,9 +1,8 @@
 /* eslint-disable camelcase */
 import React from 'react'
 import PropTypes from 'prop-types'
-import isEmpty from 'lodash/isEmpty'
 
-import { formattedPrice } from '../../../data/config/utils'
+import { formattedPrice, isEmptyObject } from '../../../data/config/utils'
 
 import InlineItem from '../../../components/inlineitem'
 import Buttons from '../../../components/buttons'
@@ -51,12 +50,12 @@ class Offers extends React.PureComponent {
           </p>
         }
         {
-          ((payload.data) && !isEmpty(payload.data)) &&
+          ((payload.data) && !isEmptyObject(payload.data)) &&
           <div className='ori-font-xs offersCardContainer'>
             {
               (payload.data.recharge_offers) && (payload.data.recharge_offers.length > 0) &&
               payload.data.recharge_offers.map((offer, index) => {
-                if (!isEmpty(offer) && offer.offerId) {
+                if (!isEmptyObject(offer) && offer.offerId) {
                   return (
                     <div className='ori-pad-10 ori-flex-row ori-border-radius-3 ori-border-light ori-tb-mrgn-3 ori-bg-card' key={index}>
                       {
