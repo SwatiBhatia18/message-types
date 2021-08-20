@@ -18,7 +18,7 @@ class FormMessage extends React.PureComponent {
     this.setState(prevState => ({
       selectedValues: {
         ...prevState.selectedValues,
-        [name]: value
+        [name]: value || undefined
       }
     }))
   }
@@ -47,7 +47,7 @@ class FormMessage extends React.PureComponent {
       <div className='ori-word-break ori-mt-FormMessageContainer'>
         {
           payload.title &&
-          <p className='ori-no-t-mrgn ori-b-mrgn-10 ori-font-bold ori-capitalize-first title'>{payload.title}
+          <p className='ori-no-t-mrgn ori-b-mrgn-5 ori-font-bold ori-capitalize-first title'>{payload.title}
           </p>
         }
         {
