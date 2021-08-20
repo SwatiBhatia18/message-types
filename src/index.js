@@ -1,3 +1,4 @@
+export * from './messagetypes/common/OverflowWrapper'
 export * from './messagetypes/common/TextMessage'
 export * from './messagetypes/common/TextWithMedia'
 export * from './messagetypes/common/ListMessage'
