@@ -47,7 +47,7 @@ class FormMessage extends React.PureComponent {
       <div className='ori-word-break ori-mt-FormMessageContainer'>
         {
           payload.title &&
-          <p className='ori-no-t-mrgn ori-no-b-mrgn ori-font-bold ori-capitalize-first title'>{payload.title}
+          <p className='ori-no-t-mrgn ori-b-mrgn-10 ori-font-bold ori-capitalize-first title'>{payload.title}
           </p>
         }
         {
@@ -61,7 +61,7 @@ class FormMessage extends React.PureComponent {
                       <div className='ori-b-pad-10' key={index}>
                         {
                           item.title &&
-                          <p className='ori-b-mrgn-5'>{item.title}</p>
+                          <p>{item.title}</p>
                         }
                         <DatePicker
                           size='small'
