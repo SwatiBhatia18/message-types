@@ -6,6 +6,7 @@ export * from './messagetypes/common/CarouselWithButtons'
 export * from './messagetypes/common/CheckboxWithMedia'
 export * from './messagetypes/common/PromptMsg'
 export * from './messagetypes/common/UploadFile'
+export * from './messagetypes/common/FormMessage'
 
 export * from './messagetypes/dishtv/Recharge'
 export * from './messagetypes/dishtv/RechargeDetails'

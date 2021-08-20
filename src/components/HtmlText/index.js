@@ -6,8 +6,7 @@ const HtmlText = ({
   isHtml,
   textClass
 }) => {
-  if (isHtml)
-    return (<div dangerouslySetInnerHTML={{ __html: text }} />)
+  if (isHtml) { return (<div dangerouslySetInnerHTML={{ __html: text }} />) }
   return (<p className={`ori-word-wrap ori-word-break ${textClass}`}>{text}</p>)
 }
 
@@ -19,7 +18,7 @@ HtmlText.propTypes = {
 
 HtmlText.defaultProps = {
   isHtml: false,
-  textClass: "ori-no-b-mrgn"
+  textClass: 'ori-no-b-mrgn'
 }
 
 export default HtmlText

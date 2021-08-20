@@ -1,16 +1,18 @@
 import React, { Component } from "react"
 import {
-  OverflowWrapper,
-  TextMessage,
+  // OverflowWrapper,
+  // TextMessage,
   // TextWithMedia, 
   // CarouselWithButtons,
   // Offers, 
   // RechargeHistory, 
   // CheckboxWithMedia 
+  FormMessage
 } from "message-types"
 
 import {
-  textMessage,
+  // textMessage,
+  formMessage,
   // textWithMediaMessage,
   // checkboxMessage,
   // carouselWithButtonsMessage
@@ -20,9 +22,9 @@ export default class App extends Component {
   render() {
     return (
       <div className="ori-appContainer">
-        <OverflowWrapper enabled>
+        {/* <OverflowWrapper enabled>
           <TextMessage message={textMessage} show_nlp_snapshot={false} />
-        </OverflowWrapper>
+        </OverflowWrapper> */}
         {/* <ListMessage message={message} /> */}
         {/* <TextWithMedia message={textWithMediaMessage} /> */}
         {/* <CheckboxWithMedia message={checkboxMessage} /> */}
@@ -32,6 +34,7 @@ export default class App extends Component {
         {/* <Offers message={message} handleOfferSelection={()=>{}} btn_disabled /> */}
         {/* <RechargeHistory message={message} /> */}
         {/* <CarouselWithButtons message={carouselWithButtonsMessage} img_popup_disable /> */}
+        <FormMessage message={formMessage} />
       </div>
     )
   }

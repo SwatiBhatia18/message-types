@@ -13,6 +13,34 @@ export const textMessage = {
   },
   timestamp: new Date(),
 }
+
+export const formMessage = {
+  type: 'form',
+  sender: 'chatbot',
+  inputLock: false,
+  quickReplies: [],
+  skipLS: false,
+  send_variable_to_apiai: false,
+  sendVariableToLS: false,
+  variable_name: '',
+  delay: 0,
+  payload: {
+    title: "form title",
+    formData: [
+      {
+        type: "datePicker",
+        title: "select your departure date",
+        disabledTimestamp: '1629455793767',
+        props: {
+          placeholder: "departure date",
+          name: "departDate",
+        }
+      }
+    ]
+  },
+  timestamp: new Date(),
+}
+
 export const checkboxMessage = {
   sender: 'chatbot',
   type: 'checkbox',
