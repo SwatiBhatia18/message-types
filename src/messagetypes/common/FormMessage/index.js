@@ -17,6 +17,7 @@ class FormMessage extends React.PureComponent {
 
   handleDatePickerChange = (name, value) => {
     this.setState(prevState => ({
+      error: false,
       selectedValues: {
         ...prevState.selectedValues,
         [name]: value || undefined
@@ -49,8 +50,7 @@ class FormMessage extends React.PureComponent {
         selectedData: this.state.selectedValues,
         relayData: payload.relayData
       }
-      console.log('data', data)
-      // this.props.onSubmit(data)
+      this.props.onSubmit(data)
     }
   }
 
