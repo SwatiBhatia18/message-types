@@ -34,6 +34,7 @@ export const formMessage = {
         props: {
           placeholder: "departure date",
           name: "departDate",
+          required: false
         }
       }
     ]

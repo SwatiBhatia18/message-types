@@ -10,7 +10,8 @@ class FormMessage extends React.PureComponent {
   constructor(props) {
     super(props)
     this.state = {
-      selectedValues: {}
+      selectedValues: {},
+      error: false
     }
   }
 
@@ -25,11 +26,32 @@ class FormMessage extends React.PureComponent {
 
   handleSubmit = () => {
     const { payload } = this.props.message
-    const data = {
-      selectedValues: this.state.selectedValues,
-      relayData: payload.relayData
+    const { selectedValues, error } = this.state
+    let list = []
+    let hasError = error
+    payload.formData.forEach(item => {
+      if (selectedValues[item.props.name] !== undefined) {
+        const obj = {}
+        if (item.type === 'datePicker') {
+          obj.label = selectedValues[item.props.name].format('DD/MM/YYYY')
+        } else {
+          obj.label = selectedValues[item.props.name]
+        }
+        list.push(obj)
+      } else if (item.props.required) {
+        hasError = true
+        this.setState({ error: true })
+      }
+    })
+    if (!hasError) {
+      const data = {
+        list,
+        selectedData: this.state.selectedValues,
+        relayData: payload.relayData
+      }
+      console.log('data', data)
+      // this.props.onSubmit(data)
     }
-    this.props.onSubmit(data)
   }
 
   render() {
@@ -81,6 +103,10 @@ class FormMessage extends React.PureComponent {
                     return null
                 }
               })
+            }
+            {
+              this.state.error &&
+              <p className='ori-font-xs ori-font-danger'>All fields are required</p>
             }
             <Button
               size='small'
