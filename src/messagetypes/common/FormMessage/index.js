@@ -2,6 +2,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import DatePicker from 'antd/lib/date-picker'
+import Radio from 'antd/lib/radio'
 import Button from 'antd/lib/button'
 
 import Buttons from '../../../components/buttons'
@@ -25,6 +26,18 @@ class FormMessage extends React.PureComponent {
     }))
   }
 
+  handleChange = e => {
+    if (e.target.name) {
+      this.setState(prevState => ({
+        error: false,
+        selectedValues: {
+          ...prevState.selectedValues,
+          [e.target.name]: e.target.value
+        }
+      }))
+    }
+  }
+
   handleSubmit = () => {
     const { payload } = this.props.message
     const { selectedValues, error } = this.state
@@ -39,7 +52,7 @@ class FormMessage extends React.PureComponent {
           obj.label = selectedValues[item.props.name]
         }
         list.push(obj)
-      } else if (item.props.required) {
+      } else if (item.props.required && !error) {
         hasError = true
         this.setState({ error: true })
       }
@@ -97,8 +110,23 @@ class FormMessage extends React.PureComponent {
                         />
                       </div>
                     )
-                  case 'radio':
-                    return 'radio group'
+                  case 'radioGroup':
+                    return (
+                      <div className='ori-b-pad-10' key={index}>
+                        {
+                          item.title &&
+                          <p>{item.title}</p>
+                        }
+                        <Radio.Group
+                          size='small'
+                          className={`ori-full-width ${item.vertical ? 'ori-flex-column' : ''}`}
+                          {...item.props}
+                          disabled={disabled}
+                          value={this.state.selectedValues[item.props.name]}
+                          onChange={this.handleChange}
+                        />
+                      </div>
+                    )
                   default:
                     return null
                 }

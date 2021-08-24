@@ -36,6 +36,38 @@ export const formMessage = {
           name: "departDate",
           required: false
         }
+      },
+      {
+        type: "radioGroup",
+        title: "Passanger1",
+        props: {
+          name: "bag1",
+          required: true,
+          size: "small",
+          buttonStyle: "solid",
+          optionType: "button",
+          options: [
+            { label: '80kg', value: '80kg' },
+            { label: '12kg', value: '12kg' },
+            { label: '15kg', value: '15kg' }
+          ]
+        }
+      },
+      {
+        type: "radioGroup",
+        title: "Passanger2",
+        vertical: true,
+        props: {
+          name: "bag2",
+          required: false,
+          options: [
+            { label: '10kg', value: '10kg' },
+            { label: '12kg', value: '12kg' },
+            { label: '15kg', value: '15kg' },
+            { label: '20kg', value: '20kg' },
+            { label: '25kg', value: '25kg' }
+          ]
+        }
       }
     ]
   },
