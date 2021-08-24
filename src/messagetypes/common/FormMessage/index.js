@@ -96,7 +96,13 @@ class FormMessage extends React.PureComponent {
                       <div className='ori-b-pad-10' key={index}>
                         {
                           item.title &&
-                          <p>{item.title}</p>
+                          <p>
+                            {
+                              item.props.required &&
+                              <span>*</span>
+                            }
+                            {item.title}
+                          </p>
                         }
                         <DatePicker
                           size='small'
@@ -115,7 +121,13 @@ class FormMessage extends React.PureComponent {
                       <div className='ori-b-pad-10' key={index}>
                         {
                           item.title &&
-                          <p>{item.title}</p>
+                          <p>
+                            {
+                              item.props.required &&
+                              <span>*</span>
+                            }
+                            {item.title}
+                          </p>
                         }
                         <Radio.Group
                           size='small'
@@ -134,7 +146,7 @@ class FormMessage extends React.PureComponent {
             }
             {
               this.state.error &&
-              <p className='ori-font-xs ori-font-danger'>All fields are required</p>
+              <p className='ori-font-xs ori-font-danger'>Required field are missing</p>
             }
             <Button
               size='small'
