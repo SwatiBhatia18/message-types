@@ -31,6 +31,7 @@ export const formMessage = {
         type: "datePicker",
         title: "select your departure date",
         disabledTimestamp: '1629455793767',
+        displayLabel: "Departure date",
         props: {
           placeholder: "departure date",
           name: "departDate",
@@ -40,6 +41,7 @@ export const formMessage = {
       {
         type: "radioGroup",
         title: "Passanger1",
+        displayLabel: "Passanger 1",
         props: {
           name: "bag1",
           required: true,
@@ -57,6 +59,7 @@ export const formMessage = {
         type: "radioGroup",
         title: "Passanger2",
         vertical: true,
+        displayLabel: "Passanger 2",
         props: {
           name: "bag2",
           required: false,
