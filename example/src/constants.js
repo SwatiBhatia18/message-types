@@ -50,9 +50,9 @@ export const formMessage = {
           buttonStyle: "solid",
           optionType: "button",
           options: [
-            { label: '80kg', value: '80kg' },
-            { label: '12kg', value: '12kg' },
-            { label: '15kg', value: '15kg' }
+            { label: '80kg', value: '80kgId' },
+            { label: '12kg', value: '12kgId' },
+            { label: '15kg', value: '15kgId' }
           ]
         }
       },
@@ -65,11 +65,11 @@ export const formMessage = {
           name: "bag2",
           required: false,
           options: [
-            { label: '10kg', value: '10kg' },
-            { label: '12kg', value: '12kg' },
-            { label: '15kg', value: '15kg' },
-            { label: '20kg', value: '20kg' },
-            { label: '25kg', value: '25kg' }
+            { label: '10kg', value: '10kgId' },
+            { label: '12kg', value: '12kgId' },
+            { label: '15kg', value: '15kgId' },
+            { label: '20kg', value: '20kgId' },
+            { label: '25kg', value: '25kgId' }
           ]
         }
       }

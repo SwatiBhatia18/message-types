@@ -48,8 +48,9 @@ class FormMessage extends React.PureComponent {
         const obj = { label: item.displayLabel }
         if (item.type === 'datePicker') {
           obj.value = selectedValues[item.props.name].format(item.props.format || 'DD-MMM-YYYY')
-        } else {
-          obj.value = selectedValues[item.props.name]
+        } else if (item.type === 'radioGroup') {
+          const option = item.props.options.find(opt => opt.value === selectedValues[item.props.name])
+          obj.value = option.label
         }
         list.push(obj)
       } else if (item.props.required && !error) {
