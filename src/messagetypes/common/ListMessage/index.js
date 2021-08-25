@@ -7,10 +7,13 @@ const ListMessage = ({ message }) => {
       <ul className='ori-no-b-mrgn ori-no-pad'>
         {
           message.payload.list.map((item, index) => {
-            if (!!item.label && !!item.value) {
+            if (item.value !== undefined) {
               return (
                 <li key={index}>
-                  <span className='ori-font-bold'>{item.label}: </span>
+                  {
+                    item.label &&
+                    <span className='ori-font-bold'>{item.label}: </span>
+                  }
                   {item.value}
                 </li>
               )

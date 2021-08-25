@@ -45,9 +45,9 @@ class FormMessage extends React.PureComponent {
     let hasError = error
     payload.formData.forEach(item => {
       if (selectedValues[item.props.name] !== undefined) {
-        const obj = { label: item.dislayLabel }
+        const obj = { label: item.displayLabel }
         if (item.type === 'datePicker') {
-          obj.value = selectedValues[item.props.name].format('DD/MM/YYYY')
+          obj.value = selectedValues[item.props.name].format(item.props.format || 'DD-MMM-YYYY')
         } else {
           obj.value = selectedValues[item.props.name]
         }
