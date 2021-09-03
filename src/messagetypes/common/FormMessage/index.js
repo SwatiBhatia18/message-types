@@ -11,7 +11,7 @@ class FormMessage extends React.PureComponent {
   constructor(props) {
     super(props)
     this.state = {
-      selectedValues: {},
+      selectedValues: props.message.payload.selectedValues || {},
       error: false
     }
   }
