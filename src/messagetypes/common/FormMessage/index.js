@@ -155,7 +155,7 @@ class FormMessage extends React.PureComponent {
               disabled={disabled}
               onClick={this.handleSubmit}
             >
-              Submit
+              {payload.submitBtnText ? payload.submitBtnText : 'Submit'}
             </Button>
           </React.Fragment>
         }
