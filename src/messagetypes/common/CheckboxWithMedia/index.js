@@ -134,7 +134,7 @@ class CheckboxWithMedia extends React.PureComponent {
                 disabled={checkbox_disabled}
                 onClick={this.onClickSubmit}
               >
-                Submit
+                {payload.submitBtnText ? payload.submitBtnText : 'Submit'}
               </Button>
               {
                 payload.options.length > LIMIT &&
