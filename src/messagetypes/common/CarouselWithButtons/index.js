@@ -137,7 +137,7 @@ class CarouselWithButtons extends React.PureComponent {
                       <HtmlText
                         text={carousel_item.title}
                         isHtml={carousel_item.containsHtmlTitle}
-                        textClass="ori-t-mrgn-3 ori-no-b-mrgn ori-font-bold ori-lr-pad-10 ori-word-wrap ori-word-break title"
+                        textClass="ori-t-mrgn-3 ori-no-b-mrgn ori-font-bold ori-lr-pad-10 ori-word-wrap ori-word-break ori-mt-title"
                       />
                     }
                     {

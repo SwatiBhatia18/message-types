@@ -13,11 +13,11 @@ class PromptMsg extends React.PureComponent {
       <div className='ori-word-break ori-mt-promptMsgContainer'>
         {
           payload.title && payload.title.trim().length > 0 &&
-          <p className='ori-no-t-mrgn ori-font-bold ori-no-b-mrgn ori-capitalize-first title'>{payload.title}</p>
+          <p className='ori-no-t-mrgn ori-font-bold ori-no-b-mrgn ori-capitalize-first ori-mt-title'>{payload.title}</p>
         }
         {
           payload.subtitle && payload.subtitle.trim().length > 0 &&
-          <p className='ori-no-b-mrgn ori-no-t-mrgn subtitle'>
+          <p className='ori-no-b-mrgn ori-no-t-mrgn ori-mt-subtitle'>
             {payload.subtitle}
           </p>
         }

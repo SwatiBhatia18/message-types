@@ -31,7 +31,7 @@ class TextWithMedia extends React.PureComponent {
             <div className='ori-lr-pad-10 ori-tb-pad-10'>
               {
                 payload.title && payload.title.trim().length > 0 &&
-                <p className={`${styles.title} ori-font-default title`}>{payload.title}</p>
+                <p className={`${styles.title} ori-font-default ori-mt-title`}>{payload.title}</p>
               }
               <div className='ori-flex-row ori-flex-jc'>
                 <Button type='danger' size='small' onClick={this.closeOverlay}>Close</Button>
@@ -69,7 +69,7 @@ class TextWithMedia extends React.PureComponent {
         {
           payload.title &&
           <HtmlText
-            textClass={`${styles.title} title`}
+            textClass={`${styles.title} ori-mt-title`}
             text={payload.title}
             isHtml={payload.containsHtmlTitle}
           />
