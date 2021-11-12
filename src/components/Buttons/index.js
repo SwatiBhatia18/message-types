@@ -52,7 +52,7 @@ class Buttons extends React.PureComponent {
                   size="small"
                   className={`ori-b-mrgn-5 ${btn.displayType === "paragraph" ?
                       "ori-btn-paragraph" :
-                      (btn.displayType === "secondary" ? "ori-r-mrgn-10 ori-btn-secondary" : "ori-r-mrgn-10 ori-btn-bubble-inner")
+                      (btn.displayType === "secondary" ? "ori-r-mrgn-5 ori-btn-secondary" : "ori-r-mrgn-5 ori-btn-bubble-inner")
                     } ${styles.button}`}
                   block={btn.displayType === "paragraph"}
                   disabled={btn_disabled}
