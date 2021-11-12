@@ -151,6 +151,7 @@ class CarouselWithButtons extends React.PureComponent {
                     {
                       carousel_item.buttons && carousel_item.buttons.length > 0 &&
                       <Buttons
+                        className="ori-lr-pad-10"
                         buttons={carousel_item.buttons}
                         display_count={carousel_item.btnDisplayCount ? carousel_item.btnDisplayCount : default_btn_display_count}
                         message={message}

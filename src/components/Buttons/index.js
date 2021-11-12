@@ -39,10 +39,10 @@ class Buttons extends React.PureComponent {
   }
 
   render() {
-    const { btn_disabled, buttons } = this.props
+    const { btn_disabled, buttons, className } = this.props
     const { display_buttons_count, show_all_buttons } = this.state
     return (
-      <div className={`${styles.buttonsContainer} buttonsContainer`}>
+      <div className={`${styles.buttonsContainer} ${className} buttonsContainer`}>
         {
           buttons.map((btn, index) => {
             if (index < display_buttons_count)
@@ -89,6 +89,7 @@ class Buttons extends React.PureComponent {
 }
 
 Buttons.propTypes = {
+  className: PropTypes.string,
   buttons: PropTypes.array,
   message: PropTypes.object,
   btn_disabled: PropTypes.bool,
@@ -97,6 +98,7 @@ Buttons.propTypes = {
 }
 
 Buttons.defaultProps = {
+  className: "",
   btn_disabled: false,
   display_count: 4
 }
