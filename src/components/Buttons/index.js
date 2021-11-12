@@ -67,7 +67,7 @@ class Buttons extends React.PureComponent {
           !show_all_buttons && buttons.length > display_buttons_count &&
           <Button
             size="small"
-            className={`ori-b-mrgn-5 ori-lr-mrgn-5 ori-btn-bubble-inner ${styles.button}`}
+            className={`ori-b-mrgn-5 ori-r-mrgn-5 ori-btn-bubble-inner ${styles.button}`}
             onClick={this.showAllButtons}
           >
             Show more
@@ -77,7 +77,7 @@ class Buttons extends React.PureComponent {
           show_all_buttons &&
           <Button
             size="small"
-            className={`ori-b-mrgn-5 ori-lr-mrgn-5 ori-btn-bubble-inner ${styles.button}`}
+            className={`ori-b-mrgn-5 ori-r-mrgn-5 ori-btn-bubble-inner ${styles.button}`}
             onClick={this.showLessButtons}
           >
             Show less
