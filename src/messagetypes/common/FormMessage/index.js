@@ -147,7 +147,7 @@ class FormMessage extends React.PureComponent {
                           {...item.props}
                           disabled={disabled}
                           value={this.state.selectedValues[item.props.name]}
-                          onChange={this.handleRatingChange}
+                          onChange={this.handleChange}
                         />
                       </div>
                     )
