@@ -62,6 +62,8 @@ class FormMessage extends React.PureComponent {
         } else if (item.type === 'radioGroup') {
           const option = item.props.options.find(opt => opt.value === selectedValues[item.props.name])
           obj.value = option.label
+        } else {
+          obj.value = selectedValues[item.props.name]
         }
         list.push(obj)
       } else if (item.props.required && !error) {
