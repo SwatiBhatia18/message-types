@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import DatePicker from 'antd/lib/date-picker'
 import Radio from 'antd/lib/radio'
 import Button from 'antd/lib/button'
+import Rate from 'antd/lib/rate'
 
 import Buttons from '../../../components/buttons'
 
@@ -36,6 +37,16 @@ class FormMessage extends React.PureComponent {
         }
       }))
     }
+  }
+
+  handleFormChange = changedValue => {
+    this.setState(prevState => ({
+      error: false,
+      selectedValues: {
+        ...prevState.selectedValues,
+        ...changedValue
+      }
+    }))
   }
 
   handleSubmit = () => {
@@ -94,7 +105,7 @@ class FormMessage extends React.PureComponent {
                 switch (item.type) {
                   case 'datePicker':
                     return (
-                      <div className='ori-b-pad-10' key={index}>
+                      <div className='ori-b-pad-5' key={index}>
                         {
                           item.title &&
                           <p>
@@ -119,7 +130,7 @@ class FormMessage extends React.PureComponent {
                     )
                   case 'radioGroup':
                     return (
-                      <div className='ori-b-pad-10' key={index}>
+                      <div className='ori-b-pad-5' key={index}>
                         {
                           item.title &&
                           <p>
@@ -136,7 +147,28 @@ class FormMessage extends React.PureComponent {
                           {...item.props}
                           disabled={disabled}
                           value={this.state.selectedValues[item.props.name]}
-                          onChange={this.handleChange}
+                          onChange={this.handleRatingChange}
+                        />
+                      </div>
+                    )
+                  case 'rating':
+                    return (
+                      <div className='ori-b-pad-5' key={index}>
+                        {
+                          item.title &&
+                          <p>
+                            {
+                              item.props.required &&
+                              <span>*</span>
+                            }
+                            {item.title}
+                          </p>
+                        }
+                        <Rate
+                          {...item.props}
+                          disabled={disabled}
+                          value={this.state.selectedValues[item.props.name]}
+                          onChange={value => this.handleFormChange({[item.props.name]: value})}
                         />
                       </div>
                     )

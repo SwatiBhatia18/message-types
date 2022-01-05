@@ -1,36 +1,38 @@
 export const textMessage = {
-  type: 'text',
-  sender: 'chatbot',
+  type: "text",
+  sender: "chatbot",
   inputLock: false,
   quickReplies: [],
   skipLS: false,
   send_variable_to_apiai: false,
   sendVariableToLS: false,
-  variable_name: '',
+  variable_name: "",
   delay: 0,
   payload: {
-    text: "Information about Ashoka comes from his own inscriptions; other inscriptions that mention him or are possibly from his reign; and ancient literature, especially Buddhist texts.[14] These sources often contradict each other, although various historians have attempted to correlate their testimony.[15] Plenty is known or not known, and so, for example, while Ashoka is often attributed with building many hospitals during his time, there is no clear evidence any hospitals existed in ancient India during the 3rd century BC or that Ashoka was responsible for commissioning the construction of any"
+    text:
+      "Information about Ashoka comes from his own inscriptions; other inscriptions that mention him or are possibly from his reign; and ancient literature, especially Buddhist texts.[14] These sources often contradict each other, although various historians have attempted to correlate their testimony.[15] Plenty is known or not known, and so, for example, while Ashoka is often attributed with building many hospitals during his time, there is no clear evidence any hospitals existed in ancient India during the 3rd century BC or that Ashoka was responsible for commissioning the construction of any"
   },
-  timestamp: new Date(),
-}
+  timestamp: new Date()
+};
 
 export const formMessage = {
-  type: 'form',
-  sender: 'chatbot',
+  type: "form",
+  sender: "chatbot",
   inputLock: false,
   quickReplies: [],
   skipLS: false,
   send_variable_to_apiai: false,
   sendVariableToLS: false,
-  variable_name: '',
+  variable_name: "",
   delay: 0,
   payload: {
     title: "form title",
+    selectedValue: { rate: 4},
     formData: [
       {
         type: "datePicker",
         title: "select your departure date",
-        disabledTimestamp: '1629455793767',
+        disabledTimestamp: "1629455793767",
         displayLabel: "Departure date",
         props: {
           placeholder: "departure date",
@@ -50,9 +52,9 @@ export const formMessage = {
           buttonStyle: "solid",
           optionType: "button",
           options: [
-            { label: '80kg', value: '80kgId' },
-            { label: '12kg', value: '12kgId' },
-            { label: '15kg', value: '15kgId' }
+            { label: "80kg", value: "80kgId" },
+            { label: "12kg", value: "12kgId" },
+            { label: "15kg", value: "15kgId" }
           ]
         }
       },
@@ -65,176 +67,106 @@ export const formMessage = {
           name: "bag2",
           required: false,
           options: [
-            { label: '10kg', value: '10kgId' },
-            { label: '12kg', value: '12kgId' },
-            { label: '15kg', value: '15kgId' },
-            { label: '20kg', value: '20kgId' },
-            { label: '25kg', value: '25kgId' }
+            { label: "10kg", value: "10kgId" },
+            { label: "12kg", value: "12kgId" },
+            { label: "15kg", value: "15kgId" },
+            { label: "20kg", value: "20kgId" },
+            { label: "25kg", value: "25kgId" }
           ]
         }
-      }
+      },
+      {
+        type: "rating",
+        title: "rate this feature",
+        displayLabel: "rating",
+        props: {
+          name: "rate",
+          required: false,
+        }
+      },
     ]
   },
-  timestamp: new Date(),
-}
+  timestamp: new Date()
+};
 
 export const checkboxMessage = {
-  sender: 'chatbot',
-  type: 'checkbox',
+  sender: "chatbot",
+  type: "checkbox",
   inputLock: false,
-  inputLockMessage: '',
+  inputLockMessage: "",
   quickReplies: [],
   skipLS: false,
   send_variable_to_apiai: false,
   sendVariableToLS: false,
-  variable_name: '',
+  variable_name: "",
   delay: 0,
   payload: {
-    subtype: 'dishRechargeDetails',
-    title: 'Checkbox type message',
-    subtitle: 'Your Dish Recharge Details are mentioned below',
-    imageUrl: "https://maruti-oriserve-images.s3.ap-south-1.amazonaws.com/Spyder_WhatsApp_700x415.jpg",
+    subtype: "dishRechargeDetails",
+    title: "Checkbox type message",
+    subtitle: "Your Dish Recharge Details are mentioned below",
+    imageUrl:
+      "https://maruti-oriserve-images.s3.ap-south-1.amazonaws.com/Spyder_WhatsApp_700x415.jpg",
     data: {},
     options: [
       {
-        label: '1 Ka haal ba',
-        value: '1 ka haal ba'
+        label: "1 Ka haal ba",
+        value: "1 ka haal ba"
       },
       {
-        label: '2 Thik ba',
-        value: '2 thik ba'
+        label: "2 Thik ba",
+        value: "2 thik ba"
       },
       {
-        label: '3 Tu aapna bata, kha bare',
-        value: '3 tu aapna bata, kha bare'
+        label: "3 Tu aapna bata, kha bare",
+        value: "3 tu aapna bata, kha bare"
       },
       {
-        label: '4 Hume thike bani',
-        value: '4 hume thike bani'
+        label: "4 Hume thike bani",
+        value: "4 hume thike bani"
       },
       {
-        label: '5 Chaal chal rahal bade, chalak bana tare na',
-        value: '5 chaal chal rahal bade, chalak bana tare na'
+        label: "5 Chaal chal rahal bade, chalak bana tare na",
+        value: "5 chaal chal rahal bade, chalak bana tare na"
       },
       {
-        label: '6 Offer details',
-        value: '6 offer details'
+        label: "6 Offer details",
+        value: "6 offer details"
       },
       {
-        label: '7 Recharge now',
-        value: '7 recharge now'
+        label: "7 Recharge now",
+        value: "7 recharge now"
       },
       {
-        label: '8 Tu aapna bata, kha bare',
-        value: '8 tu aapna bata, kha bare'
+        label: "8 Tu aapna bata, kha bare",
+        value: "8 tu aapna bata, kha bare"
       },
       {
-        label: '9 Hume thike bani',
-        value: '9 hume thike bani'
+        label: "9 Hume thike bani",
+        value: "9 hume thike bani"
       },
       {
-        label: '10 Chaal chal rahal bade, chalak bana tare na',
-        value: '10 chaal chal rahal bade, chalak bana tare na'
+        label: "10 Chaal chal rahal bade, chalak bana tare na",
+        value: "10 chaal chal rahal bade, chalak bana tare na"
       },
       {
-        label: '11 Ka haal ba',
-        value: '11 ka haal ba'
+        label: "11 Ka haal ba",
+        value: "11 ka haal ba"
       },
       {
-        label: '12 Thik ba',
-        value: '12 thik ba'
+        label: "12 Thik ba",
+        value: "12 thik ba"
       },
       {
-        label: '13 Tu aapna bata, kha bare',
-        value: '13 tu aapna bata, kha bare'
+        label: "13 Tu aapna bata, kha bare",
+        value: "13 tu aapna bata, kha bare"
       },
       {
-        label: '14 Hume thike bani',
-        value: '14 hume thike bani'
+        label: "14 Hume thike bani",
+        value: "14 hume thike bani"
       },
       {
-        label: '15 Chaal chal rahal bade, chalak bana tare na',
-        value: '15 chaal chal rahal bade, chalak bana tare na'
-      }
-    ],
-    buttons: [
-      {
-        text: "Google",
-        url: "http://www.google.com",
-        postbackRes: ""
-      },
-      {
-        text: "select option 3.1",
-        url: "",
-        postbackRes: "opt3.1"
-      },
-      {
-        text: "select option 3.2",
-        url: "",
-        postbackRes: "opt3.2"
-      },
-      {
-        text: "select option 3.3",
-        url: "",
-        postbackRes: "hi"
-      },
-      {
-        text: "Google",
-        url: "http://www.google.com",
-        postbackRes: ""
-      },
-      {
-        text: "select option 4.1",
-        url: "",
-        postbackRes: "opt4.1"
-      },
-      {
-        text: "select option 4.2",
-        url: "",
-        postbackRes: "opt4.2"
-      },
-      {
-        text: "select option 4.3",
-        url: "",
-        postbackRes: "hi"
-      }
-    ]
-  },
-}
-
-export const textWithMediaMessage = {
-  sender: 'chatbot',
-  type: 'checkbox',
-  inputLock: false,
-  inputLockMessage: '',
-  quickReplies: [],
-  skipLS: false,
-  send_variable_to_apiai: false,
-  sendVariableToLS: false,
-  variable_name: '',
-  delay: 0,
-  payload: {
-    subtype: 'dishRechargeDetails',
-    title: 'Checkbox type message',
-    subtitle: 'Your Dish Recharge Details are mentioned below',
-    containsHtmlSubtitle: false,
-    imageUrl: "https://maruti-oriserve-images.s3.ap-south-1.amazonaws.com/Spyder_WhatsApp_700x415.jpg",
-    accordian: [
-      {
-        title: 'first title',
-        description: 'first collapse description'
-      },
-      {
-        title: 'second title',
-        description: 'second collapse description'
-      },
-      {
-        title: 'third title',
-        description: 'third collapse description'
-      },
-      {
-        title: 'fourth title',
-        description: 'fourth collapse description'
+        label: "15 Chaal chal rahal bade, chalak bana tare na",
+        value: "15 chaal chal rahal bade, chalak bana tare na"
       }
     ],
     buttons: [
@@ -280,7 +212,88 @@ export const textWithMediaMessage = {
       }
     ]
   }
-}
+};
+
+export const textWithMediaMessage = {
+  sender: "chatbot",
+  type: "checkbox",
+  inputLock: false,
+  inputLockMessage: "",
+  quickReplies: [],
+  skipLS: false,
+  send_variable_to_apiai: false,
+  sendVariableToLS: false,
+  variable_name: "",
+  delay: 0,
+  payload: {
+    subtype: "dishRechargeDetails",
+    title: "Checkbox type message",
+    subtitle: "Your Dish Recharge Details are mentioned below",
+    containsHtmlSubtitle: false,
+    imageUrl:
+      "https://maruti-oriserve-images.s3.ap-south-1.amazonaws.com/Spyder_WhatsApp_700x415.jpg",
+    accordian: [
+      {
+        title: "first title",
+        description: "first collapse description"
+      },
+      {
+        title: "second title",
+        description: "second collapse description"
+      },
+      {
+        title: "third title",
+        description: "third collapse description"
+      },
+      {
+        title: "fourth title",
+        description: "fourth collapse description"
+      }
+    ],
+    buttons: [
+      {
+        text: "Google",
+        url: "http://www.google.com",
+        postbackRes: ""
+      },
+      {
+        text: "select option 3.1",
+        url: "",
+        postbackRes: "opt3.1"
+      },
+      {
+        text: "select option 3.2",
+        url: "",
+        postbackRes: "opt3.2"
+      },
+      {
+        text: "select option 3.3",
+        url: "",
+        postbackRes: "hi"
+      },
+      {
+        text: "Google",
+        url: "http://www.google.com",
+        postbackRes: ""
+      },
+      {
+        text: "select option 4.1",
+        url: "",
+        postbackRes: "opt4.1"
+      },
+      {
+        text: "select option 4.2",
+        url: "",
+        postbackRes: "opt4.2"
+      },
+      {
+        text: "select option 4.3",
+        url: "",
+        postbackRes: "hi"
+      }
+    ]
+  }
+};
 
 export const carouselWithButtonsMessage = {
   sender: "chatbot",
@@ -294,7 +307,8 @@ export const carouselWithButtonsMessage = {
   variable_name: "",
   delay: 0,
   payload: {
-    text: "my vc_number is 13124214212. i want to recharge with 100rs. how will i get my recharge_details",
+    text:
+      "my vc_number is 13124214212. i want to recharge with 100rs. how will i get my recharge_details",
     title: "carousel title",
     subtitle: "carousel subtitle",
     options: [
@@ -328,11 +342,12 @@ export const carouselWithButtonsMessage = {
         ]
       },
       {
-        optionInfo: { "key": "option2" },
+        optionInfo: { key: "option2" },
         title: "option2 carousel title",
         subtitle: "option2 carousel subtitle",
         mediaType: "image",
-        mediaUrl: "http://via.placeholder.com/200x100", buttons: [
+        mediaUrl: "http://via.placeholder.com/200x100",
+        buttons: [
           {
             text: "Google",
             url: "http://www.google.com",
@@ -356,7 +371,7 @@ export const carouselWithButtonsMessage = {
         ]
       },
       {
-        optionInfo: { "key": "option3" },
+        optionInfo: { key: "option3" },
         title: "option3 carousel title",
         subtitle: "option3 carousel subtitle",
         mediaType: "image",
@@ -399,12 +414,13 @@ export const carouselWithButtonsMessage = {
       },
       {
         text: "main button 3",
-        url: "", b_id: "",
+        url: "",
+        b_id: "",
         postbackRes: ""
       }
     ]
-  },
-}
+  }
+};
 
 export const message = {
   NLPSnapshot: {
@@ -591,7 +607,7 @@ export const message = {
   //     { value: '4', label: 'working hour' },
   //   ],
 
-  //     // recharge 
+  //     // recharge
 
   //     // data: {
   //     //     PackPeriod: 1,
