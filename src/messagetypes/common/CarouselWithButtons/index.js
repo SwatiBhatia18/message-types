@@ -23,10 +23,15 @@ class CarouselWithButtons extends React.PureComponent {
   }
 
   showCarouselItem = selected_carousel_item => {
-    this.setState({
-      show_overlay: true,
-      selected_carousel_item
-    })
+    const { img_popup_disable } = this.props
+    if (selected_carousel_item.imageRedirect) {
+      window.open(selected_carousel_item.mediaUrl)
+    } else if (!img_popup_disable) {
+      this.setState({
+        show_overlay: true,
+        selected_carousel_item
+      })
+    }
   }
 
   renderPreviewOverlay = () => {
@@ -59,7 +64,7 @@ class CarouselWithButtons extends React.PureComponent {
   }
 
   renderCarouselImage = carousel_item => {
-    const { display_type, img_popup_disable } = this.props
+    const { display_type } = this.props
     if (display_type === 'fixed') {
       return (
         <div
@@ -67,7 +72,7 @@ class CarouselWithButtons extends React.PureComponent {
           style={{
             backgroundImage: `url(${carousel_item.mediaUrl})`
           }}
-          onClick={() => !img_popup_disable && this.showCarouselItem(carousel_item)}
+          onClick={() => this.showCarouselItem(carousel_item)}
         />
       )
     }
@@ -77,7 +82,7 @@ class CarouselWithButtons extends React.PureComponent {
           src={carousel_item.mediaUrl}
           alt=''
           className='ori-cursor-ptr ori-full-width'
-          onClick={() => !img_popup_disable && this.showCarouselItem(carousel_item)}
+          onClick={() => this.showCarouselItem(carousel_item)}
         />
       )
     }
@@ -87,7 +92,7 @@ class CarouselWithButtons extends React.PureComponent {
         alt=''
         className='ori-cursor-ptr ori-full-width'
         style={{ height: '200px' }}
-        onClick={() => !img_popup_disable && this.showCarouselItem(carousel_item)}
+        onClick={() => this.showCarouselItem(carousel_item)}
       />
     )
   }
@@ -137,7 +142,7 @@ class CarouselWithButtons extends React.PureComponent {
                       <HtmlText
                         text={carousel_item.title}
                         isHtml={carousel_item.containsHtmlTitle}
-                        textClass="ori-t-mrgn-3 ori-no-b-mrgn ori-font-bold ori-lr-pad-10 ori-word-wrap ori-word-break ori-mt-title"
+                        textClass='ori-t-mrgn-3 ori-no-b-mrgn ori-font-bold ori-lr-pad-10 ori-word-wrap ori-word-break ori-mt-title'
                       />
                     }
                     {
@@ -145,13 +150,13 @@ class CarouselWithButtons extends React.PureComponent {
                       <HtmlText
                         text={carousel_item.subtitle}
                         isHtml={carousel_item.containsHtmlSubtitle}
-                        textClass="ori-no-b-mrgn ori-lr-pad-10"
+                        textClass='ori-no-b-mrgn ori-lr-pad-10'
                       />
                     }
                     {
                       carousel_item.buttons && carousel_item.buttons.length > 0 &&
                       <Buttons
-                        className="ori-lr-pad-10"
+                        className='ori-lr-pad-10'
                         buttons={carousel_item.buttons}
                         display_count={carousel_item.btnDisplayCount ? carousel_item.btnDisplayCount : default_btn_display_count}
                         message={message}

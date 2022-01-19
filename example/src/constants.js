@@ -230,6 +230,7 @@ export const textWithMediaMessage = {
     title: "Checkbox type message",
     subtitle: "Your Dish Recharge Details are mentioned below",
     containsHtmlSubtitle: false,
+    imageRedirect: true,
     imageUrl:
       "https://maruti-oriserve-images.s3.ap-south-1.amazonaws.com/Spyder_WhatsApp_700x415.jpg",
     accordian: [
@@ -317,6 +318,7 @@ export const carouselWithButtonsMessage = {
         title: "option1 carousel title",
         subtitle: "option1 carousel subtitle",
         mediaType: "image",
+        imageRedirect: false,
         mediaUrl: "http://via.placeholder.com/150x450",
         buttons: [
           {
@@ -346,6 +348,7 @@ export const carouselWithButtonsMessage = {
         title: "option2 carousel title",
         subtitle: "option2 carousel subtitle",
         mediaType: "image",
+        imageRedirect: true,
         mediaUrl: "http://via.placeholder.com/200x100",
         buttons: [
           {
@@ -375,6 +378,7 @@ export const carouselWithButtonsMessage = {
         title: "option3 carousel title",
         subtitle: "option3 carousel subtitle",
         mediaType: "image",
+        imageRedirect: true,
         mediaUrl: "http://via.placeholder.com/200x100",
         buttons: [
           {

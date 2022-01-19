@@ -2,20 +2,20 @@ import React, { Component } from "react"
 import {
   // OverflowWrapper,
   // TextMessage,
-  // TextWithMedia, 
-  // CarouselWithButtons,
-  // Offers, 
-  // RechargeHistory, 
-  // CheckboxWithMedia 
-  FormMessage
+  // TextWithMedia,
+  CarouselWithButtons,
+  // Offers,
+  // RechargeHistory,
+  // CheckboxWithMedia
+  // FormMessage
 } from "message-types"
 
 import {
   // textMessage,
-  formMessage,
+  // formMessage,
   // textWithMediaMessage,
   // checkboxMessage,
-  // carouselWithButtonsMessage
+  carouselWithButtonsMessage
 } from "./constants"
 
 export default class App extends Component {
@@ -33,8 +33,8 @@ export default class App extends Component {
         {/* <UploadFile message={message} /> */}
         {/* <Offers message={message} handleOfferSelection={()=>{}} btn_disabled /> */}
         {/* <RechargeHistory message={message} /> */}
-        {/* <CarouselWithButtons message={carouselWithButtonsMessage} img_popup_disable /> */}
-        <FormMessage message={formMessage} />
+        <CarouselWithButtons message={carouselWithButtonsMessage} img_popup_disable={false} />
+        {/* <FormMessage message={formMessage} /> */}
       </div>
     )
   }

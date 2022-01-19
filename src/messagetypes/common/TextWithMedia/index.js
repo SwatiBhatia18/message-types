@@ -13,8 +13,12 @@ class TextWithMedia extends React.PureComponent {
 
   showOverlay = () => {
     const { img_popup_disable } = this.props
-    if (!img_popup_disable)
+    const { payload } = this.props.message
+    if (payload.imageRedirect) {
+      window.open(payload.imageUrl)
+    } else if (!img_popup_disable) {
       this.setState({ show_overlay: true })
+    }
   };
 
   closeOverlay = () => { this.setState({ show_overlay: false }) };
@@ -84,9 +88,9 @@ class TextWithMedia extends React.PureComponent {
         {
           payload.accordian && payload.accordian.map((item, index) => {
             return (
-              <div className="ori-border-light ori-border-radius-3 ori-b-mrgn-5" key={index}>
+              <div className='ori-border-light ori-border-radius-3 ori-b-mrgn-5' key={index}>
                 <div
-                  className="ori-tb-pad-5 ori-lr-pad-10 ori-bg-card ori-cursor-ptr ori-font-bold"
+                  className='ori-tb-pad-5 ori-lr-pad-10 ori-bg-card ori-cursor-ptr ori-font-bold'
                   onClick={() => this.setState({ selectedIndex: selectedIndex === index ? -1 : index })}
                 >
                   <HtmlText
@@ -96,7 +100,7 @@ class TextWithMedia extends React.PureComponent {
                 </div>
                 {
                   index === selectedIndex &&
-                  <div className="ori-animated ori-fade-in ori-lr-pad-10 ori-tb-pad-5">
+                  <div className='ori-animated ori-fade-in ori-lr-pad-10 ori-tb-pad-5'>
                     <HtmlText
                       text={item.description}
                       isHtml={item.containsHtmlDescription}
