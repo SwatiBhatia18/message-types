@@ -24,8 +24,8 @@ class CarouselWithButtons extends React.PureComponent {
 
   showCarouselItem = selected_carousel_item => {
     const { img_popup_disable } = this.props
-    if (selected_carousel_item.imageRedirect) {
-      window.open(selected_carousel_item.mediaUrl)
+    if (selected_carousel_item.imageRedirectUrl) {
+      window.open(selected_carousel_item.imageRedirectUrl)
     } else if (!img_popup_disable) {
       this.setState({
         show_overlay: true,

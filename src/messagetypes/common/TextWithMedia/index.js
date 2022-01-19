@@ -14,8 +14,8 @@ class TextWithMedia extends React.PureComponent {
   showOverlay = () => {
     const { img_popup_disable } = this.props
     const { payload } = this.props.message
-    if (payload.imageRedirect) {
-      window.open(payload.imageUrl)
+    if (payload.imageRedirectUrl) {
+      window.open(payload.imageRedirectUrl)
     } else if (!img_popup_disable) {
       this.setState({ show_overlay: true })
     }
