@@ -127,6 +127,7 @@ class FormMessage extends React.PureComponent {
                           disabled={disabled}
                           value={this.state.selectedValues[item.props.name]}
                           onChange={(...arg) => this.handleDatePickerChange(item.props.name, ...arg)}
+                          inputReadOnly
                         />
                       </div>
                     )
