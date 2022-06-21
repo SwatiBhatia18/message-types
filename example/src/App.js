@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import {
   OverflowWrapper,
   TextMessage,
-  // TextWithMedia,
+  TextWithMedia,
   CarouselWithButtons
   // Offers,
   // RechargeHistory,
@@ -13,7 +13,7 @@ import {
 import {
   textMessage,
   // formMessage,
-  // textWithMediaMessage,
+  textWithMediaMessage,
   // checkboxMessage,
   carouselWithButtonsMessage
 } from "./constants";
@@ -30,7 +30,7 @@ export default class App extends Component {
           />
         </OverflowWrapper>
         {/* <ListMessage message={message} /> */}
-        {/* <TextWithMedia message={textWithMediaMessage} /> */}
+        <TextWithMedia message={textWithMediaMessage} preferLang="hindi" />
         {/* <CheckboxWithMedia message={checkboxMessage} /> */}
         {/* <DishtvRecharge message={message} /> */}
         {/* <DishtvRechargeDetails message={message} /> */}

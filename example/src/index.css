@@ -77,3 +77,27 @@ body {
 .ori-font-primary {
   color: #e40f0f
 }
+
+.ori-flex-row{
+  display: flex;
+  flex-direction: row;
+}
+
+.ori-flex-jc{
+  justify-content: center;
+}
+
+.ori-flex-ac{
+  align-items: center;
+}
+
+.ori-align-full{
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.ori-pad-15{
+  padding: 15px;
+}

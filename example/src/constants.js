@@ -15,7 +15,7 @@ export const textMessage = {
     },
     {
       lang: "hindi",
-      text:"Information about Ashoka comes from his own inscriptions; "
+      text: "Information about Ashoka comes from his own inscriptions; "
     }
   ],
   timestamp: new Date()
@@ -231,75 +231,101 @@ export const textWithMediaMessage = {
   sendVariableToLS: false,
   variable_name: "",
   delay: 0,
-  payload: {
-    subtype: "dishRechargeDetails",
-    title: "Checkbox type message",
-    subtitle: "Your Dish Recharge Details are mentioned below",
-    containsHtmlSubtitle: false,
-    imageRedirectUrl: "https://oriserve.com/",
-    imageUrl:
-      "https://maruti-oriserve-images.s3.ap-south-1.amazonaws.com/Spyder_WhatsApp_700x415.jpg",
-    accordian: [
-      {
-        title: "first title",
-        description: "first collapse description"
-      },
-      {
-        title: "second title",
-        description: "second collapse description"
-      },
-      {
-        title: "third title",
-        description: "third collapse description"
-      },
-      {
-        title: "fourth title",
-        description: "fourth collapse description"
-      }
-    ],
-    buttons: [
-      {
-        text: "Google",
-        url: "http://www.google.com",
-        postbackRes: ""
-      },
-      {
-        text: "select option 3.1",
-        url: "",
-        postbackRes: "opt3.1"
-      },
-      {
-        text: "select option 3.2",
-        url: "",
-        postbackRes: "opt3.2"
-      },
-      {
-        text: "select option 3.3",
-        url: "",
-        postbackRes: "hi"
-      },
-      {
-        text: "Google",
-        url: "http://www.google.com",
-        postbackRes: ""
-      },
-      {
-        text: "select option 4.1",
-        url: "",
-        postbackRes: "opt4.1"
-      },
-      {
-        text: "select option 4.2",
-        url: "",
-        postbackRes: "opt4.2"
-      },
-      {
-        text: "select option 4.3",
-        url: "",
-        postbackRes: "hi"
-      }
-    ]
-  }
+  payload: [
+    {
+      subtype: "dishRechargeDetails",
+      title: "Checkbox type message",
+      subtitle: "Your Dish Recharge Details are mentioned below",
+      containsHtmlSubtitle: false,
+      imageRedirectUrl: "https://oriserve.com/",
+      imageUrl:
+        "https://maruti-oriserve-images.s3.ap-south-1.amazonaws.com/Spyder_WhatsApp_700x415.jpg",
+      accordian: [
+        {
+          title: "first title",
+          description: "first collapse description"
+        },
+        {
+          title: "second title",
+          description: "second collapse description"
+        },
+        {
+          title: "third title",
+          description: "third collapse description"
+        },
+        {
+          title: "fourth title",
+          description: "fourth collapse description"
+        }
+      ],
+      buttons: [
+        {
+          text: "Google",
+          url: "http://www.google.com",
+          postbackRes: ""
+        },
+        {
+          text: "select option 3.1",
+          url: "",
+          postbackRes: "opt3.1"
+        },
+        {
+          text: "select option 3.2",
+          url: "",
+          postbackRes: "opt3.2"
+        },
+        {
+          text: "select option 3.3",
+          url: "",
+          postbackRes: "hi"
+        },
+        {
+          text: "Google",
+          url: "http://www.google.com",
+          postbackRes: ""
+        },
+        {
+          text: "select option 4.1",
+          url: "",
+          postbackRes: "opt4.1"
+        },
+        {
+          text: "select option 4.2",
+          url: "",
+          postbackRes: "opt4.2"
+        },
+        {
+          text: "select option 4.3",
+          url: "",
+          postbackRes: "hi"
+        }
+      ]
+    },
+    {
+      lang: "hindi",
+      title: "Translated title",
+      subtitle: "Your Dish Recharge Details are mentioned below",
+      imageUrl:
+        "https://maruti-oriserve-images.s3.ap-south-1.amazonaws.com/Spyder_WhatsApp_700x415.jpg",
+      buttons: [
+        {
+          text: "Google",
+          url: "http://www.google.com",
+          postbackRes: ""
+        },
+        {
+          text: "select option 4.2",
+          url: "",
+          postbackRes: "opt4.2"
+        },
+        {
+          text: "select option 4.3",
+          url: "",
+          postbackRes: "hi"
+        }
+      ]
+    }
+  ]
 };
 
 export const carouselWithButtonsMessage = {
