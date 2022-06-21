@@ -1,30 +1,34 @@
-import React, { Component } from "react"
+import React, { Component } from "react";
 import {
-  // OverflowWrapper,
-  // TextMessage,
+  OverflowWrapper,
+  TextMessage,
   // TextWithMedia,
-  CarouselWithButtons,
+  CarouselWithButtons
   // Offers,
   // RechargeHistory,
   // CheckboxWithMedia
   // FormMessage
-} from "message-types"
+} from "message-types";
 
 import {
-  // textMessage,
+  textMessage,
   // formMessage,
   // textWithMediaMessage,
   // checkboxMessage,
   carouselWithButtonsMessage
-} from "./constants"
+} from "./constants";
 
 export default class App extends Component {
   render() {
     return (
       <div className="ori-appContainer">
-        {/* <OverflowWrapper enabled>
-          <TextMessage message={textMessage} show_nlp_snapshot={false} />
-        </OverflowWrapper> */}
+        <OverflowWrapper enabled>
+          <TextMessage
+            message={textMessage}
+            show_nlp_snapshot={false}
+            preferLang="hindi"
+          />
+        </OverflowWrapper>
         {/* <ListMessage message={message} /> */}
         {/* <TextWithMedia message={textWithMediaMessage} /> */}
         {/* <CheckboxWithMedia message={checkboxMessage} /> */}
@@ -33,9 +37,9 @@ export default class App extends Component {
         {/* <UploadFile message={message} /> */}
         {/* <Offers message={message} handleOfferSelection={()=>{}} btn_disabled /> */}
         {/* <RechargeHistory message={message} /> */}
-        <CarouselWithButtons message={carouselWithButtonsMessage} img_popup_disable={false} />
+        {/* <CarouselWithButtons message={carouselWithButtonsMessage} img_popup_disable={false} /> */}
         {/* <FormMessage message={formMessage} /> */}
       </div>
-    )
+    );
   }
 }
