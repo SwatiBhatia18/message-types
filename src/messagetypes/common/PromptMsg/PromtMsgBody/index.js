@@ -2,7 +2,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import Buttons from '../../../components/buttons'
+import Buttons from '../../../../components/buttons'
 
 const PromptMsgBody = ({
   payload,
