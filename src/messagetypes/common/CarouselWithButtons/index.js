@@ -5,29 +5,8 @@ import PropTypes from 'prop-types'
 import MessageWrapper from '../../../components/MessageWrapper'
 import CarouselWithButtonsBody from './CarouselWithButtonsBody'
 
-const CarouselWithButtons = ({
-  preferLang,
-  message,
-  handleMsgBtnClick,
-  btn_disabled,
-  btn_hidden,
-  display_type,
-  img_popup_disable,
-  default_btn_display_count,
-  onImageRedirect
-}) => (
-  <MessageWrapper
-    message={message}
-    preferLang={preferLang}
-    component={CarouselWithButtonsBody}
-    handleMsgBtnClick={handleMsgBtnClick}
-    btn_disabled={btn_disabled}
-    btn_hidden={btn_hidden}
-    display_type={display_type}
-    img_popup_disable={img_popup_disable}
-    default_btn_display_count={default_btn_display_count}
-    onImageRedirect={onImageRedirect}
-  />
+const CarouselWithButtons = props => (
+  <MessageWrapper component={CarouselWithButtonsBody} {...props} />
 )
 
 CarouselWithButtons.propTypes = {

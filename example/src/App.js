@@ -6,15 +6,15 @@ import {
   // CarouselWithButtons
   // Offers,
   // RechargeHistory,
-  CheckboxWithMedia
-  // FormMessage
+  // CheckboxWithMedia
+  FormMessage
 } from "message-types";
 
 import {
   textMessage,
-  // formMessage,
+  formMessage,
   textWithMediaMessage,
-  checkboxMessage,
+  // checkboxMessage,
   carouselWithButtonsMessage
 } from "./constants";
 
@@ -31,7 +31,7 @@ export default class App extends Component {
         </OverflowWrapper> */}
         {/* <ListMessage message={message} /> */}
         {/* <TextWithMedia message={textWithMediaMessage} preferLang="hindi" /> */}
-        <CheckboxWithMedia message={checkboxMessage} preferLang="hindi"/>
+        {/* <CheckboxWithMedia message={checkboxMessage} preferLang="hindi"/> */}
         {/* <DishtvRecharge message={message} /> */}
         {/* <DishtvRechargeDetails message={message} /> */}
         {/* <UploadFile message={message} /> */}
@@ -42,7 +42,7 @@ export default class App extends Component {
           img_popup_disable={false}
           preferLang="hindi"
         /> */}
-        {/* <FormMessage message={formMessage} /> */}
+        <FormMessage message={formMessage} preferLang="hindi" />
       </div>
     );
   }

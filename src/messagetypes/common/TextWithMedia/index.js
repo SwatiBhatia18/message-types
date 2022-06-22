@@ -5,27 +5,8 @@ import PropTypes from 'prop-types'
 import MessageWrapper from '../../../components/MessageWrapper'
 import TextWithMediaBody from './TextWithMediaBody'
 
-const TextWithMedia = ({
-  preferLang,
-  message,
-  handleMsgBtnClick,
-  img_popup_disable,
-  btn_disabled,
-  btn_hidden,
-  default_btn_display_count,
-  onImageRedirect
-}) => (
-  <MessageWrapper
-    message={message}
-    preferLang={preferLang}
-    component={TextWithMediaBody}
-    handleMsgBtnClick={handleMsgBtnClick}
-    img_popup_disable={img_popup_disable}
-    btn_disabled={btn_disabled}
-    btn_hidden={btn_hidden}
-    default_btn_display_count={default_btn_display_count}
-    onImageRedirect={onImageRedirect}
-  />
+const TextWithMedia = props => (
+  <MessageWrapper component={TextWithMediaBody} {...props} />
 )
 
 TextWithMedia.propTypes = {

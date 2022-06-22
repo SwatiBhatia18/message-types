@@ -31,67 +31,131 @@ export const formMessage = {
   sendVariableToLS: false,
   variable_name: "",
   delay: 0,
-  payload: {
-    title: "form title",
-    selectedValue: { rate: 4 },
-    formData: [
-      {
-        type: "datePicker",
-        title: "select your departure date",
-        disabledTimestamp: "1629455793767",
-        displayLabel: "Departure date",
-        props: {
-          placeholder: "departure date",
-          name: "departDate",
-          format: "DD-MM-YYYY",
-          required: false
+  payload: [
+    {
+      title: "form title",
+      selectedValue: { rate: 4 },
+      formData: [
+        {
+          type: "datePicker",
+          title: "select your departure date",
+          disabledTimestamp: "1629455793767",
+          displayLabel: "Departure date",
+          props: {
+            placeholder: "departure date",
+            name: "departDate",
+            format: "DD-MM-YYYY",
+            required: false
+          }
+        },
+        {
+          type: "radioGroup",
+          title: "Passanger1",
+          displayLabel: "Passanger 1",
+          props: {
+            name: "bag1",
+            required: true,
+            size: "small",
+            buttonStyle: "solid",
+            optionType: "button",
+            options: [
+              { label: "80kg", value: "80kgId" },
+              { label: "12kg", value: "12kgId" },
+              { label: "15kg", value: "15kgId" }
+            ]
+          }
+        },
+        {
+          type: "radioGroup",
+          title: "Passanger2",
+          vertical: true,
+          displayLabel: "Passanger 2",
+          props: {
+            name: "bag2",
+            required: false,
+            options: [
+              { label: "10kg", value: "10kgId" },
+              { label: "12kg", value: "12kgId" },
+              { label: "15kg", value: "15kgId" },
+              { label: "20kg", value: "20kgId" },
+              { label: "25kg", value: "25kgId" }
+            ]
+          }
+        },
+        {
+          type: "rating",
+          title: "rate this feature",
+          displayLabel: "rating",
+          props: {
+            name: "rate",
+            required: false
+          }
         }
-      },
-      {
-        type: "radioGroup",
-        title: "Passanger1",
-        displayLabel: "Passanger 1",
-        props: {
-          name: "bag1",
-          required: true,
-          size: "small",
-          buttonStyle: "solid",
-          optionType: "button",
-          options: [
-            { label: "80kg", value: "80kgId" },
-            { label: "12kg", value: "12kgId" },
-            { label: "15kg", value: "15kgId" }
-          ]
+      ]
+    },
+    {
+      lang: "hindi",
+      title: "form title",
+      selectedValue: { rate: 4 },
+      formData: [
+        {
+          type: "datePicker",
+          title: "select your departure date",
+          disabledTimestamp: "1629455793767",
+          displayLabel: "Departure date",
+          props: {
+            placeholder: "departure date",
+            name: "departDate",
+            format: "DD-MM-YYYY",
+            required: false
+          }
+        },
+        {
+          type: "radioGroup",
+          title: "Passanger1",
+          displayLabel: "Passanger 1",
+          props: {
+            name: "bag1",
+            required: true,
+            size: "small",
+            buttonStyle: "solid",
+            optionType: "button",
+            options: [
+              { label: "80kg", value: "80kgId" },
+              { label: "12kg", value: "12kgId" },
+              { label: "15kg", value: "15kgId" }
+            ]
+          }
+        },
+        {
+          type: "radioGroup",
+          title: "Passanger2",
+          vertical: true,
+          displayLabel: "Passanger 2",
+          props: {
+            name: "bag2",
+            required: false,
+            options: [
+              { label: "10kg", value: "10kgId" },
+              { label: "12kg", value: "12kgId" },
+              { label: "15kg", value: "15kgId" },
+              { label: "20kg", value: "20kgId" },
+              { label: "25kg", value: "25kgId" }
+            ]
+          }
+        },
+        {
+          type: "rating",
+          title: "rate this feature",
+          displayLabel: "rating",
+          props: {
+            name: "rate",
+            required: false
+          }
         }
-      },
-      {
-        type: "radioGroup",
-        title: "Passanger2",
-        vertical: true,
-        displayLabel: "Passanger 2",
-        props: {
-          name: "bag2",
-          required: false,
-          options: [
-            { label: "10kg", value: "10kgId" },
-            { label: "12kg", value: "12kgId" },
-            { label: "15kg", value: "15kgId" },
-            { label: "20kg", value: "20kgId" },
-            { label: "25kg", value: "25kgId" }
-          ]
-        }
-      },
-      {
-        type: "rating",
-        title: "rate this feature",
-        displayLabel: "rating",
-        props: {
-          name: "rate",
-          required: false
-        }
-      }
-    ]
-  },
+      ]
+    }
+  ],
   timestamp: new Date()
 };
 

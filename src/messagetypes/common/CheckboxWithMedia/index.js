@@ -5,27 +5,8 @@ import PropTypes from 'prop-types'
 import MessageWrapper from '../../../components/MessageWrapper'
 import CheckboxWithMediaBody from './CheckboxWithMediaBody'
 
-const CheckboxWithMedia = ({
-  preferLang,
-  message,
-  handleMsgBtnClick,
-  btn_disabled,
-  btn_hidden,
-  checkbox_disabled,
-  onSubmitCheckbox,
-  default_btn_display_count
-}) => (
-  <MessageWrapper
-    message={message}
-    preferLang={preferLang}
-    component={CheckboxWithMediaBody}
-    handleMsgBtnClick={handleMsgBtnClick}
-    btn_disabled={btn_disabled}
-    btn_hidden={btn_hidden}
-    checkbox_disabled={checkbox_disabled}
-    onSubmitCheckbox={onSubmitCheckbox}
-    default_btn_display_count={default_btn_display_count}
-  />
+const CheckboxWithMedia = props => (
+  <MessageWrapper component={CheckboxWithMediaBody} {...props} />
 )
 
 CheckboxWithMedia.propTypes = {
