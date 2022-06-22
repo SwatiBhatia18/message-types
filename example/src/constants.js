@@ -781,7 +781,13 @@ export const message = {
     }
   },
   payload: {
-    imageUrl: "https://dummyimage.com/200x250/000/fff"
+      list: [
+      { value: '1', label: 'hello world' },
+      { value: '2', label: 'hii i am vivek' },
+      { value: '5', label: 'playing cricket in ahmedabad india. do you want to play cricket please tell me' },
+      { value: '3', label: 'how are you ?' },
+      { value: '4', label: 'working hour' },
+    ],
   }
   //-----------carousel payload start -----------
   // payload: {
