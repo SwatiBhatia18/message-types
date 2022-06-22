@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import {
-  OverflowWrapper,
-  TextMessage,
-  TextWithMedia,
-  CarouselWithButtons
+  // OverflowWrapper,
+  // TextMessage,
+  // TextWithMedia,
+  // CarouselWithButtons
   // Offers,
   // RechargeHistory,
-  // CheckboxWithMedia
+  CheckboxWithMedia
   // FormMessage
 } from "message-types";
 
@@ -14,7 +14,7 @@ import {
   textMessage,
   // formMessage,
   textWithMediaMessage,
-  // checkboxMessage,
+  checkboxMessage,
   carouselWithButtonsMessage
 } from "./constants";
 
@@ -31,17 +31,17 @@ export default class App extends Component {
         </OverflowWrapper> */}
         {/* <ListMessage message={message} /> */}
         {/* <TextWithMedia message={textWithMediaMessage} preferLang="hindi" /> */}
-        {/* <CheckboxWithMedia message={checkboxMessage} /> */}
+        <CheckboxWithMedia message={checkboxMessage} preferLang="hindi"/>
         {/* <DishtvRecharge message={message} /> */}
         {/* <DishtvRechargeDetails message={message} /> */}
         {/* <UploadFile message={message} /> */}
         {/* <Offers message={message} handleOfferSelection={()=>{}} btn_disabled /> */}
         {/* <RechargeHistory message={message} /> */}
-        <CarouselWithButtons
+        {/* <CarouselWithButtons
           message={carouselWithButtonsMessage}
           img_popup_disable={false}
           preferLang="hindi"
-        />
+        /> */}
         {/* <FormMessage message={formMessage} /> */}
       </div>
     );

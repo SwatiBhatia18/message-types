@@ -106,118 +106,233 @@ export const checkboxMessage = {
   sendVariableToLS: false,
   variable_name: "",
   delay: 0,
-  payload: {
-    subtype: "dishRechargeDetails",
-    title: "Checkbox type message",
-    subtitle: "Your Dish Recharge Details are mentioned below",
-    imageUrl:
-      "https://maruti-oriserve-images.s3.ap-south-1.amazonaws.com/Spyder_WhatsApp_700x415.jpg",
-    data: {},
-    options: [
-      {
-        label: "1 Ka haal ba",
-        value: "1 ka haal ba"
-      },
-      {
-        label: "2 Thik ba",
-        value: "2 thik ba"
-      },
-      {
-        label: "3 Tu aapna bata, kha bare",
-        value: "3 tu aapna bata, kha bare"
-      },
-      {
-        label: "4 Hume thike bani",
-        value: "4 hume thike bani"
-      },
-      {
-        label: "5 Chaal chal rahal bade, chalak bana tare na",
-        value: "5 chaal chal rahal bade, chalak bana tare na"
-      },
-      {
-        label: "6 Offer details",
-        value: "6 offer details"
-      },
-      {
-        label: "7 Recharge now",
-        value: "7 recharge now"
-      },
-      {
-        label: "8 Tu aapna bata, kha bare",
-        value: "8 tu aapna bata, kha bare"
-      },
-      {
-        label: "9 Hume thike bani",
-        value: "9 hume thike bani"
-      },
-      {
-        label: "10 Chaal chal rahal bade, chalak bana tare na",
-        value: "10 chaal chal rahal bade, chalak bana tare na"
-      },
-      {
-        label: "11 Ka haal ba",
-        value: "11 ka haal ba"
-      },
-      {
-        label: "12 Thik ba",
-        value: "12 thik ba"
-      },
-      {
-        label: "13 Tu aapna bata, kha bare",
-        value: "13 tu aapna bata, kha bare"
-      },
-      {
-        label: "14 Hume thike bani",
-        value: "14 hume thike bani"
-      },
-      {
-        label: "15 Chaal chal rahal bade, chalak bana tare na",
-        value: "15 chaal chal rahal bade, chalak bana tare na"
-      }
-    ],
-    buttons: [
-      {
-        text: "Google",
-        url: "http://www.google.com",
-        postbackRes: ""
-      },
-      {
-        text: "select option 3.1",
-        url: "",
-        postbackRes: "opt3.1"
-      },
-      {
-        text: "select option 3.2",
-        url: "",
-        postbackRes: "opt3.2"
-      },
-      {
-        text: "select option 3.3",
-        url: "",
-        postbackRes: "hi"
-      },
-      {
-        text: "Google",
-        url: "http://www.google.com",
-        postbackRes: ""
-      },
-      {
-        text: "select option 4.1",
-        url: "",
-        postbackRes: "opt4.1"
-      },
-      {
-        text: "select option 4.2",
-        url: "",
-        postbackRes: "opt4.2"
-      },
-      {
-        text: "select option 4.3",
-        url: "",
-        postbackRes: "hi"
-      }
-    ]
-  }
+  payload: [
+    {
+      subtype: "dishRechargeDetails",
+      title: "Checkbox type message",
+      subtitle: "Your Dish Recharge Details are mentioned below",
+      imageUrl:
+        "https://maruti-oriserve-images.s3.ap-south-1.amazonaws.com/Spyder_WhatsApp_700x415.jpg",
+      data: {},
+      options: [
+        {
+          label: "1 Ka haal ba",
+          value: "1 ka haal ba"
+        },
+        {
+          label: "2 Thik ba",
+          value: "2 thik ba"
+        },
+        {
+          label: "3 Tu aapna bata, kha bare",
+          value: "3 tu aapna bata, kha bare"
+        },
+        {
+          label: "4 Hume thike bani",
+          value: "4 hume thike bani"
+        },
+        {
+          label: "5 Chaal chal rahal bade, chalak bana tare na",
+          value: "5 chaal chal rahal bade, chalak bana tare na"
+        },
+        {
+          label: "6 Offer details",
+          value: "6 offer details"
+        },
+        {
+          label: "7 Recharge now",
+          value: "7 recharge now"
+        },
+        {
+          label: "8 Tu aapna bata, kha bare",
+          value: "8 tu aapna bata, kha bare"
+        },
+        {
+          label: "9 Hume thike bani",
+          value: "9 hume thike bani"
+        },
+        {
+          label: "10 Chaal chal rahal bade, chalak bana tare na",
+          value: "10 chaal chal rahal bade, chalak bana tare na"
+        },
+        {
+          label: "11 Ka haal ba",
+          value: "11 ka haal ba"
+        },
+        {
+          label: "12 Thik ba",
+          value: "12 thik ba"
+        },
+        {
+          label: "13 Tu aapna bata, kha bare",
+          value: "13 tu aapna bata, kha bare"
+        },
+        {
+          label: "14 Hume thike bani",
+          value: "14 hume thike bani"
+        },
+        {
+          label: "15 Chaal chal rahal bade, chalak bana tare na",
+          value: "15 chaal chal rahal bade, chalak bana tare na"
+        }
+      ],
+      buttons: [
+        {
+          text: "Google",
+          url: "http://www.google.com",
+          postbackRes: ""
+        },
+        {
+          text: "select option 3.1",
+          url: "",
+          postbackRes: "opt3.1"
+        },
+        {
+          text: "select option 3.2",
+          url: "",
+          postbackRes: "opt3.2"
+        },
+        {
+          text: "select option 3.3",
+          url: "",
+          postbackRes: "hi"
+        },
+        {
+          text: "Google",
+          url: "http://www.google.com",
+          postbackRes: ""
+        },
+        {
+          text: "select option 4.1",
+          url: "",
+          postbackRes: "opt4.1"
+        },
+        {
+          text: "select option 4.2",
+          url: "",
+          postbackRes: "opt4.2"
+        },
+        {
+          text: "select option 4.3",
+          url: "",
+          postbackRes: "hi"
+        }
+      ]
+    },
+    {
+      lang: "hindi",
+      subtype: "dishRechargeDetails",
+      title: "Checkbox type message",
+      subtitle: "Your Dish Recharge Details are mentioned below",
+      imageUrl:
+        "https://maruti-oriserve-images.s3.ap-south-1.amazonaws.com/Spyder_WhatsApp_700x415.jpg",
+      data: {},
+      options: [
+        {
+          label: "1 Ka haal ba",
+          value: "1 ka haal ba"
+        },
+        {
+          label: "2 Thik ba",
+          value: "2 thik ba"
+        },
+        {
+          label: "3 Tu aapna bata, kha bare",
+          value: "3 tu aapna bata, kha bare"
+        },
+        {
+          label: "4 Hume thike bani",
+          value: "4 hume thike bani"
+        },
+        {
+          label: "5 Chaal chal rahal bade, chalak bana tare na",
+          value: "5 chaal chal rahal bade, chalak bana tare na"
+        },
+        {
+          label: "6 Offer details",
+          value: "6 offer details"
+        },
+        {
+          label: "7 Recharge now",
+          value: "7 recharge now"
+        },
+        {
+          label: "8 Tu aapna bata, kha bare",
+          value: "8 tu aapna bata, kha bare"
+        },
+        {
+          label: "9 Hume thike bani",
+          value: "9 hume thike bani"
+        },
+        {
+          label: "10 Chaal chal rahal bade, chalak bana tare na",
+          value: "10 chaal chal rahal bade, chalak bana tare na"
+        },
+        {
+          label: "11 Ka haal ba",
+          value: "11 ka haal ba"
+        },
+        {
+          label: "12 Thik ba",
+          value: "12 thik ba"
+        },
+        {
+          label: "13 Tu aapna bata, kha bare",
+          value: "13 tu aapna bata, kha bare"
+        },
+        {
+          label: "14 Hume thike bani",
+          value: "14 hume thike bani"
+        },
+        {
+          label: "15 Chaal chal rahal bade, chalak bana tare na",
+          value: "15 chaal chal rahal bade, chalak bana tare na"
+        }
+      ],
+      buttons: [
+        {
+          text: "Google",
+          url: "http://www.google.com",
+          postbackRes: ""
+        },
+        {
+          text: "select option 3.1",
+          url: "",
+          postbackRes: "opt3.1"
+        },
+        {
+          text: "select option 3.2",
+          url: "",
+          postbackRes: "opt3.2"
+        },
+        {
+          text: "select option 3.3",
+          url: "",
+          postbackRes: "hi"
+        },
+        {
+          text: "Google",
+          url: "http://www.google.com",
+          postbackRes: ""
+        },
+        {
+          text: "select option 4.1",
+          url: "",
+          postbackRes: "opt4.1"
+        },
+        {
+          text: "select option 4.2",
+          url: "",
+          postbackRes: "opt4.2"
+        },
+        {
+          text: "select option 4.3",
+          url: "",
+          postbackRes: "hi"
+        }
+      ]
+    }
+  ]
 };
 
 export const textWithMediaMessage = {
