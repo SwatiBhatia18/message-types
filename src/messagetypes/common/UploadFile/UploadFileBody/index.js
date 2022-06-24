@@ -1,3 +1,4 @@
+/* eslint-disable react/no-did-update-set-state */
 /* eslint-disable camelcase */
 import React from 'react'
 import PropTypes from 'prop-types'
@@ -18,6 +19,15 @@ class UploadFileBody extends React.PureComponent {
     this.state = {
       file: props.payload.file ? props.payload.file : null,
       fileUrl: props.payload.fileUrl ? props.payload.fileUrl : ''
+    }
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.payload.file !== this.props.payload.file) {
+      this.setState(this.props.payload.file)
+    }
+    if (prevProps.payload.fileUrl !== this.props.payload.fileUrl) {
+      this.setState(this.props.payload.fileUrl)
     }
   }
 
