@@ -21,7 +21,7 @@ const MessageWrapper = ({
               <div
                 className='ori-relative ori-tb-mrgn-5 ori-flex ori-flex-jc'
                 style={{
-                  height: '20px'
+                  height: '16px'
                 }}
               >
                 <span
@@ -31,10 +31,11 @@ const MessageWrapper = ({
                     right: 0,
                     top: '50%',
                     height: '1px',
-                    backgroundColor: '#e6e6e6'
+                    backgroundColor: '#e6e6e6',
+                    borderRadius: '10px'
                   }}
                 />
-                <span className='ori-absolute ori-bg-default ori-lr-pad-5 ori-border-default ori-capitalize ori-border-radius-base ori-font-xs'>
+                <span className='ori-absolute ori-bg-default ori-lr-pad-5 ori-border-default ori-capitalize ori-border-radius-base ori-font-xxs'>
                   {item.lang}
                 </span>
               </div>
