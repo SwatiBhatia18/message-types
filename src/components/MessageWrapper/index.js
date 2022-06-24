@@ -34,7 +34,7 @@ const MessageWrapper = ({
                     backgroundColor: '#e6e6e6'
                   }}
                 />
-                <span className='ori-absolute ori-bg-default ori-lr-pad-5 ori-border-default ori-capitalize ori-border-radius-base'>
+                <span className='ori-absolute ori-bg-default ori-lr-pad-5 ori-border-default ori-capitalize ori-border-radius-base ori-font-xs'>
                   {item.lang}
                 </span>
               </div>
