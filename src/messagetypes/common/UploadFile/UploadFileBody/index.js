@@ -24,10 +24,10 @@ class UploadFileBody extends React.PureComponent {
 
   componentDidUpdate(prevProps) {
     if (prevProps.payload.file !== this.props.payload.file) {
-      this.setState(this.props.payload.file)
+      this.setState({ file: this.props.payload.file })
     }
     if (prevProps.payload.fileUrl !== this.props.payload.fileUrl) {
-      this.setState(this.props.payload.fileUrl)
+      this.setState({ fileUrl: this.props.payload.fileUrl })
     }
   }
 
