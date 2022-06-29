@@ -7,6 +7,7 @@ import Button from 'antd/lib/button'
 import Rate from 'antd/lib/rate'
 
 import Buttons from '../../../../components/buttons'
+import HtmlText from '../../../../components/HtmlText'
 
 class FormMessageBody extends React.PureComponent {
   constructor(props) {
@@ -94,11 +95,20 @@ class FormMessageBody extends React.PureComponent {
 
     return (
       <div className='ori-word-break ori-mt-FormMessageContainer'>
-        {
-          payload.title &&
-          <p className='ori-no-t-mrgn ori-b-mrgn-5 ori-font-bold ori-capitalize-first ori-mt-title'>{payload.title}
-          </p>
-        }
+        {payload.title && (
+          <HtmlText
+            textClass='ori-no-t-mrgn ori-no-b-mrgn ori-font-bold ori-capitalize-first title'
+            text={payload.title}
+            isHtml={payload.containsHtmlTitle}
+          />
+        )}
+        {payload.subtitle && (
+          <HtmlText
+            textClass='ori-no-b-mrgn ori-no-t-mrgn subtitle'
+            text={payload.subtitle}
+            isHtml={payload.containsHtmlSubtitle}
+          />
+        )}
         {
           payload.formData && payload.formData.length > 0 &&
           <React.Fragment>
