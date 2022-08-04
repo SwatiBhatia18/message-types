@@ -9,6 +9,7 @@ import {
   CheckboxWithMedia,
   FormMessage,
   ListMessage,
+  SeatMap,
 } from "message-types";
 
 import {
@@ -17,6 +18,7 @@ import {
   textWithMediaMessage,
   checkboxMessage,
   carouselWithButtonsMessage,
+  seatMapMessage,
   message
 } from "./constants";
 
@@ -45,6 +47,7 @@ export default class App extends Component {
           preferLang="hindi"
         />
         <FormMessage message={formMessage} preferLang="hindi" />
+        <SeatMap message={seatMapMessage} preferLang="hindi" />
       </div>
     );
   }
