@@ -2,6 +2,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Tooltip from 'antd/lib/tooltip'
+import Button from 'antd/lib/button'
 import CloseIcon from 'react-icons/lib/md/close'
 import SeatIcon from 'react-icons/lib/md/event-seat'
 
@@ -67,63 +68,76 @@ class SeatMapBody extends React.PureComponent {
         )}
         {payload.seatArrangement &&
           payload.seatArrangement.length > 0 &&
-          payload.seatArrangement.map((row, index) => {
-            return (
-              <div key={index} className='ori-b-pad-5'>
-                {index === 0 && (
-                  <p className='ori-text-center ori-font-xxs ori-b-mrgn-5 ori-t-mrgn-3'>
-                    <span className='ori-bg-default ori-font-bold ori-lr-pad-10 ori-border-radius-10 ori-tb-pad-3'>
-                      FRONT
-                    </span>
-                  </p>
-                )}
-                <span className='ori-r-mrgn-5'>{row.rowName}</span>
-                {row.seats.map((seat, index) => {
-                  return (
-                    <Tooltip
-                      key={index}
-                      placement='top'
-                      mouseEnterDelay={1}
-                      title={
-                        <React.Fragment>
-                          <span>Type: {seat.type}</span> <br />
-                          <span>Seat Number: {seat.name} </span>
-                          <br />
-                          <span>Status: {seat.status}</span> <br />
-                          {seat.isAllowed && <span>Cost: {seat.cost}</span>}
-                        </React.Fragment>
-                      }
-                      destroyTooltipOnHide
-                    >
-                      <span
-                        style={{
-                          backgroundColor: seat.color,
-                          opacity: seat.isAllowed && !disabled ? '' : '0.5',
-                          marginRight: seat.isNextGap ? 30 : 3
-                        }}
-                        className={`ori-pad-3 ori-border-radius-3 ori-font-white ${
-                          seat.isAllowed && !disabled
-                            ? 'ori-cursor-ptr'
-                            : 'ori-cursor-not-allowed'
-                        } ${
-                          this.state.selectedSeatName === seat.name
-                            ? 'ori-selected-seat'
-                            : ''
-                        }`}
-                        onClick={() => this.handleSeatSelection(seat)}
-                      >
-                        {seat.isAllowed ? (
-                          <SeatIcon size={18} />
-                        ) : (
-                          <CloseIcon size={18} />
-                        )}
+          <React.Fragment>
+            {
+              payload.seatArrangement.map((row, index) => (
+                <div key={index} className='ori-b-pad-5'>
+                  {index === 0 && (
+                    <p className='ori-text-center ori-font-xxs ori-b-mrgn-5 ori-t-mrgn-3'>
+                      <span className='ori-bg-default ori-font-bold ori-lr-pad-10 ori-border-radius-10 ori-tb-pad-3'>
+                        FRONT
                       </span>
-                    </Tooltip>
-                  )
-                })}
-              </div>
-            )
-          })}
+                    </p>
+                  )}
+                  <span className='ori-r-mrgn-5'>{row.rowName}</span>
+                  {row.seats.map((seat, index) => {
+                    return (
+                      <Tooltip
+                        key={index}
+                        placement='top'
+                        mouseEnterDelay={1}
+                        title={
+                          <React.Fragment>
+                            <span>Type: {seat.type}</span> <br />
+                            <span>Seat Number: {seat.name} </span>
+                            <br />
+                            <span>Status: {seat.status}</span> <br />
+                            {seat.isAllowed && <span>Cost: {seat.cost}</span>}
+                          </React.Fragment>
+                        }
+                        destroyTooltipOnHide
+                      >
+                        <span
+                          style={{
+                            backgroundColor: seat.color,
+                            opacity: seat.isAllowed && !disabled ? '' : '0.5',
+                            marginRight: seat.isNextGap ? 30 : 3
+                          }}
+                          className={`ori-pad-3 ori-border-radius-3 ori-font-white ${
+                            seat.isAllowed && !disabled
+                              ? 'ori-cursor-ptr'
+                              : 'ori-cursor-not-allowed'
+                          } ${
+                            this.state.selectedSeatName === seat.name
+                              ? 'ori-selected-seat'
+                              : ''
+                          }`}
+                          onClick={() => this.handleSeatSelection(seat)}
+                        >
+                          {seat.isAllowed ? (
+                            <SeatIcon size={18} />
+                          ) : (
+                            <CloseIcon size={18} />
+                          )}
+                        </span>
+                      </Tooltip>
+                    )
+                  })}
+                </div>
+              )
+              )
+            }
+            <Button
+              size='small'
+              className='ori-t-mrgn-5 ori-btn-submit'
+              disabled={disabled || !this.state.selectedSeatName}
+              onClick={this.handleSubmit}
+              block
+            >
+              {`Book Seat ${this.state.selectedSeatName ? 'for ' + this.state.selectedSeatName : ''}`}
+            </Button>
+          </React.Fragment>
+        }
         {!btn_hidden && payload.buttons && payload.buttons.length > 0 && (
           <Buttons
             buttons={payload.buttons}
