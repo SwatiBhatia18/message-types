@@ -65,65 +65,65 @@ class SeatMapBody extends React.PureComponent {
             dangerouslySetInnerHTML={{ __html: payload.subtitle }}
           />
         )}
-        {payload.seatArrangement && payload.seatArrangement.length > 0 && (
-          <React.Fragment>
-            <p className='ori-text-center ori-font-xxs ori-b-mrgn-5'>
-              <span className='ori-bg-default ori-lr-pad-10 ori-border-radius-10 ori-tb-pad-3'>
-                FRONT
-              </span>
-            </p>
-            {payload.seatArrangement.map((row, index) => {
-              return (
-                <div key={index} className='ori-b-pad-5'>
-                  <span className='ori-r-mrgn-5'>{row.rowName}</span>
-                  {row.seats.map((seat, index) => {
-                    return (
-                      <Tooltip
-                        key={index}
-                        placement='top'
-                        mouseEnterDelay={1}
-                        title={
-                          <React.Fragment>
-                            <span>Type: {seat.type}</span> <br />
-                            <span>Seat Number: {seat.name} </span>
-                            <br />
-                            <span>Status: {seat.status}</span> <br />
-                            {seat.isAllowed && <span>Cost: {seat.cost}</span>}
-                          </React.Fragment>
-                        }
-                        destroyTooltipOnHide
+        {payload.seatArrangement &&
+          payload.seatArrangement.length > 0 &&
+          payload.seatArrangement.map((row, index) => {
+            return (
+              <div key={index} className='ori-b-pad-5'>
+                {index === 0 && (
+                  <p className='ori-text-center ori-font-xxs ori-b-mrgn-5 ori-t-mrgn-3'>
+                    <span className='ori-bg-default ori-font-bold ori-lr-pad-10 ori-border-radius-10 ori-tb-pad-3'>
+                      FRONT
+                    </span>
+                  </p>
+                )}
+                <span className='ori-r-mrgn-5'>{row.rowName}</span>
+                {row.seats.map((seat, index) => {
+                  return (
+                    <Tooltip
+                      key={index}
+                      placement='top'
+                      mouseEnterDelay={1}
+                      title={
+                        <React.Fragment>
+                          <span>Type: {seat.type}</span> <br />
+                          <span>Seat Number: {seat.name} </span>
+                          <br />
+                          <span>Status: {seat.status}</span> <br />
+                          {seat.isAllowed && <span>Cost: {seat.cost}</span>}
+                        </React.Fragment>
+                      }
+                      destroyTooltipOnHide
+                    >
+                      <span
+                        style={{
+                          backgroundColor: seat.color,
+                          opacity: seat.isAllowed && !disabled ? '' : '0.5',
+                          marginRight: seat.isNextGap ? 30 : 3
+                        }}
+                        className={`ori-pad-3 ori-border-radius-3 ori-font-white ${
+                          seat.isAllowed && !disabled
+                            ? 'ori-cursor-ptr'
+                            : 'ori-cursor-not-allowed'
+                        } ${
+                          this.state.selectedSeatName === seat.name
+                            ? 'ori-selected-seat'
+                            : ''
+                        }`}
+                        onClick={() => this.handleSeatSelection(seat)}
                       >
-                        <span
-                          style={{
-                            backgroundColor: seat.color,
-                            opacity: seat.isAllowed && !disabled ? '' : '0.5',
-                            marginRight: seat.isNextGap ? 30 : 3
-                          }}
-                          className={`ori-pad-3 ori-border-radius-3 ori-font-white ${
-                            seat.isAllowed && !disabled
-                              ? 'ori-cursor-ptr'
-                              : 'ori-cursor-not-allowed'
-                          } ${
-                            this.state.selectedSeatName === seat.name
-                              ? 'ori-selected-seat'
-                              : ''
-                          }`}
-                          onClick={() => this.handleSeatSelection(seat)}
-                        >
-                          {seat.isAllowed ? (
-                            <SeatIcon size={18} />
-                          ) : (
-                            <CloseIcon size={18} />
-                          )}
-                        </span>
-                      </Tooltip>
-                    )
-                  })}
-                </div>
-              )
-            })}
-          </React.Fragment>
-        )}
+                        {seat.isAllowed ? (
+                          <SeatIcon size={18} />
+                        ) : (
+                          <CloseIcon size={18} />
+                        )}
+                      </span>
+                    </Tooltip>
+                  )
+                })}
+              </div>
+            )
+          })}
         {!btn_hidden && payload.buttons && payload.buttons.length > 0 && (
           <Buttons
             buttons={payload.buttons}
