@@ -37,7 +37,14 @@ class SeatMapBody extends React.PureComponent {
           })
         }
       })
-      if (selectedSeat) onSubmit({ selectedSeat, message })
+      if (selectedSeat) {
+        const data = {
+          text: this.state.selectedSeatName,
+          relayData: message.payload.relayData,
+          selectedSeat
+        }
+        onSubmit(data, message)
+      }
     }
   };
 
@@ -66,22 +73,26 @@ class SeatMapBody extends React.PureComponent {
             dangerouslySetInnerHTML={{ __html: payload.subtitle }}
           />
         )}
-        {payload.seatArrangement &&
-          payload.seatArrangement.length > 0 &&
+        {payload.seatArrangement && payload.seatArrangement.length > 0 && (
           <React.Fragment>
-            {
-              payload.seatArrangement.map((row, index) => (
-                <div key={index} className='ori-b-pad-5'>
-                  {index === 0 && (
-                    <p className='ori-text-center ori-font-xxs ori-b-mrgn-5 ori-t-mrgn-3'>
-                      <span className='ori-bg-default ori-font-bold ori-lr-pad-10 ori-border-radius-10 ori-tb-pad-3'>
-                        FRONT
-                      </span>
-                    </p>
-                  )}
-                  <span className='ori-r-mrgn-5'>{row.rowName}</span>
-                  {row.seats.map((seat, index) => {
-                    return (
+            <p className='ori-text-center ori-font-xxs ori-b-mrgn-5 ori-t-mrgn-3'>
+              <span className='ori-bg-default ori-font-bold ori-lr-pad-10 ori-border-radius-10 ori-tb-pad-3'>
+                FRONT
+              </span>
+            </p>
+            {payload.seatArrangement.map((row, index) => (
+              <div key={index} className='ori-b-pad-5 ori-flex-row'>
+                <div
+                  className='ori-flex ori-flex-center'
+                  style={{
+                    height: 25,
+                    width: 25
+                  }}>
+                  {row.rowName}
+                </div>
+                {row.seats.map((seat, index) => {
+                  return (
+                    <>
                       <Tooltip
                         key={index}
                         placement='top'
@@ -97,13 +108,15 @@ class SeatMapBody extends React.PureComponent {
                         }
                         destroyTooltipOnHide
                       >
-                        <span
+                        <div
                           style={{
                             backgroundColor: seat.color,
                             opacity: seat.isAllowed && !disabled ? '' : '0.5',
-                            marginRight: seat.isNextGap ? 30 : 3
+                            marginRight: 3,
+                            height: 25,
+                            width: 25
                           }}
-                          className={`ori-pad-3 ori-border-radius-3 ori-font-white ${
+                          className={`ori-flex ori-flex-center ori-border-radius-3 ori-font-white ${
                             seat.isAllowed && !disabled
                               ? 'ori-cursor-ptr'
                               : 'ori-cursor-not-allowed'
@@ -119,14 +132,22 @@ class SeatMapBody extends React.PureComponent {
                           ) : (
                             <CloseIcon size={18} />
                           )}
-                        </span>
+                        </div>
                       </Tooltip>
-                    )
-                  })}
-                </div>
-              )
-              )
-            }
+                      {seat.isNextGap && (
+                        <div
+                          className='ori-full-flex'
+                          style={{
+                            height: 25,
+                            width: 30
+                          }}
+                        />
+                      )}
+                    </>
+                  )
+                })}
+              </div>
+            ))}
             <Button
               size='small'
               className='ori-t-mrgn-5 ori-btn-submit'
@@ -134,10 +155,14 @@ class SeatMapBody extends React.PureComponent {
               onClick={this.handleSubmit}
               block
             >
-              {`Book Seat ${this.state.selectedSeatName ? 'for ' + this.state.selectedSeatName : ''}`}
+              {`Book Seat ${
+                this.state.selectedSeatName
+                  ? 'for ' + this.state.selectedSeatName
+                  : ''
+              }`}
             </Button>
           </React.Fragment>
-        }
+        )}
         {!btn_hidden && payload.buttons && payload.buttons.length > 0 && (
           <Buttons
             buttons={payload.buttons}
