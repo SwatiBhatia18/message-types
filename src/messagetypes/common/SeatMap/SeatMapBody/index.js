@@ -92,7 +92,7 @@ class SeatMapBody extends React.PureComponent {
                 </div>
                 {row.seats.map((seat, index) => {
                   return (
-                    <>
+                    <React.Fragment>
                       <Tooltip
                         key={index}
                         placement='top'
@@ -143,7 +143,7 @@ class SeatMapBody extends React.PureComponent {
                           }}
                         />
                       )}
-                    </>
+                    </React.Fragment>
                   )
                 })}
               </div>
