@@ -5,6 +5,7 @@ import DatePicker from 'antd/lib/date-picker'
 import Radio from 'antd/lib/radio'
 import Button from 'antd/lib/button'
 import Rate from 'antd/lib/rate'
+import Select from 'antd/lib/select'
 
 import Buttons from '../../../../components/buttons'
 import HtmlText from '../../../../components/HtmlText'
@@ -161,6 +162,29 @@ class FormMessageBody extends React.PureComponent {
                           disabled={disabled}
                           value={this.state.selectedValues[item.props.name]}
                           onChange={this.handleChange}
+                        />
+                      </div>
+                    )
+                  case 'select':
+                    return (
+                      <div className='ori-b-pad-5' key={index}>
+                        {
+                          item.title &&
+                            <p>
+                              {
+                                item.props.required &&
+                                <span>*</span>
+                              }
+                              {item.title}
+                            </p>
+                        }
+                        <Select
+                          size='small'
+                          className='ori-full-width'
+                          {...item.props}
+                          disabled={disabled}
+                          value={this.state.selectedValues[item.props.name]}
+                          onChange={value => this.handleFormChange({[item.props.name]: value})}
                         />
                       </div>
                     )

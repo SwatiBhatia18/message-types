@@ -596,6 +596,23 @@ export const formMessage = {
           }
         },
         {
+          type: "select",
+          title: "Pagganger3",
+          displayLabel: "Passanger 3",
+          props: {
+            name: "bag3",
+            placeholder: "Select Baggage",
+            required: false,
+            options: [
+              { label: "10kg", value: "10kgId" },
+              { label: "12kg", value: "12kgId" },
+              { label: "15kg", value: "15kgId" },
+              { label: "20kg", value: "20kgId" },
+              { label: "25kg", value: "25kgId" }
+            ]
+          }
+        },
+        {
           type: "rating",
           title: "rate this feature",
           displayLabel: "rating",
