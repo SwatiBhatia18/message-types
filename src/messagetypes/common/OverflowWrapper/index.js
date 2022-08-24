@@ -24,10 +24,10 @@ class OverflowWrapper extends React.Component {
     this.setState({
       expanded: true
     })
-  }
+  };
 
   render() {
-    const { enabled, containerHeight, children } = this.props
+    const { enabled, containerHeight, children, showMoreChild } = this.props
     const { childrenContentHeight, expanded } = this.state
     if (enabled) {
       const isChildrenHeightGreater = childrenContentHeight > containerHeight
@@ -36,27 +36,20 @@ class OverflowWrapper extends React.Component {
           <div
             style={{
               overflow: 'hidden',
-              height: expanded ? `${childrenContentHeight}px`
-                : (isChildrenHeightGreater ? `${containerHeight}px` : 'auto')
+              height: expanded
+                ? `${childrenContentHeight}px`
+                : isChildrenHeightGreater
+                  ? `${containerHeight}px`
+                  : 'auto'
             }}
           >
-            <div ref={this.containerRef}>
-              {children}
-            </div>
+            <div ref={this.containerRef}>{children}</div>
           </div>
-          {
-            isChildrenHeightGreater && !expanded &&
-            <span
-              className='ori-cursor-ptr ori-font-light ori-font-xs'
-              style={{
-                textDecoration: 'underline',
-                userSelect: 'none'
-              }}
-              onClick={this.handleShowMoreAndLessClick}
-            >
-              show more
+          {isChildrenHeightGreater && !expanded && (
+            <span onClick={this.handleShowMoreAndLessClick}>
+              {showMoreChild}
             </span>
-          }
+          )}
         </React.Fragment>
       )
     }
@@ -67,13 +60,25 @@ class OverflowWrapper extends React.Component {
 OverflowWrapper.propTypes = {
   enabled: PropTypes.bool,
   containerHeight: PropTypes.number,
-  children: PropTypes.node
+  children: PropTypes.node,
+  showMoreChild: PropTypes.node
 }
 
 OverflowWrapper.defaultProps = {
   enabled: false,
   containerHeight: 250,
-  children: null
+  children: null,
+  showMoreChild: (
+    <span
+      className='ori-cursor-ptr ori-font-light ori-font-xs'
+      style={{
+        textDecoration: 'underline',
+        userSelect: 'none'
+      }}
+    >
+      show more
+    </span>
+  )
 }
 
 export { OverflowWrapper }
