@@ -92,11 +92,10 @@ class SeatMapBody extends React.PureComponent {
                   }}>
                   {row.rowName}
                 </div>
-                {row.seats.map((seat, index) => {
+                {row.seats.map((seat, cindex) => {
                   return (
-                    <React.Fragment>
+                    <React.Fragment key={cindex}>
                       <Tooltip
-                        key={index}
                         placement='top'
                         mouseEnterDelay={1}
                         title={
