@@ -91,7 +91,9 @@ class FormMessageBody extends React.PureComponent {
       btn_hidden,
       default_btn_display_count,
       disabled,
-      payload
+      payload,
+      showless,
+      showmore
     } = this.props
 
     return (
@@ -236,6 +238,8 @@ class FormMessageBody extends React.PureComponent {
             message={message}
             btn_disabled={btn_disabled}
             handleMsgBtnClick={handleMsgBtnClick}
+            showmore={showmore}
+            showless={showless}
           />
         }
       </div>
@@ -251,7 +255,15 @@ FormMessageBody.propTypes = {
   disabled: PropTypes.bool,
   btn_hidden: PropTypes.bool,
   default_btn_display_count: PropTypes.number,
-  onSubmit: PropTypes.func
+  onSubmit: PropTypes.func,
+  showmore: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node
+  ]),
+  showless: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node
+  ])
 }
 
 FormMessageBody.defaultProps = {

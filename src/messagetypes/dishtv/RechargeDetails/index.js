@@ -11,78 +11,106 @@ import Buttons from '../../../components/buttons'
 class RechargeDetails extends React.PureComponent {
   render() {
     let { payload } = this.props.message
-    let { btn_disabled, handleMsgBtnClick, message, btn_hidden, default_btn_display_count } = this.props
+    let {
+      btn_disabled,
+      handleMsgBtnClick,
+      message,
+      btn_hidden,
+      default_btn_display_count,
+      showless,
+      showmore
+    } = this.props
 
     return (
       <div className='ori-mt-rechargeDetailsContainer'>
-        {
-          (payload.title) && (payload.title.trim().length > 0) &&
-          <p className='ori-no-t-mrgn ori-no-b-mrgn ori-font-bold ori-capitalize-first ori-word-break title'>{payload.title}</p>
-        }
-        {
-          (payload.subtitle) && (payload.subtitle.trim().length > 0) &&
+        {payload.title && payload.title.trim().length > 0 && (
+          <p className='ori-no-t-mrgn ori-no-b-mrgn ori-font-bold ori-capitalize-first ori-word-break title'>
+            {payload.title}
+          </p>
+        )}
+        {payload.subtitle && payload.subtitle.trim().length > 0 && (
           <p className='ori-b-mrgn-5 ori-no-t-mrgn ori-word-break subtitle'>
             {payload.subtitle}
           </p>
-        }
-        {
-          ((payload.data) && !isEmptyObject(payload.data)) &&
+        )}
+        {payload.data && !isEmptyObject(payload.data) && (
           <div className='ori-bg-card ori-font-xs ori-border-radius-3 ori-border-light'>
             <div className='ori-b-border-light ori-pad-10'>
-              {
-                payload.data.switchOffDate_fmt &&
-                <InlineItem title='Switch Off Date ' info={payload.data.switchOffDate_fmt} />
-              }
-              {
-                payload.data.current_balance &&
-                <InlineItem title='Current Balance ' info={formattedPrice(payload.data.current_balance)} />
-              }
+              {payload.data.switchOffDate_fmt && (
+                <InlineItem
+                  title='Switch Off Date '
+                  info={payload.data.switchOffDate_fmt}
+                />
+              )}
+              {payload.data.current_balance && (
+                <InlineItem
+                  title='Current Balance '
+                  info={formattedPrice(payload.data.current_balance)}
+                />
+              )}
             </div>
-            {
-              payload.data.pack_details && !isEmptyObject(payload.data.pack_details) &&
-              Object.keys(payload.data.pack_details).sort((a, b) => {
-                if (payload.data.pack_details[a].type.toLowerCase() > payload.data.pack_details[b].type.toLowerCase()) return -1
-                if (payload.data.pack_details[a].type.toLowerCase() < payload.data.pack_details[b].type.toLowerCase()) return 1
-                return 0
-              }).map(function (key, index) {
-                return (
-                  <div className='ori-lr-pad-10 ori-t-pad-10' key={index}>
-                    <VCDetails vc_details={payload.data.pack_details[key]} />
-                  </div>
-                )
-              })
-            }
-            {
-              (payload.data.otherCharges) && (payload.data.otherCharges.length > 0) &&
+            {payload.data.pack_details &&
+              !isEmptyObject(payload.data.pack_details) &&
+              Object.keys(payload.data.pack_details)
+                .sort((a, b) => {
+                  if (
+                    payload.data.pack_details[a].type.toLowerCase() >
+                    payload.data.pack_details[b].type.toLowerCase()
+                  ) { return -1 }
+                  if (
+                    payload.data.pack_details[a].type.toLowerCase() <
+                    payload.data.pack_details[b].type.toLowerCase()
+                  ) { return 1 }
+                  return 0
+                })
+                .map(function(key, index) {
+                  return (
+                    <div className='ori-lr-pad-10 ori-t-pad-10' key={index}>
+                      <VCDetails vc_details={payload.data.pack_details[key]} />
+                    </div>
+                  )
+                })}
+            {payload.data.otherCharges && payload.data.otherCharges.length > 0 && (
               <div className='ori-pad-10 ori-b-border-light'>
                 <p className='ori-font-bold ori-no-t-mrgn'>Other Charges</p>
-                {
-                  payload.data.otherCharges.map((otherCharge, index) => {
-                    return (
-                      <InlineItem key={index} title={otherCharge.name} info={formattedPrice(otherCharge.price)} uppercase={true} title_bold={false} />
-                    )
-                  })
-                }
+                {payload.data.otherCharges.map((otherCharge, index) => {
+                  return (
+                    <InlineItem
+                      key={index}
+                      title={otherCharge.name}
+                      info={formattedPrice(otherCharge.price)}
+                      uppercase={true}
+                      title_bold={false}
+                    />
+                  )
+                })}
               </div>
-            }
-            {
-              payload.data.monthly_recharge_amount &&
+            )}
+            {payload.data.monthly_recharge_amount && (
               <div className='ori-pad-10'>
-                <InlineItem title='Recharge Amount ' info={formattedPrice(payload.data.monthly_recharge_amount)} />
+                <InlineItem
+                  title='Recharge Amount '
+                  info={formattedPrice(payload.data.monthly_recharge_amount)}
+                />
               </div>
-            }
+            )}
           </div>
-        }
-        {
-          !btn_hidden && (payload.buttons) && (payload.buttons.length > 0) &&
+        )}
+        {!btn_hidden && payload.buttons && payload.buttons.length > 0 && (
           <Buttons
             buttons={payload.buttons}
-            display_count={payload.btnDisplayCount ? payload.btnDisplayCount : default_btn_display_count}
+            display_count={
+              payload.btnDisplayCount
+                ? payload.btnDisplayCount
+                : default_btn_display_count
+            }
             message={message}
             btn_disabled={btn_disabled}
             handleMsgBtnClick={handleMsgBtnClick}
+            showless={showless}
+            showmore={showmore}
           />
-        }
+        )}
       </div>
     )
   }
@@ -93,7 +121,15 @@ RechargeDetails.propTypes = {
   handleMsgBtnClick: PropTypes.func,
   btn_disabled: PropTypes.bool,
   btn_hidden: PropTypes.bool,
-  default_btn_display_count: PropTypes.number
+  default_btn_display_count: PropTypes.number,
+  showmore: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node
+  ]),
+  showless: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node
+  ])
 }
 
 RechargeDetails.defaultProps = {

@@ -10,7 +10,9 @@ const PromptMsgBody = ({
   message,
   handleMsgBtnClick,
   btn_hidden,
-  default_btn_display_count
+  default_btn_display_count,
+  showless,
+  showmore
 }) => {
   return (
     <div className='ori-word-break ori-mt-promptMsgContainer'>
@@ -35,6 +37,8 @@ const PromptMsgBody = ({
           message={message}
           btn_disabled={btn_disabled}
           handleMsgBtnClick={handleMsgBtnClick}
+          showmore={showmore}
+          showless={showless}
         />
       )}
     </div>
@@ -47,7 +51,15 @@ PromptMsgBody.propTypes = {
   handleMsgBtnClick: PropTypes.func,
   btn_disabled: PropTypes.bool,
   btn_hidden: PropTypes.bool,
-  default_btn_display_count: PropTypes.number
+  default_btn_display_count: PropTypes.number,
+  showmore: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node
+  ]),
+  showless: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node
+  ])
 }
 
 PromptMsgBody.defaultProps = {

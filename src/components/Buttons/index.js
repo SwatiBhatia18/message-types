@@ -38,7 +38,7 @@ class Buttons extends React.PureComponent {
   };
 
   render() {
-    const { btn_disabled, buttons, className } = this.props
+    const { btn_disabled, buttons, className, showmore, showless } = this.props
     const { display_buttons_count, show_all_buttons } = this.state
     return (
       <div
@@ -72,7 +72,7 @@ class Buttons extends React.PureComponent {
             className={`ori-b-mrgn-5 ori-r-mrgn-5 ori-btn-bubble-inner ori-btn-showmore ${styles.button}`}
             onClick={this.showAllButtons}
           >
-            Show more
+            {showmore}
           </Button>
         )}
         {show_all_buttons && (
@@ -81,7 +81,7 @@ class Buttons extends React.PureComponent {
             className={`ori-b-mrgn-5 ori-r-mrgn-5 ori-btn-bubble-inner ori-btn-showless ${styles.button}`}
             onClick={this.showLessButtons}
           >
-            Show less
+            {showless}
           </Button>
         )}
       </div>
@@ -95,13 +95,23 @@ Buttons.propTypes = {
   message: PropTypes.object,
   btn_disabled: PropTypes.bool,
   display_count: PropTypes.number,
-  handleMsgBtnClick: PropTypes.func
+  handleMsgBtnClick: PropTypes.func,
+  showmore: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node
+  ]),
+  showless: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node
+  ])
 }
 
 Buttons.defaultProps = {
   className: '',
   btn_disabled: false,
-  display_count: 4
+  display_count: 4,
+  showmore: 'Show more',
+  showless: 'Show less'
 }
 
 export default Buttons

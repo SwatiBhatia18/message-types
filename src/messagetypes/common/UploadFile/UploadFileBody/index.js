@@ -130,7 +130,9 @@ class UploadFileBody extends React.PureComponent {
       disabled,
       accept,
       uploading,
-      default_btn_display_count
+      default_btn_display_count,
+      showless,
+      showmore
     } = this.props
     const { file, fileUrl } = this.state
     return (
@@ -178,6 +180,8 @@ class UploadFileBody extends React.PureComponent {
             message={message}
             btn_disabled={btn_disabled}
             handleMsgBtnClick={handleMsgBtnClick}
+            showless={showless}
+            showmore={showmore}
           />
         )}
       </div>
@@ -195,7 +199,15 @@ UploadFileBody.propTypes = {
   uploading: PropTypes.bool,
   handleFileUpload: PropTypes.func,
   accept: PropTypes.string,
-  default_btn_display_count: PropTypes.number
+  default_btn_display_count: PropTypes.number,
+  showmore: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node
+  ]),
+  showless: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node
+  ])
 }
 
 UploadFileBody.defaultProps = {

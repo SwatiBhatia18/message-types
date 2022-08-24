@@ -11,7 +11,9 @@ class Offers extends React.PureComponent {
   constructor(props) {
     super(props)
     this.defaultSelection = null
-    this.setDefaultSelectionRef = element => { this.defaultSelection = element }
+    this.setDefaultSelectionRef = element => {
+      this.defaultSelection = element
+    }
   }
 
   componentDidMount() {
@@ -34,62 +36,97 @@ class Offers extends React.PureComponent {
   };
 
   render() {
-    const { disable_offer, btn_disabled, handleMsgBtnClick, message, default_btn_display_count } = this.props
+    const {
+      disable_offer,
+      btn_disabled,
+      handleMsgBtnClick,
+      message,
+      default_btn_display_count,
+      showless,
+      showmore
+    } = this.props
     const { payload } = this.props.message
 
     return (
       <div className='ori-mt-offersContainer'>
-        {
-          (payload.title) &&
-          <p className='ori-no-t-mrgn ori-no-b-mrgn ori-font-bold ori-capitalize-first title'>{payload.title}</p>
-        }
-        {
-          (payload.subtitle) &&
+        {payload.title && (
+          <p className='ori-no-t-mrgn ori-no-b-mrgn ori-font-bold ori-capitalize-first title'>
+            {payload.title}
+          </p>
+        )}
+        {payload.subtitle && (
           <p className='ori-b-mrgn-5 ori-no-t-mrgn subtitle'>
             {payload.subtitle}
           </p>
-        }
-        {
-          ((payload.data) && !isEmptyObject(payload.data)) &&
+        )}
+        {payload.data && !isEmptyObject(payload.data) && (
           <div className='ori-font-xs offersCardContainer'>
-            {
-              (payload.data.recharge_offers) && (payload.data.recharge_offers.length > 0) &&
+            {payload.data.recharge_offers &&
+              payload.data.recharge_offers.length > 0 &&
               payload.data.recharge_offers.map((offer, index) => {
                 if (!isEmptyObject(offer) && offer.offerId) {
                   return (
-                    <div className='ori-pad-10 ori-flex-row ori-border-radius-3 ori-border-light ori-tb-mrgn-3 ori-bg-card' key={index}>
-                      {
-                        !disable_offer &&
+                    <div
+                      className='ori-pad-10 ori-flex-row ori-border-radius-3 ori-border-light ori-tb-mrgn-3 ori-bg-card'
+                      key={index}
+                    >
+                      {!disable_offer && (
                         <div className='ori-r-mrgn-5 radioBtnContainer'>
-                          {
-                            index === 0
-                              ? <input type='radio' className='ori-display-block' ref={this.setDefaultSelectionRef} value={offer.offerId} name='offers-selection' data={offer.offerName} onChange={this.radioOnChange} disabled={disable_offer} defaultChecked={true} />
-                              : <input type='radio' className='ori-display-block' value={offer.offerId} name='offers-selection' data={offer.offerName} onChange={this.radioOnChange} disabled={disable_offer} />
-                          }
+                          {index === 0 ? (
+                            <input
+                              type='radio'
+                              className='ori-display-block'
+                              ref={this.setDefaultSelectionRef}
+                              value={offer.offerId}
+                              name='offers-selection'
+                              data={offer.offerName}
+                              onChange={this.radioOnChange}
+                              disabled={disable_offer}
+                              defaultChecked={true}
+                            />
+                          ) : (
+                            <input
+                              type='radio'
+                              className='ori-display-block'
+                              value={offer.offerId}
+                              name='offers-selection'
+                              data={offer.offerName}
+                              onChange={this.radioOnChange}
+                              disabled={disable_offer}
+                            />
+                          )}
                         </div>
-                      }
+                      )}
                       <div className='ori-l-pad-5 ori-full-flex'>
-                        <InlineItem title={offer.offerName} info={formattedPrice(offer.offerAmount)} left_full_flex />
+                        <InlineItem
+                          title={offer.offerName}
+                          info={formattedPrice(offer.offerAmount)}
+                          left_full_flex
+                        />
                       </div>
                     </div>
                   )
                 } else {
                   return null
                 }
-              })
-            }
+              })}
           </div>
-        }
-        {
-          (payload.buttons) && (payload.buttons.length > 0) && !disable_offer &&
+        )}
+        {payload.buttons && payload.buttons.length > 0 && !disable_offer && (
           <Buttons
             buttons={payload.buttons}
-            display_count={payload.btnDisplayCount ? payload.btnDisplayCount : default_btn_display_count}
+            display_count={
+              payload.btnDisplayCount
+                ? payload.btnDisplayCount
+                : default_btn_display_count
+            }
             message={message}
             btn_disabled={btn_disabled}
             handleMsgBtnClick={handleMsgBtnClick}
+            showless={showless}
+            showmore={showmore}
           />
-        }
+        )}
       </div>
     )
   }
@@ -101,7 +138,15 @@ Offers.propTypes = {
   handleMsgBtnClick: PropTypes.func,
   disable_offer: PropTypes.bool,
   btn_disabled: PropTypes.bool,
-  default_btn_display_count: PropTypes.number
+  default_btn_display_count: PropTypes.number,
+  showmore: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node
+  ]),
+  showless: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node
+  ])
 }
 
 Offers.defaultProps = {

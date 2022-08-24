@@ -36,7 +36,7 @@ class RechargeHistory extends React.PureComponent {
       }
     ]
     return headers
-  }
+  };
 
   getHistoryTableData = () => {
     const dataSource = []
@@ -52,47 +52,62 @@ class RechargeHistory extends React.PureComponent {
       })
     }
     return dataSource
-  }
+  };
 
   render() {
     const { payload } = this.props.message
-    const { btn_disabled, handleMsgBtnClick, message, btn_hidden, default_btn_display_count } = this.props
+    const {
+      btn_disabled,
+      handleMsgBtnClick,
+      message,
+      btn_hidden,
+      default_btn_display_count,
+      showless,
+      showmore
+    } = this.props
     return (
       <div className='ori-mt-rechargeHistoryContainer'>
-        {
-          (payload.title) && (payload.title.trim().length > 0) &&
-          <p className='ori-no-t-mrgn ori-no-b-mrgn ori-font-bold ori-capitalize-first ori-word-break title'>{payload.title}</p>
-        }
-        {
-          (payload.subtitle) && (payload.subtitle.trim().length > 0) &&
+        {payload.title && payload.title.trim().length > 0 && (
+          <p className='ori-no-t-mrgn ori-no-b-mrgn ori-font-bold ori-capitalize-first ori-word-break title'>
+            {payload.title}
+          </p>
+        )}
+        {payload.subtitle && payload.subtitle.trim().length > 0 && (
           <p className='ori-b-mrgn-5 ori-no-t-mrgn ori-word-break subtitle'>
             {payload.subtitle}
           </p>
-        }
-        {
-          ((payload.data) && !isEmptyObject(payload.data)) &&
+        )}
+        {payload.data && !isEmptyObject(payload.data) && (
           <div className='ori-pad-10 ori-font-xs ori-border-light ori-border-radius-3 ori-bg-card historyCardContainer'>
             <div className='ori-b-mrgn-5'>
-              <InlineItem title='VC Number' info={payload.data.vc_number} title_bold={true} />
+              <InlineItem
+                title='VC Number'
+                info={payload.data.vc_number}
+                title_bold={true}
+              />
             </div>
-            {
-              this.dataSource.length > 0 &&
+            {this.dataSource.length > 0 && (
               <div className='ori-overflow-auto ori-bg-white ori-pad-5 ori-border-light ori-border-radius-3'>
                 <CustomTable headers={this.headers} data={this.dataSource} />
               </div>
-            }
+            )}
           </div>
-        }
-        {
-          !btn_hidden && (payload.buttons) && (payload.buttons.length > 0) &&
+        )}
+        {!btn_hidden && payload.buttons && payload.buttons.length > 0 && (
           <Buttons
             buttons={payload.buttons}
-            display_count={payload.btnDisplayCount ? payload.btnDisplayCount : default_btn_display_count}
+            display_count={
+              payload.btnDisplayCount
+                ? payload.btnDisplayCount
+                : default_btn_display_count
+            }
             message={message}
             btn_disabled={btn_disabled}
             handleMsgBtnClick={handleMsgBtnClick}
+            showless={showless}
+            showmore={showmore}
           />
-        }
+        )}
       </div>
     )
   }
@@ -103,7 +118,15 @@ RechargeHistory.propTypes = {
   handleMsgBtnClick: PropTypes.func,
   btn_disabled: PropTypes.bool,
   btn_hidden: PropTypes.bool,
-  default_btn_display_count: PropTypes.number
+  default_btn_display_count: PropTypes.number,
+  showmore: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node
+  ]),
+  showless: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node
+  ])
 }
 
 RechargeHistory.defaultProps = {

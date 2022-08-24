@@ -118,7 +118,9 @@ class CarouselWithButtonsBody extends React.PureComponent {
       message,
       btn_hidden,
       default_btn_display_count,
-      payload
+      payload,
+      showmore,
+      showless
     } = this.props
 
     return (
@@ -196,6 +198,8 @@ class CarouselWithButtonsBody extends React.PureComponent {
                       message={message}
                       handleMsgBtnClick={handleMsgBtnClick}
                       btn_disabled={btn_disabled}
+                      showmore={showmore}
+                      showless={showless}
                     />
                   )}
                 </div>
@@ -215,6 +219,8 @@ class CarouselWithButtonsBody extends React.PureComponent {
               message={message}
               btn_disabled={btn_disabled}
               handleMsgBtnClick={handleMsgBtnClick}
+              showmore={showmore}
+              showless={showless}
             />
           </div>
         )}
@@ -232,7 +238,15 @@ CarouselWithButtonsBody.propTypes = {
   display_type: PropTypes.string,
   img_popup_disable: PropTypes.bool,
   default_btn_display_count: PropTypes.number,
-  onImageRedirect: PropTypes.func
+  onImageRedirect: PropTypes.func,
+  showmore: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node
+  ]),
+  showless: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node
+  ])
 }
 
 CarouselWithButtonsBody.defaultProps = {

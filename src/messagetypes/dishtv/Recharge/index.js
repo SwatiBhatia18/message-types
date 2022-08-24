@@ -8,7 +8,9 @@ import Buttons from '../../../components/buttons'
 class Recharge extends React.PureComponent {
   constructor(props) {
     super(props)
-    this.card_data = props.message.payload.data ? this.setCardData(props.message.payload.data) : []
+    this.card_data = props.message.payload.data
+      ? this.setCardData(props.message.payload.data)
+      : []
   }
 
   setCardData = data => {
@@ -31,8 +33,14 @@ class Recharge extends React.PureComponent {
     }
     if (data.PackPeriod) {
       let obj = {
-        title: data.PackPeriod === 12 ? 'Annual Recharge Amount ' : 'Monthly Recharge Amount ',
-        info: Intl.NumberFormat('en-In', { style: 'currency', currency: 'INR' }).format(data.monthly_recharge_amount),
+        title:
+          data.PackPeriod === 12
+            ? 'Annual Recharge Amount '
+            : 'Monthly Recharge Amount ',
+        info: Intl.NumberFormat('en-In', {
+          style: 'currency',
+          currency: 'INR'
+        }).format(data.monthly_recharge_amount),
         style: ''
       }
       card_data.push(obj)
@@ -48,54 +56,71 @@ class Recharge extends React.PureComponent {
     if (data.recharge_amount) {
       let obj = {
         title: 'Amount To Recharge ',
-        info: Intl.NumberFormat('en-In', { style: 'currency', currency: 'INR' }).format(data.recharge_amount),
+        info: Intl.NumberFormat('en-In', {
+          style: 'currency',
+          currency: 'INR'
+        }).format(data.recharge_amount),
         style: ''
       }
       card_data.push(obj)
     }
     return card_data
-  }
+  };
 
   render() {
     const { payload } = this.props.message
-    const { btn_disabled, handleMsgBtnClick, message, btn_hidden, default_btn_display_count } = this.props
+    const {
+      btn_disabled,
+      handleMsgBtnClick,
+      message,
+      btn_hidden,
+      default_btn_display_count,
+      showless,
+      showmore
+    } = this.props
 
     return (
       <div className='ori-mt-rechargeContainer'>
-        {
-          (payload.title) && (payload.title.trim().length > 0) &&
-          <p className='ori-no-t-mrgn ori-no-b-mrgn ori-font-bold ori-capitalize-first ori-word-break title'>{payload.title}</p>
-        }
-        {
-          (payload.subtitle) && (payload.subtitle.trim().length > 0) &&
+        {payload.title && payload.title.trim().length > 0 && (
+          <p className='ori-no-t-mrgn ori-no-b-mrgn ori-font-bold ori-capitalize-first ori-word-break title'>
+            {payload.title}
+          </p>
+        )}
+        {payload.subtitle && payload.subtitle.trim().length > 0 && (
           <p className='ori-b-mrgn-5 ori-no-t-mrgn ori-word-break subtitle'>
             {payload.subtitle}
           </p>
-        }
-        {
-          this.card_data.length > 0 &&
+        )}
+        {this.card_data.length > 0 && (
           <div className='ori-pad-10 ori-bg-card ori-font-xs ori-border-radius-3 ori-border-light'>
-            {
-              this.card_data.map((item, index) => {
-                return (
-                  <div className={' ' + item.style} key={index}>
-                    <InlineItem title={item.title} info={item.info} right_full_flex={true} />
-                  </div>
-                )
-              })
-            }
+            {this.card_data.map((item, index) => {
+              return (
+                <div className={' ' + item.style} key={index}>
+                  <InlineItem
+                    title={item.title}
+                    info={item.info}
+                    right_full_flex={true}
+                  />
+                </div>
+              )
+            })}
           </div>
-        }
-        {
-          !btn_hidden && (payload.buttons) && (payload.buttons.length > 0) &&
-          <Buttons 
-            buttons={payload.buttons} 
-            display_count={payload.btnDisplayCount ? payload.btnDisplayCount : default_btn_display_count}
-            message={message} 
-            btn_disabled={btn_disabled} 
-            handleMsgBtnClick={handleMsgBtnClick} 
-            />
-        }
+        )}
+        {!btn_hidden && payload.buttons && payload.buttons.length > 0 && (
+          <Buttons
+            buttons={payload.buttons}
+            display_count={
+              payload.btnDisplayCount
+                ? payload.btnDisplayCount
+                : default_btn_display_count
+            }
+            message={message}
+            btn_disabled={btn_disabled}
+            handleMsgBtnClick={handleMsgBtnClick}
+            showless={showless}
+            showmore={showmore}
+          />
+        )}
       </div>
     )
   }
@@ -106,7 +131,15 @@ Recharge.propTypes = {
   handleMsgBtnClick: PropTypes.func,
   btn_disabled: PropTypes.bool,
   btn_hidden: PropTypes.bool,
-  default_btn_display_count: PropTypes.number
+  default_btn_display_count: PropTypes.number,
+  showmore: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node
+  ]),
+  showless: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node
+  ])
 }
 
 Recharge.defaultProps = {

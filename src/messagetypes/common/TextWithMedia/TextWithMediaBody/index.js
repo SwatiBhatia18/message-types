@@ -41,7 +41,9 @@ class TextWithMediaBody extends React.PureComponent {
       btn_hidden,
       default_btn_display_count,
       img_popup_disable,
-      payload
+      payload,
+      showless,
+      showmore
     } = this.props
     const { selectedIndex, show_overlay } = this.state
 
@@ -152,6 +154,8 @@ class TextWithMediaBody extends React.PureComponent {
             message={message}
             btn_disabled={btn_disabled}
             handleMsgBtnClick={handleMsgBtnClick}
+            showmore={showmore}
+            showless={showless}
           />
         )}
         {payload.footer && (
@@ -170,7 +174,15 @@ TextWithMediaBody.propTypes = {
   btn_disabled: PropTypes.bool,
   btn_hidden: PropTypes.bool,
   default_btn_display_count: PropTypes.number,
-  onImageRedirect: PropTypes.func
+  onImageRedirect: PropTypes.func,
+  showmore: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node
+  ]),
+  showless: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node
+  ])
 }
 
 TextWithMediaBody.defaultProps = {
