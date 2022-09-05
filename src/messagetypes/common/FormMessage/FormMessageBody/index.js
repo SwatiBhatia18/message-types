@@ -20,13 +20,19 @@ class FormMessageBody extends React.PureComponent {
   }
 
   handleDatePickerChange = (name, value) => {
-    this.setState(prevState => ({
-      error: false,
-      selectedValues: {
-        ...prevState.selectedValues,
-        [name]: value || undefined
+    const { payload } = this.props
+    this.setState(
+      prevState => ({
+        error: false,
+        selectedValues: {
+          ...prevState.selectedValues,
+          [name]: value || undefined
+        }
+      }),
+      () => {
+        if (payload.autoSubmit) this.handleSubmit()
       }
-    }))
+    )
   }
 
   // handleChange = e => {
@@ -39,18 +45,22 @@ class FormMessageBody extends React.PureComponent {
   //       }
   //     }))
   //   }
-  // };
+  // }
 
   handleFormChange = changedValue => {
     const { payload } = this.props
-    this.setState(prevState => ({
-      error: false,
-      selectedValues: {
-        ...prevState.selectedValues,
-        ...changedValue
+    this.setState(
+      prevState => ({
+        error: false,
+        selectedValues: {
+          ...prevState.selectedValues,
+          ...changedValue
+        }
+      }),
+      () => {
+        if (payload.autoSubmit) this.handleSubmit()
       }
-    }))
-    if (payload.autoSubmit) this.handleSubmit()
+    )
   }
 
   handleSubmit = () => {
