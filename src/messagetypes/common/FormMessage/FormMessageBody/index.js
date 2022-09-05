@@ -27,19 +27,19 @@ class FormMessageBody extends React.PureComponent {
         [name]: value || undefined
       }
     }))
-  };
+  }
 
-  handleChange = e => {
-    if (e.target.name) {
-      this.setState(prevState => ({
-        error: false,
-        selectedValues: {
-          ...prevState.selectedValues,
-          [e.target.name]: e.target.value
-        }
-      }))
-    }
-  };
+  // handleChange = e => {
+  //   if (e.target.name) {
+  //     this.setState(prevState => ({
+  //       error: false,
+  //       selectedValues: {
+  //         ...prevState.selectedValues,
+  //         [e.target.name]: e.target.value
+  //       }
+  //     }))
+  //   }
+  // };
 
   handleFormChange = changedValue => {
     const { payload } = this.props
@@ -51,7 +51,7 @@ class FormMessageBody extends React.PureComponent {
       }
     }))
     if (payload.autoSubmit) this.handleSubmit()
-  };
+  }
 
   handleSubmit = () => {
     const { payload } = this.props
@@ -167,7 +167,11 @@ class FormMessageBody extends React.PureComponent {
                         {...item.props}
                         disabled={disabled}
                         value={this.state.selectedValues[item.props.name]}
-                        onChange={this.handleChange}
+                        onChange={e =>
+                          this.handleFormChange({
+                            [item.props.name]: e.target.value
+                          })
+                        }
                       />
                     </div>
                   )
@@ -220,14 +224,16 @@ class FormMessageBody extends React.PureComponent {
                 Required field are missing
               </p>
             )}
-            <Button
-              size='small'
-              className='ori-btn-submit'
-              disabled={disabled}
-              onClick={this.handleSubmit}
-            >
-              {payload.submitBtnText ? payload.submitBtnText : 'Submit'}
-            </Button>
+            {!payload.autoSubmit && (
+              <Button
+                size='small'
+                className='ori-btn-submit'
+                disabled={disabled}
+                onClick={this.handleSubmit}
+              >
+                {payload.submitBtnText ? payload.submitBtnText : 'Submit'}
+              </Button>
+            )}
           </React.Fragment>
         )}
         {!btn_hidden && payload.buttons && payload.buttons.length > 0 && (
