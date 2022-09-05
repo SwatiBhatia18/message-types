@@ -27,7 +27,7 @@ class FormMessageBody extends React.PureComponent {
         [name]: value || undefined
       }
     }))
-  }
+  };
 
   handleChange = e => {
     if (e.target.name) {
@@ -39,9 +39,10 @@ class FormMessageBody extends React.PureComponent {
         }
       }))
     }
-  }
+  };
 
   handleFormChange = changedValue => {
+    const { payload } = this.props
     this.setState(prevState => ({
       error: false,
       selectedValues: {
@@ -49,7 +50,8 @@ class FormMessageBody extends React.PureComponent {
         ...changedValue
       }
     }))
-  }
+    if (payload.autoSubmit) this.handleSubmit()
+  };
 
   handleSubmit = () => {
     const { payload } = this.props
@@ -60,9 +62,13 @@ class FormMessageBody extends React.PureComponent {
       if (selectedValues[item.props.name] !== undefined) {
         const obj = { label: item.displayLabel }
         if (item.type === 'datePicker') {
-          obj.value = selectedValues[item.props.name].format(item.props.format || 'DD-MMM-YYYY')
+          obj.value = selectedValues[item.props.name].format(
+            item.props.format || 'DD-MMM-YYYY'
+          )
         } else if (item.type === 'radioGroup' || item.type === 'select') {
-          const option = item.props.options.find(opt => opt.value === selectedValues[item.props.name])
+          const option = item.props.options.find(
+            opt => opt.value === selectedValues[item.props.name]
+          )
           obj.value = option.label
         } else {
           obj.value = selectedValues[item.props.name]
@@ -81,7 +87,7 @@ class FormMessageBody extends React.PureComponent {
       }
       this.props.onSubmit(data)
     }
-  }
+  };
 
   render() {
     const {
@@ -112,114 +118,108 @@ class FormMessageBody extends React.PureComponent {
             isHtml={payload.containsHtmlSubtitle}
           />
         )}
-        {
-          payload.formData && payload.formData.length > 0 &&
+        {payload.formData && payload.formData.length > 0 && (
           <React.Fragment>
-            {
-              payload.formData.map((item, index) => {
-                switch (item.type) {
-                  case 'datePicker':
-                    return (
-                      <div className='ori-b-pad-5' key={index}>
-                        {
-                          item.title &&
-                          <p>
-                            {
-                              item.props.required &&
-                              <span>*</span>
-                            }
-                            {item.title}
-                          </p>
+            {payload.formData.map((item, index) => {
+              switch (item.type) {
+                case 'datePicker':
+                  return (
+                    <div className='ori-b-pad-5' key={index}>
+                      {item.title && (
+                        <p>
+                          {item.props.required && <span>*</span>}
+                          {item.title}
+                        </p>
+                      )}
+                      <DatePicker
+                        size='small'
+                        className='ori-full-width'
+                        style={{ maxWidth: '150px' }}
+                        disabledDate={c =>
+                          c &&
+                          item.disabledTimestamp &&
+                          c.valueOf() < item.disabledTimestamp
                         }
-                        <DatePicker
-                          size='small'
-                          className='ori-full-width'
-                          style={{ maxWidth: '150px' }}
-                          disabledDate={c => c && item.disabledTimestamp && (c.valueOf() < item.disabledTimestamp)}
-                          {...item.props}
-                          disabled={disabled}
-                          value={this.state.selectedValues[item.props.name]}
-                          onChange={(...arg) => this.handleDatePickerChange(item.props.name, ...arg)}
-                          inputReadOnly
-                        />
-                      </div>
-                    )
-                  case 'radioGroup':
-                    return (
-                      <div className='ori-b-pad-5' key={index}>
-                        {
-                          item.title &&
-                          <p>
-                            {
-                              item.props.required &&
-                              <span>*</span>
-                            }
-                            {item.title}
-                          </p>
+                        {...item.props}
+                        disabled={disabled}
+                        value={this.state.selectedValues[item.props.name]}
+                        onChange={(...arg) =>
+                          this.handleDatePickerChange(item.props.name, ...arg)
                         }
-                        <Radio.Group
-                          size='small'
-                          className={`ori-full-width ${item.vertical ? 'ori-flex-column' : ''}`}
-                          {...item.props}
-                          disabled={disabled}
-                          value={this.state.selectedValues[item.props.name]}
-                          onChange={this.handleChange}
-                        />
-                      </div>
-                    )
-                  case 'select':
-                    return (
-                      <div className='ori-b-pad-5' key={index}>
-                        {
-                          item.title &&
-                            <p>
-                              {
-                                item.props.required &&
-                                <span>*</span>
-                              }
-                              {item.title}
-                            </p>
+                        inputReadOnly
+                      />
+                    </div>
+                  )
+                case 'radioGroup':
+                  return (
+                    <div className='ori-b-pad-5' key={index}>
+                      {item.title && (
+                        <p>
+                          {item.props.required && <span>*</span>}
+                          {item.title}
+                        </p>
+                      )}
+                      <Radio.Group
+                        size='small'
+                        className={`ori-full-width ${
+                          item.vertical ? 'ori-flex-column' : ''
+                        }`}
+                        {...item.props}
+                        disabled={disabled}
+                        value={this.state.selectedValues[item.props.name]}
+                        onChange={this.handleChange}
+                      />
+                    </div>
+                  )
+                case 'select':
+                  return (
+                    <div className='ori-b-pad-5' key={index}>
+                      {item.title && (
+                        <p>
+                          {item.props.required && <span>*</span>}
+                          {item.title}
+                        </p>
+                      )}
+                      <Select
+                        size='small'
+                        className='ori-full-width'
+                        {...item.props}
+                        disabled={disabled}
+                        value={this.state.selectedValues[item.props.name]}
+                        onChange={value =>
+                          this.handleFormChange({ [item.props.name]: value })
                         }
-                        <Select
-                          size='small'
-                          className='ori-full-width'
-                          {...item.props}
-                          disabled={disabled}
-                          value={this.state.selectedValues[item.props.name]}
-                          onChange={value => this.handleFormChange({[item.props.name]: value})}
-                        />
-                      </div>
-                    )
-                  case 'rating':
-                    return (
-                      <div className='ori-b-pad-5' key={index}>
-                        {
-                          item.title &&
-                          <p>
-                            {
-                              item.props.required &&
-                              <span>*</span>
-                            }
-                            {item.title}
-                          </p>
+                      />
+                    </div>
+                  )
+                case 'rating':
+                  return (
+                    <div className='ori-b-pad-5' key={index}>
+                      {item.title && (
+                        <p>
+                          {item.props.required && <span>*</span>}
+                          {item.title}
+                        </p>
+                      )}
+                      <Rate
+                        {...item.props}
+                        disabled={disabled}
+                        value={this.state.selectedValues[item.props.name]}
+                        onChange={value =>
+                          this.handleFormChange({ [item.props.name]: value })
                         }
-                        <Rate
-                          {...item.props}
-                          disabled={disabled}
-                          value={this.state.selectedValues[item.props.name]}
-                          onChange={value => this.handleFormChange({[item.props.name]: value})}
-                        />
-                      </div>
-                    )
-                  default:
-                    return null
-                }
-              })
-            }
-            {
-              this.state.error &&
-              <p className='ori-font-xs ori-font-danger'>Required field are missing</p>
-            }
+                      />
+                    </div>
+                  )
+                default:
+                  return null
+              }
+            })}
+            {this.state.error && (
+              <p className='ori-font-xs ori-font-danger'>
+                Required field are missing
+              </p>
+            )}
             <Button
               size='small'
               className='ori-btn-submit'
@@ -229,19 +229,22 @@ class FormMessageBody extends React.PureComponent {
               {payload.submitBtnText ? payload.submitBtnText : 'Submit'}
             </Button>
           </React.Fragment>
-        }
-        {
-          !btn_hidden && payload.buttons && payload.buttons.length > 0 &&
+        )}
+        {!btn_hidden && payload.buttons && payload.buttons.length > 0 && (
           <Buttons
             buttons={payload.buttons}
-            display_count={payload.btnDisplayCount ? payload.btnDisplayCount : default_btn_display_count}
+            display_count={
+              payload.btnDisplayCount
+                ? payload.btnDisplayCount
+                : default_btn_display_count
+            }
             message={message}
             btn_disabled={btn_disabled}
             handleMsgBtnClick={handleMsgBtnClick}
             showmore={showmore}
             showless={showless}
           />
-        }
+        )}
       </div>
     )
   }
