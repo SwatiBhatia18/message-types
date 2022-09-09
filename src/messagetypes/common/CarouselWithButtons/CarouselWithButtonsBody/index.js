@@ -14,7 +14,7 @@ class CarouselWithButtonsBody extends React.PureComponent {
     show_overlay: false,
     selected_carousel_item: null,
     selected_option_indexes: {}
-  }
+  };
 
   componentDidMount() {
     const { payload } = this.props
@@ -34,7 +34,7 @@ class CarouselWithButtonsBody extends React.PureComponent {
         [index]: !prev.selected_option_indexes[index]
       }
     }))
-  }
+  };
 
   handleSubmitSelectedOptions = () => {
     const { payload, message, onSubmit } = this.props
@@ -44,7 +44,11 @@ class CarouselWithButtonsBody extends React.PureComponent {
       let updatedMessage = JSON.parse(JSON.stringify(message))
       console.log('updatedMessage', message)
       payload.options.forEach((item, index) => {
-        if (updatedMessage.payload[0]) { updatedMessage.payload[0].options[index].selected = !!selected_option_indexes[index] } else { updatedMessage.payload.options[index].selected = !!selected_option_indexes[index] }
+        if (updatedMessage.payload[0]) {
+          updatedMessage.payload[0].options[index].selected = !!selected_option_indexes[index]
+        } else {
+          updatedMessage.payload.options[index].selected = !!selected_option_indexes[index]
+        }
         if (selected_option_indexes[index]) {
           selectedData.push(item)
         }
@@ -237,11 +241,11 @@ class CarouselWithButtonsBody extends React.PureComponent {
                   {payload.selectable && (
                     <Button
                       size='small'
-                      className={
-                        carousel_item.selected
+                      className={`ori-btn-carousel-select-option ${
+                        selected_option_indexes[index]
                           ? 'ori-btn-carousel-item-selected'
                           : 'ori-btn-carousel-item'
-                      }
+                      }`}
                       btn_disabled={btn_disabled}
                       onClick={() => this.handleOptionSelection(index)}
                     >
