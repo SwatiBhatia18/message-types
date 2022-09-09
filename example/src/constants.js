@@ -1225,6 +1225,120 @@ export const carouselWithButtonsMessage = {
   ]
 };
 
+export const carouselMenu = {
+  sender: "chatbot",
+  type: "checkbox",
+  inputLock: false,
+  inputLockMessage: "",
+  quickReplies: [],
+  skipLS: false,
+  send_variable_to_apiai: false,
+  sendVariableToLS: false,
+  variable_name: "",
+  delay: 0,
+  payload: [
+    {
+      title: "carousel title",
+      subtitle: "carousel subtitle",
+      selectable: true,
+      options: [
+        {
+          title: "option1 carousel title",
+          subtitle: "option1 carousel subtitle",
+          mediaType: "image",
+          imageRedirectUrl: "https://oriserve.com/",
+          mediaUrl: "http://via.placeholder.com/150x450",
+          selected: true,
+          buttons: [
+            {
+              text: "Google",
+              url: "http://www.google.com",
+              postbackRes: ""
+            },
+            {
+              text: "select option 1.1",
+              url: "",
+              postbackRes: "opt1.1"
+            },
+          ]
+        },
+        {
+          title: "option2 carousel title",
+          subtitle: "option2 carousel subtitle",
+          mediaType: "image",
+          imageRedirectUrl: "https://oriserve.com/",
+          mediaUrl: "http://via.placeholder.com/200x100",
+          buttons: [
+            {
+              text: "Google",
+              url: "http://www.google.com",
+              postbackRes: ""
+            },
+            {
+              text: "select option 2.1",
+              url: "",
+              postbackRes: "opt2.1"
+            },
+            {
+              text: "select option 2.2",
+              url: "",
+              postbackRes: "opt2.2"
+            },
+            {
+              text: "select option 2.3",
+              url: "",
+              postbackRes: "hi"
+            }
+          ]
+        },
+        {
+          title: "option3 carousel title",
+          subtitle: "option3 carousel subtitle",
+          mediaType: "image",
+          imageRedirectUrl: "https://oriserve.com/",
+          mediaUrl: "http://via.placeholder.com/200x100",
+          buttons: [
+            {
+              text: "Google",
+              url: "http://www.google.com",
+              postbackRes: ""
+            },
+            {
+              text: "select option 3.1",
+              url: "",
+              postbackRes: "opt3.1"
+            },
+            {
+              text: "select option 3.2",
+              url: "",
+              postbackRes: "opt3.2"
+            },
+            {
+              text: "select option 3.3",
+              url: "",
+              postbackRes: "hi"
+            }
+          ]
+        }
+      ],
+      buttons: [
+        {
+          text: "main button 1",
+          url: "http://www.google.com",
+          b_id: "",
+          postbackRes: ""
+        },
+        {
+          text: "main button 3",
+          url: "",
+          b_id: "",
+          postbackRes: ""
+        }
+      ]
+    }
+  ]
+};
+
 export const message = {
   NLPSnapshot: {
     entitySnapshot: [

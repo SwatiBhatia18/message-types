@@ -18,6 +18,7 @@ import {
   textWithMediaMessage,
   checkboxMessage,
   carouselWithButtonsMessage,
+  carouselMenu,
   seatMapMessage,
   message
 } from "./constants";
@@ -26,7 +27,7 @@ export default class App extends Component {
   render() {
     return (
       <div className="ori-appContainer">
-        <OverflowWrapper enabled>
+        {/* <OverflowWrapper enabled>
           <TextMessage
             message={textMessage}
             show_nlp_snapshot={false}
@@ -35,19 +36,22 @@ export default class App extends Component {
         </OverflowWrapper>
         <ListMessage message={message} />
         <TextWithMedia message={textWithMediaMessage} preferLang="hindi" />
-        <CheckboxWithMedia message={checkboxMessage} preferLang="hindi"/>
+        <CheckboxWithMedia message={checkboxMessage} preferLang="hindi"/> */}
         {/* <DishtvRecharge message={message} /> */}
         {/* <DishtvRechargeDetails message={message} /> */}
         {/* <UploadFile message={message} /> */}
         {/* <Offers message={message} handleOfferSelection={()=>{}} btn_disabled /> */}
         {/* <RechargeHistory message={message} /> */}
-        <CarouselWithButtons
+        {/* <CarouselWithButtons
           message={carouselWithButtonsMessage}
           img_popup_disable={false}
           preferLang="hindi"
+        /> */}
+        <CarouselWithButtons
+          message={carouselMenu}
         />
-        <FormMessage message={formMessage} preferLang="hindi" />
-        <SeatMap message={seatMapMessage} preferLang="hindi" />
+        {/* <FormMessage message={formMessage} preferLang="hindi" /> */}
+        {/* <SeatMap message={seatMapMessage} preferLang="hindi" /> */}
       </div>
     );
   }

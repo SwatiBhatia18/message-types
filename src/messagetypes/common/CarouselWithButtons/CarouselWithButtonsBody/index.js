@@ -12,15 +12,61 @@ import HtmlText from '../../../../components/HtmlText'
 class CarouselWithButtonsBody extends React.PureComponent {
   state = {
     show_overlay: false,
-    selected_carousel_item: null
-  };
+    selected_carousel_item: null,
+    selected_option_indexes: {}
+  }
+
+  componentDidMount() {
+    const { payload } = this.props
+    if (payload.selectable) {
+      const indexes = {}
+      payload.options.forEach((item, index) => {
+        indexes[index] = !!item.selected
+      })
+      this.setState({ selected_option_indexes: indexes })
+    }
+  }
+
+  handleOptionSelection = index => {
+    this.setState(prev => ({
+      selected_option_indexes: {
+        ...prev.selected_option_indexes,
+        [index]: !prev.selected_option_indexes[index]
+      }
+    }))
+  }
+
+  handleSubmitSelectedOptions = () => {
+    const { payload, message, onSubmit } = this.props
+    const { selected_option_indexes } = this.state
+    if (payload.selectable) {
+      let selectedData = []
+      let updatedMessage = JSON.parse(JSON.stringify(message))
+      console.log('updatedMessage', message)
+      payload.options.forEach((item, index) => {
+        if (updatedMessage.payload[0]) { updatedMessage.payload[0].options[index].selected = !!selected_option_indexes[index] } else { updatedMessage.payload.options[index].selected = !!selected_option_indexes[index] }
+        if (selected_option_indexes[index]) {
+          selectedData.push(item)
+        }
+      })
+      if (selectedData.length > 0) {
+        const data = {
+          selectedData,
+          updatedMessage,
+          relayData: payload.relayData,
+          list: [] // discuss and define list label and value
+        }
+        onSubmit(data)
+      }
+    }
+  }
 
   closeOverlay = () => {
     this.setState({
       show_overlay: false,
       selected_carousel_item: null
     })
-  };
+  }
 
   showCarouselItem = selected_carousel_item => {
     const { img_popup_disable, onImageRedirect } = this.props
@@ -38,7 +84,7 @@ class CarouselWithButtonsBody extends React.PureComponent {
         selected_carousel_item
       })
     }
-  };
+  }
 
   renderPreviewOverlay = () => {
     const { show_overlay, selected_carousel_item } = this.state
@@ -75,7 +121,7 @@ class CarouselWithButtonsBody extends React.PureComponent {
         </div>
       )
     }
-  };
+  }
 
   renderCarouselImage = carousel_item => {
     const { display_type } = this.props
@@ -109,7 +155,7 @@ class CarouselWithButtonsBody extends React.PureComponent {
         onClick={() => this.showCarouselItem(carousel_item)}
       />
     )
-  };
+  }
 
   render() {
     const {
@@ -122,6 +168,7 @@ class CarouselWithButtonsBody extends React.PureComponent {
       showmore,
       showless
     } = this.props
+    const { selected_option_indexes } = this.state
 
     return (
       <div className='ori-relative ori-word-break ori-mt-carouselWithButtonsContainer'>
@@ -148,7 +195,9 @@ class CarouselWithButtonsBody extends React.PureComponent {
             {payload.options.map((carousel_item, index) => {
               return (
                 <div
-                  className={`carouselItem ${styles.carouselItem}`}
+                  className={`carouselItem ${styles.carouselItem} ${
+                    selected_option_indexes[index] ? 'carouselItemSelected' : ''
+                  }`}
                   key={index}
                 >
                   {carousel_item.mediaType &&
@@ -185,6 +234,20 @@ class CarouselWithButtonsBody extends React.PureComponent {
                       textClass='ori-no-b-mrgn ori-lr-pad-10'
                     />
                   )}
+                  {payload.selectable && (
+                    <Button
+                      size='small'
+                      className={
+                        carousel_item.selected
+                          ? 'ori-btn-carousel-item-selected'
+                          : 'ori-btn-carousel-item'
+                      }
+                      btn_disabled={btn_disabled}
+                      onClick={() => this.handleOptionSelection(index)}
+                    >
+                      {selected_option_indexes[index] ? 'Selected' : 'Select'}
+                    </Button>
+                  )}
                   {carousel_item.buttons &&
                     carousel_item.buttons.length > 0 && (
                     <Buttons
@@ -206,6 +269,16 @@ class CarouselWithButtonsBody extends React.PureComponent {
               )
             })}
           </Carousel>
+        )}
+        {payload.selectable && (
+          <Button
+            size='small'
+            className='ori-carousel-btn-submit'
+            disabled={btn_disabled}
+            onClick={this.handleSubmitSelectedOptions}
+          >
+            {payload.submitText ? payload.submitText : 'Submit'}
+          </Button>
         )}
         {!btn_hidden && payload.buttons && payload.buttons.length > 0 && (
           <div className='ori-t-pad-5'>
@@ -239,6 +312,7 @@ CarouselWithButtonsBody.propTypes = {
   img_popup_disable: PropTypes.bool,
   default_btn_display_count: PropTypes.number,
   onImageRedirect: PropTypes.func,
+  onSubmit: PropTypes.func,
   showmore: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node
