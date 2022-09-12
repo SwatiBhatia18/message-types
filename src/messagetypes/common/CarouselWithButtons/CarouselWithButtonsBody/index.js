@@ -41,6 +41,7 @@ class CarouselWithButtonsBody extends React.PureComponent {
     const { selected_option_indexes } = this.state
     if (payload.selectable) {
       let selectedData = []
+      let text = ''
       let updatedMessage = JSON.parse(JSON.stringify(message))
       console.log('updatedMessage', message)
       payload.options.forEach((item, index) => {
@@ -51,14 +52,17 @@ class CarouselWithButtonsBody extends React.PureComponent {
         }
         if (selected_option_indexes[index]) {
           selectedData.push(item)
+          let html = `<div class='ori-flex-row ori-pad-10'><img class='ori-box-60 ori-r-mrgn-10' src='${item.mediaUrl}' alt='item' /> <div class=''><p class='ori-font-md ori-font-bold'>${item.title}</p> <p class='ori-font-light'>${item.subtitle}</p></div> </div>`
+          text = `${text} ${html}`
         }
       })
+
       if (selectedData.length > 0) {
         const data = {
           selectedData,
           updatedMessage,
           relayData: payload.relayData,
-          list: [] // discuss and define list label and value
+          text
         }
         onSubmit(data)
       }
