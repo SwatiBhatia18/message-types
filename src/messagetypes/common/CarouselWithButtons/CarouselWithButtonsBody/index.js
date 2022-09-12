@@ -52,7 +52,7 @@ class CarouselWithButtonsBody extends React.PureComponent {
         }
         if (selected_option_indexes[index]) {
           selectedData.push(item)
-          let html = `<div class='ori-flex-row'>
+          let html = `<div class='ori-flex-row ori-pad-5'>
                         <img class='ori-box-70 ori-r-mrgn-10' src='${item.mediaUrl}' alt='item' />
                         <div class=''>
                           <p class='ori-font-bold'>${item.title}</p>
