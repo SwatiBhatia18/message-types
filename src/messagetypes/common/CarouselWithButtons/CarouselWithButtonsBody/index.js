@@ -28,11 +28,12 @@ class CarouselWithButtonsBody extends React.PureComponent {
   }
 
   handleOptionSelection = index => {
+    const { payload } = this.props
     this.setState(prev => ({
-      selected_option_indexes: {
+      selected_option_indexes: payload.multiSelect ? {
         ...prev.selected_option_indexes,
         [index]: !prev.selected_option_indexes[index]
-      }
+      } : { [index]: !prev.selected_option_indexes[index] }
     }))
   };
 
@@ -43,7 +44,6 @@ class CarouselWithButtonsBody extends React.PureComponent {
       let selectedData = []
       let text = ''
       let updatedMessage = JSON.parse(JSON.stringify(message))
-      console.log('updatedMessage', message)
       payload.options.forEach((item, index) => {
         if (updatedMessage.payload[0]) {
           updatedMessage.payload[0].options[index].selected = !!selected_option_indexes[index]
