@@ -27,16 +27,16 @@ export default class App extends Component {
   render() {
     return (
       <div className="ori-appContainer">
-        {/* <OverflowWrapper enabled>
+        <OverflowWrapper enabled>
           <TextMessage
             message={textMessage}
             show_nlp_snapshot={false}
             preferLang="hindi"
           />
         </OverflowWrapper>
-        <ListMessage message={message} />
-        <TextWithMedia message={textWithMediaMessage} preferLang="hindi" />
-        <CheckboxWithMedia message={checkboxMessage} preferLang="hindi"/> */}
+        {/* <ListMessage message={message} /> */}
+        {/* <TextWithMedia message={textWithMediaMessage} preferLang="hindi" /> */}
+        {/* <CheckboxWithMedia message={checkboxMessage} preferLang="hindi"/> */}
         {/* <DishtvRecharge message={message} /> */}
         {/* <DishtvRechargeDetails message={message} /> */}
         {/* <UploadFile message={message} /> */}

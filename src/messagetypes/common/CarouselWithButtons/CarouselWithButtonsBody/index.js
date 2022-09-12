@@ -52,8 +52,14 @@ class CarouselWithButtonsBody extends React.PureComponent {
         }
         if (selected_option_indexes[index]) {
           selectedData.push(item)
-          let html = `<div class='ori-flex-row ori-pad-10'><img class='ori-box-60 ori-r-mrgn-10' src='${item.mediaUrl}' alt='item' /> <div class=''><p class='ori-font-md ori-font-bold'>${item.title}</p> <p class='ori-font-light'>${item.subtitle}</p></div> </div>`
-          text = `${text} ${html}`
+          let html = `<div class='ori-flex-row'>
+                        <img class='ori-box-70 ori-r-mrgn-10' src='${item.mediaUrl}' alt='item' />
+                        <div class=''>
+                          <p class='ori-font-bold'>${item.title}</p>
+                          <p class='ori-font-light'>${item.subtitle}</p>
+                        </div>
+                      </div>`
+          text = `${text}${html}`
         }
       })
 

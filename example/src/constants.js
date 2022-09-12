@@ -8,10 +8,11 @@ export const textMessage = {
   sendVariableToLS: false,
   variable_name: "",
   delay: 0,
+  containsHTML: true,
   payload: [
     {
       text:
-        "Information about Ashoka comes from his own inscriptions; other inscriptions that mention him or are possibly from his reign; and ancient literature, especially Buddhist texts.[14] These sources often contradict each other, although various historians have attempted to correlate their testimony.[15] Plenty is known or not known, and so, for example, while Ashoka is often attributed with building many hospitals during his time, there is no clear evidence any hospitals existed in ancient India during the 3rd century BC or that Ashoka was responsible for commissioning the construction of any"
+        "<p class='ori-font-bold'>Information about Ashoka comes from his own inscriptions </p><p>other inscriptions that mention him or are possibly from his reign; and ancient literature, especially Buddhist texts.[14] These sources often contradict each other, although various historians have attempted to correlate their testimony.[15] Plenty is known or not known, and so, for example, while Ashoka is often attributed with building many hospitals during his time, there is no clear evidence any hospitals existed in ancient India during the 3rd century BC or that Ashoka was responsible for commissioning the construction of any</p>"
     },
     {
       lang: "hindi",
