@@ -60,11 +60,11 @@ class CarouselWithButtonsBody extends React.PureComponent {
       if (selectedData.length > 0) {
         const data = {
           selectedData,
-          updatedMessage,
           relayData: payload.relayData,
-          text
+          text,
+          containsHTML: true
         }
-        onSubmit(data)
+        onSubmit(data, updatedMessage)
       }
     }
   }
