@@ -238,14 +238,14 @@ class CarouselWithButtonsBody extends React.PureComponent {
                     <HtmlText
                       text={carousel_item.title}
                       isHtml={carousel_item.containsHtmlTitle}
-                      textClass='ori-t-mrgn-3 ori-no-b-mrgn ori-font-bold ori-lr-pad-10 ori-word-wrap ori-word-break ori-mt-title'
+                      textClass={`ori-t-mrgn-3 ori-no-b-mrgn ori-font-bold ori-lr-pad-10 ori-word-wrap ori-word-break ori-mt-title ${payload.selectable ? 'ori-carousel-selectable-title' : 'ori-carousel-title'}`}
                     />
                   )}
                   {carousel_item.subtitle && (
                     <HtmlText
                       text={carousel_item.subtitle}
                       isHtml={carousel_item.containsHtmlSubtitle}
-                      textClass='ori-no-b-mrgn ori-lr-pad-10'
+                      textClass={`ori-no-b-mrgn ori-lr-pad-10 ${payload.selectable ? 'ori-carousel-selectable-subtitle' : 'ori-carousel-subtitle'}`}
                     />
                   )}
                   {payload.selectable && (
@@ -265,7 +265,7 @@ class CarouselWithButtonsBody extends React.PureComponent {
                   {carousel_item.buttons &&
                     carousel_item.buttons.length > 0 && (
                     <Buttons
-                      className='ori-lr-pad-10'
+                      // className='ori-lr-pad-10'
                       buttons={carousel_item.buttons}
                       display_count={
                         carousel_item.btnDisplayCount

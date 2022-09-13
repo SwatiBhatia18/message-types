@@ -42,7 +42,7 @@ class Buttons extends React.PureComponent {
     const { display_buttons_count, show_all_buttons } = this.state
     return (
       <span
-        className={`${styles.buttonsContainer} ${className} buttonsContainer`}
+        className={`${className} buttonsContainer`}
       >
         {buttons.map((btn, index) => {
           if (index < display_buttons_count) {
@@ -50,12 +50,12 @@ class Buttons extends React.PureComponent {
               <Button
                 key={index}
                 size="small"
-                className={`ori-b-mrgn-5 ${
+                className={`ori-mrgn-5 ${
                   btn.displayType === 'paragraph'
                     ? 'ori-btn-paragraph'
                     : btn.displayType === 'secondary'
-                      ? 'ori-r-mrgn-5 ori-btn-secondary'
-                      : 'ori-r-mrgn-5 ori-btn-bubble-inner'
+                      ? 'ori-btn-secondary'
+                      : 'ori-btn-bubble-inner'
                 } ${styles.button}`}
                 block={btn.displayType === 'paragraph'}
                 disabled={btn_disabled || btn.disabled}
@@ -69,7 +69,7 @@ class Buttons extends React.PureComponent {
         {!show_all_buttons && buttons.length > display_buttons_count && (
           <Button
             size="small"
-            className={`ori-b-mrgn-5 ori-r-mrgn-5 ori-btn-bubble-inner ori-btn-showmore ${styles.button}`}
+            className={`ori-mrgn-5 ori-btn-bubble-inner ori-btn-showmore ${styles.button}`}
             onClick={this.showAllButtons}
           >
             {showmore}
@@ -78,7 +78,7 @@ class Buttons extends React.PureComponent {
         {show_all_buttons && (
           <Button
             size="small"
-            className={`ori-b-mrgn-5 ori-r-mrgn-5 ori-btn-bubble-inner ori-btn-showless ${styles.button}`}
+            className={`ori-mrgn-5 ori-btn-bubble-inner ori-btn-showless ${styles.button}`}
             onClick={this.showLessButtons}
           >
             {showless}
