@@ -50,7 +50,7 @@ class Buttons extends React.PureComponent {
               <Button
                 key={index}
                 size="small"
-                className={`ori-mrgn-5 ${
+                className={`${
                   btn.displayType === 'paragraph'
                     ? 'ori-btn-paragraph'
                     : btn.displayType === 'secondary'
@@ -69,7 +69,7 @@ class Buttons extends React.PureComponent {
         {!show_all_buttons && buttons.length > display_buttons_count && (
           <Button
             size="small"
-            className={`ori-mrgn-5 ori-btn-bubble-inner ori-btn-showmore ${styles.button}`}
+            className={`ori-btn-bubble-inner ori-btn-showmore ${styles.button}`}
             onClick={this.showAllButtons}
           >
             {showmore}
@@ -78,7 +78,7 @@ class Buttons extends React.PureComponent {
         {show_all_buttons && (
           <Button
             size="small"
-            className={`ori-mrgn-5 ori-btn-bubble-inner ori-btn-showless ${styles.button}`}
+            className={`ori-btn-bubble-inner ori-btn-showless ${styles.button}`}
             onClick={this.showLessButtons}
           >
             {showless}
