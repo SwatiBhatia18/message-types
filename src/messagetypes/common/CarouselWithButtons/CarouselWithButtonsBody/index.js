@@ -295,21 +295,19 @@ class CarouselWithButtonsBody extends React.PureComponent {
           </Button>
         )}
         {!btn_hidden && payload.buttons && payload.buttons.length > 0 && (
-          <div className='ori-t-pad-5'>
-            <Buttons
-              buttons={payload.buttons}
-              display_count={
-                payload.btnDisplayCount
-                  ? payload.btnDisplayCount
-                  : default_btn_display_count
-              }
-              message={message}
-              btn_disabled={btn_disabled}
-              handleMsgBtnClick={handleMsgBtnClick}
-              showmore={showmore}
-              showless={showless}
-            />
-          </div>
+          <Buttons
+            buttons={payload.buttons}
+            display_count={
+              payload.btnDisplayCount
+                ? payload.btnDisplayCount
+                : default_btn_display_count
+            }
+            message={message}
+            btn_disabled={btn_disabled}
+            handleMsgBtnClick={handleMsgBtnClick}
+            showmore={showmore}
+            showless={showless}
+          />
         )}
       </div>
     )
