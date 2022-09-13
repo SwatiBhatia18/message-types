@@ -6,6 +6,7 @@ import Radio from 'antd/lib/radio'
 import Button from 'antd/lib/button'
 import Rate from 'antd/lib/rate'
 import Select from 'antd/lib/select'
+import Input from 'antd/lib/input'
 
 import Buttons from '../../../../components/buttons'
 import HtmlText from '../../../../components/HtmlText'
@@ -202,6 +203,27 @@ class FormMessageBody extends React.PureComponent {
                         value={this.state.selectedValues[item.props.name]}
                         onChange={value =>
                           this.handleFormChange({ [item.props.name]: value })
+                        }
+                      />
+                    </div>
+                  )
+                case 'input':
+                  return (
+                    <div className='ori-b-pad-5' key={index}>
+                      {item.title && (
+                        <p>
+                          {item.props.required && <span>*</span>}
+                          {item.title}
+                        </p>
+                      )}
+                      <Input
+                        size='small'
+                        className='ori-full-width'
+                        {...item.props}
+                        disabled={disabled}
+                        value={this.state.selectedValues[item.props.name]}
+                        onChange={e =>
+                          this.handleFormChange({ [item.props.name]: e.target.value })
                         }
                       />
                     </div>
