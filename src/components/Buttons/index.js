@@ -41,7 +41,7 @@ class Buttons extends React.PureComponent {
     const { btn_disabled, buttons, className, showmore, showless } = this.props
     const { display_buttons_count, show_all_buttons } = this.state
     return (
-      <div
+      <span
         className={`${styles.buttonsContainer} ${className} buttonsContainer`}
       >
         {buttons.map((btn, index) => {
@@ -84,7 +84,7 @@ class Buttons extends React.PureComponent {
             {showless}
           </Button>
         )}
-      </div>
+      </span>
     )
   }
 }
