@@ -49,7 +49,7 @@ class UploadFileBody extends React.PureComponent {
         }, "");
       }else str = `${fileType[0]}$`
       const reg = new RegExp(str,"i");
-      isAllowed = reg.test(file.name) && checkMultipleExtension(file.name);
+      isAllowed = reg.test(file.name) && checkMultipleExtension(file.name) && file.size <= 5000000
     }
 
     if (isAllowed) {
