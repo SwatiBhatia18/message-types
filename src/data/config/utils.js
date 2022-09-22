@@ -1,16 +1,40 @@
 /* eslint-disable no-undef */
 /* eslint-disable no-useless-escape */
+import message from "antd/lib/message"
 
 export const handleAndroidBtnClick = (button, data) => {
-  let android = localStorage.getItem('android') ? JSON.parse(localStorage.getItem('android')) : false
+  let android = localStorage.getItem("android")
+    ? JSON.parse(localStorage.getItem("android"))
+    : false;
   if (android) {
-    let payload = { button, data }
-    window.androidObj.textToAndroid(JSON.stringify(payload))
+    let payload = { button, data };
+    window.androidObj.textToAndroid(JSON.stringify(payload));
   }
 }
 
-export const formattedPrice = (price) => {
-  return Intl.NumberFormat('en-In', { style: 'currency', currency: 'INR' }).format(price)
+export const formattedPrice = price => {
+  return Intl.NumberFormat("en-In", {
+    style: "currency",
+    currency: "INR"
+  }).format(price);
+}
+
+export const checkMultipleExtension = filename => {
+  let numberOfExtensions = filename.split(".");
+  return numberOfExtensions.length > 2 ? false : true;
+}
+
+export const showMessage = (type, msg) => {
+  const node = document.getElementById("chatbotContentContainer");
+  if (node) {
+    message.config({
+      duration: 2,
+      maxCount: 1,
+      top: 75,
+      getContainer: () => node
+    });
+    message[type](msg);
+  }
 }
 
 export const fileToBase64 = file => {
@@ -30,15 +54,24 @@ export const linkify = inputText => {
 
   // URLs starting with http://, https://, or ftp://
   let urlPattern = /(\b(https?|ftp):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/gim
-  linkifiedText = inputText.replace(urlPattern, '<a href="$1" target="_blank">$1</a>')
+  linkifiedText = inputText.replace(
+    urlPattern,
+    '<a href="$1" target="_blank">$1</a>'
+  )
 
   // URLs starting with "www." (without // before it, or it'd re-link the ones done above).
   let pseudoUrlPattern = /(^|[^\/])(www\.[\S]+(\b|$))/gim
-  linkifiedText = linkifiedText.replace(pseudoUrlPattern, '$1<a href="http://$2" target="_blank">$2</a>')
+  linkifiedText = linkifiedText.replace(
+    pseudoUrlPattern,
+    '$1<a href="http://$2" target="_blank">$2</a>'
+  )
 
   // Change email addresses to mailto:: links.
   let emailPattern = /(([a-zA-Z0-9\-\_\.])+@[a-zA-Z\_]+?(\.[a-zA-Z]{2,6})+)/gim
-  linkifiedText = linkifiedText.replace(emailPattern, '<a href="mailto:$1">$1</a>')
+  linkifiedText = linkifiedText.replace(
+    emailPattern,
+    '<a href="mailto:$1">$1</a>'
+  )
   return linkifiedText
 }
 
