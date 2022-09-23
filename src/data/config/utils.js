@@ -19,11 +19,6 @@ export const formattedPrice = price => {
   }).format(price);
 }
 
-export const checkMultipleExtension = filename => {
-  let numberOfExtensions = filename.split(".");
-  return numberOfExtensions.length > 2 ? false : true;
-}
-
 export const showMessage = (type, msg) => {
   const node = document.getElementById("chatbotContentContainer");
   if (node) {

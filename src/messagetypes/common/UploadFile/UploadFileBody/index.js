@@ -35,23 +35,11 @@ class UploadFileBody extends React.PureComponent {
   }
 
   beforeUpload = file => {
-    const { fileType } = this.props; // array of allowed uploadfile Type eg. [".png",".jpeg","jpg"]
+    const { accept } = this.props; //  accept format eg. "image/png,image/jpg,image/jpeg"
     let isAllowed = true;
-    if (fileType && fileType.length > 0) {
-      let str = "";
-      if (fileType.length > 1){
-        str = fileType.reduce((prev, curr, idx) => {
-          if (idx > 0) {
-            if (idx === fileType.length - 1) return prev.concat("|", curr, "$");
-            else return prev.concat("|", curr);
-          }
-          return prev.concat(curr);
-        }, "");
-      }else str = `${fileType[0]}$`
-      const reg = new RegExp(str,"i");
-      isAllowed = reg.test(file.name) && checkMultipleExtension(file.name) && file.size <= 5000000
+    if (accept && accept !== "") {
+      isAllowed = accept.toLowerCase().includes(file.type) && file.size <= 5000000
     }
-
     if (isAllowed) {
       fileToBase64(file).then(fileUrl => {
         this.setState({
