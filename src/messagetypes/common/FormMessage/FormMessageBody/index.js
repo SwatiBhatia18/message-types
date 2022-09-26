@@ -209,6 +209,7 @@ class FormMessageBody extends React.PureComponent {
                         size='small'
                         className='ori-full-width'
                         {...item.props}
+                        getPopupContainer={triggerNode => triggerNode.parentNode}
                         disabled={disabled || this.state.defaultDisabled}
                         value={this.state.selectedValues[item.props.name]}
                         onChange={value =>
