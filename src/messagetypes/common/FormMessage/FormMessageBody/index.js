@@ -104,10 +104,7 @@ class FormMessageBody extends React.PureComponent {
   handleEdit = () => {
     this.setState(
       prevState => ({
-        error: false,
-        selectedValues: {
-          ...prevState.selectedValues
-        },
+        ...prevState,
         defaultDisabled: false
       })
     )
