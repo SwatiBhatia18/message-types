@@ -1260,7 +1260,7 @@ export const carouselMenu = {
               text: "select option 1.1",
               url: "",
               postbackRes: "opt1.1"
-            },
+            }
           ]
         },
         {
@@ -1334,6 +1334,43 @@ export const carouselMenu = {
           url: "",
           b_id: "",
           postbackRes: ""
+        }
+      ]
+    }
+  ]
+};
+
+export const uploadMessage = {
+  sender: "chatbot",
+  type: "upload",
+  inputLock: false,
+  inputLockMessage: "",
+  quickReplies: [],
+  skipLS: false,
+  send_variable_to_apiai: false,
+  sendVariableToLS: false,
+  variable_name: "",
+  delay: 0,
+  payload: [
+    {
+      title: "carousel title",
+      subtitle: "carousel subtitle",
+      accept: "",
+      buttons: [
+        {
+          text: "Google",
+          url: "http://www.google.com",
+          postbackRes: ""
+        },
+        {
+          text: "select option 3.1",
+          url: "",
+          postbackRes: "opt3.1"
+        },
+        {
+          text: "select option 3.2",
+          url: "",
+          postbackRes: "opt3.2"
         }
       ]
     }
@@ -1535,54 +1572,7 @@ export const message = {
   //     { value: '4', label: 'working hour' },
   //   ],
 
-  //     // recharge
 
-  //     // data: {
-  //     //     PackPeriod: 1,
-  //     //     monthly_recharge_amount: 622,
-  //     //     recharge_amount: 622,
-  //     //     selectedOfferID: null,
-  //     //     selectedOfferName: "offer",
-  //     //     switchOffDate: "2019-02-15T00:00:00",
-  //     //     switchOffDate_fmt: "15 Feb 2019, Fri, 12:00AM",
-  //     //     vc_number: "01513953716",
-  //     // },
-
-  //     //recharge details
-
-  //     // data: {
-  //     //     vc_number:12345675,
-  //     //     current_balance: 6753.54,
-  //     //     monthly_recharge_amount: 675,
-  //     //     switchOffDate_fmt: "15 Feb 2019",
-  //     //     otherCharges: [
-  //     //         { name: "charge1", price: "234" },
-  //     //         { name: "charge2", price: "235" },
-  //     //         { name: "charge3", price: "232" }
-  //     //     ],
-  //     //     pack_details: {
-  //     //         12345674: {
-  //     //             type: "C",
-  //     //             vc_number:12345674,
-  //     //             addOnPacks: [
-  //     //                 { name: "addon1", price: "134" },
-  //     //                 { name: "addon2", price: "135" },
-  //     //             ],
-  //     //             basePack: { name: "base1", price: "134" }
-  //     //         },
-  //     //         12345345: {
-  //     //             type: "P",
-  //     //             vc_number: 12345345,
-  //     //             addOnPacks: [
-  //     //                 { name: "addon1", price: "334" },
-  //     //                 { name: "addon2", price: "235" },
-  //     //             ],
-  //     //             basePack: { name: "base1", price: "734" }
-  //     //         },
-  //     //     },
-  //     // },
-
-  //     //recharge offers
 
   // data: {
   //   vc_number: 12345675,

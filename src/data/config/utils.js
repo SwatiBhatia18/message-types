@@ -1,35 +1,20 @@
 /* eslint-disable no-undef */
 /* eslint-disable no-useless-escape */
-import message from "antd/lib/message"
-
 export const handleAndroidBtnClick = (button, data) => {
-  let android = localStorage.getItem("android")
-    ? JSON.parse(localStorage.getItem("android"))
-    : false;
+  let android = localStorage.getItem('android')
+    ? JSON.parse(localStorage.getItem('android'))
+    : false
   if (android) {
-    let payload = { button, data };
-    window.androidObj.textToAndroid(JSON.stringify(payload));
+    let payload = { button, data }
+    window.androidObj.textToAndroid(JSON.stringify(payload))
   }
 }
 
 export const formattedPrice = price => {
-  return Intl.NumberFormat("en-In", {
-    style: "currency",
-    currency: "INR"
-  }).format(price);
-}
-
-export const showMessage = (type, msg) => {
-  const node = document.getElementById("chatbotContentContainer");
-  if (node) {
-    message.config({
-      duration: 2,
-      maxCount: 1,
-      top: 75,
-      getContainer: () => node
-    });
-    message[type](msg);
-  }
+  return Intl.NumberFormat('en-In', {
+    style: 'currency',
+    currency: 'INR'
+  }).format(price)
 }
 
 export const fileToBase64 = file => {
@@ -42,6 +27,11 @@ export const fileToBase64 = file => {
     // Convert data to base64
     reader.readAsDataURL(file)
   })
+}
+
+export const checkMultipleExtension = filename => {
+  let numberOfExtensions = filename.split('.')
+  return !(numberOfExtensions.length > 2)
 }
 
 export const linkify = inputText => {
