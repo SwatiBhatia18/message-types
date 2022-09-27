@@ -99,15 +99,12 @@ class FormMessageBody extends React.PureComponent {
       }
       this.props.onSubmit(data)
     }
-  }
+  };
 
   handleEdit = () => {
-    this.setState(
-      prevState => ({
-        ...prevState,
-        defaultDisabled: false
-      })
-    )
+    this.setState({
+      defaultDisabled: false
+    })
   }
 
   render() {
@@ -209,7 +206,9 @@ class FormMessageBody extends React.PureComponent {
                         size='small'
                         className='ori-full-width'
                         {...item.props}
-                        getPopupContainer={triggerNode => triggerNode.parentNode}
+                        getPopupContainer={triggerNode =>
+                          triggerNode.parentNode
+                        }
                         disabled={disabled || this.state.defaultDisabled}
                         value={this.state.selectedValues[item.props.name]}
                         onChange={value =>
@@ -234,7 +233,9 @@ class FormMessageBody extends React.PureComponent {
                         disabled={disabled || this.state.defaultDisabled}
                         value={this.state.selectedValues[item.props.name]}
                         onChange={e =>
-                          this.handleFormChange({ [item.props.name]: e.target.value })
+                          this.handleFormChange({
+                            [item.props.name]: e.target.value
+                          })
                         }
                       />
                     </div>
