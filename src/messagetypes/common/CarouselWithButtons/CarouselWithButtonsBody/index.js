@@ -214,28 +214,29 @@ class CarouselWithButtonsBody extends React.PureComponent {
                   }`}
                   key={index}
                 >
-                  <div className='ori-carousel-img-container ori-overflow-y-auto'>
-                    {carousel_item.mediaType &&
+                  {carousel_item.mediaType &&
                     carousel_item.mediaUrl &&
                     carousel_item.mediaType === 'video' &&
                     carousel_item.mediaUrl.trim().length > 0 && (
-                      <div className='videoContainer'>
-                        <iframe
-                          title='video-message'
-                          className='ori-full-width'
-                          src={carousel_item.mediaUrl}
-                          frameBorder='0'
-                          allow='autoplay; encrypted-media'
-                          allowFullScreen
-                        />
-                      </div>
-                    )}
-                    {carousel_item.mediaType &&
+                    <div className='videoContainer'>
+                      <iframe
+                        title='video-message'
+                        className='ori-full-width'
+                        src={carousel_item.mediaUrl}
+                        frameBorder='0'
+                        allow='autoplay; encrypted-media'
+                        allowFullScreen
+                      />
+                    </div>
+                  )}
+                  {carousel_item.mediaType &&
                     carousel_item.mediaUrl &&
                     carousel_item.mediaType === 'image' &&
-                    carousel_item.mediaUrl.trim().length > 0 &&
-                    this.renderCarouselImage(carousel_item)}
-                  </div>
+                    carousel_item.mediaUrl.trim().length > 0 && (
+                    <div className='ori-carousel-img-container'>
+                      {this.renderCarouselImage(carousel_item)}
+                    </div>
+                  )}
                   {carousel_item.title && (
                     <HtmlText
                       text={carousel_item.title}
