@@ -234,8 +234,7 @@ class CarouselWithButtonsBody extends React.PureComponent {
                     carousel_item.mediaUrl &&
                     carousel_item.mediaType === 'image' &&
                     carousel_item.mediaUrl.trim().length > 0 &&
-                    this.renderCarouselImage(carousel_item)
-                    }
+                    this.renderCarouselImage(carousel_item)}
                   </div>
                   {carousel_item.title && (
                     <HtmlText
