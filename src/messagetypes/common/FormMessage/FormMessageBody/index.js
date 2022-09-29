@@ -39,22 +39,6 @@ class FormMessageBody extends React.PureComponent {
     )
   }
 
-  handleRangePickerChange = (name, value) => {
-    const {payload} = this.props
-    this.setState(
-      prevState => ({
-        error: false,
-        selectedValues: {
-          ...prevState.selectedData,
-          [name]: value || []
-        }
-      }),
-      ()=> {
-        if (payload.autoSubmit) this.handleSubmit()
-      }
-    )
-  }
-
   // handleChange = e => {
   //   if (e.target.name) {
   //     this.setState(prevState => ({
@@ -186,7 +170,7 @@ class FormMessageBody extends React.PureComponent {
                       />
                     </div>
                   )
-                case 'dateRange':
+                case 'dateRangePicker':
                   return (
                     <div className='ori-b-pad-5' key={index}>
                       {item.title && (
@@ -201,19 +185,19 @@ class FormMessageBody extends React.PureComponent {
                         disabled={item.disabled || [false,false]}
                         {...item.props}
                         disabledDate={c=> {
-                          if(item.dateRange){
-                            if(item.dateRange[0] && item.dateRange[1])
-                              return !(c && c < item.dateRange[0] && c > item.dateRange[1])
-                            if(item.dateRange[0])
-                              return c && c < item.dateRange[0]
-                            if(item.dateRange[1])
-                              return c && c > item.dateRange[1]
+                          if(item.disabledDateRange){
+                            if(item.disabledDateRange[0] && item.disabledDateRange[1])
+                              return !(c && c < item.disabledDateRange[0] && c > item.disabledDateRange[1])
+                            if(item.disabledDateRange[0])
+                              return c && c < item.disabledDateRange[0]
+                            if(item.disabledDateRange[1])
+                              return c && c > item.disabledDateRange[1]
                           }
                           return false
                         }}
                         value={this.state.selectedValues[item.props.name]}
                         onChange={(selectedDate)=>
-                          this.handleRangePickerChange(item.props.name, selectedDate)
+                          this.handleDatePickerChange(item.props.name, selectedDate)
                         }
                         inputReadOnly
                       />

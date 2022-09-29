@@ -501,9 +501,9 @@ export const formMessage = {
           }
         },
         {
-          type: "dateRange",
+          type: "dateRangePicker",
           title: "Select Start and End date",
-          dateRange:[],
+          disabledDateRange:[],
           disabled:[true,false],
           props: {
             placeholder: ['Start Date', 'End Date'],
