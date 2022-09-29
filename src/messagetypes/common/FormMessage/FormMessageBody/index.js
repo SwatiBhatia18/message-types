@@ -11,6 +11,8 @@ import Input from 'antd/lib/input'
 import Buttons from '../../../../components/buttons'
 import HtmlText from '../../../../components/HtmlText'
 
+const {RangePicker} = DatePicker
+
 class FormMessageBody extends React.PureComponent {
   constructor(props) {
     super(props)
@@ -32,6 +34,22 @@ class FormMessageBody extends React.PureComponent {
         }
       }),
       () => {
+        if (payload.autoSubmit) this.handleSubmit()
+      }
+    )
+  }
+
+  handleRangePickerChange = (name, value) => {
+    const {payload} = this.props
+    this.setState(
+      prevState => ({
+        error: false,
+        selectedValues: {
+          ...prevState.selectedData,
+          [name]: value || []
+        }
+      }),
+      ()=> {
         if (payload.autoSubmit) this.handleSubmit()
       }
     )
@@ -163,6 +181,39 @@ class FormMessageBody extends React.PureComponent {
                         value={this.state.selectedValues[item.props.name]}
                         onChange={(...arg) =>
                           this.handleDatePickerChange(item.props.name, ...arg)
+                        }
+                        inputReadOnly
+                      />
+                    </div>
+                  )
+                case 'dateRange':
+                  return (
+                    <div className='ori-b-pad-5' key={index}>
+                      {item.title && (
+                        <p>
+                          {item.props.required && <span>*</span>}
+                          {item.title}
+                        </p>
+                      )}
+                      <RangePicker
+                        size='small'
+                        className='ori-full-width'
+                        disabled={item.disabled || [false,false]}
+                        {...item.props}
+                        disabledDate={c=> {
+                          if(item.dateRange){
+                            if(item.dateRange[0] && item.dateRange[1])
+                              return !(c && c < item.dateRange[0] && c > item.dateRange[1])
+                            if(item.dateRange[0])
+                              return c && c < item.dateRange[0]
+                            if(item.dateRange[1])
+                              return c && c > item.dateRange[1]
+                          }
+                          return false
+                        }}
+                        value={this.state.selectedValues[item.props.name]}
+                        onChange={(selectedDate)=>
+                          this.handleRangePickerChange(item.props.name, selectedDate)
                         }
                         inputReadOnly
                       />

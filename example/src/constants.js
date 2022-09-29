@@ -486,7 +486,7 @@ export const formMessage = {
   payload: [
     {
       title: "form title",
-      selectedValue: { rate: 4 },
+      selectedValue: { rate: 4, rangeDates: [] },
       formData: [
         {
           type: "datePicker",
@@ -499,6 +499,19 @@ export const formMessage = {
             format: "DD-MM-YYYY",
             required: false
           }
+        },
+        {
+          type: "dateRange",
+          title: "Select Start and End date",
+          dateRange:[],
+          disabled:[true,false],
+          props: {
+            placeholder: ['Start Date', 'End Date'],
+            format: "YYYY-MM-DD HH-mm A",
+            name: "rangeDates",
+            showTime: false,
+            required: false,
+            }
         },
         {
           type: "radioGroup",
