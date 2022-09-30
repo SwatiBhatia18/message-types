@@ -152,12 +152,15 @@ class CarouselWithButtonsBody extends React.PureComponent {
     }
     if (display_type === 'actual') {
       return (
-        <img
-          src={carousel_item.mediaUrl}
-          alt=''
-          className='ori-cursor-ptr ori-full-width'
-          onClick={() => this.showCarouselItem(carousel_item)}
-        />
+        <div className='ori-carousel-img-container'>
+          <img
+            src={carousel_item.mediaUrl}
+            alt=''
+            className='ori-cursor-ptr ori-full-width'
+            onClick={() => this.showCarouselItem(carousel_item)}
+          />
+        </div>
+
       )
     }
     return (
@@ -233,9 +236,7 @@ class CarouselWithButtonsBody extends React.PureComponent {
                     carousel_item.mediaUrl &&
                     carousel_item.mediaType === 'image' &&
                     carousel_item.mediaUrl.trim().length > 0 && (
-                    <div className='ori-carousel-img-container'>
-                      {this.renderCarouselImage(carousel_item)}
-                    </div>
+                    this.renderCarouselImage(carousel_item)
                   )}
                   {carousel_item.title && (
                     <HtmlText
