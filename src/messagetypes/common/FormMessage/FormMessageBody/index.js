@@ -196,9 +196,8 @@ class FormMessageBody extends React.PureComponent {
                           return false
                         }}
                         value={this.state.selectedValues[item.props.name]}
-                        onChange={(selectedDate)=>{
-                          console.log(selectedDate, "subham")
-                          this.handleDatePickerChange(item.props.name, selectedDate)}
+                        onChange={(selectedDate)=>
+                          this.handleDatePickerChange(item.props.name, selectedDate)
                         }
                         inputReadOnly
                       />
