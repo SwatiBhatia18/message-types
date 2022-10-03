@@ -504,12 +504,13 @@ export const formMessage = {
           type: "dateRangePicker",
           title: "Select Start and End date",
           disabledDateRange:[],
-          disabled:[true,false],
+          disabled: false,
           props: {
             placeholder: ['Start Date', 'End Date'],
             format: "YYYY-MM-DD HH-mm A",
             name: "rangeDates",
-            showTime: false,
+            disabled:[true,false],
+            showTime: true,
             required: false,
             }
         },

@@ -182,8 +182,8 @@ class FormMessageBody extends React.PureComponent {
                       <RangePicker
                         size='small'
                         className='ori-full-width'
-                        disabled={item.disabled || [false,false]}
                         {...item.props}
+                        disabled={disabled || this.state.defaultDisabled}
                         disabledDate={c=> {
                           if(item.disabledDateRange){
                             if(item.disabledDateRange[0] && item.disabledDateRange[1])
@@ -196,8 +196,9 @@ class FormMessageBody extends React.PureComponent {
                           return false
                         }}
                         value={this.state.selectedValues[item.props.name]}
-                        onChange={(selectedDate)=>
-                          this.handleDatePickerChange(item.props.name, selectedDate)
+                        onChange={(selectedDate)=>{
+                          console.log(selectedDate, "subham")
+                          this.handleDatePickerChange(item.props.name, selectedDate)}
                         }
                         inputReadOnly
                       />
