@@ -116,8 +116,8 @@ class FormMessageBody extends React.PureComponent {
         selectedData: this.state.selectedValues,
         relayData: payload.relayData
       }
-      console.log('data', data)
-      // this.props.onSubmit(data)
+      // console.log('data', data)
+      this.props.onSubmit(data)
     }
   };
 
