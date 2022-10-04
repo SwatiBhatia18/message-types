@@ -68,3 +68,8 @@ export const isEmptyObject = obj => {
   }
   return true
 }
+
+export const isEmail = address => {
+  let regex = new RegExp(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)
+  return regex.test(address)
+}

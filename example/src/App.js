@@ -41,7 +41,7 @@ export default class App extends Component {
         {/* <CheckboxWithMedia message={checkboxMessage} preferLang="hindi"/> */}
         {/* <DishtvRecharge message={message} /> */}
         {/* <DishtvRechargeDetails message={message} /> */}
-        <UploadFile message={uploadMessage} />
+        {/* <UploadFile message={uploadMessage} /> */}
         {/* <Offers message={message} handleOfferSelection={()=>{}} btn_disabled /> */}
         {/* <RechargeHistory message={message} /> */}
         {/* <CarouselWithButtons
@@ -52,7 +52,7 @@ export default class App extends Component {
         {/* <CarouselWithButtons
           message={carouselMenu}
         /> */}
-        {/* <FormMessage message={formMessage} preferLang="hindi" /> */}
+        <FormMessage message={formMessage} />
         {/* <SeatMap message={seatMapMessage} preferLang="hindi" /> */}
       </div>
     );

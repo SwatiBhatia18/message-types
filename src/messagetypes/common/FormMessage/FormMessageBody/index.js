@@ -8,54 +8,65 @@ import Rate from 'antd/lib/rate'
 import Select from 'antd/lib/select'
 import Input from 'antd/lib/input'
 
+import { isEmail } from '../../../../data/config/utils'
+
 import Buttons from '../../../../components/buttons'
 import HtmlText from '../../../../components/HtmlText'
 
-const {RangePicker} = DatePicker
+const { RangePicker } = DatePicker
 
 class FormMessageBody extends React.PureComponent {
   constructor(props) {
     super(props)
     this.state = {
       selectedValues: props.payload.selectedValues || {},
+      detectedErrors: {},
       error: false,
       defaultDisabled: props.payload.defaultDisabled
     }
   }
 
-  handleDatePickerChange = (name, value) => {
-    const { payload } = this.props
-    this.setState(
-      prevState => ({
-        error: false,
-        selectedValues: {
-          ...prevState.selectedValues,
-          [name]: value || undefined
-        }
-      }),
-      () => {
-        if (payload.autoSubmit) this.handleSubmit()
-      }
-    )
+  deleteDetectedErrors = key => {
+    if (this.state.detectedErrors[key]) {
+      const { [key]: errorKey, ...restDetectedErrors } = this.state.detectedErrors
+      this.setState({detectedErrors: restDetectedErrors})
+    }
   }
 
-  // handleChange = e => {
-  //   if (e.target.name) {
-  //     this.setState(prevState => ({
-  //       error: false,
+  validateSelectedField = item => {
+    if (item.type === 'input' && item.props.type === 'email') {
+      if (!isEmail(this.state.selectedValues[item.props.name])) {
+        this.setState(prevState => ({
+          detectedErrors: {
+            ...prevState.detectedErrors,
+            [item.props.name]: 'EmailId is not valid'
+          }
+        }))
+      }
+    }
+  }
+
+  // handleDatePickerChange = (name, value) => {
+  //   const { payload } = this.props
+  //   this.deleteDetectedErrors(name)
+  //   this.setState(
+  //     prevState => ({
   //       selectedValues: {
   //         ...prevState.selectedValues,
-  //         [e.target.name]: e.target.value
+  //         [name]: value || undefined
   //       }
-  //     }))
-  //   }
+  //     }),
+  //     () => {
+  //       if (payload.autoSubmit) this.handleSubmit()
+  //     }
+  //   )
   // }
 
-  handleFormChange = changedValue => {
+  handleFormChange = (changedValue, errorKey) => {
     const { payload } = this.props
+    this.deleteDetectedErrors(errorKey)
     this.setState(
       prevState => ({
-        error: false,
         selectedValues: {
           ...prevState.selectedValues,
           ...changedValue
@@ -69,12 +80,13 @@ class FormMessageBody extends React.PureComponent {
 
   handleSubmit = () => {
     const { payload } = this.props
-    const { selectedValues, error } = this.state
+    const { selectedValues, detectedErrors } = this.state
     let list = []
-    let hasError = error
+
     payload.formData.forEach(item => {
       if (selectedValues[item.props.name] !== undefined) {
         const obj = { label: item.displayLabel }
+        this.validateSelectedField(item)
         if (item.type === 'datePicker') {
           obj.value = selectedValues[item.props.name].format(
             item.props.format || 'DD-MMM-YYYY'
@@ -88,18 +100,24 @@ class FormMessageBody extends React.PureComponent {
           obj.value = selectedValues[item.props.name]
         }
         list.push(obj)
-      } else if (item.props.required && !error) {
-        hasError = true
-        this.setState({ error: true })
+      } else if (item.props.required && !detectedErrors[item.props.name]) {
+        this.setState(prevState => ({
+          detectedErrors: {
+            ...prevState.detectedErrors,
+            [item.props.name]: 'This is required field'
+          }}))
       }
     })
+
+    let hasError = Object.keys(detectedErrors).length > 0
     if (!hasError) {
       const data = {
         list,
         selectedData: this.state.selectedValues,
         relayData: payload.relayData
       }
-      this.props.onSubmit(data)
+      console.log('data', data)
+      // this.props.onSubmit(data)
     }
   };
 
@@ -110,6 +128,7 @@ class FormMessageBody extends React.PureComponent {
   }
 
   render() {
+    const { detectedErrors } = this.state
     const {
       btn_disabled,
       message,
@@ -163,11 +182,15 @@ class FormMessageBody extends React.PureComponent {
                         {...item.props}
                         disabled={disabled || this.state.defaultDisabled}
                         value={this.state.selectedValues[item.props.name]}
-                        onChange={(...arg) =>
-                          this.handleDatePickerChange(item.props.name, ...arg)
+                        onChange={selectedDate =>
+                          this.handleFormChange({[item.props.name]: selectedDate || undefined}, item.props.name)
                         }
                         inputReadOnly
                       />
+                      {
+                        detectedErrors[item.props.name] &&
+                        <p className='ori-font-xs ori-font-danger'>{detectedErrors[item.props.name]}</p>
+                      }
                     </div>
                   )
                 case 'dateRangePicker':
@@ -184,23 +207,24 @@ class FormMessageBody extends React.PureComponent {
                         className='ori-full-width'
                         {...item.props}
                         disabled={disabled || this.state.defaultDisabled}
-                        disabledDate={c=> {
-                          if(item.disabledDateRange){
-                            if(item.disabledDateRange[0] && item.disabledDateRange[1])
-                              return !(c && c < item.disabledDateRange[0] && c > item.disabledDateRange[1])
-                            if(item.disabledDateRange[0])
-                              return c && c < item.disabledDateRange[0]
-                            if(item.disabledDateRange[1])
-                              return c && c > item.disabledDateRange[1]
+                        disabledDate={c => {
+                          if (item.disabledDateRange) {
+                            if (item.disabledDateRange[0] && item.disabledDateRange[1]) { return !(c && c < item.disabledDateRange[0] && c > item.disabledDateRange[1]) }
+                            if (item.disabledDateRange[0]) { return c && c < item.disabledDateRange[0] }
+                            if (item.disabledDateRange[1]) { return c && c > item.disabledDateRange[1] }
                           }
                           return false
                         }}
                         value={this.state.selectedValues[item.props.name]}
-                        onChange={(selectedDate)=>
-                          this.handleDatePickerChange(item.props.name, selectedDate)
+                        onChange={selectedDate =>
+                          this.handleFormChange({[item.props.name]: selectedDate || undefined}, item.props.name)
                         }
                         inputReadOnly
                       />
+                      {
+                        detectedErrors[item.props.name] &&
+                        <p className='ori-font-xs ori-font-danger'>{detectedErrors[item.props.name]}</p>
+                      }
                     </div>
                   )
                 case 'radioGroup':
@@ -223,9 +247,13 @@ class FormMessageBody extends React.PureComponent {
                         onChange={e =>
                           this.handleFormChange({
                             [item.props.name]: e.target.value
-                          })
+                          }, item.props.name)
                         }
                       />
+                      {
+                        detectedErrors[item.props.name] &&
+                        <p className='ori-font-xs ori-font-danger'>{detectedErrors[item.props.name]}</p>
+                      }
                     </div>
                   )
                 case 'select':
@@ -247,9 +275,13 @@ class FormMessageBody extends React.PureComponent {
                         disabled={disabled || this.state.defaultDisabled}
                         value={this.state.selectedValues[item.props.name]}
                         onChange={value =>
-                          this.handleFormChange({ [item.props.name]: value })
+                          this.handleFormChange({ [item.props.name]: value }, item.props.name)
                         }
                       />
+                      {
+                        detectedErrors[item.props.name] &&
+                        <p className='ori-font-xs ori-font-danger'>{detectedErrors[item.props.name]}</p>
+                      }
                     </div>
                   )
                 case 'input':
@@ -270,9 +302,13 @@ class FormMessageBody extends React.PureComponent {
                         onChange={e =>
                           this.handleFormChange({
                             [item.props.name]: e.target.value
-                          })
+                          }, item.props.name)
                         }
                       />
+                      {
+                        detectedErrors[item.props.name] &&
+                        <p className='ori-font-xs ori-font-danger'>{detectedErrors[item.props.name]}</p>
+                      }
                     </div>
                   )
                 case 'rating':
@@ -289,9 +325,13 @@ class FormMessageBody extends React.PureComponent {
                         disabled={disabled || this.state.defaultDisabled}
                         value={this.state.selectedValues[item.props.name]}
                         onChange={value =>
-                          this.handleFormChange({ [item.props.name]: value })
+                          this.handleFormChange({ [item.props.name]: value }, item.props.name)
                         }
                       />
+                      {
+                        detectedErrors[item.props.name] &&
+                        <p className='ori-font-xs ori-font-danger'>{detectedErrors[item.props.name]}</p>
+                      }
                     </div>
                   )
                 default:

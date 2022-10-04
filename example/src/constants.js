@@ -489,6 +489,17 @@ export const formMessage = {
       selectedValue: { rate: 4, rangeDates: [] },
       formData: [
         {
+          type: "input",
+          title: "Email id",
+          displayLabel: "Email",
+          props: {
+            type: "email",
+            placeholder: "Enter your EmailID",
+            name: "email",
+            required: true
+          }
+        },
+        {
           type: "datePicker",
           title: "select your departure date",
           disabledTimestamp: "1629455793767",
@@ -503,16 +514,16 @@ export const formMessage = {
         {
           type: "dateRangePicker",
           title: "Select Start and End date",
-          disabledDateRange:[],
-          disabled: false,
+          disabledDateRange: [],
+          displayLabel: "Vacation Duration",
           props: {
-            placeholder: ['Start Date', 'End Date'],
+            placeholder: ["Start Date", "End Date"],
             format: "YYYY-MM-DD HH-mm A",
             name: "rangeDates",
-            disabled:[true,false],
+            disabled: [true, false],
             showTime: true,
-            required: false,
-            }
+            required: false
+          }
         },
         {
           type: "radioGroup",
@@ -538,7 +549,7 @@ export const formMessage = {
           displayLabel: "Passanger 2",
           props: {
             name: "bag2",
-            required: false,
+            required: true,
             options: [
               { label: "10kg", value: "10kgId" },
               { label: "12kg", value: "12kgId" },
@@ -554,7 +565,7 @@ export const formMessage = {
           displayLabel: "rating",
           props: {
             name: "rate",
-            required: false
+            required: true
           }
         }
       ]
@@ -1585,8 +1596,6 @@ export const message = {
   //     { value: '3', label: 'how are you ?' },
   //     { value: '4', label: 'working hour' },
   //   ],
-
-
 
   // data: {
   //   vc_number: 12345675,
