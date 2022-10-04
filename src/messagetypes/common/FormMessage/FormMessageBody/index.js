@@ -34,8 +34,10 @@ class FormMessageBody extends React.PureComponent {
   }
 
   validateSelectedField = item => {
+    let hasError = false
     if (item.type === 'input' && item.props.type === 'email') {
       if (!isEmail(this.state.selectedValues[item.props.name])) {
+        hasError = true
         this.setState(prevState => ({
           detectedErrors: {
             ...prevState.detectedErrors,
@@ -44,23 +46,8 @@ class FormMessageBody extends React.PureComponent {
         }))
       }
     }
+    return hasError
   }
-
-  // handleDatePickerChange = (name, value) => {
-  //   const { payload } = this.props
-  //   this.deleteDetectedErrors(name)
-  //   this.setState(
-  //     prevState => ({
-  //       selectedValues: {
-  //         ...prevState.selectedValues,
-  //         [name]: value || undefined
-  //       }
-  //     }),
-  //     () => {
-  //       if (payload.autoSubmit) this.handleSubmit()
-  //     }
-  //   )
-  // }
 
   handleFormChange = (changedValue, errorKey) => {
     const { payload } = this.props
@@ -82,11 +69,11 @@ class FormMessageBody extends React.PureComponent {
     const { payload } = this.props
     const { selectedValues, detectedErrors } = this.state
     let list = []
-
+    let hasError = Object.keys(detectedErrors).length > 0
     payload.formData.forEach(item => {
       if (selectedValues[item.props.name] !== undefined) {
         const obj = { label: item.displayLabel }
-        this.validateSelectedField(item)
+        hasError = hasError || this.validateSelectedField(item)
         if (item.type === 'datePicker') {
           obj.value = selectedValues[item.props.name].format(
             item.props.format || 'DD-MMM-YYYY'
@@ -101,6 +88,7 @@ class FormMessageBody extends React.PureComponent {
         }
         list.push(obj)
       } else if (item.props.required && !detectedErrors[item.props.name]) {
+        hasError = true
         this.setState(prevState => ({
           detectedErrors: {
             ...prevState.detectedErrors,
@@ -109,14 +97,13 @@ class FormMessageBody extends React.PureComponent {
       }
     })
 
-    let hasError = Object.keys(detectedErrors).length > 0
     if (!hasError) {
       const data = {
         list,
         selectedData: this.state.selectedValues,
         relayData: payload.relayData
       }
-      // console.log('data', data)
+      // console.log('data', data, detectedErrors)
       this.props.onSubmit(data)
     }
   };
