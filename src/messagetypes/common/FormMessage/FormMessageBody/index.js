@@ -81,7 +81,7 @@ class FormMessageBody extends React.PureComponent {
         } else if (item.type === 'dateRangePicker') {
           obj.value = selectedValues[item.props.name][0].format(
             item.props.format || 'DD-MMM-YYYY'
-          ).concat(' - ', selectedValues[item.props.name][1].format(
+          ).concat(' : ', selectedValues[item.props.name][1].format(
             item.props.format || 'DD-MMM-YYYY'
           ))
         } else if (item.type === 'radioGroup' || item.type === 'select') {
