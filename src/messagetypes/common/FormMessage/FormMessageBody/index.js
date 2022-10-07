@@ -202,7 +202,7 @@ class FormMessageBody extends React.PureComponent {
                         disabled={disabled || this.state.defaultDisabled}
                         disabledDate={c => {
                           if (item.disabledDateRange) {
-                            if (item.disabledDateRange[0] && item.disabledDateRange[1]) { return !(c && c < item.disabledDateRange[0] && c > item.disabledDateRange[1]) }
+                            if (item.disabledDateRange[0] && item.disabledDateRange[1]) { return !(c && c < item.disabledDateRange[1] && c > item.disabledDateRange[0]) }
                             if (item.disabledDateRange[0]) { return c && c < item.disabledDateRange[0] }
                             if (item.disabledDateRange[1]) { return c && c > item.disabledDateRange[1] }
                           }
