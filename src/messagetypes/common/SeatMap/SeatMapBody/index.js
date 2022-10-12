@@ -3,50 +3,148 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Tooltip from 'antd/lib/tooltip'
 import Button from 'antd/lib/button'
+import Checkbox from 'antd/lib/checkbox'
 import CloseIcon from 'react-icons/lib/md/close'
 import SeatIcon from 'react-icons/lib/md/event-seat'
 
 import Buttons from '../../../../components/buttons'
+import Select from 'antd/lib/select'
 
 class SeatMapBody extends React.PureComponent {
   constructor(props) {
     super(props)
     this.state = {
-      selectedSeatName: props.message.payload.selectedSeatName
+      selectedSeatName: props.message.payload.selectedSeatName,
+      selectedPassenger: '',
+      recommendedSeats: props.payload.recommendedSeats,
+      randomChecked: '',
+      submitButtonText: props.payload.submitButtonText
     }
   }
 
-  handleSeatSelection = seat => {
+  handleSeatSelection = (seat, passenger) => {
     const { disabled } = this.props
+    var reserved = false
     if (seat.isAllowed && !disabled) {
-      this.setState({
-        selectedSeatName:
-          seat.name === this.state.selectedSeatName ? '' : seat.name
+      this.state.recommendedSeats.map((rseat) => {
+        if (seat.name === rseat.seatNo) {
+          reserved = true
+        }
       })
+      this.state.recommendedSeats.map((rseat) => {
+        if (rseat.name === passenger && !reserved) {
+          rseat.seatNo = seat.name
+        }
+      })
+      this.setState(prevState => ({
+        recommendedSeats: [
+          ...prevState.recommendedSeats
+        ],
+        submitButtonText: 'Proceed to All',
+        randomChecked: false
+      }))
     }
-  };
+  }
 
   handleSubmit = () => {
     const { message, onSubmit } = this.props
-    if (this.state.selectedSeatName) {
-      let selectedSeat = null
-      message.payload.seatArrangement.forEach(row => {
-        if (row.seats && row.seats.length > 0) {
-          row.seats.forEach(seat => {
-            if (seat.name === this.state.selectedSeatName) selectedSeat = seat
-          })
-        }
-      })
-      if (selectedSeat) {
-        const data = {
-          text: this.state.selectedSeatName,
-          relayData: message.payload.relayData,
-          selectedSeat
-        }
-        onSubmit(data, message)
+    if (this.state.recommendedSeats.length > 0) {
+      const data = {
+        relayData: message.payload.relayData,
+        selectedSeats: this.state.recommendedSeats
+      }
+      onSubmit(data, message)
+    }
+  }
+
+  getInitials = (name) => {
+    var parts = name.split(' ')
+    var initials = ''
+    for (var i = 0; i < parts.length; i++) {
+      if (parts[i].length > 0 && parts[i] !== '') {
+        initials += parts[i][0]
       }
     }
-  };
+    return initials
+  }
+
+  randomOnChange = (e) => {
+    this.setState({
+      randomChecked: e.target.checked,
+      submitButtonText: 'Proceed to All'
+    })
+    if (e.target.checked === true) {
+      this.state.recommendedSeats.map((rseat) => {
+        if (rseat.name === this.state.selectedPassenger) {
+          rseat.seatNo = ''
+          rseat.random = true
+        }
+      })
+    } else {
+      this.state.recommendedSeats.map((rseat) => {
+        if (rseat.name === this.state.selectedPassenger) {
+          rseat.random = false
+        }
+      })
+    }
+  }
+
+  handleClear = () => {
+    this.state.recommendedSeats.map((rseat) => {
+      if (rseat.name === this.state.selectedPassenger) {
+        rseat.seatNo = ''
+      }
+      this.setState(prevState => ({
+        recommendedSeats: [
+          ...prevState.recommendedSeats
+        ]
+      }))
+    })
+  }
+
+  handleChange = (value) => {
+    this.setState({
+      selectedPassenger: value,
+      randomChecked: false
+    })
+    // random selection remain fixed for a particular passenger even when passenger is changed
+    this.state.recommendedSeats.map((rseat) => {
+      if (rseat.name === value && rseat.random === true) {
+        this.setState({
+          randomChecked: true
+        })
+      }
+    })
+  }
+
+  renderSeats = (rseats, seat) => {
+    for (let rseat of rseats) {
+      if (rseat.seatNo === seat.name) {
+        return (
+          <div
+            style={{
+              backgroundColor: rseat.name === this.state.selectedPassenger ? '#90EE90' : '#D3D3D3',
+              borderRadius: 3,
+              marginRight: 3,
+              width: 25,
+              height: 25
+            }}
+          >
+            <p style={{ alignItems: 'center', color: 'black', fontSize: 10, fontWeight: 'bold' }}>{this.getInitials(rseat.name)}</p>
+          </div>
+        )
+      }
+    }
+    if (seat.isAllowed === true) {
+      return (
+        <SeatIcon />
+      )
+    } else {
+      return (
+        <CloseIcon />
+      )
+    }
+  }
 
   render() {
     const {
@@ -75,6 +173,25 @@ class SeatMapBody extends React.PureComponent {
             dangerouslySetInnerHTML={{ __html: payload.subtitle }}
           />
         )}
+        {payload.passengerSelect && payload.passengerSelect.options.length > 0 && (
+          <Select
+            style={{ width: 250,
+              marginRight: '7px'}}
+            size='small'
+            className=''
+            {...payload.passengerSelect}
+            getPopupContainer={triggerNode =>
+              triggerNode.parentNode
+            }
+            onChange={this.handleChange}
+          />)}
+        {payload.clearSelection && (
+          <Button
+            onClick={this.handleClear}
+            size='small'
+          >
+            Clear
+          </Button>)}
         {payload.seatArrangement && payload.seatArrangement.length > 0 && (
           <React.Fragment>
             <p className='ori-text-center ori-font-xxs ori-b-mrgn-5 ori-t-mrgn-3'>
@@ -126,13 +243,9 @@ class SeatMapBody extends React.PureComponent {
                               ? 'ori-selected-seat'
                               : ''
                           }`}
-                          onClick={() => this.handleSeatSelection(seat)}
+                          onClick={() => this.handleSeatSelection(seat, this.state.selectedPassenger)}
                         >
-                          {seat.isAllowed ? (
-                            <SeatIcon size={18} />
-                          ) : (
-                            <CloseIcon size={18} />
-                          )}
+                          {this.renderSeats(this.state.recommendedSeats, seat)}
                         </div>
                       </Tooltip>
                       {seat.isNextGap && (
@@ -149,18 +262,22 @@ class SeatMapBody extends React.PureComponent {
                 })}
               </div>
             ))}
+            {payload.randomSelection && (
+              <div>
+                <Checkbox
+                  onChange={this.randomOnChange}
+                  checked={this.state.randomChecked}
+                >
+                  Randomly assign a seat
+                </Checkbox>
+              </div>)}
             <Button
               size='small'
               className='ori-t-mrgn-5 ori-btn-submit'
-              disabled={disabled || !this.state.selectedSeatName}
               onClick={this.handleSubmit}
               block
             >
-              {`Book Seat ${
-                this.state.selectedSeatName
-                  ? 'for ' + this.state.selectedSeatName
-                  : ''
-              }`}
+              {this.state.submitButtonText}
             </Button>
           </React.Fragment>
         )}

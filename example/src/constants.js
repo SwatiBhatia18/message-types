@@ -37,235 +37,48 @@ export const seatMapMessage = {
       title: "seat Map title",
       subtitle: "<p class='ori-font-light'>hello i am html title</p>",
       selectedSeatName: "1A",
-      seatArrangement: [
+      randomSelection: true,
+      clearSelection: true,
+      submitButtonText: "Continue with recommendation for all",
+      recommendedSeats: [
         {
-          rowName: "A",
-          seats: [
-            {
-              name: "1A",
-              isAllowed: false,
-              cost: 123,
-              type: "Super Practical",
-              color: "##EB3F55",
-              status: "Reserved"
-            },
-            {
-              name: "2A",
-              isAllowed: false,
-              cost: 123,
-              type: "super Practical",
-              color: "##EB3F55",
-              status: "Reserved"
-            },
-            {
-              name: "3A",
-              isAllowed: true,
-              isNextGap: true,
-              cost: 123,
-              type: "super Practical",
-              color: "#000"
-            },
-            {
-              name: "4A",
-              isAllowed: false,
-              cost: 123,
-              type: "super Practical",
-              color: "##EB3F55",
-              status: "Reserved"
-            },
-            {
-              name: "5A",
-              isAllowed: true,
-              cost: 123,
-              type: "super Practical",
-              color: "#000"
-            },
-            {
-              name: "6A",
-              isAllowed: true,
-              cost: 123,
-              type: "super Practical",
-              color: "#000"
-            }
-          ]
+          name: "Swati Bhatia",
+          seatNo: "1A",
         },
         {
-          rowName: "B",
-          seats: [
-            {
-              name: "1B",
-              isAllowed: true,
-              cost: 123,
-              type: "super Practical",
-              color: "#2b589d"
-            },
-            {
-              name: "2B",
-              isAllowed: false,
-              cost: 123,
-              type: "super Practical",
-              color: "##EB3F55",
-              status: "Reserved"
-            },
-            {
-              name: "3B",
-              isAllowed: false,
-              cost: 123,
-              type: "super Practical",
-              color: "##EB3F55",
-              isNextGap: true,
-              status: "Reserved"
-            },
-            {
-              name: "4B",
-              isAllowed: false,
-              cost: 123,
-              type: "super Practical",
-              color: "##EB3F55",
-              status: "Reserved"
-            },
-            {
-              name: "5B",
-              isAllowed: false,
-              cost: 123,
-              type: "super Practical",
-              color: "#EB3F55",
-              status: "Reserved"
-            },
-            {
-              name: "6B",
-              isAllowed: false,
-              cost: 123,
-              type: "super Practical",
-              color: "#2b589d",
-              status: "Reserved"
-            }
-          ]
+          name: "Vanshika Bhatia",
+          seatNo: "2B",
         },
         {
-          rowName: "C",
-          seats: [
-            {
-              name: "1C",
-              isAllowed: true,
-              cost: 123,
-              type: "super Practical",
-              color: "#EB3F55"
-            },
-            {
-              name: "2C",
-              isAllowed: false,
-              cost: 123,
-              type: "super Practical",
-              color: "#EB3F55",
-              status: "Reserved"
-            },
-            {
-              name: "3C",
-              isAllowed: false,
-              cost: 123,
-              type: "super Practical",
-              color: "#EB3F55",
-              isNextGap: true,
-              status: "Reserved"
-            },
-            {
-              name: "4C",
-              isAllowed: false,
-              cost: 123,
-              type: "super Practical",
-              color: "#EB3F55",
-              status: "Reserved"
-            },
-            {
-              name: "5C",
-              isAllowed: false,
-              cost: 123,
-              type: "super Practical",
-              color: "#EB3F55",
-              status: "Reserved"
-            },
-            {
-              name: "6C",
-              isAllowed: false,
-              cost: 123,
-              type: "super Practical",
-              color: "#EB3F55",
-              status: "Reserved"
-            }
-          ]
+          name: "Harsh Bhagtani",
+          seatNo: "1C",
         },
         {
-          rowName: "D",
-          seats: [
-            {
-              name: "1D",
-              isAllowed: true,
-              cost: 123,
-              type: "Super Practical",
-              color: "#EB3F55"
-            },
-            {
-              name: "2D",
-              isAllowed: false,
-              cost: 123,
-              type: "Super Practical",
-              isAllow: true,
-              color: "#EB3F55",
-              status: "Reserved"
-            },
-            {
-              name: "3D",
-              cost: 123,
-              type: "Super Practical",
-              color: "#EB3F55",
-              isAllowed: false,
-              isNextGap: true,
-              status: "Lady Only"
-            },
-            {
-              name: "4D",
-              cost: 123,
-              type: "Super Practical",
-              isAllowed: true,
-              color: "#EB3F55",
-              status: "Reserved"
-            },
-            {
-              name: "5D",
-              cost: 123,
-              type: "super Practical",
-              isAllowed: true,
-              color: "#EB3F55",
-              status: "Reserved"
-            },
-            {
-              name: "6D",
-              isAllowed: false,
-              cost: 123,
-              type: "super Practical",
-              color: "#EB3F55",
-              status: "Reserved"
-            }
-          ]
+          name:"Shweta Bhatia",
+          seatNo:"1D",
         }
-      ]
-    },
-    {
-      lang: "hindi",
-      title: "seat Map title in Hindi",
-      selectedSeatName: "1A",
+      ],
+      passengerSelect: {
+        name: "Passenger Select",
+        placeholder: "Passenger Name",
+        required: false,
+        options: [
+          { label: "Swati Bhatia", value: "Swati Bhatia" },
+          { label: "Vanshika Bhatia", value: "Vanshika Bhatia" },
+          { label: "Harsh Bhagtani", value: "Harsh Bhagtani" },
+          { label: "Shweta Bhatia", value: "Shweta Bhatia" }
+        ]
+      },
       seatArrangement: [
         {
           rowName: "A",
           seats: [
             {
               name: "1A",
-              isAllowed: false,
+              isAllowed: true,
               cost: 123,
               type: "Super Practical",
-              color: "##EB3F55",
-              status: "Reserved"
+              color: "##EB3F55"
             },
             {
               name: "2A",
@@ -281,7 +94,7 @@ export const seatMapMessage = {
               isNextGap: true,
               cost: 123,
               type: "super Practical",
-              color: "#000"
+              color: "##EB3F55"
             },
             {
               name: "4A",
@@ -296,14 +109,14 @@ export const seatMapMessage = {
               isAllowed: true,
               cost: 123,
               type: "super Practical",
-              color: "#000"
+              color: "##EB3F55"
             },
             {
               name: "6A",
               isAllowed: true,
               cost: 123,
               type: "super Practical",
-              color: "#000"
+              color: "##EB3F55"
             }
           ]
         },
@@ -319,11 +132,10 @@ export const seatMapMessage = {
             },
             {
               name: "2B",
-              isAllowed: false,
+              isAllowed: true,
               cost: 123,
               type: "super Practical",
-              color: "##EB3F55",
-              status: "Reserved"
+              color: "##EB3F55"
             },
             {
               name: "3B",
@@ -469,6 +281,243 @@ export const seatMapMessage = {
         }
       ]
     }
+    // {
+    //   lang: "hindi",
+    //   title: "seat Map title in Hindi",
+    //   selectedSeatName: "1A",
+    //   recommendedSeats: [
+    //     {
+    //       name: "SB",
+    //       seatNo: "1A",
+    //     },
+    //     {
+    //       name: "VB",
+    //       seatNo: "2B",
+    //     },
+    //     {
+    //       name: "",
+    //       seatNo: "2A",
+    //     },
+    //     {
+    //       name:"",
+    //       seatNo:"3A",
+    //     }
+    //   ],
+    //   seatArrangement: [
+    //     {
+    //       rowName: "A",
+    //       seats: [
+    //         {
+    //           name: "1A",
+    //           isAllowed: false,
+    //           cost: 123,
+    //           type: "Super Practical",
+    //           color: "##EB3F55",
+    //           status: "Reserved"
+    //         },
+    //         {
+    //           name: "2A",
+    //           isAllowed: false,
+    //           cost: 123,
+    //           type: "super Practical",
+    //           color: "##EB3F55",
+    //           status: "Reserved"
+    //         },
+    //         {
+    //           name: "3A",
+    //           isAllowed: true,
+    //           isNextGap: true,
+    //           cost: 123,
+    //           type: "super Practical",
+    //           color: "#000"
+    //         },
+    //         {
+    //           name: "4A",
+    //           isAllowed: false,
+    //           cost: 123,
+    //           type: "super Practical",
+    //           color: "##EB3F55",
+    //           status: "Reserved"
+    //         },
+    //         {
+    //           name: "5A",
+    //           isAllowed: true,
+    //           cost: 123,
+    //           type: "super Practical",
+    //           color: "#000"
+    //         },
+    //         {
+    //           name: "6A",
+    //           isAllowed: true,
+    //           cost: 123,
+    //           type: "super Practical",
+    //           color: "#000"
+    //         }
+    //       ]
+    //     },
+    //     {
+    //       rowName: "B",
+    //       seats: [
+    //         {
+    //           name: "1B",
+    //           isAllowed: true,
+    //           cost: 123,
+    //           type: "super Practical",
+    //           color: "#2b589d"
+    //         },
+    //         {
+    //           name: "2B",
+    //           isAllowed: false,
+    //           cost: 123,
+    //           type: "super Practical",
+    //           color: "##EB3F55",
+    //           status: "Reserved"
+    //         },
+    //         {
+    //           name: "3B",
+    //           isAllowed: false,
+    //           cost: 123,
+    //           type: "super Practical",
+    //           color: "##EB3F55",
+    //           isNextGap: true,
+    //           status: "Reserved"
+    //         },
+    //         {
+    //           name: "4B",
+    //           isAllowed: false,
+    //           cost: 123,
+    //           type: "super Practical",
+    //           color: "##EB3F55",
+    //           status: "Reserved"
+    //         },
+    //         {
+    //           name: "5B",
+    //           isAllowed: false,
+    //           cost: 123,
+    //           type: "super Practical",
+    //           color: "#EB3F55",
+    //           status: "Reserved"
+    //         },
+    //         {
+    //           name: "6B",
+    //           isAllowed: false,
+    //           cost: 123,
+    //           type: "super Practical",
+    //           color: "#2b589d",
+    //           status: "Reserved"
+    //         }
+    //       ]
+    //     },
+    //     {
+    //       rowName: "C",
+    //       seats: [
+    //         {
+    //           name: "1C",
+    //           isAllowed: false,
+    //           cost: 123,
+    //           type: "super Practical",
+    //           color: "#EB3F55",
+    //           status: "Reserved"
+    //         },
+    //         {
+    //           name: "2C",
+    //           isAllowed: false,
+    //           cost: 123,
+    //           type: "super Practical",
+    //           color: "#EB3F55",
+    //           status: "Reserved"
+    //         },
+    //         {
+    //           name: "3C",
+    //           isAllowed: false,
+    //           cost: 123,
+    //           type: "super Practical",
+    //           color: "#EB3F55",
+    //           isNextGap: true,
+    //           status: "Reserved"
+    //         },
+    //         {
+    //           name: "4C",
+    //           isAllowed: false,
+    //           cost: 123,
+    //           type: "super Practical",
+    //           color: "#EB3F55",
+    //           status: "Reserved"
+    //         },
+    //         {
+    //           name: "5C",
+    //           isAllowed: false,
+    //           cost: 123,
+    //           type: "super Practical",
+    //           color: "#EB3F55",
+    //           status: "Reserved"
+    //         },
+    //         {
+    //           name: "6C",
+    //           isAllowed: false,
+    //           cost: 123,
+    //           type: "super Practical",
+    //           color: "#EB3F55",
+    //           status: "Reserved"
+    //         }
+    //       ]
+    //     },
+    //     {
+    //       rowName: "D",
+    //       seats: [
+    //         {
+    //           name: "1D",
+    //           isAllowed: true,
+    //           cost: 123,
+    //           type: "Super Practical",
+    //           color: "#EB3F55"
+    //         },
+    //         {
+    //           name: "2D",
+    //           isAllowed: false,
+    //           cost: 123,
+    //           type: "Super Practical",
+    //           isAllow: true,
+    //           color: "#EB3F55",
+    //           status: "Reserved"
+    //         },
+    //         {
+    //           name: "3D",
+    //           cost: 123,
+    //           type: "Super Practical",
+    //           color: "#EB3F55",
+    //           isAllowed: false,
+    //           isNextGap: true,
+    //           status: "Lady Only"
+    //         },
+    //         {
+    //           name: "4D",
+    //           cost: 123,
+    //           type: "Super Practical",
+    //           isAllowed: true,
+    //           color: "#EB3F55",
+    //           status: "Reserved"
+    //         },
+    //         {
+    //           name: "5D",
+    //           cost: 123,
+    //           type: "super Practical",
+    //           isAllowed: true,
+    //           color: "#EB3F55",
+    //           status: "Reserved"
+    //         },
+    //         {
+    //           name: "6D",
+    //           isAllowed: false,
+    //           cost: 123,
+    //           type: "super Practical",
+    //           color: "#EB3F55",
+    //           status: "Reserved"
+    //         }
+    //       ]
+    //     }
+    //   ]
+    // }
   ],
   timestamp: new Date()
 };

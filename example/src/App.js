@@ -52,8 +52,8 @@ export default class App extends Component {
         {/* <CarouselWithButtons
           message={carouselMenu}
         /> */}
-        <FormMessage message={formMessage} />
-        {/* <SeatMap message={seatMapMessage} preferLang="hindi" /> */}
+        {/* <FormMessage message={formMessage} /> */}
+        <SeatMap message={seatMapMessage} preferLang="hindi" />
       </div>
     );
   }
