@@ -14,7 +14,6 @@ class SeatMapBody extends React.PureComponent {
   constructor(props) {
     super(props)
     this.state = {
-      selectedSeatName: props.message.payload.selectedSeatName,
       selectedPassenger: '',
       recommendedSeats: props.payload.recommendedSeats,
       randomChecked: '',
@@ -238,10 +237,6 @@ class SeatMapBody extends React.PureComponent {
                             seat.isAllowed && !disabled
                               ? 'ori-cursor-ptr'
                               : 'ori-cursor-not-allowed'
-                          } ${
-                            this.state.selectedSeatName === seat.name
-                              ? 'ori-selected-seat'
-                              : ''
                           }`}
                           onClick={() => this.handleSeatSelection(seat, this.state.selectedPassenger)}
                         >
