@@ -39,7 +39,7 @@ export const seatMapMessage = {
       randomSelection: true,
       clearSelection: true,
       submitButtonText: "Continue with recommendation for all",
-      recommendedSeats: [
+      selectedSeats: [
         {
           name: "Swati Bhatia",
           seatNo: "1A",

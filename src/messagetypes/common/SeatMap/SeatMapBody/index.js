@@ -15,7 +15,7 @@ class SeatMapBody extends React.PureComponent {
     super(props)
     this.state = {
       selectedPassenger: '',
-      recommendedSeats: props.payload.recommendedSeats,
+      selectedSeats: props.payload.selectedSeats,
       randomChecked: '',
       submitButtonText: props.payload.submitButtonText
     }
@@ -25,19 +25,19 @@ class SeatMapBody extends React.PureComponent {
     const { disabled } = this.props
     var reserved = false
     if (seat.isAllowed && !disabled) {
-      this.state.recommendedSeats.map((rseat) => {
+      this.state.selectedSeats.map((rseat) => {
         if (seat.name === rseat.seatNo) {
           reserved = true
         }
       })
-      this.state.recommendedSeats.map((rseat) => {
+      this.state.selectedSeats.map((rseat) => {
         if (rseat.name === passenger && !reserved) {
           rseat.seatNo = seat.name
         }
       })
       this.setState(prevState => ({
-        recommendedSeats: [
-          ...prevState.recommendedSeats
+        selectedSeats: [
+          ...prevState.selectedSeats
         ],
         submitButtonText: 'Proceed to All',
         randomChecked: false
@@ -47,10 +47,10 @@ class SeatMapBody extends React.PureComponent {
 
   handleSubmit = () => {
     const { message, onSubmit } = this.props
-    if (this.state.recommendedSeats.length > 0) {
+    if (this.state.selectedSeats.length > 0) {
       const data = {
         relayData: message.payload.relayData,
-        selectedSeats: this.state.recommendedSeats
+        selectedSeats: this.state.selectedSeats
       }
       onSubmit(data, message)
     }
@@ -73,14 +73,14 @@ class SeatMapBody extends React.PureComponent {
       submitButtonText: 'Proceed to All'
     })
     if (e.target.checked === true) {
-      this.state.recommendedSeats.map((rseat) => {
+      this.state.selectedSeats.map((rseat) => {
         if (rseat.name === this.state.selectedPassenger) {
           rseat.seatNo = ''
           rseat.random = true
         }
       })
     } else {
-      this.state.recommendedSeats.map((rseat) => {
+      this.state.selectedSeats.map((rseat) => {
         if (rseat.name === this.state.selectedPassenger) {
           rseat.random = false
         }
@@ -89,13 +89,13 @@ class SeatMapBody extends React.PureComponent {
   }
 
   handleClear = () => {
-    this.state.recommendedSeats.map((rseat) => {
+    this.state.selectedSeats.map((rseat) => {
       if (rseat.name === this.state.selectedPassenger) {
         rseat.seatNo = ''
       }
       this.setState(prevState => ({
-        recommendedSeats: [
-          ...prevState.recommendedSeats
+        selectedSeats: [
+          ...prevState.selectedSeats
         ]
       }))
     })
@@ -106,8 +106,7 @@ class SeatMapBody extends React.PureComponent {
       selectedPassenger: value,
       randomChecked: false
     })
-    // random selection remain fixed for a particular passenger even when passenger is changed
-    this.state.recommendedSeats.map((rseat) => {
+    this.state.selectedSeats.map((rseat) => {
       if (rseat.name === value && rseat.random === true) {
         this.setState({
           randomChecked: true
@@ -123,13 +122,11 @@ class SeatMapBody extends React.PureComponent {
           <div
             style={{
               backgroundColor: rseat.name === this.state.selectedPassenger ? '#90EE90' : '#D3D3D3',
-              borderRadius: 3,
-              marginRight: 3,
               width: 25,
               height: 25
             }}
           >
-            <p style={{ alignItems: 'center', color: 'black', fontSize: 10, fontWeight: 'bold' }}>{this.getInitials(rseat.name)}</p>
+            <p className='ori-font-default ori-font-xxs ori-font-bold'>{this.getInitials(rseat.name)}</p>
           </div>
         )
       }
@@ -240,7 +237,7 @@ class SeatMapBody extends React.PureComponent {
                           }`}
                           onClick={() => this.handleSeatSelection(seat, this.state.selectedPassenger)}
                         >
-                          {this.renderSeats(this.state.recommendedSeats, seat)}
+                          {this.renderSeats(this.state.selectedSeats, seat)}
                         </div>
                       </Tooltip>
                       {seat.isNextGap && (
