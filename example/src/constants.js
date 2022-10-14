@@ -36,7 +36,6 @@ export const seatMapMessage = {
     {
       title: "seat Map title",
       subtitle: "<p class='ori-font-light'>hello i am html title</p>",
-      selectedSeatName: "1A",
       randomSelection: true,
       clearSelection: true,
       submitButtonText: "Continue with recommendation for all",
