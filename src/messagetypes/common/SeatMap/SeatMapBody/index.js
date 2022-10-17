@@ -121,10 +121,14 @@ class SeatMapBody extends React.PureComponent {
         return (
           <div
             style={{
-              backgroundColor: rseat.name === this.state.selectedPassenger ? '#90EE90' : '#D3D3D3',
               width: 25,
               height: 25
             }}
+            className={`ori-flex ori-flex-center ori-border-radius-3 ${
+              rseat.name === this.state.selectedPassenger
+                ? 'ori-seat-selected'
+                : 'ori-seat-default'
+            }`}
           >
             <p className='ori-font-default ori-font-xxs ori-font-bold'>{this.getInitials(rseat.name)}</p>
           </div>
@@ -169,25 +173,26 @@ class SeatMapBody extends React.PureComponent {
             dangerouslySetInnerHTML={{ __html: payload.subtitle }}
           />
         )}
-        {payload.passengerSelect && payload.passengerSelect.options.length > 0 && (
-          <Select
-            style={{ width: 250,
-              marginRight: '7px'}}
-            size='small'
-            className=''
-            {...payload.passengerSelect}
-            getPopupContainer={triggerNode =>
-              triggerNode.parentNode
-            }
-            onChange={this.handleChange}
-          />)}
-        {payload.clearSelection && (
-          <Button
-            onClick={this.handleClear}
-            size='small'
-          >
-            Clear
-          </Button>)}
+        <div className='ori-flex-row '>
+          {payload.passengerSelect && payload.passengerSelect.options.length > 0 && (
+            <Select
+              className='ori-full-width'
+              size='small'
+              {...payload.passengerSelect}
+              getPopupContainer={triggerNode =>
+                triggerNode.parentNode
+              }
+              onChange={this.handleChange}
+            />)}
+          {payload.clearSelection && (
+            <Button
+              onClick={this.handleClear}
+              size='small'
+              className='ori-mrgn-10'
+            >
+              Clear
+            </Button>)}
+        </div>
         {payload.seatArrangement && payload.seatArrangement.length > 0 && (
           <React.Fragment>
             <p className='ori-text-center ori-font-xxs ori-b-mrgn-5 ori-t-mrgn-3'>
@@ -259,6 +264,7 @@ class SeatMapBody extends React.PureComponent {
                 <Checkbox
                   onChange={this.randomOnChange}
                   checked={this.state.randomChecked}
+                  className='ori-r-mrgn-10'
                 >
                   Randomly assign a seat
                 </Checkbox>
