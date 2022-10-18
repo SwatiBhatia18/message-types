@@ -188,7 +188,7 @@ class SeatMapBody extends React.PureComponent {
             <Button
               onClick={this.handleClear}
               size='small'
-              className='ori-l-mrgn-5'
+              className='ori-l-mrgn-5 ori-btn-clear'
             >
               Clear
             </Button>)}
