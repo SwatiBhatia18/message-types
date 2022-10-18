@@ -39,7 +39,7 @@ class SeatMapBody extends React.PureComponent {
         selectedSeats: [
           ...prevState.selectedSeats
         ],
-        submitButtonText: 'Proceed to All',
+        submitButtonText: 'Proceed for all',
         randomChecked: false
       }))
     }
@@ -173,7 +173,7 @@ class SeatMapBody extends React.PureComponent {
             dangerouslySetInnerHTML={{ __html: payload.subtitle }}
           />
         )}
-        <div className='ori-flex-row '>
+        <div className='ori-flex-row ori-b-mrgn-10'>
           {payload.passengerSelect && payload.passengerSelect.options.length > 0 && (
             <Select
               className='ori-full-width'
@@ -188,7 +188,7 @@ class SeatMapBody extends React.PureComponent {
             <Button
               onClick={this.handleClear}
               size='small'
-              className='ori-mrgn-10'
+              className='ori-l-mrgn-5'
             >
               Clear
             </Button>)}
@@ -264,14 +264,14 @@ class SeatMapBody extends React.PureComponent {
                 <Checkbox
                   onChange={this.randomOnChange}
                   checked={this.state.randomChecked}
-                  className='ori-r-mrgn-10'
-                >
-                  Randomly assign a seat
-                </Checkbox>
+                  className='ori-r-mrgn-5'
+                />
+                <span>Randomly assign a seat</span>
               </div>)}
             <Button
               size='small'
               className='ori-t-mrgn-5 ori-btn-submit'
+              style={{width: '270px'}}
               onClick={this.handleSubmit}
               block
             >
