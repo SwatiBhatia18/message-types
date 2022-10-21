@@ -15,6 +15,7 @@ import {
   fileToBase64,
   checkMultipleExtension
 } from '../../../../data/config/utils'
+
 class UploadFileBody extends React.PureComponent {
   constructor(props) {
     super(props)
@@ -43,6 +44,7 @@ class UploadFileBody extends React.PureComponent {
       if (!isAllowed) {
         this.setState({ error: 'multiextension not allowed' })
       }
+
       const allowedSize = maxAllowedSize || 300000
       if (file.size > allowedSize) {
         this.setState({ error: `file size must be less than ${allowedSize}byte` })
