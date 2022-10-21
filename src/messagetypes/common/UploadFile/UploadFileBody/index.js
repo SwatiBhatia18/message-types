@@ -40,6 +40,9 @@ class UploadFileBody extends React.PureComponent {
 
     if (file.name) {
       let isAllowed = checkMultipleExtension(file.name)
+      if (!isAllowed) {
+        this.setState({ error: 'multiextension not allowed' })
+      }
       const allowedSize = maxAllowedSize || 300000
       if (file.size > allowedSize) {
         this.setState({ error: `file size must be less than ${allowedSize}byte` })
@@ -47,10 +50,11 @@ class UploadFileBody extends React.PureComponent {
       }
 
       if (accept) {
-        isAllowed = accept.toLowerCase().includes(file.type)
-        if (!isAllowed) {
+        const typeError = accept.toLowerCase().includes(file.type)
+        if (!typeError) {
           this.setState({ error: `${file.type} is not allowed` })
         }
+        isAllowed = isAllowed && typeError
       }
 
       if (isAllowed) {
