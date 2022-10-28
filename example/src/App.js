@@ -38,7 +38,7 @@ export default class App extends Component {
         </OverflowWrapper> */}
         {/* <ListMessage message={message} /> */}
         {/* <TextWithMedia message={textWithMediaMessage} preferLang="hindi" /> */}
-        {/* <CheckboxWithMedia message={checkboxMessage} preferLang="hindi"/> */}
+        <CheckboxWithMedia message={checkboxMessage} preferLang="hindi"/>
         {/* <DishtvRecharge message={message} /> */}
         {/* <DishtvRechargeDetails message={message} /> */}
         {/* <UploadFile message={uploadMessage} /> */}
@@ -53,7 +53,7 @@ export default class App extends Component {
           message={carouselMenu}
         /> */}
         {/* <FormMessage message={formMessage} /> */}
-        <SeatMap message={seatMapMessage} preferLang="hindi" />
+        {/* <SeatMap message={seatMapMessage} preferLang="hindi" /> */}
       </div>
     );
   }

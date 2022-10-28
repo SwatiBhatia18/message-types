@@ -720,6 +720,7 @@ export const checkboxMessage = {
       imageUrl:
         "https://maruti-oriserve-images.s3.ap-south-1.amazonaws.com/Spyder_WhatsApp_700x415.jpg",
       data: {},
+      maxSelectionLimit: 3,
       options: [
         {
           label: "1 Ka haal ba",

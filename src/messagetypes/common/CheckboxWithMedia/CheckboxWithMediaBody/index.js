@@ -48,6 +48,27 @@ class CheckboxWithMediaBody extends React.PureComponent {
 
   onChange = checked => {
     const { payload } = this.props
+    if (
+      payload.maxSelectionLimit &&
+      payload.maxSelectionLimit > 0 &&
+      payload.maxSelectionLimit < payload.options.length
+    ) {
+      if (checked.length === payload.maxSelectionLimit) {
+        this.setState(prev => ({
+          filter_options: prev.filter_options.map(item => {
+            if (!checked.includes(item.value)) item.disabled = true
+            return item
+          })
+        }))
+      } else {
+        this.setState(prev => ({
+          filter_options: prev.filter_options.map(item => {
+            if (item.disabled) item.disabled = false
+            return item
+          })
+        }))
+      }
+    }
     this.setState({
       checked,
       indeterminate:
@@ -71,10 +92,34 @@ class CheckboxWithMediaBody extends React.PureComponent {
 
   onChangePagination = current => {
     const { payload } = this.props
-    const filterOptions = payload.options.slice(
+    const { checked } = this.state
+    let filterOptions = payload.options.slice(
       (current - 1) * LIMIT,
       current * LIMIT
     )
+    if (
+      payload.maxSelectionLimit &&
+      payload.maxSelectionLimit > 0 &&
+      payload.maxSelectionLimit < payload.options.length &&
+      checked.length > 0
+    ) {
+      if (checked.length === payload.maxSelectionLimit) {
+        this.setState({
+          filter_options: filterOptions.map(item => {
+            if (!checked.includes(item.value)) item.disabled = true
+            return item
+          })
+        })
+      } else {
+        this.setState({
+          filter_options: filterOptions.map(item => {
+            if (item.disabled) item.disabled = false
+            return item
+          })
+        })
+      }
+    }
+
     this.setState({
       current,
       has_more: filterOptions.length === LIMIT,
@@ -122,16 +167,18 @@ class CheckboxWithMediaBody extends React.PureComponent {
         )}
         {payload.options && payload.options.length > 0 && (
           <div className={styles.checkboxGroupContainer}>
-            <div className='ori-b-pad-5 ori-b-mrgn-10 ori-b-border-light'>
-              <Checkbox
-                indeterminate={indeterminate}
-                checked={check_all}
-                disabled={checkbox_disabled}
-                onChange={this.onCheckAllChange}
-              >
-                Select All
-              </Checkbox>
-            </div>
+            {!payload.maxSelectionLimit && (
+              <div className='ori-b-pad-5 ori-b-mrgn-10 ori-b-border-light'>
+                <Checkbox
+                  indeterminate={indeterminate}
+                  checked={check_all}
+                  disabled={checkbox_disabled}
+                  onChange={this.onCheckAllChange}
+                >
+                  Select All
+                </Checkbox>
+              </div>
+            )}
             <Checkbox.Group
               style={{ width: '100%' }}
               className='ori-mt-checkboxGroup'
