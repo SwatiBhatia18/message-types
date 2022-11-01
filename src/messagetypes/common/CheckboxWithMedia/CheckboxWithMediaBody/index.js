@@ -83,8 +83,9 @@ class CheckboxWithMediaBody extends React.PureComponent {
     const selected_list = payload.options.filter(item => {
       return checked.findIndex(value => value === item.value) !== -1
     })
+    var label_list = selected_list.map(({ label }) => ({ label }))
     const data = {
-      list: selected_list,
+      list: label_list,
       relayData: payload.relayData
     }
     this.props.onSubmitCheckbox(data)
