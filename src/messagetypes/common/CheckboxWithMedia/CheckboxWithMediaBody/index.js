@@ -8,6 +8,7 @@ import styles from './CheckboxWithMediaBody.module.scss'
 
 import Buttons from '../../../../components/buttons'
 import CustomPagination from '../../../../components/CustomPagination'
+import HtmlText from '../../../../components/HtmlText'
 
 const LIMIT = 8
 
@@ -157,14 +158,18 @@ class CheckboxWithMediaBody extends React.PureComponent {
           </div>
         )}
         {payload.title && (
-          <p className='ori-no-t-mrgn ori-no-b-mrgn ori-font-bold ori-capitalize-first title'>
-            {payload.title}
-          </p>
+          <HtmlText
+            textClass='ori-no-t-mrgn ori-no-b-mrgn ori-font-bold ori-capitalize-first title'
+            text={payload.title}
+            isHtml={payload.containsHtmlTitle}
+          />
         )}
         {payload.subtitle && (
-          <p className='ori-no-b-mrgn ori-no-t-mrgn subtitle'>
-            {payload.subtitle}
-          </p>
+          <HtmlText
+            textClass='ori-no-b-mrgn ori-no-t-mrgn subtitle'
+            text={payload.subtitle}
+            isHtml={payload.containsHtmlSubtitle}
+          />
         )}
         {payload.options && payload.options.length > 0 && (
           <div className={styles.checkboxGroupContainer}>
