@@ -5,6 +5,11 @@ const ListMessageBody = ({ payload }) => {
   return (
     <React.Fragment>
       {payload.list.map((item, index) => {
+        if (payload.showLabelOnly) {
+          return (
+            <p key={index}>{item.label}</p>
+          )
+        }
         if (item.value !== undefined) {
           return (
             <p key={index}>
