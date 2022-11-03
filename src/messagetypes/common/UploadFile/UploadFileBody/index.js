@@ -125,7 +125,7 @@ class UploadFileBody extends React.PureComponent {
         <div
           className={`ori-bg-card ori-pad-10 ori-flex-column ori-flex-jc ori-flex-ac ori-border-radius-3  uploaderWrapper ${
             disabled
-              ? 'ori-cursor-notallowed ori-border-danger'
+              ? 'ori-cursor-not-allowed ori-border-danger'
               : 'ori-cursor-ptr ori-border-dashed-default'
           }`}
         >
