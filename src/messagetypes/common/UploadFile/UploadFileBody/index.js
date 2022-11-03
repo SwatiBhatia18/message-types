@@ -37,7 +37,9 @@ class UploadFileBody extends React.PureComponent {
 
   beforeUpload = file => {
     const { accept, maxAllowedSize } = this.props.payload //  accept format eg. "image/png,image/jpg,image/jpeg"
-    if (this.state.error) { this.setState({error: ''}) }
+    if (this.state.error) {
+      this.setState({ error: '' })
+    }
 
     if (file.name) {
       let isAllowed = checkMultipleExtension(file.name)
@@ -47,7 +49,9 @@ class UploadFileBody extends React.PureComponent {
 
       const allowedSize = maxAllowedSize || 300000
       if (file.size > allowedSize) {
-        this.setState({ error: `file size must be less than ${allowedSize}byte` })
+        this.setState({
+          error: `file size must be less than ${allowedSize}byte`
+        })
         isAllowed = false
       }
 
@@ -70,7 +74,7 @@ class UploadFileBody extends React.PureComponent {
     }
 
     return false
-  }
+  };
 
   onRemove = file => {
     this.setState({
@@ -93,7 +97,7 @@ class UploadFileBody extends React.PureComponent {
       fileUrl
     }
     handleFileUpload(payload, message)
-  }
+  };
 
   renderImage = () => {
     const { file, fileUrl } = this.state
@@ -111,14 +115,20 @@ class UploadFileBody extends React.PureComponent {
         </div>
       )
     }
-  }
+  };
 
   renderFileList = () => {
     const { file, fileUrl } = this.state
     const { disabled } = this.props
     if (file === null && fileUrl === '') {
       return (
-        <div className='ori-bg-card ori-cursor-ptr ori-pad-10 ori-flex-column ori-flex-jc ori-flex-ac ori-border-radius-3 ori-border-dashed-default uploaderWrapper'>
+        <div
+          className={`ori-bg-card ori-pad-10 ori-flex-column ori-flex-jc ori-flex-ac ori-border-radius-3  uploaderWrapper ${
+            disabled
+              ? 'ori-cursor-notallowed ori-border-danger'
+              : 'ori-cursor-ptr ori-border-dashed-default'
+          }`}
+        >
           <UploadIcon size={40} />
           <div className='ori-t-pad-5'>Select file to upload</div>
         </div>
@@ -150,7 +160,7 @@ class UploadFileBody extends React.PureComponent {
         </div>
       )
     }
-  }
+  };
 
   render() {
     const {
@@ -192,9 +202,7 @@ class UploadFileBody extends React.PureComponent {
           </Upload>
         </div>
         {error && (
-          <p className='ori-word-break ori-font-xxs ori-font-danger'>
-            {error}
-          </p>
+          <p className='ori-word-break ori-font-xxs ori-font-danger'>{error}</p>
         )}
         {file && fileUrl !== '' && !disabled && (
           <Button
