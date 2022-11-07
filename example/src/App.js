@@ -38,10 +38,10 @@ export default class App extends Component {
         </OverflowWrapper> */}
         {/* <ListMessage message={message} /> */}
         {/* <TextWithMedia message={textWithMediaMessage} preferLang="hindi" /> */}
-        <CheckboxWithMedia message={checkboxMessage} preferLang="hindi"/>
+        {/* <CheckboxWithMedia message={checkboxMessage} preferLang="hindi"/> */}
         {/* <DishtvRecharge message={message} /> */}
         {/* <DishtvRechargeDetails message={message} /> */}
-        {/* <UploadFile message={uploadMessage} /> */}
+        <UploadFile message={uploadMessage} />
         {/* <Offers message={message} handleOfferSelection={()=>{}} btn_disabled /> */}
         {/* <RechargeHistory message={message} /> */}
         {/* <CarouselWithButtons

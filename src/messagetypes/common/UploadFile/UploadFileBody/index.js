@@ -13,7 +13,8 @@ import styles from './UploadFileBody.module.scss'
 import Buttons from '../../../../components/buttons'
 import {
   fileToBase64,
-  checkMultipleExtension
+  checkMultipleExtension,
+  checkDeviceIsMobile
 } from '../../../../data/config/utils'
 
 class UploadFileBody extends React.PureComponent {
@@ -32,6 +33,24 @@ class UploadFileBody extends React.PureComponent {
     }
     if (prevProps.payload.fileUrl !== this.props.payload.fileUrl) {
       this.setState({ fileUrl: this.props.payload.fileUrl })
+    }
+  }
+
+  handleUploadClick = () => {
+    console.log('Upload Click')
+    if (checkDeviceIsMobile() && navigator.permissions) {
+      console.log('Mobile', checkDeviceIsMobile())
+      navigator.permissions.query({ name: 'camera' }).then(permissionStatus => {
+        if (permissionStatus.state !== 'granted') {
+          this.setState({
+            error: 'Media/Camera permission is required to upload a file'
+          })
+        } else {
+          this.setState({
+            error: ''
+          })
+        }
+      })
     }
   }
 
@@ -197,6 +216,7 @@ class UploadFileBody extends React.PureComponent {
             onRemove={this.onRemove}
             disabled={disabled || file !== null}
             accept={payload.accept}
+            onClick={this.handleUploadClick}
           >
             {this.renderFileList()}
           </Upload>
