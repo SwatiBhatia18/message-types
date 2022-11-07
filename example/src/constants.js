@@ -43,18 +43,22 @@ export const seatMapMessage = {
         {
           name: "Swati Bhatia",
           seatNo: "1A",
+          cost : 123
         },
         {
           name: "Vanshika Bhatia",
           seatNo: "2B",
+          cost: 123
         },
         {
           name: "Harsh Bhagtani",
           seatNo: "1C",
+          cost : 123
         },
         {
           name:"Shweta Bhatia",
           seatNo:"1D",
+          cost: 123
         }
       ],
       passengerSelect: {

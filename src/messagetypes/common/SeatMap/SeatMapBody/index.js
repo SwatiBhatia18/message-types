@@ -33,6 +33,7 @@ class SeatMapBody extends React.PureComponent {
       this.state.selectedSeats.map((rseat) => {
         if (rseat.name === passenger && !reserved) {
           rseat.seatNo = seat.name
+          rseat.cost = seat.cost
         }
       })
       this.setState(prevState => ({
@@ -76,6 +77,7 @@ class SeatMapBody extends React.PureComponent {
       this.state.selectedSeats.map((rseat) => {
         if (rseat.name === this.state.selectedPassenger) {
           rseat.seatNo = ''
+          rseat.cost = ''
           rseat.random = true
         }
       })
@@ -92,6 +94,7 @@ class SeatMapBody extends React.PureComponent {
     this.state.selectedSeats.map((rseat) => {
       if (rseat.name === this.state.selectedPassenger) {
         rseat.seatNo = ''
+        rseat.cost = ''
       }
       this.setState(prevState => ({
         selectedSeats: [
