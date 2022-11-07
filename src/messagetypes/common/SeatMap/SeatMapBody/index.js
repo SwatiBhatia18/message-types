@@ -34,6 +34,10 @@ class SeatMapBody extends React.PureComponent {
         if (rseat.name === passenger && !reserved) {
           rseat.seatNo = seat.name
           rseat.cost = seat.cost
+          rseat.type = seat.type
+          rseat.color = seat.color
+          rseat.isAllowed = seat.isAllowed
+          rseat.status = seat.status
         }
       })
       this.setState(prevState => ({
@@ -48,10 +52,19 @@ class SeatMapBody extends React.PureComponent {
 
   handleSubmit = () => {
     const { message, onSubmit } = this.props
-    if (this.state.selectedSeats.length > 0) {
+    const {selectedSeats} = this.state
+    const list = []
+    selectedSeats.map((item) => {
+      var obj = {}
+      obj.label = item.name
+      obj.value = item.seatNo + ' ' + item.cost
+      list.push(obj)
+    })
+    if (selectedSeats.length > 0) {
       const data = {
         relayData: message.payload.relayData,
-        selectedSeats: this.state.selectedSeats
+        selectedData: this.state.selectedSeats,
+        list
       }
       onSubmit(data, message)
     }
@@ -79,6 +92,10 @@ class SeatMapBody extends React.PureComponent {
           rseat.seatNo = ''
           rseat.cost = ''
           rseat.random = true
+          rseat.type = ''
+          rseat.color = ''
+          rseat.isAllowed = ''
+          rseat.status = ''
         }
       })
     } else {
@@ -95,6 +112,10 @@ class SeatMapBody extends React.PureComponent {
       if (rseat.name === this.state.selectedPassenger) {
         rseat.seatNo = ''
         rseat.cost = ''
+        rseat.type = ''
+        rseat.color = ''
+        rseat.isAllowed = ''
+        rseat.status = ''
       }
       this.setState(prevState => ({
         selectedSeats: [

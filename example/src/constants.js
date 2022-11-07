@@ -43,22 +43,34 @@ export const seatMapMessage = {
         {
           name: "Swati Bhatia",
           seatNo: "1A",
-          cost : 123
+          cost : 123,
+          isAllowed: true,
+          type: "Super Practical",
+          color: ""
         },
         {
           name: "Vanshika Bhatia",
           seatNo: "2B",
-          cost: 123
+          cost: 123,
+          isAllowed: true,
+          type: "Super Practical",
+          color: ""
         },
         {
           name: "Harsh Bhagtani",
           seatNo: "1C",
-          cost : 123
+          cost : 123,
+          isAllowed: true,
+          type: "Super Practical",
+          color: ""
         },
         {
           name:"Shweta Bhatia",
           seatNo:"1D",
-          cost: 123
+          cost: 123,
+          isAllowed: true,
+          type: "Super Practical",
+          color: ""
         }
       ],
       passengerSelect: {
