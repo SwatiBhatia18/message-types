@@ -53,7 +53,7 @@ export const seatMapMessage = {
           seatNo: "2B",
           cost: 123,
           isAllowed: true,
-          type: "Super Practical",
+          type: "super Practical",
           color: ""
         },
         {
@@ -61,7 +61,7 @@ export const seatMapMessage = {
           seatNo: "1C",
           cost : 123,
           isAllowed: true,
-          type: "Super Practical",
+          type: "super Practical",
           color: ""
         },
         {
@@ -69,7 +69,7 @@ export const seatMapMessage = {
           seatNo:"1D",
           cost: 123,
           isAllowed: true,
-          type: "Super Practical",
+          type: "super Practical",
           color: ""
         }
       ],
