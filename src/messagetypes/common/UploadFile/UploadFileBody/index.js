@@ -13,8 +13,7 @@ import styles from './UploadFileBody.module.scss'
 import Buttons from '../../../../components/buttons'
 import {
   fileToBase64,
-  checkMultipleExtension,
-  checkDeviceIsMobile
+  checkMultipleExtension
 } from '../../../../data/config/utils'
 
 class UploadFileBody extends React.PureComponent {
@@ -33,24 +32,6 @@ class UploadFileBody extends React.PureComponent {
     }
     if (prevProps.payload.fileUrl !== this.props.payload.fileUrl) {
       this.setState({ fileUrl: this.props.payload.fileUrl })
-    }
-  }
-
-  handleUploadClick = () => {
-    console.log('Upload Click')
-    if (checkDeviceIsMobile() && navigator.permissions) {
-      console.log('Mobile', checkDeviceIsMobile())
-      navigator.permissions.query({ name: 'camera' }).then(permissionStatus => {
-        if (permissionStatus.state !== 'granted') {
-          this.setState({
-            error: 'Media/Camera permission is required to upload a file'
-          })
-        } else {
-          this.setState({
-            error: ''
-          })
-        }
-      })
     }
   }
 
@@ -142,11 +123,7 @@ class UploadFileBody extends React.PureComponent {
     if (file === null && fileUrl === '') {
       return (
         <div
-          className={`ori-bg-card ori-pad-10 ori-flex-column ori-flex-jc ori-flex-ac ori-border-radius-3  uploaderWrapper ${
-            disabled
-              ? 'ori-cursor-not-allowed ori-border-dashed-danger'
-              : 'ori-cursor-ptr ori-border-dashed-default'
-          }`}
+          className={'ori-bg-card ori-cursor-ptr ori-pad-10 ori-flex-column ori-flex-jc ori-flex-ac ori-border-radius-3 ori-border-dashed-default uploaderWrapper'}
         >
           <UploadIcon size={40} />
           <div className='ori-t-pad-5'>Select file to upload</div>
@@ -216,7 +193,6 @@ class UploadFileBody extends React.PureComponent {
             onRemove={this.onRemove}
             disabled={disabled || file !== null}
             accept={payload.accept}
-            onClick={this.handleUploadClick}
           >
             {this.renderFileList()}
           </Upload>
