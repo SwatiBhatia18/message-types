@@ -50,8 +50,9 @@ class UploadFileBody extends React.PureComponent {
 
       const allowedSize = maxAllowedSize || 300000
       if (file.size > allowedSize) {
+        const size = formatSizeUnits(allowedSize)
         this.setState({
-          error: `file size must be less than ${allowedSize}byte`
+          error: `file size must be less than ${size}`
         })
         isAllowed = false
       }
