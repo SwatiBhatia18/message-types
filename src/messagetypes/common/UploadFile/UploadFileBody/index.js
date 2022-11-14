@@ -123,7 +123,11 @@ class UploadFileBody extends React.PureComponent {
     if (file === null && fileUrl === '') {
       return (
         <div
-          className={'ori-bg-card ori-cursor-ptr ori-pad-10 ori-flex-column ori-flex-jc ori-flex-ac ori-border-radius-3 ori-border-dashed-default uploaderWrapper'}
+          className={`ori-bg-card ori-pad-10 ori-flex-column ori-flex-jc ori-flex-ac ori-border-radius-3  uploaderWrapper ${
+            disabled
+              ? 'ori-cursor-not-allowed ori-border-dashed-danger'
+              : 'ori-cursor-ptr ori-border-dashed-default'
+          }`}
         >
           <UploadIcon size={40} />
           <div className='ori-t-pad-5'>Select file to upload</div>
