@@ -13,7 +13,8 @@ import styles from './UploadFileBody.module.scss'
 import Buttons from '../../../../components/buttons'
 import {
   fileToBase64,
-  checkMultipleExtension
+  checkMultipleExtension,
+  getFileMimeType
 } from '../../../../data/config/utils'
 
 class UploadFileBody extends React.PureComponent {
@@ -35,7 +36,7 @@ class UploadFileBody extends React.PureComponent {
     }
   }
 
-  beforeUpload = file => {
+  beforeUpload = async file => {
     const { accept, maxAllowedSize } = this.props.payload //  accept format eg. "image/png,image/jpg,image/jpeg"
     if (this.state.error) {
       this.setState({ error: '' })
@@ -56,7 +57,8 @@ class UploadFileBody extends React.PureComponent {
       }
 
       if (accept) {
-        const typeError = accept.toLowerCase().includes(file.type)
+        const mimeType = await getFileMimeType(file)
+        const typeError = accept.toLowerCase().includes(mimeType)
         if (!typeError) {
           this.setState({ error: `${file.type} is not allowed` })
         }

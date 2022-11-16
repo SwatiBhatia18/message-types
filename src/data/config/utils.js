@@ -73,3 +73,41 @@ export const isEmail = address => {
   let regex = new RegExp(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)
   return regex.test(address)
 }
+
+export const getFileMimeType = file => {
+  return new Promise((resolve) => {
+    const filereader = new FileReader()
+    filereader.onloadend = function(evt) {
+      if (evt.target.readyState === FileReader.DONE) {
+        const uint = new Uint8Array(evt.target.result)
+        let bytes = []
+        uint.forEach((byte) => {
+          bytes.push(byte.toString(16))
+        })
+        const hex = bytes.join('').toUpperCase()
+        resolve(getMimetype(hex))
+      }
+    }
+    const blob = file.slice(0, 4)
+    filereader.readAsArrayBuffer(blob)
+  })
+}
+
+const getMimetype = (signature) => {
+  switch (signature) {
+    case '89504E47':
+      return 'image/png'
+    case '47494638':
+      return 'image/gif'
+    case '25504446':
+      return 'application/pdf'
+    case 'FFD8FFDB':
+    case 'FFD8FFE0':
+    case 'FFD8FFE1':
+      return 'image/jpeg'
+    case '504B0304':
+      return 'application/zip'
+    default:
+      return 'Unknown filetype'
+  }
+}
