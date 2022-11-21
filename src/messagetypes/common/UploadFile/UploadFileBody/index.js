@@ -14,7 +14,8 @@ import Buttons from '../../../../components/buttons'
 import {
   fileToBase64,
   checkMultipleExtension,
-  getFileMimeType
+  getFileMimeType,
+  formatSizeUnits
 } from '../../../../data/config/utils'
 
 class UploadFileBody extends React.PureComponent {
