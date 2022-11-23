@@ -49,7 +49,7 @@ class TextWithMediaBody extends React.PureComponent {
 
     return (
       <div
-        className={`${styles.textWithMediaContainer} ${styles.ie10upTextWithMediaContainer} oriTextWithMediaContainer`}
+        className={`${styles.textWithMediaContainer} ${styles.ie10upTextWithMediaContainer}`}
       >
         {!img_popup_disable && show_overlay && (
           <div
@@ -98,7 +98,7 @@ class TextWithMediaBody extends React.PureComponent {
           <img
             src={payload.imageUrl}
             alt=''
-            className='ori-b-mrgn-5 ori-cursor-ptr ori-full-width'
+            className='ori-b-mrgn-5 ori-cursor-ptr ori-full-width oriTextWithMediaContainer'
             onClick={this.showOverlay}
           />
         )}
