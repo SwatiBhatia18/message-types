@@ -49,7 +49,7 @@ class TextWithMediaBody extends React.PureComponent {
 
     return (
       <div
-        className={`${styles.textWithMediaContainer} ${styles.ie10upTextWithMediaContainer}`}
+        className={`${styles.textWithMediaContainer} ${styles.ie10upTextWithMediaContainer} oriTextWithMediaContainer`}
       >
         {!img_popup_disable && show_overlay && (
           <div
