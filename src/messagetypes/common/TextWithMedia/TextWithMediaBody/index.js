@@ -98,7 +98,7 @@ class TextWithMediaBody extends React.PureComponent {
           <img
             src={payload.imageUrl}
             alt=''
-            className='ori-b-mrgn-5 ori-cursor-ptr ori-full-width oriTextWithMediaContainer'
+            className='ori-b-mrgn-5 ori-cursor-ptr ori-full-width oriTextWithMediaImage'
             onClick={this.showOverlay}
           />
         )}
