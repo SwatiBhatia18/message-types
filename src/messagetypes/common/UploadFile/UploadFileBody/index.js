@@ -62,7 +62,7 @@ class UploadFileBody extends React.PureComponent {
         const mimeType = await getFileMimeType(file)
         const typeError = accept.toLowerCase().includes(mimeType)
         if (!typeError) {
-          this.setState({ error: 'Please Upload Valid Type Format' })
+          this.setState({ error: 'Please upload valid file format' })
         }
         isAllowed = isAllowed && typeError
       }
