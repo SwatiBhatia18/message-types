@@ -175,6 +175,7 @@ class FormMessageBody extends React.PureComponent {
                         {...item.props}
                         disabled={disabled || this.state.defaultDisabled}
                         value={this.state.selectedValues[item.props.name]}
+                        getPopupContainer={()=>document.getElementById("oriAppContainer")}
                         onChange={selectedDate =>
                           this.handleFormChange({[item.props.name]: selectedDate || undefined}, item.props.name)
                         }
@@ -209,6 +210,7 @@ class FormMessageBody extends React.PureComponent {
                           return false
                         }}
                         value={this.state.selectedValues[item.props.name]}
+                        getPopupContainer={()=>document.getElementById("oriAppContainer")}
                         onChange={selectedDate =>
                           this.handleFormChange({[item.props.name]: selectedDate || undefined}, item.props.name)
                         }
