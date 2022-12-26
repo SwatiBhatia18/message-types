@@ -27,7 +27,13 @@ class OverflowWrapper extends React.Component {
   };
 
   render() {
-    const { enabled, containerHeight, children, showMoreChild } = this.props
+    const {
+      enabled,
+      containerHeight,
+      children,
+      showMoreChild,
+      showMoreText
+    } = this.props
     const { childrenContentHeight, expanded } = this.state
     if (enabled) {
       const isChildrenHeightGreater = childrenContentHeight > containerHeight
@@ -47,7 +53,7 @@ class OverflowWrapper extends React.Component {
           </div>
           {isChildrenHeightGreater && !expanded && (
             <span onClick={this.handleShowMoreAndLessClick}>
-              {showMoreChild}
+              {showMoreText ? <span>{showMoreText}</span> : { showMoreChild }}
             </span>
           )}
         </React.Fragment>
@@ -61,13 +67,15 @@ OverflowWrapper.propTypes = {
   enabled: PropTypes.bool,
   containerHeight: PropTypes.number,
   children: PropTypes.node,
-  showMoreChild: PropTypes.node
+  showMoreChild: PropTypes.node,
+  showMoreText: PropTypes.string
 }
 
 OverflowWrapper.defaultProps = {
   enabled: false,
   containerHeight: 250,
   children: null,
+  showMoreText: '',
   showMoreChild: (
     <span
       className='ori-cursor-ptr ori-font-light ori-font-xs'
