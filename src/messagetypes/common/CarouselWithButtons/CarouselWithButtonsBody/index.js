@@ -8,6 +8,7 @@ import styles from './CarouselWithButtonsBody.module.scss'
 
 import Buttons from '../../../../components/buttons'
 import HtmlText from '../../../../components/HtmlText'
+import OverflowWrapper from '../../OverflowWrapper'
 
 class CarouselWithButtonsBody extends React.PureComponent {
   state = {
@@ -211,79 +212,82 @@ class CarouselWithButtonsBody extends React.PureComponent {
           >
             {payload.options.map((carousel_item, index) => {
               return (
-                <div
-                  className={`carouselItem ${styles.carouselItem} ${
-                    selected_option_indexes[index] ? 'carouselItemSelected' : ''
-                  }`}
-                  key={index}
-                >
-                  {carousel_item.mediaType &&
+                <OverflowWrapper key={index} {...payload.overflowWrapperProps}>
+                  <div
+                    className={`carouselItem ${styles.carouselItem} ${
+                      selected_option_indexes[index] ? 'carouselItemSelected' : ''
+                    }`}
+                    key={index}
+                  >
+                    {carousel_item.mediaType &&
                     carousel_item.mediaUrl &&
                     carousel_item.mediaType === 'video' &&
                     carousel_item.mediaUrl.trim().length > 0 && (
-                    <div className='videoContainer'>
-                      <iframe
-                        title='video-message'
-                        className='ori-full-width'
-                        src={carousel_item.mediaUrl}
-                        frameBorder='0'
-                        allow='autoplay; encrypted-media'
-                        allowFullScreen
-                      />
-                    </div>
-                  )}
-                  {carousel_item.mediaType &&
+                      <div className='videoContainer'>
+                        <iframe
+                          title='video-message'
+                          className='ori-full-width'
+                          src={carousel_item.mediaUrl}
+                          frameBorder='0'
+                          allow='autoplay; encrypted-media'
+                          allowFullScreen
+                        />
+                      </div>
+                    )}
+                    {carousel_item.mediaType &&
                     carousel_item.mediaUrl &&
                     carousel_item.mediaType === 'image' &&
                     carousel_item.mediaUrl.trim().length > 0 && (
-                    this.renderCarouselImage(carousel_item)
-                  )}
-                  {carousel_item.title && (
-                    <HtmlText
-                      text={carousel_item.title}
-                      isHtml={carousel_item.containsHtmlTitle}
-                      textClass={`ori-t-mrgn-3 ori-no-b-mrgn ori-font-bold ori-lr-pad-10 ori-word-wrap ori-word-break ori-mt-title ${payload.selectable ? 'ori-carousel-selectable-title' : 'ori-carousel-title'}`}
-                    />
-                  )}
-                  {carousel_item.subtitle && (
-                    <HtmlText
-                      text={carousel_item.subtitle}
-                      isHtml={carousel_item.containsHtmlSubtitle}
-                      textClass={`ori-no-b-mrgn ori-lr-pad-10 ${payload.selectable ? 'ori-carousel-selectable-subtitle' : 'ori-carousel-subtitle'}`}
-                    />
-                  )}
-                  {payload.selectable && (
-                    <Button
-                      size='small'
-                      className={`ori-btn-carousel-select-option ${
-                        selected_option_indexes[index]
-                          ? 'ori-btn-carousel-item-selected'
-                          : 'ori-btn-carousel-item'
-                      }`}
-                      btn_disabled={btn_disabled}
-                      onClick={() => this.handleOptionSelection(index)}
-                    >
-                      {selected_option_indexes[index] ? 'Selected' : 'Select'}
-                    </Button>
-                  )}
-                  {carousel_item.buttons &&
+                      this.renderCarouselImage(carousel_item)
+                    )}
+                    {carousel_item.title && (
+                      <HtmlText
+                        text={carousel_item.title}
+                        isHtml={carousel_item.containsHtmlTitle}
+                        textClass={`ori-t-mrgn-3 ori-no-b-mrgn ori-font-bold ori-lr-pad-10 ori-word-wrap ori-word-break ori-mt-title ${payload.selectable ? 'ori-carousel-selectable-title' : 'ori-carousel-title'}`}
+                      />
+                    )}
+                    {carousel_item.subtitle && (
+                      <HtmlText
+                        text={carousel_item.subtitle}
+                        isHtml={carousel_item.containsHtmlSubtitle}
+                        textClass={`ori-no-b-mrgn ori-lr-pad-10 ${payload.selectable ? 'ori-carousel-selectable-subtitle' : 'ori-carousel-subtitle'}`}
+                      />
+                    )}
+                    {payload.selectable && (
+                      <Button
+                        size='small'
+                        className={`ori-btn-carousel-select-option ${
+                          selected_option_indexes[index]
+                            ? 'ori-btn-carousel-item-selected'
+                            : 'ori-btn-carousel-item'
+                        }`}
+                        btn_disabled={btn_disabled}
+                        onClick={() => this.handleOptionSelection(index)}
+                      >
+                        {selected_option_indexes[index] ? 'Selected' : 'Select'}
+                      </Button>
+                    )}
+                    {carousel_item.buttons &&
                     carousel_item.buttons.length > 0 && (
-                    <Buttons
+                      <Buttons
                       // className='ori-lr-pad-10'
-                      buttons={carousel_item.buttons}
-                      display_count={
-                        carousel_item.btnDisplayCount
-                          ? carousel_item.btnDisplayCount
-                          : default_btn_display_count
-                      }
-                      message={message}
-                      handleMsgBtnClick={handleMsgBtnClick}
-                      btn_disabled={btn_disabled}
-                      showmore={showmore}
-                      showless={showless}
-                    />
-                  )}
-                </div>
+                        buttons={carousel_item.buttons}
+                        display_count={
+                          carousel_item.btnDisplayCount
+                            ? carousel_item.btnDisplayCount
+                            : default_btn_display_count
+                        }
+                        message={message}
+                        handleMsgBtnClick={handleMsgBtnClick}
+                        btn_disabled={btn_disabled}
+                        showmore={showmore}
+                        showless={showless}
+                      />
+                    )}
+                  </div>
+                </OverflowWrapper>
+
               )
             })}
           </Carousel>
