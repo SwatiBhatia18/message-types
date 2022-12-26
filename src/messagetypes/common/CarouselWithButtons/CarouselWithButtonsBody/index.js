@@ -31,10 +31,12 @@ class CarouselWithButtonsBody extends React.PureComponent {
   handleOptionSelection = index => {
     const { payload } = this.props
     this.setState(prev => ({
-      selected_option_indexes: payload.multiSelect ? {
-        ...prev.selected_option_indexes,
-        [index]: !prev.selected_option_indexes[index]
-      } : { [index]: !prev.selected_option_indexes[index] }
+      selected_option_indexes: payload.multiSelect
+        ? {
+          ...prev.selected_option_indexes,
+          [index]: !prev.selected_option_indexes[index]
+        }
+        : { [index]: !prev.selected_option_indexes[index] }
     }))
   };
 
@@ -74,14 +76,14 @@ class CarouselWithButtonsBody extends React.PureComponent {
         onSubmit(data, updatedMessage)
       }
     }
-  }
+  };
 
   closeOverlay = () => {
     this.setState({
       show_overlay: false,
       selected_carousel_item: null
     })
-  }
+  };
 
   showCarouselItem = selected_carousel_item => {
     const { img_popup_disable, onImageRedirect } = this.props
@@ -99,7 +101,7 @@ class CarouselWithButtonsBody extends React.PureComponent {
         selected_carousel_item
       })
     }
-  }
+  };
 
   renderPreviewOverlay = () => {
     const { show_overlay, selected_carousel_item } = this.state
@@ -136,7 +138,7 @@ class CarouselWithButtonsBody extends React.PureComponent {
         </div>
       )
     }
-  }
+  };
 
   renderCarouselImage = carousel_item => {
     const { display_type } = this.props
@@ -161,7 +163,6 @@ class CarouselWithButtonsBody extends React.PureComponent {
             onClick={() => this.showCarouselItem(carousel_item)}
           />
         </div>
-
       )
     }
     return (
@@ -173,7 +174,7 @@ class CarouselWithButtonsBody extends React.PureComponent {
         onClick={() => this.showCarouselItem(carousel_item)}
       />
     )
-  }
+  };
 
   render() {
     const {
@@ -215,14 +216,16 @@ class CarouselWithButtonsBody extends React.PureComponent {
                 <OverflowWrapper key={index} {...payload.overflowWrapperProps}>
                   <div
                     className={`carouselItem ${styles.carouselItem} ${
-                      selected_option_indexes[index] ? 'carouselItemSelected' : ''
+                      selected_option_indexes[index]
+                        ? 'carouselItemSelected'
+                        : ''
                     }`}
                     key={index}
                   >
                     {carousel_item.mediaType &&
-                    carousel_item.mediaUrl &&
-                    carousel_item.mediaType === 'video' &&
-                    carousel_item.mediaUrl.trim().length > 0 && (
+                      carousel_item.mediaUrl &&
+                      carousel_item.mediaType === 'video' &&
+                      carousel_item.mediaUrl.trim().length > 0 && (
                       <div className='videoContainer'>
                         <iframe
                           title='video-message'
@@ -235,23 +238,30 @@ class CarouselWithButtonsBody extends React.PureComponent {
                       </div>
                     )}
                     {carousel_item.mediaType &&
-                    carousel_item.mediaUrl &&
-                    carousel_item.mediaType === 'image' &&
-                    carousel_item.mediaUrl.trim().length > 0 && (
-                      this.renderCarouselImage(carousel_item)
-                    )}
+                      carousel_item.mediaUrl &&
+                      carousel_item.mediaType === 'image' &&
+                      carousel_item.mediaUrl.trim().length > 0 &&
+                      this.renderCarouselImage(carousel_item)}
                     {carousel_item.title && (
                       <HtmlText
                         text={carousel_item.title}
                         isHtml={carousel_item.containsHtmlTitle}
-                        textClass={`ori-t-mrgn-3 ori-no-b-mrgn ori-font-bold ori-lr-pad-10 ori-word-wrap ori-word-break ori-mt-title ${payload.selectable ? 'ori-carousel-selectable-title' : 'ori-carousel-title'}`}
+                        textClass={`ori-t-mrgn-3 ori-no-b-mrgn ori-font-bold ori-lr-pad-10 ori-word-wrap ori-word-break ori-mt-title ${
+                          payload.selectable
+                            ? 'ori-carousel-selectable-title'
+                            : 'ori-carousel-title'
+                        }`}
                       />
                     )}
                     {carousel_item.subtitle && (
                       <HtmlText
                         text={carousel_item.subtitle}
                         isHtml={carousel_item.containsHtmlSubtitle}
-                        textClass={`ori-no-b-mrgn ori-lr-pad-10 ${payload.selectable ? 'ori-carousel-selectable-subtitle' : 'ori-carousel-subtitle'}`}
+                        textClass={`ori-no-b-mrgn ori-lr-pad-10 ${
+                          payload.selectable
+                            ? 'ori-carousel-selectable-subtitle'
+                            : 'ori-carousel-subtitle'
+                        }`}
                       />
                     )}
                     {payload.selectable && (
@@ -268,10 +278,9 @@ class CarouselWithButtonsBody extends React.PureComponent {
                         {selected_option_indexes[index] ? 'Selected' : 'Select'}
                       </Button>
                     )}
-                    {carousel_item.buttons &&
-                    carousel_item.buttons.length > 0 && (
+                    {carousel_item.buttons && carousel_item.buttons.length > 0 && (
                       <Buttons
-                      // className='ori-lr-pad-10'
+                        // className='ori-lr-pad-10'
                         buttons={carousel_item.buttons}
                         display_count={
                           carousel_item.btnDisplayCount
@@ -287,7 +296,6 @@ class CarouselWithButtonsBody extends React.PureComponent {
                     )}
                   </div>
                 </OverflowWrapper>
-
               )
             })}
           </Carousel>
