@@ -8,7 +8,7 @@ import styles from './CarouselWithButtonsBody.module.scss'
 
 import Buttons from '../../../../components/buttons'
 import HtmlText from '../../../../components/HtmlText'
-import OverflowWrapper from '../../OverflowWrapper'
+import { OverflowWrapper } from '../../OverflowWrapper'
 
 class CarouselWithButtonsBody extends React.PureComponent {
   state = {
