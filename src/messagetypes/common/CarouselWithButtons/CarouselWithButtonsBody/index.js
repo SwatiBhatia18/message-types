@@ -14,7 +14,8 @@ class CarouselWithButtonsBody extends React.PureComponent {
   state = {
     show_overlay: false,
     selected_carousel_item: null,
-    selected_option_indexes: {}
+    selected_option_indexes: {},
+    isExpanded: false
   };
 
   componentDidMount() {
@@ -26,6 +27,10 @@ class CarouselWithButtonsBody extends React.PureComponent {
       })
       this.setState({ selected_option_indexes: indexes })
     }
+  }
+
+  handleOverFlowExpansion = () => {
+    this.setState({isExpanded: true})
   }
 
   handleOptionSelection = index => {
@@ -187,7 +192,7 @@ class CarouselWithButtonsBody extends React.PureComponent {
       showmore,
       showless
     } = this.props
-    const { selected_option_indexes } = this.state
+    const { selected_option_indexes, isExpanded } = this.state
 
     return (
       <div className='ori-relative ori-word-break ori-mt-carouselWithButtonsContainer'>
@@ -213,7 +218,7 @@ class CarouselWithButtonsBody extends React.PureComponent {
           >
             {payload.options.map((carousel_item, index) => {
               return (
-                <OverflowWrapper key={index} {...payload.overflowWrapperProps}>
+                <OverflowWrapper key={index} {...payload.overflowWrapperProps} isExpanded={isExpanded} handleExpand={this.handleOverFlowExpansion}>
                   <div
                     className={`carouselItem ${styles.carouselItem} ${
                       selected_option_indexes[index]
