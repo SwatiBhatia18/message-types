@@ -29,11 +29,6 @@ export const fileToBase64 = file => {
   })
 }
 
-export const checkMultipleExtension = filename => {
-  let numberOfExtensions = filename.split('.')
-  return !(numberOfExtensions.length > 2)
-}
-
 export const linkify = inputText => {
   let linkifiedText = inputText
 

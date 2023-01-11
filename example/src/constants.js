@@ -1445,7 +1445,8 @@ export const uploadMessage = {
     {
       title: "carousel title",
       subtitle: "carousel subtitle",
-      accept: "",
+      accept: "image/png,image/jpg,image/jpeg",
+      maxAllowedSize: 2097152,
       buttons: [
         {
           text: "Google",

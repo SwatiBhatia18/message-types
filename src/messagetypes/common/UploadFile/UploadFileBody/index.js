@@ -13,7 +13,6 @@ import styles from './UploadFileBody.module.scss'
 import Buttons from '../../../../components/buttons'
 import {
   fileToBase64,
-  checkMultipleExtension,
   getFileMimeType,
   formatSizeUnits
 } from '../../../../data/config/utils'
@@ -44,11 +43,7 @@ class UploadFileBody extends React.PureComponent {
     }
 
     if (file.name) {
-      let isAllowed = checkMultipleExtension(file.name)
-      if (!isAllowed) {
-        this.setState({ error: 'multiextension not allowed' })
-      }
-
+      let isAllowed = true
       const allowedSize = maxAllowedSize || 300000
       if (file.size > allowedSize) {
         const size = formatSizeUnits(allowedSize)
