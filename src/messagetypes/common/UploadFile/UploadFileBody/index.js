@@ -73,7 +73,7 @@ class UploadFileBody extends React.PureComponent {
     }
 
     return false
-  };
+  }
 
   onRemove = file => {
     this.setState({

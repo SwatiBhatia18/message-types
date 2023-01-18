@@ -28,10 +28,13 @@ class FormMessageBody extends React.PureComponent {
 
   deleteDetectedErrors = key => {
     if (this.state.detectedErrors[key]) {
-      const { [key]: errorKey, ...restDetectedErrors } = this.state.detectedErrors
-      this.setState({detectedErrors: restDetectedErrors})
+      const {
+        [key]: errorKey,
+        ...restDetectedErrors
+      } = this.state.detectedErrors
+      this.setState({ detectedErrors: restDetectedErrors })
     }
-  }
+  };
 
   validateSelectedField = item => {
     let hasError = false
@@ -47,7 +50,7 @@ class FormMessageBody extends React.PureComponent {
       }
     }
     return hasError
-  }
+  };
 
   handleFormChange = (changedValue, errorKey) => {
     const { payload } = this.props
@@ -63,7 +66,7 @@ class FormMessageBody extends React.PureComponent {
         if (payload.autoSubmit) this.handleSubmit()
       }
     )
-  }
+  };
 
   handleSubmit = () => {
     const { payload } = this.props
@@ -79,11 +82,14 @@ class FormMessageBody extends React.PureComponent {
             item.props.format || 'DD-MMM-YYYY'
           )
         } else if (item.type === 'dateRangePicker') {
-          obj.value = selectedValues[item.props.name][0].format(
-            item.props.format || 'DD-MMM-YYYY'
-          ).concat(' : ', selectedValues[item.props.name][1].format(
-            item.props.format || 'DD-MMM-YYYY'
-          ))
+          obj.value = selectedValues[item.props.name][0]
+            .format(item.props.format || 'DD-MMM-YYYY')
+            .concat(
+              ' : ',
+              selectedValues[item.props.name][1].format(
+                item.props.format || 'DD-MMM-YYYY'
+              )
+            )
         } else if (item.type === 'radioGroup' || item.type === 'select') {
           const option = item.props.options.find(
             opt => opt.value === selectedValues[item.props.name]
@@ -99,7 +105,8 @@ class FormMessageBody extends React.PureComponent {
           detectedErrors: {
             ...prevState.detectedErrors,
             [item.props.name]: 'This is required field'
-          }}))
+          }
+        }))
       }
     })
 
@@ -118,7 +125,7 @@ class FormMessageBody extends React.PureComponent {
     this.setState({
       defaultDisabled: false
     })
-  }
+  };
 
   render() {
     const { detectedErrors } = this.state
@@ -175,16 +182,22 @@ class FormMessageBody extends React.PureComponent {
                         {...item.props}
                         disabled={disabled || this.state.defaultDisabled}
                         value={this.state.selectedValues[item.props.name]}
-                        getPopupContainer={()=>document.getElementById("oriAppContainer")}
+                        getPopupContainer={() =>
+                          document.getElementById('oriAppContainer')
+                        }
                         onChange={selectedDate =>
-                          this.handleFormChange({[item.props.name]: selectedDate || undefined}, item.props.name)
+                          this.handleFormChange(
+                            { [item.props.name]: selectedDate || undefined },
+                            item.props.name
+                          )
                         }
                         inputReadOnly
                       />
-                      {
-                        detectedErrors[item.props.name] &&
-                        <p className='ori-font-xs ori-font-danger'>{detectedErrors[item.props.name]}</p>
-                      }
+                      {detectedErrors[item.props.name] && (
+                        <p className='ori-font-xs ori-font-danger'>
+                          {detectedErrors[item.props.name]}
+                        </p>
+                      )}
                     </div>
                   )
                 case 'dateRangePicker':
@@ -203,23 +216,42 @@ class FormMessageBody extends React.PureComponent {
                         disabled={disabled || this.state.defaultDisabled}
                         disabledDate={c => {
                           if (item.disabledDateRange) {
-                            if (item.disabledDateRange[0] && item.disabledDateRange[1]) { return !(c && c < item.disabledDateRange[1] && c > item.disabledDateRange[0]) }
-                            if (item.disabledDateRange[0]) { return c && c < item.disabledDateRange[0] }
-                            if (item.disabledDateRange[1]) { return c && c > item.disabledDateRange[1] }
+                            if (
+                              item.disabledDateRange[0] &&
+                              item.disabledDateRange[1]
+                            ) {
+                              return !(
+                                c &&
+                                c < item.disabledDateRange[1] &&
+                                c > item.disabledDateRange[0]
+                              )
+                            }
+                            if (item.disabledDateRange[0]) {
+                              return c && c < item.disabledDateRange[0]
+                            }
+                            if (item.disabledDateRange[1]) {
+                              return c && c > item.disabledDateRange[1]
+                            }
                           }
                           return false
                         }}
                         value={this.state.selectedValues[item.props.name]}
-                        getPopupContainer={()=>document.getElementById("oriAppContainer")}
+                        getPopupContainer={() =>
+                          document.getElementById('oriAppContainer')
+                        }
                         onChange={selectedDate =>
-                          this.handleFormChange({[item.props.name]: selectedDate || undefined}, item.props.name)
+                          this.handleFormChange(
+                            { [item.props.name]: selectedDate || undefined },
+                            item.props.name
+                          )
                         }
                         inputReadOnly
                       />
-                      {
-                        detectedErrors[item.props.name] &&
-                        <p className='ori-font-xs ori-font-danger'>{detectedErrors[item.props.name]}</p>
-                      }
+                      {detectedErrors[item.props.name] && (
+                        <p className='ori-font-xs ori-font-danger'>
+                          {detectedErrors[item.props.name]}
+                        </p>
+                      )}
                     </div>
                   )
                 case 'radioGroup':
@@ -240,15 +272,19 @@ class FormMessageBody extends React.PureComponent {
                         disabled={disabled || this.state.defaultDisabled}
                         value={this.state.selectedValues[item.props.name]}
                         onChange={e =>
-                          this.handleFormChange({
-                            [item.props.name]: e.target.value
-                          }, item.props.name)
+                          this.handleFormChange(
+                            {
+                              [item.props.name]: e.target.value
+                            },
+                            item.props.name
+                          )
                         }
                       />
-                      {
-                        detectedErrors[item.props.name] &&
-                        <p className='ori-font-xs ori-font-danger'>{detectedErrors[item.props.name]}</p>
-                      }
+                      {detectedErrors[item.props.name] && (
+                        <p className='ori-font-xs ori-font-danger'>
+                          {detectedErrors[item.props.name]}
+                        </p>
+                      )}
                     </div>
                   )
                 case 'select':
@@ -270,13 +306,17 @@ class FormMessageBody extends React.PureComponent {
                         disabled={disabled || this.state.defaultDisabled}
                         value={this.state.selectedValues[item.props.name]}
                         onChange={value =>
-                          this.handleFormChange({ [item.props.name]: value }, item.props.name)
+                          this.handleFormChange(
+                            { [item.props.name]: value },
+                            item.props.name
+                          )
                         }
                       />
-                      {
-                        detectedErrors[item.props.name] &&
-                        <p className='ori-font-xs ori-font-danger'>{detectedErrors[item.props.name]}</p>
-                      }
+                      {detectedErrors[item.props.name] && (
+                        <p className='ori-font-xs ori-font-danger'>
+                          {detectedErrors[item.props.name]}
+                        </p>
+                      )}
                     </div>
                   )
                 case 'input':
@@ -295,15 +335,19 @@ class FormMessageBody extends React.PureComponent {
                         disabled={disabled || this.state.defaultDisabled}
                         value={this.state.selectedValues[item.props.name]}
                         onChange={e =>
-                          this.handleFormChange({
-                            [item.props.name]: e.target.value
-                          }, item.props.name)
+                          this.handleFormChange(
+                            {
+                              [item.props.name]: e.target.value
+                            },
+                            item.props.name
+                          )
                         }
                       />
-                      {
-                        detectedErrors[item.props.name] &&
-                        <p className='ori-font-xs ori-font-danger'>{detectedErrors[item.props.name]}</p>
-                      }
+                      {detectedErrors[item.props.name] && (
+                        <p className='ori-font-xs ori-font-danger'>
+                          {detectedErrors[item.props.name]}
+                        </p>
+                      )}
                     </div>
                   )
                 case 'rating':
@@ -320,13 +364,17 @@ class FormMessageBody extends React.PureComponent {
                         disabled={disabled || this.state.defaultDisabled}
                         value={this.state.selectedValues[item.props.name]}
                         onChange={value =>
-                          this.handleFormChange({ [item.props.name]: value }, item.props.name)
+                          this.handleFormChange(
+                            { [item.props.name]: value },
+                            item.props.name
+                          )
                         }
                       />
-                      {
-                        detectedErrors[item.props.name] &&
-                        <p className='ori-font-xs ori-font-danger'>{detectedErrors[item.props.name]}</p>
-                      }
+                      {detectedErrors[item.props.name] && (
+                        <p className='ori-font-xs ori-font-danger'>
+                          {detectedErrors[item.props.name]}
+                        </p>
+                      )}
                     </div>
                   )
                 default:
