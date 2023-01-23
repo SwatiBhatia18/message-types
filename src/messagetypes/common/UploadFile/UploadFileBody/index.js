@@ -45,7 +45,6 @@ class UploadFileBody extends React.PureComponent {
     if (file.name) {
       let isAllowed = true
       const allowedSize = maxAllowedSize || 300000
-      window.alert('allowed size 1' + allowedSize + ' file size ' + file.size)
       if (file.size > allowedSize) {
         const size = formatSizeUnits(allowedSize)
         this.setState({
@@ -62,10 +61,8 @@ class UploadFileBody extends React.PureComponent {
         }
         isAllowed = isAllowed && typeError
       }
-      window.alert('allowed size 2' + allowedSize + ' file size ' + file.size)
 
       if (isAllowed) {
-        window.alert('allowed size 3' + allowedSize + ' file size ' + file.size)
         fileToBase64(file).then(fileUrl => {
           this.setState({
             file,
