@@ -188,7 +188,9 @@ class CheckboxWithMediaBody extends React.PureComponent {
             )}
             <Checkbox.Group
               style={{ width: '100%' }}
-              className='ori-mt-checkboxGroup'
+              className={`ori-mt-checkboxGroup ${
+                payload.vertical ? 'ori-flex-column' : ''
+              }`}
               value={checked}
               options={filter_options}
               disabled={checkbox_disabled}
