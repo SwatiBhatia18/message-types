@@ -17,8 +17,8 @@ class CheckboxWithMediaBody extends React.PureComponent {
     super(props)
     this.state = {
       checked: props.payload.selectedValue || [],
-      indeterminate: false,
-      check_all: false,
+      indeterminate: !!(props.payload.selectedValue && props.payload.selectedValue.length && props.payload.selectedValue.length < props.payload.options.length),
+      check_all: !!(props.payload.selectedValue && props.payload.selectedValue.length && props.payload.selectedValue.length === props.payload.options.length),
       has_more: props.payload.options && props.payload.options.length > LIMIT,
       current: 1,
       filter_options:
@@ -43,7 +43,7 @@ class CheckboxWithMediaBody extends React.PureComponent {
     const { payload } = this.props
     this.setState({
       checked: e.target.checked ? this.check_all_value : (payload.selectedValue || []),
-      indeterminate: false,
+      indeterminate: !!(payload.selectedValue && payload.selectedValue.length && !e.target.checked),
       check_all: e.target.checked
     })
   };
@@ -65,7 +65,7 @@ class CheckboxWithMediaBody extends React.PureComponent {
       } else {
         this.setState(prev => ({
           filter_options: prev.filter_options.map(item => {
-            if (item.disabled) item.disabled = false
+            if (item.disabled && !checked.includes(item.value)) item.disabled = false
             return item
           })
         }))
