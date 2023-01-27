@@ -738,6 +738,7 @@ export const checkboxMessage = {
       data: {},
       maxSelectionLimit: 3,
       vertical: true,
+      selectedValue:["1 ka haal ba"],
       options: [
         {
           label: "1 Ka haal ba",

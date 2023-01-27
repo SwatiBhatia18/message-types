@@ -16,7 +16,7 @@ class CheckboxWithMediaBody extends React.PureComponent {
   constructor(props) {
     super(props)
     this.state = {
-      checked: [],
+      checked: props.payload.selectedValue || [],
       indeterminate: false,
       check_all: false,
       has_more: props.payload.options && props.payload.options.length > LIMIT,
@@ -40,8 +40,9 @@ class CheckboxWithMediaBody extends React.PureComponent {
   }
 
   onCheckAllChange = e => {
+    const { payload } = this.props
     this.setState({
-      checked: e.target.checked ? this.check_all_value : [],
+      checked: e.target.checked ? this.check_all_value : (payload.selectedValue || []),
       indeterminate: false,
       check_all: e.target.checked
     })
