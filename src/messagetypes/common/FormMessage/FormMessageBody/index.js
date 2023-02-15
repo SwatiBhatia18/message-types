@@ -176,8 +176,10 @@ class FormMessageBody extends React.PureComponent {
                         style={{ maxWidth: '150px' }}
                         disabledDate={c =>
                           c &&
-                          item.disabledTimestamp &&
-                          c.valueOf() < item.disabledTimestamp
+                          item.disabledTimestamp && item.beforeDisabledTimestamp
+                            ? c.valueOf() > item.disabledTimestamp ||
+                              item.beforeDisabledTimestamp > c.valueOf()
+                            : c.valueOf() < item.disabledTimestamp
                         }
                         {...item.props}
                         disabled={disabled || this.state.defaultDisabled}
