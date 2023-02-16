@@ -566,7 +566,8 @@ export const formMessage = {
         {
           type: "datePicker",
           title: "select your departure date",
-          disabledTimestamp: "1629455793767",
+          disabledTimestamp: "1629455793767", // disables date before current date
+          beforeDisabledTimestamp: "1581705000000", // disables date for a given range
           displayLabel: "Departure date",
           props: {
             placeholder: "departure date",
