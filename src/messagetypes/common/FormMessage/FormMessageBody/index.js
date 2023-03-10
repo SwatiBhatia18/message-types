@@ -181,8 +181,8 @@ class FormMessageBody extends React.PureComponent {
                               item.beforeDisabledTimestamp > c.valueOf()
                             : c.valueOf() < item.disabledTimestamp
                         }
-                        {...item.props}
                         disabled={disabled || this.state.defaultDisabled}
+                        {...item.props}
                         value={this.state.selectedValues[item.props.name]}
                         getPopupContainer={() =>
                           document.getElementById('oriAppContainer')
@@ -214,8 +214,8 @@ class FormMessageBody extends React.PureComponent {
                       <RangePicker
                         size='small'
                         className='ori-full-width'
-                        {...item.props}
                         disabled={disabled || this.state.defaultDisabled}
+                        {...item.props}
                         disabledDate={c => {
                           if (item.disabledDateRange) {
                             if (
@@ -270,8 +270,8 @@ class FormMessageBody extends React.PureComponent {
                         className={`ori-full-width ${
                           item.vertical ? 'ori-flex-column' : ''
                         }`}
-                        {...item.props}
                         disabled={disabled || this.state.defaultDisabled}
+                        {...item.props}
                         value={this.state.selectedValues[item.props.name]}
                         onChange={e =>
                           this.handleFormChange(
@@ -301,11 +301,11 @@ class FormMessageBody extends React.PureComponent {
                       <Select
                         size='small'
                         className='ori-full-width'
-                        {...item.props}
                         getPopupContainer={triggerNode =>
                           triggerNode.parentNode
                         }
                         disabled={disabled || this.state.defaultDisabled}
+                        {...item.props}
                         value={this.state.selectedValues[item.props.name]}
                         onChange={value =>
                           this.handleFormChange(
@@ -333,8 +333,8 @@ class FormMessageBody extends React.PureComponent {
                       <Input
                         size='small'
                         className='ori-full-width'
-                        {...item.props}
                         disabled={disabled || this.state.defaultDisabled}
+                        {...item.props}
                         value={this.state.selectedValues[item.props.name]}
                         onChange={e =>
                           this.handleFormChange(
@@ -362,8 +362,8 @@ class FormMessageBody extends React.PureComponent {
                         </p>
                       )}
                       <Rate
-                        {...item.props}
                         disabled={disabled || this.state.defaultDisabled}
+                        {...item.props}
                         value={this.state.selectedValues[item.props.name]}
                         onChange={value =>
                           this.handleFormChange(
