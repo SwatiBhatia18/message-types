@@ -1800,3 +1800,20 @@ export const message = {
   // ],
   // }
 };
+
+export const downloadFileMessage = {
+  type: "downloadDocument",
+  cmid:"123",
+  status:"success",
+  payload: 
+    {
+    size: "23512222",
+    fileUrl: "https://oriserve-poc-uploads.s3.amazonaws.com/sandbox/dev/fileupload/1679913485338",
+    fileName: "hello123.jpeg",
+    pages: "18",
+    convertPdfUrl:"https://www.africau.edu/images/default/sample.pdf",
+    fileType:"pdf",
+    downloadUrl:""
+  },
+  timestamp: new Date()
+};

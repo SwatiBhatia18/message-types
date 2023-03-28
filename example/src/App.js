@@ -11,6 +11,7 @@ import {
   ListMessage,
   SeatMap,
   UploadFile,
+  DownloadFile,
 } from "message-types";
 
 import {
@@ -22,7 +23,8 @@ import {
   carouselMenu,
   seatMapMessage,
   uploadMessage,
-  message
+  message,
+  downloadFileMessage
 } from "./constants";
 
 export default class App extends Component {
@@ -41,7 +43,7 @@ export default class App extends Component {
         {/* <CheckboxWithMedia message={checkboxMessage} preferLang="hindi"/> */}
         {/* <DishtvRecharge message={message} /> */}
         {/* <DishtvRechargeDetails message={message} /> */}
-        <UploadFile message={uploadMessage} />
+        {/* <UploadFile message={uploadMessage} /> */}
         {/* <Offers message={message} handleOfferSelection={()=>{}} btn_disabled /> */}
         {/* <RechargeHistory message={message} /> */}
         {/* <CarouselWithButtons
@@ -54,6 +56,7 @@ export default class App extends Component {
         /> */}
         {/* <FormMessage message={formMessage} /> */}
         {/* <SeatMap message={seatMapMessage} preferLang="hindi" /> */}
+        <DownloadFile message={downloadFileMessage}/>
       </div>
     );
   }
