@@ -12,7 +12,7 @@ import LoadingIcon from 'react-icons/lib/md/rotate-right'
 import DownloadIcon from 'react-icons/lib/md/file-download'
 import Button from 'antd/lib/button'
 
-import { formatSizeUnits, openUrlInSameTab } from '../../../../data/config/utils'
+import { formatSizeUnits } from '../../../../data/config/utils'
 
 import styles from './DownloadFileBody.module.scss'
 
@@ -32,11 +32,6 @@ class DownloadFileBody extends React.PureComponent {
      else return <FileIcon size={25} />
    }
 
-   handleDownload = () => {
-     const {message} = this.props
-     openUrlInSameTab(message.payload.downloadUrl)
-   }
-
    handlePreviewFile = () => {
      this.setState({showPreview: true})
    }
@@ -46,7 +41,7 @@ class DownloadFileBody extends React.PureComponent {
    }
 
    renderFile = () => {
-     const {message} = this.props
+     const {message, downloadFile} = this.props
      const imagePreview = message.payload.fileType.indexOf('image/') !== -1
      const iframePreview = message.payload.fileType.indexOf('image/') === -1
      if (message.payload.convertPdfUrl || imagePreview) {
@@ -83,15 +78,13 @@ class DownloadFileBody extends React.PureComponent {
                <Button size='small' onClick={this.closePreview}>
                  Close
                </Button>
-               {iframePreview && (
-                 <Button
-                   className='ori-btn-fill-primary ori-l-mrgn-5'
-                   size='small'
-                   onClick={this.handleDownload}
-                 >
-                   Download
-                 </Button>
-               )}
+               <Button
+                 className='ori-btn-fill-primary ori-l-mrgn-5'
+                 size='small'
+                 onClick={downloadFile}
+               >
+                 Download
+               </Button>
              </div>
            </div>
          </div>
@@ -113,7 +106,8 @@ class DownloadFileBody extends React.PureComponent {
    render() {
      const {
        message,
-       handleDocxFileUpload
+       handleDocxFileUpload,
+       downloadFile
      } = this.props
      return (
        <React.Fragment>
@@ -127,32 +121,30 @@ class DownloadFileBody extends React.PureComponent {
              onClick={this.handlePreviewFile}
            />
          )}
-         <div className='ori-flex'>
+         <div className='ori-flex ori-downloadfileContainer'>
            <div className='ori-t-mrgn-3'>{this.renderIcon()}</div>
            <div className='ori-lr-mrgn-10'>
-             {message.payload.fileName}
-             <div className='ori-font-xs ori-font-header-light'>
-               {message.payload.page > 0 && (
-                 <span className='ori-r-mrgn-5'>{message.payload.page} pages</span>
-               )}
-               <span>{formatSizeUnits(message.payload.size)}</span>
-             </div>
+             <p>{message.payload.fileName}</p>
+             {message.payload.page > 0 && (
+               <span className='ori-r-mrgn-5 ori-font-xs ori-font-header-light'>{message.payload.page} pages</span>
+             )}
+             <span className='ori-font-xs ori-font-header-light'>{formatSizeUnits(message.payload.size)}</span>
            </div>
-           <div className='ori-text-center ori-font-white ori-t-mrgn-3'>
+           <div className='ori-text-center ori-t-mrgn-3'>
              {message.status === 'loading' && (
                <LoadingIcon className='ori-rotate ori-infinite' size={25} />
              )}
              {(message.status === 'success' && message.payload.downloadUrl) && (
                <DownloadIcon
-                 className='ori-cursor-ptr'
+                 className='ori-cursor-ptr ori-file-loader'
                  size={25}
-                 onClick={this.handleDownload}
+                 onClick={() => downloadFile(message.payload)}
                />
              )}
              {message.status === 'failed' && (
                <React.Fragment>
                  <LoadingIcon
-                   className='ori-cursor-ptr'
+                   className='ori-cursor-ptr ori-file-loader'
                    size={25}
                    onClick={() =>
                      handleDocxFileUpload(
@@ -184,11 +176,13 @@ class DownloadFileBody extends React.PureComponent {
 
 DownloadFileBody.propTypes = {
   message: PropTypes.object.isRequired,
-  handleDocxFileUpload: PropTypes.func
+  handleDocxFileUpload: PropTypes.func,
+  downloadFile: PropTypes.func
 }
 
 DownloadFileBody.defaultProps = {
-  handleDocxFileUpload: () => {}
+  handleDocxFileUpload: () => {},
+  downloadFile: () => {}
 }
 
 export default DownloadFileBody

@@ -1812,7 +1812,7 @@ export const downloadFileMessage = {
     fileName: "hello123.jpeg",
     pages: "18",
     convertPdfUrl:"https://www.africau.edu/images/default/sample.pdf",
-    fileType:"pdf",
+    fileType:"image/png",
     downloadUrl:""
   },
   timestamp: new Date()
