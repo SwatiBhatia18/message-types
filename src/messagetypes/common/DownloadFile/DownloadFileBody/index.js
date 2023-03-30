@@ -43,15 +43,15 @@ class DownloadFileBody extends React.PureComponent {
    renderFile = () => {
      const {message, downloadFile} = this.props
      const imagePreview = message.payload.fileType.indexOf('image/') !== -1
-     const iframePreview = message.payload.fileType.indexOf('image/') === -1
-     if (message.payload.convertPdfUrl || imagePreview) {
+     const iframePreview = ['application/pdf', 'text/plain'].indexOf(message.payload.fileType) !== -1
+     if (message.payload.downloadUrl && (iframePreview || imagePreview)) {
        return (
          <div className='ori-bg-white ori-border-radius-3 ori-upload-preview'>
            {iframePreview && (
              <iframe
                height='300px'
                width='100%'
-               src={`${message.payload.convertPdfUrl}#zoom=FitH&navbar=0&toolbar=0`}
+               src={`${message.payload.downloadUrl}#zoom=FitH&navbar=0&toolbar=0`}
                title='No preview found'
              ></iframe>
            )}
