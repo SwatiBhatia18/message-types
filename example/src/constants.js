@@ -1809,11 +1809,9 @@ export const downloadFileMessage = {
     {
     size: "23512222",
     fileUrl: "https://oriserve-poc-uploads.s3.amazonaws.com/sandbox/dev/fileupload/1679913485338",
-    fileName: "hello123.jpeg",
+    fileName: "hello123.pdf",
     pages: "18",
-    convertPdfUrl:"https://www.africau.edu/images/default/sample.pdf",
-    fileType:"image/png",
-    downloadUrl:""
+    fileType:"application/pdf",
   },
   timestamp: new Date()
 };
