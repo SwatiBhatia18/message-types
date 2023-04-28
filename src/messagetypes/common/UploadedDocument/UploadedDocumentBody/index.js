@@ -14,7 +14,7 @@ import Button from 'antd/lib/button'
 
 import { formatSizeUnits } from '../../../../data/config/utils'
 
-import styles from '../../CarouselWithButtons/CarouselWithButtonsBody/CarouselWithButtonsBody.module.scss'
+import styles from './UploadedDocumentBody.module.scss'
 
 class UploadedDocumentBody extends React.PureComponent {
   state = {
