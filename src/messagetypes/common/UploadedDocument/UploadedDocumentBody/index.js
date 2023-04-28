@@ -16,7 +16,7 @@ import { formatSizeUnits } from '../../../../data/config/utils'
 
 import styles from '../../CarouselWithButtons/CarouselWithButtonsBody/CarouselWithButtonsBody.module.scss'
 
-class DownloadFileBody extends React.PureComponent {
+class UploadedDocumentBody extends React.PureComponent {
   state = {
     showPreview: false
   }
@@ -55,9 +55,9 @@ class DownloadFileBody extends React.PureComponent {
               <p className='ori-font-bold ori-line-height-1 ori-font-default'>
                 {message.payload.fileName}
               </p>
-              {message.payload.size && (
+              {message.payload.fileSize && (
                 <span className='ori-font-xs ori-font-light'>
-                  {formatSizeUnits(message.payload.size)}
+                  {formatSizeUnits(message.payload.fileSize)}
                 </span>
               )}
             </div>
@@ -95,7 +95,7 @@ class DownloadFileBody extends React.PureComponent {
               </span>
             )}
             <span className='ori-font-xs ori-font-header-light'>
-              {formatSizeUnits(message.payload.size)}
+              {formatSizeUnits(message.payload.fileSize)}
             </span>
           </div>
           <div className='ori-text-center ori-t-mrgn-3'>
@@ -144,15 +144,15 @@ class DownloadFileBody extends React.PureComponent {
   }
 }
 
-DownloadFileBody.propTypes = {
+UploadedDocumentBody.propTypes = {
   message: PropTypes.object.isRequired,
   handleDocxFileUpload: PropTypes.func,
   downloadFile: PropTypes.func
 }
 
-DownloadFileBody.defaultProps = {
+UploadedDocumentBody.defaultProps = {
   handleDocxFileUpload: () => {},
   downloadFile: () => {}
 }
 
-export default DownloadFileBody
+export default UploadedDocumentBody

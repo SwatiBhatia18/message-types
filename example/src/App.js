@@ -11,7 +11,7 @@ import {
   ListMessage,
   SeatMap,
   UploadFile,
-  DownloadFile,
+  UploadedDocument
 } from "message-types";
 
 import {
@@ -24,7 +24,7 @@ import {
   seatMapMessage,
   uploadMessage,
   message,
-  downloadFileMessage
+  uploadedDocumentMessage
 } from "./constants";
 
 export default class App extends Component {
@@ -56,7 +56,7 @@ export default class App extends Component {
         /> */}
         {/* <FormMessage message={formMessage} /> */}
         {/* <SeatMap message={seatMapMessage} preferLang="hindi" /> */}
-        <DownloadFile message={downloadFileMessage}/>
+        <UploadedDocument message={uploadedDocumentMessage}/>
       </div>
     );
   }

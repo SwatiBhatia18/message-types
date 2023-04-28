@@ -8,7 +8,7 @@ export * from './messagetypes/common/PromptMsg'
 export * from './messagetypes/common/UploadFile'
 export * from './messagetypes/common/FormMessage'
 export * from './messagetypes/common/SeatMap'
-export * from './messagetypes/common/DownloadFile'
+export * from './messagetypes/common/UploadedDocument'
 
 // export * from './messagetypes/dishtv/Recharge'
 // export * from './messagetypes/dishtv/RechargeDetails'

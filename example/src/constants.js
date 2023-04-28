@@ -1801,16 +1801,16 @@ export const message = {
   // }
 };
 
-export const downloadFileMessage = {
-  type: "downloadDocument",
+export const uploadedDocumentMessage = {
+  type: "uploadedDocument",
   cmid:"123",
   status:"success",
   payload: 
     {
-    size: "23512222",
+    fileSize: "23512222",
     fileUrl: "https://oriserve-poc-uploads.s3.amazonaws.com/sandbox/dev/fileupload/1679913485338",
     fileName: "hello123.pdf",
-    pages: "18",
+    pages: 18,
     fileType:"application/pdf",
   },
   timestamp: new Date()
