@@ -88,9 +88,9 @@ class UploadedDocumentBody extends React.PureComponent {
           <div className='ori-t-mrgn-3'>{this.renderIcon()}</div>
           <div className='ori-lr-mrgn-10'>
             <p>{message.payload.fileName}</p>
-            {message.payload.page > 0 && (
+            {message.payload.pages > 0 && (
               <span className='ori-r-mrgn-5 ori-font-xs ori-font-header-light'>
-                {message.payload.page} pages
+                {message.payload.pages} pages
               </span>
             )}
             <span className='ori-font-xs ori-font-header-light'>
