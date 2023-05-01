@@ -75,8 +75,7 @@ class UploadedDocumentBody extends React.PureComponent {
     return (
       <React.Fragment>
         {message.payload.fileType.indexOf('image/') !== -1 &&
-          message.payload.fileUrl &&
-          message.status === 'success' && (
+          message.payload.fileUrl && (
           <img
             className='ori-cursor-ptr ori-b-mrgn-5 ori-thumnail'
             src={message.payload.fileUrl}
@@ -99,19 +98,9 @@ class UploadedDocumentBody extends React.PureComponent {
             </span>
           </div>
           <div className='ori-text-center ori-t-mrgn-3'>
-            {message.status === 'loading' && (
+            {message.status === 'pending' ? (
               <LoadingIcon className='ori-rotate ori-infinite' size={25} />
-            )}
-            {message.payload.fileType.indexOf('image/') === -1 &&
-              message.payload.fileUrl &&
-              message.status === 'success' && (
-              <DownloadIcon
-                className='ori-cursor-ptr ori-file-loader'
-                size={25}
-                onClick={() => downloadFile(message.payload)}
-              />
-            )}
-            {message.status === 'failed' && (
+            ) : message.status === 'failed' ? (
               <React.Fragment>
                 <LoadingIcon
                   className='ori-cursor-ptr ori-file-loader'
@@ -119,17 +108,22 @@ class UploadedDocumentBody extends React.PureComponent {
                   onClick={() =>
                     handleDocxFileUpload(
                       {
-                        fileUrl: message.payload.fileUrl,
-                        file: { name: message.payload.fileName },
-                        cmid: message.cmid
+                        cmid: message.cmid,
+                        payload: message.payload
                       },
                       'retry'
                     )
                   }
                 />
-                <p className='ori-font-xs'>retry</p>
+                <p className='ori-font-xs'>Retry</p>
               </React.Fragment>
-            )}
+            ) : message.payload.fileType.indexOf('image/') === -1 ? (
+              <DownloadIcon
+                className='ori-cursor-ptr ori-file-loader'
+                size={25}
+                onClick={() => downloadFile(message.payload)}
+              />
+            ) : null}
           </div>
         </div>
         {this.state.showPreview && (

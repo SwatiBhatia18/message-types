@@ -1804,7 +1804,7 @@ export const message = {
 export const uploadedDocumentMessage = {
   type: "uploadedDocument",
   cmid:"123",
-  status:"success",
+  // status:"pending",
   payload: 
     {
     fileSize: "23512222",
