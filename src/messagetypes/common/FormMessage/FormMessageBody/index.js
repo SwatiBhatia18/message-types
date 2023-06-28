@@ -306,6 +306,7 @@ class FormMessageBody extends React.PureComponent {
                         }
                         disabled={disabled || this.state.defaultDisabled}
                         {...item.props}
+                        filterOption={(input, option) => option.label.toLowerCase().indexOf(input.toLowerCase()) === 0}
                         value={this.state.selectedValues[item.props.name]}
                         onChange={value =>
                           this.handleFormChange(
