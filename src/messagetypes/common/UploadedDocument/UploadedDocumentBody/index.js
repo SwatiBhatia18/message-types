@@ -74,8 +74,8 @@ class UploadedDocumentBody extends React.PureComponent {
     const { message, handleDocxFileUpload, downloadFile } = this.props
     return (
       <React.Fragment>
-        {message.payload.fileType.indexOf('image/') !== -1 &&
-          message.payload.fileUrl && (
+        {(message.payload.fileType.indexOf('image/') !== -1 && !message.payload.isDownloadable &&
+          message.payload.fileUrl) && (
           <img
             className='ori-cursor-ptr ori-b-mrgn-5 ori-thumnail'
             src={message.payload.fileUrl}
@@ -117,7 +117,7 @@ class UploadedDocumentBody extends React.PureComponent {
                 />
                 <p className='ori-font-xs'>Retry</p>
               </React.Fragment>
-            ) : message.payload.fileType.indexOf('image/') === -1 ? (
+            ) : (message.payload.fileType.indexOf('image/') === -1 || message.payload.isDownloadable) ? (
               <DownloadIcon
                 className='ori-cursor-ptr ori-file-loader'
                 size={25}
