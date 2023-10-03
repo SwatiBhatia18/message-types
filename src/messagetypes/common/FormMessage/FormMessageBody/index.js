@@ -91,10 +91,16 @@ class FormMessageBody extends React.PureComponent {
               )
             )
         } else if (item.type === 'radioGroup' || item.type === 'select') {
-          const option = item.props.options.find(
-            opt => opt.value === selectedValues[item.props.name]
-          )
-          obj.value = option.label
+          if (Array.isArray(selectedValues[item.props.name])) {
+            const selectedLabels = selectedValues[item.props.name].map(selectedValue => {
+              const option = item.props.options.find(opt => opt.value === selectedValue)
+              return option.label
+            })
+            obj.value = selectedLabels
+          } else {
+            const option = item.props.options.find(opt => opt.value === selectedValues[item.props.name])
+            obj.value = option.label
+          }
         } else {
           obj.value = selectedValues[item.props.name]
         }
