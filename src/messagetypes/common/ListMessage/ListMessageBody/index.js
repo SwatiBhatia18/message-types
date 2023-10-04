@@ -14,7 +14,7 @@ const ListMessageBody = ({ payload }) => {
           return (
             <p key={index}>
               {item.label && <span>{item.label} </span>}
-              {item.value}
+              {Array.isArray(item.value) ? item.value.join(', ') : item.value}
             </p>
           )
         }
