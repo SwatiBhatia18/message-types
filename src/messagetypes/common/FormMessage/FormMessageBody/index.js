@@ -8,7 +8,7 @@ import Rate from 'antd/lib/rate'
 import Select from 'antd/lib/select'
 import Input from 'antd/lib/input'
 
-import { isEmail } from '../../../../data/config/utils'
+import { isEmail, validateField } from '../../../../data/config/utils'
 
 import Buttons from '../../../../components/buttons'
 import HtmlText from '../../../../components/HtmlText'
@@ -48,6 +48,16 @@ class FormMessageBody extends React.PureComponent {
           }
         }))
       }
+    } else if (item.type === 'input' && item?.regexPattern) {
+      if (!validateField(this.state.selectedValues[item.props.name], item.regexPattern)) {
+        hasError = true
+        this.setState(prevState => ({
+          detectedErrors: {
+            ...prevState.detectedErrors,
+            [item.props.name]: 'This field is not valid'
+          }
+        }))
+      }
     }
     return hasError
   };
@@ -76,7 +86,7 @@ class FormMessageBody extends React.PureComponent {
     payload.formData.forEach(item => {
       if (selectedValues[item.props.name] !== undefined) {
         const obj = { label: item.displayLabel }
-        hasError = hasError || this.validateSelectedField(item)
+        hasError = this.validateSelectedField(item) || hasError
         if (item.type === 'datePicker') {
           obj.value = selectedValues[item.props.name].format(
             item.props.format || 'DD-MMM-YYYY'
@@ -343,14 +353,21 @@ class FormMessageBody extends React.PureComponent {
                         disabled={disabled || this.state.defaultDisabled}
                         {...item.props}
                         value={this.state.selectedValues[item.props.name]}
-                        onChange={e =>
-                          this.handleFormChange(
-                            {
-                              [item.props.name]: e.target.value
-                            },
-                            item.props.name
-                          )
-                        }
+                        onChange={e => {
+                          if (item.props.maxLength) {
+                            if (e.target.value.length <= item.props.maxLength) {
+                              this.handleFormChange(
+                                { [item.props.name]: e.target.value },
+                                item.props.name
+                              )
+                            }
+                          } else {
+                            this.handleFormChange(
+                              { [item.props.name]: e.target.value },
+                              item.props.name
+                            )
+                          }
+                        }}
                       />
                       {detectedErrors[item.props.name] && (
                         <p className='ori-font-xs ori-font-danger'>

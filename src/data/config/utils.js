@@ -69,6 +69,11 @@ export const isEmail = address => {
   return regex.test(address)
 }
 
+export const validateField = (address, regexPattern) => {
+  let regex = new RegExp(regexPattern)
+  return regex.test(address)
+}
+
 export const getFileMimeType = file => {
   return new Promise((resolve) => {
     const filereader = new FileReader()
