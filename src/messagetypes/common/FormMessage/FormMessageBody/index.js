@@ -48,7 +48,7 @@ class FormMessageBody extends React.PureComponent {
           }
         }))
       }
-    } else if (item.type === 'input' && item?.regexPattern) {
+    } else if (item.type === 'input' && item.regexPattern) {
       if (!validateField(this.state.selectedValues[item.props.name], item.regexPattern)) {
         hasError = true
         this.setState(prevState => ({
