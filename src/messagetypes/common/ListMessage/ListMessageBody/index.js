@@ -11,10 +11,18 @@ const ListMessageBody = ({ payload }) => {
           )
         }
         if (item.value !== undefined) {
+          let renderedValue
+          if (Array.isArray(item.value)) {
+            renderedValue = item.value
+              .filter((_, i) => !item.hiddenIndexes || !item.hiddenIndexes.includes(i))
+              .join(', ')
+          } else {
+            renderedValue = item.value
+          }
           return (
             <p key={index}>
               {item.label && <span>{item.label} </span>}
-              {Array.isArray(item.value) ? item.value.join(', ') : item.value}
+              {renderedValue}
             </p>
           )
         }

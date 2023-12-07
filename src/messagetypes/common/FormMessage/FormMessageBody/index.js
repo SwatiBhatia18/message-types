@@ -7,6 +7,7 @@ import Button from 'antd/lib/button'
 import Rate from 'antd/lib/rate'
 import Select from 'antd/lib/select'
 import Input from 'antd/lib/input'
+import Checkbox from 'antd/lib/checkbox'
 
 import { isEmail, validateField } from '../../../../data/config/utils'
 
@@ -38,7 +39,19 @@ class FormMessageBody extends React.PureComponent {
 
   validateSelectedField = item => {
     let hasError = false
-    if (item.type === 'input' && item.props.type === 'email') {
+    const selectedValue = this.state.selectedValues[item.props.name]
+    const isEmpty =
+      (Array.isArray(selectedValue) ? selectedValue.length === 0 : selectedValue === '') &&
+      item.props.required
+    if (isEmpty) {
+      hasError = true
+      this.setState(prevState => ({
+        detectedErrors: {
+          ...prevState.detectedErrors,
+          [item.props.name]: 'This is a required field'
+        }
+      }))
+    } else if (item.type === 'input' && item.props.type === 'email') {
       if (!isEmail(this.state.selectedValues[item.props.name])) {
         hasError = true
         this.setState(prevState => ({
@@ -111,6 +124,20 @@ class FormMessageBody extends React.PureComponent {
             const option = item.props.options.find(opt => opt.value === selectedValues[item.props.name])
             obj.value = option.label
           }
+        } else if (item.type === 'checkbox') {
+          const selectedLabels = []
+          const hiddenLabelsIndexes = []
+          selectedValues[item.props.name].forEach((selectedValue, index) => {
+            const option = item.props.options.find(opt => opt.value === selectedValue)
+            if (option) {
+              selectedLabels.push(option.label)
+              if (option.hideLabel === true) {
+                hiddenLabelsIndexes.push(index)
+              }
+            }
+          })
+          obj.value = selectedLabels
+          obj.hiddenIndexes = hiddenLabelsIndexes
         } else {
           obj.value = selectedValues[item.props.name]
         }
@@ -396,6 +423,40 @@ class FormMessageBody extends React.PureComponent {
                           )
                         }
                       />
+                      {detectedErrors[item.props.name] && (
+                        <p className='ori-font-xs ori-font-danger'>
+                          {detectedErrors[item.props.name]}
+                        </p>
+                      )}
+                    </div>
+                  )
+                case 'checkbox':
+                  return (
+                    <div className='ori-b-pad-5 ori-full-width' key={index}>
+                      {item.title && (
+                        <p>
+                          {item.props.required && <span>*</span>}
+                          {item.title}
+                        </p>
+                      )}
+                      {item.props.options && item.props.options.length > 0 && (
+                        <div className='ori-mt-checkboxWithMediaContainer'>
+                          <Checkbox.Group
+                            className='ori-full-width'
+                            disabled={disabled || this.state.defaultDisabled}
+                            value={this.state.selectedValues[item.props.name]}
+                            options={item.props.options}
+                            onChange={checked =>
+                              this.handleFormChange(
+                                {
+                                  [item.props.name]: checked
+                                },
+                                item.props.name
+                              )
+                            }
+                          />
+                        </div>
+                      )}
                       {detectedErrors[item.props.name] && (
                         <p className='ori-font-xs ori-font-danger'>
                           {detectedErrors[item.props.name]}
