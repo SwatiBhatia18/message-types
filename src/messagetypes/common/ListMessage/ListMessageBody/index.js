@@ -21,7 +21,7 @@ const ListMessageBody = ({ payload }) => {
           }
           return (
             <p key={index}>
-              {item.label && <span>{item.label} </span>}
+              {item.label && <span >{item.label} </span>}
               {renderedValue}
             </p>
           )

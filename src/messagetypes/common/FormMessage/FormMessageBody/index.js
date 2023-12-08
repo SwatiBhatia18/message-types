@@ -40,9 +40,7 @@ class FormMessageBody extends React.PureComponent {
   validateSelectedField = item => {
     let hasError = false
     const selectedValue = this.state.selectedValues[item.props.name]
-    const isEmpty =
-      (Array.isArray(selectedValue) ? selectedValue.length === 0 : selectedValue === '') &&
-      item.props.required
+    const isEmpty = (selectedValue.length === 0) && item.props.required
     if (item.type === 'input' && item.props.minLength) {
       if (!Array.isArray(this.state.selectedValues[item.props.name]) && this.state.selectedValues[item.props.name].length < item.props.minLength) {
         hasError = true
@@ -142,13 +140,13 @@ class FormMessageBody extends React.PureComponent {
             const option = item.props.options.find(opt => opt.value === selectedValue)
             if (option) {
               selectedLabels.push(option.label)
-              if (option.hideLabel === true) {
+              if (option.hideLabel) {
                 hiddenLabelsIndexes.push(index)
               }
             }
           })
           obj.value = selectedLabels
-          obj.hiddenIndexes = hiddenLabelsIndexes
+          if (hiddenLabelsIndexes.length > 0) { obj.hiddenIndexes = hiddenLabelsIndexes }
         } else {
           obj.value = selectedValues[item.props.name]
         }
