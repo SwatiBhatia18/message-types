@@ -40,6 +40,17 @@ class FormMessageBody extends React.PureComponent {
   validateSelectedField = item => {
     let hasError = false
     const selectedValue = this.state.selectedValues[item.props.name]
+    if (item.type === 'input' && item.props.minLength) {
+      if (!Array.isArray(this.state.selectedValues[item.props.name]) && this.state.selectedValues[item.props.name].length < item.props.minLength) {
+        hasError = true
+        this.setState(prevState => ({
+          detectedErrors: {
+            ...prevState.detectedErrors,
+            [item.props.name]: `Input must be at least ${item.props.minLength} characters`
+          }
+        }))
+      }
+    }
     const isEmpty =
       (Array.isArray(selectedValue) ? selectedValue.length === 0 : selectedValue === '') &&
       item.props.required
@@ -445,7 +456,10 @@ class FormMessageBody extends React.PureComponent {
                             className='ori-full-width'
                             disabled={disabled || this.state.defaultDisabled}
                             value={this.state.selectedValues[item.props.name]}
-                            options={item.props.options}
+                            options={item.props.options.map(option => ({
+                              ...option,
+                              label: <span dangerouslySetInnerHTML={{ __html: option.label }} />
+                            }))}
                             onChange={checked =>
                               this.handleFormChange(
                                 {
