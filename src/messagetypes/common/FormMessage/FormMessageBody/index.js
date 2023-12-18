@@ -361,7 +361,6 @@ class FormMessageBody extends React.PureComponent {
                         {...item.props}
                         filterOption={(input, option) => (option.label).toLowerCase().includes(input.toLowerCase())}
                         filterSort={(optionA, optionB) => {
-                          console.log('hello', this.state.selectedValues[item.props.name])
                           const currentInput = this.state.currentInput.toLowerCase()
                           const labelA = optionA.label.toLowerCase()
                           const labelB = optionB.label.toLowerCase()
