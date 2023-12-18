@@ -20,6 +20,7 @@ class FormMessageBody extends React.PureComponent {
   constructor(props) {
     super(props)
     this.state = {
+      currentInput: '',
       selectedValues: props.payload.selectedValues || {},
       detectedErrors: {},
       error: false,
@@ -358,7 +359,21 @@ class FormMessageBody extends React.PureComponent {
                         }
                         disabled={disabled || this.state.defaultDisabled}
                         {...item.props}
-                        filterOption={(input, option) => option.label.toLowerCase().indexOf(input.toLowerCase()) === 0}
+                        filterOption={(input, option) => (option.label).toLowerCase().includes(input.toLowerCase())}
+                        filterSort={(optionA, optionB) => {
+                          console.log('hello', this.state.selectedValues[item.props.name])
+                          const currentInput = this.state.currentInput.toLowerCase()
+                          const labelA = optionA.label.toLowerCase()
+                          const labelB = optionB.label.toLowerCase()
+                          const startsWithInputA = labelA.startsWith(currentInput)
+                          const startsWithInputB = labelB.startsWith(currentInput)
+                          return (
+                            (startsWithInputA && !startsWithInputB) ? -1
+                              : (!startsWithInputA && startsWithInputB) ? 1
+                                : labelA.localeCompare(labelB)
+                          )
+                        }}
+                        onSearch={input => this.setState({ currentInput: input })}
                         value={this.state.selectedValues[item.props.name]}
                         onChange={value =>
                           this.handleFormChange(
