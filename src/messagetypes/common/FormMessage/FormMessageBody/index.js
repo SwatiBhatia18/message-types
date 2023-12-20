@@ -362,14 +362,12 @@ class FormMessageBody extends React.PureComponent {
                         filterOption={(input, option) => (option.label).toLowerCase().includes(input.toLowerCase())}
                         filterSort={(optionA, optionB) => {
                           const currentInput = this.state.currentInput.toLowerCase()
-                          const labelA = optionA.label.toLowerCase()
-                          const labelB = optionB.label.toLowerCase()
-                          const startsWithInputA = labelA.startsWith(currentInput)
-                          const startsWithInputB = labelB.startsWith(currentInput)
+                          const initialA = optionA.label.toLowerCase().startsWith(currentInput)
+                          const initialB = optionB.label.toLowerCase().startsWith(currentInput)
                           return (
-                            (startsWithInputA && !startsWithInputB) ? -1
-                              : (!startsWithInputA && startsWithInputB) ? 1
-                                : labelA.localeCompare(labelB)
+                            (initialA && !initialB) ? -1
+                              : (!initialA && initialB) ? 1
+                                : optionA.label.toLowerCase().localeCompare(optionB.label.toLowerCase())
                           )
                         }}
                         onSearch={input => this.setState({ currentInput: input })}
