@@ -1,6 +1,7 @@
 /* eslint-disable camelcase */
 import React from 'react'
 import PropTypes from 'prop-types'
+import moment from 'moment'
 import DatePicker from 'antd/lib/date-picker'
 import Radio from 'antd/lib/radio'
 import Button from 'antd/lib/button'
@@ -236,7 +237,7 @@ class FormMessageBody extends React.PureComponent {
                         }
                         disabled={disabled || this.state.defaultDisabled}
                         {...item.props}
-                        value={this.state.selectedValues[item.props.name]}
+                        value={moment(this.state.selectedValues[item.props.name])}
                         getPopupContainer={() =>
                           document.getElementById('oriAppContainer')
                         }
