@@ -112,11 +112,11 @@ class FormMessageBody extends React.PureComponent {
         const obj = { label: item.displayLabel }
         hasError = this.validateSelectedField(item) || hasError
         if (item.type === 'datePicker') {
-          obj.value = selectedValues[item.props.name].format(
+          obj.value = moment(selectedValues[item.props.name]).format(
             item.props.format || 'DD-MMM-YYYY'
           )
         } else if (item.type === 'dateRangePicker') {
-          obj.value = selectedValues[item.props.name][0]
+          obj.value = moment(selectedValues[item.props.name][0])
             .format(item.props.format || 'DD-MMM-YYYY')
             .concat(
               ' : ',
@@ -238,9 +238,9 @@ class FormMessageBody extends React.PureComponent {
                         disabled={disabled || this.state.defaultDisabled}
                         {...item.props}
                         value={moment(this.state.selectedValues[item.props.name])}
-                        getPopupContainer={() =>
-                          document.getElementById('oriAppContainer')
-                        }
+                        // getPopupContainer={() =>
+                        //   document.getElementById('oriAppContainer')
+                        // }
                         onChange={selectedDate =>
                           this.handleFormChange(
                             { [item.props.name]: selectedDate || undefined },
@@ -291,7 +291,7 @@ class FormMessageBody extends React.PureComponent {
                           }
                           return false
                         }}
-                        value={this.state.selectedValues[item.props.name]}
+                        value={moment(this.state.selectedValues[item.props.name])}
                         getPopupContainer={() =>
                           document.getElementById('oriAppContainer')
                         }
