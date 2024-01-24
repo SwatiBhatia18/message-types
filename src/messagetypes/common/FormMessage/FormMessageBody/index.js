@@ -238,9 +238,9 @@ class FormMessageBody extends React.PureComponent {
                         disabled={disabled || this.state.defaultDisabled}
                         {...item.props}
                         value={moment(this.state.selectedValues[item.props.name])}
-                        // getPopupContainer={() =>
-                        //   document.getElementById('oriAppContainer')
-                        // }
+                        getPopupContainer={() =>
+                          document.getElementById('oriAppContainer')
+                        }
                         onChange={selectedDate =>
                           this.handleFormChange(
                             { [item.props.name]: selectedDate || undefined },
