@@ -29,6 +29,32 @@ class FormMessageBody extends React.PureComponent {
     }
   }
 
+  componentDidMount() {
+    const { selectedValues } = this.state
+    const { payload } = this.props
+    let formData = payload.formData || []
+    let updatedSelectedValues = selectedValues || {}
+    let datePayload = formData.filter((val) => {
+      if (val.type && (val.type === 'datePicker' || val.type === 'dateRangePicker')) return true
+      return false
+    })
+    datePayload.forEach((val) => {
+      if (val.props && val.props.name && updatedSelectedValues && updatedSelectedValues[val.props.name]) {
+        let name = val.props.name
+        if (val.type && val.type === 'dateRangePicker') {
+          updatedSelectedValues = {...updatedSelectedValues,
+            [name]: [moment(updatedSelectedValues[name][0]), moment(updatedSelectedValues[name][1])]
+          }
+        } else {
+          updatedSelectedValues = { ...updatedSelectedValues, [name]: moment(updatedSelectedValues[name]) }
+        }
+      }
+    })
+    this.setState({
+      selectedValues: updatedSelectedValues
+    })
+  }
+
   deleteDetectedErrors = key => {
     if (this.state.detectedErrors[key]) {
       const {
