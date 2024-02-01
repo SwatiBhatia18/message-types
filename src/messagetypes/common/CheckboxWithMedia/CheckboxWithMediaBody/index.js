@@ -34,7 +34,7 @@ class CheckboxWithMediaBody extends React.PureComponent {
     const { payload } = this.props
     if (payload.options && payload.options.length > 0) {
       payload.options.forEach(item => {
-        this.check_all_value.push(item.value)
+        if (!item.disabled) this.check_all_value.push(item.value)
       })
     }
   }
@@ -48,34 +48,42 @@ class CheckboxWithMediaBody extends React.PureComponent {
     })
   };
 
-  onChange = checked => {
+  onChange = e => {
+    const {checked} = this.state
+    let updatedChecked = [...checked]
+    let searchedIndex = updatedChecked.indexOf(e.target.value)
+    if (e.target.checked && searchedIndex === -1) {
+      updatedChecked.push(e.target.value)
+    } else if (!e.target.checked && searchedIndex !== -1) {
+      updatedChecked.splice(searchedIndex, 1)
+    }
     const { payload } = this.props
     if (
       payload.maxSelectionLimit &&
       payload.maxSelectionLimit > 0 &&
       payload.maxSelectionLimit < payload.options.length
     ) {
-      if (checked.length === payload.maxSelectionLimit) {
+      if (updatedChecked.length === payload.maxSelectionLimit) {
         this.setState(prev => ({
           filter_options: prev.filter_options.map(item => {
-            if (!checked.includes(item.value)) item.disabled = true
+            if (!updatedChecked.includes(item.value)) item.disabled = true
             return item
           })
         }))
       } else {
         this.setState(prev => ({
           filter_options: prev.filter_options.map(item => {
-            if (item.disabled && !checked.includes(item.value)) item.disabled = false
+            if (item.disabled && !updatedChecked.includes(item.value)) item.disabled = false
             return item
           })
         }))
       }
     }
     this.setState({
-      checked,
+      checked: updatedChecked,
       indeterminate:
-        !!checked.length && checked.length < payload.options.length,
-      check_all: checked.length === payload.options.length
+        !!updatedChecked.length && updatedChecked.length < payload.options.length,
+      check_all: updatedChecked.length === payload.options.length
     })
   };
 
@@ -124,9 +132,10 @@ class CheckboxWithMediaBody extends React.PureComponent {
       }
     }
 
+    const paginationLength = filterOptions.length + (LIMIT * (current - 1))
     this.setState({
       current,
-      has_more: filterOptions.length === LIMIT,
+      has_more: paginationLength < payload.options.length,
       filter_options: filterOptions
     })
   };
@@ -187,16 +196,27 @@ class CheckboxWithMediaBody extends React.PureComponent {
                 </Checkbox>
               </div>
             )}
-            <Checkbox.Group
+            <div
               style={{ width: '100%' }}
-              className={`ori-mt-checkboxGroup ${
+              className={`ant-checkbox-group ori-mt-checkboxGroup ${
                 payload.vertical ? 'ori-flex-column' : ''
               }`}
-              value={checked}
-              options={filter_options}
-              disabled={checkbox_disabled}
-              onChange={this.onChange}
-            />
+            >
+              {filter_options.map((item, index) => {
+                return (
+                  <Checkbox
+                    checked={checked.indexOf(item.value) !== -1}
+                    className='ant-checkbox-group-item'
+                    key={index}
+                    value={item.value}
+                    disabled={checkbox_disabled || (item.disabled)}
+                    onChange={this.onChange}
+                  >
+                    {item.label}
+                  </Checkbox>
+                )
+              })}
+            </div>
             <div className={styles.checkboxFooterContainer}>
               <Button
                 size='small'
