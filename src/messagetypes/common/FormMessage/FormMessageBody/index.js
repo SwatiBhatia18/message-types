@@ -25,7 +25,8 @@ class FormMessageBody extends React.PureComponent {
       selectedValues: props.payload.selectedValues || {},
       detectedErrors: {},
       error: false,
-      defaultDisabled: props.payload.defaultDisabled
+      defaultDisabled: props.payload.defaultDisabled,
+      selectedSelect: ''
     }
   }
 
@@ -53,6 +54,15 @@ class FormMessageBody extends React.PureComponent {
     this.setState({
       selectedValues: updatedSelectedValues
     })
+
+    if (payload.multipleForm) {
+      const selectedSelectItem = payload.formData.find(item => item.type === 'select' && item.selectedSelect)
+      if (selectedSelectItem) {
+        this.setState({
+          selectedSelect: selectedSelectItem.props.name
+        })
+      }
+    }
   }
 
   deleteDetectedErrors = key => {
@@ -68,7 +78,7 @@ class FormMessageBody extends React.PureComponent {
   validateSelectedField = item => {
     let hasError = false
     const selectedValue = this.state.selectedValues[item.props.name]
-    const isEmpty = (selectedValue.length === 0) && item.props.required
+    const isEmpty = (typeof selectedValue === 'string' ? selectedValue.trim().length === 0 : selectedValue.length === 0) && item.props.required
     if (item.type === 'input' && item.props.minLength) {
       if (!Array.isArray(this.state.selectedValues[item.props.name]) && this.state.selectedValues[item.props.name].length < item.props.minLength) {
         hasError = true
@@ -115,85 +125,126 @@ class FormMessageBody extends React.PureComponent {
   handleFormChange = (changedValue, errorKey) => {
     const { payload } = this.props
     this.deleteDetectedErrors(errorKey)
-    this.setState(
-      prevState => ({
-        selectedValues: {
-          ...prevState.selectedValues,
-          ...changedValue
+    const updatedSelectedValues = {}
+    if (payload.multipleForm) {
+      Object.keys(changedValue).forEach(name => {
+        const item = payload.formData.find(formItem => formItem.props.name === name)
+        if ((item.dependentField && item.dependentField.length > 0 && this.state.selectedValues[this.state.selectedSelect] && item.dependentField === this.state.selectedValues[this.state.selectedSelect]) || item.selectedSelect) {
+          updatedSelectedValues[name] = changedValue[name]
         }
-      }),
-      () => {
-        if (payload.autoSubmit) this.handleSubmit()
-      }
-    )
-  };
+      })
+      this.setState(
+        prevState => ({
+          selectedValues: {
+            ...prevState.selectedValues,
+            ...updatedSelectedValues
+          }
+        }),
+        () => {
+          if (payload.autoSubmit) this.handleSubmit()
+        }
+      )
+    } else {
+      this.setState(
+        prevState => ({
+          selectedValues: {
+            ...prevState.selectedValues,
+            ...changedValue
+          }
+        }),
+        () => {
+          if (payload.autoSubmit) this.handleSubmit()
+        }
+      )
+    }
+  }
 
   handleSubmit = () => {
     const { payload } = this.props
-    const { selectedValues, detectedErrors } = this.state
+    const { selectedValues, detectedErrors, selectedSelect } = this.state
     let list = []
     let hasError = Object.keys(detectedErrors).length > 0
     payload.formData.forEach(item => {
-      if (selectedValues[item.props.name] !== undefined) {
-        const obj = { label: item.displayLabel }
-        hasError = this.validateSelectedField(item) || hasError
-        if (item.type === 'datePicker') {
-          obj.value = selectedValues[item.props.name].format(
-            item.props.format || 'DD-MMM-YYYY'
-          )
-        } else if (item.type === 'dateRangePicker') {
-          obj.value = selectedValues[item.props.name][0]
-            .format(item.props.format || 'DD-MMM-YYYY')
-            .concat(
-              ' : ',
-              selectedValues[item.props.name][1].format(
-                item.props.format || 'DD-MMM-YYYY'
-              )
+      const isDependentField = (item.dependentField && item.dependentField.length > 0 && selectedValues[selectedSelect] && item.dependentField === selectedValues[selectedSelect]) || item.selectedSelect
+      const check = payload.multipleForm ? isDependentField : true
+      if (check) {
+        if (selectedValues[item.props.name] !== undefined) {
+          const obj = { label: item.displayLabel }
+          hasError = this.validateSelectedField(item) || hasError
+          if (item.type === 'datePicker') {
+            obj.value = selectedValues[item.props.name].format(
+              item.props.format || 'DD-MMM-YYYY'
             )
-        } else if (item.type === 'radioGroup' || item.type === 'select') {
-          if (Array.isArray(selectedValues[item.props.name])) {
-            const selectedLabels = selectedValues[item.props.name].map(selectedValue => {
+          } else if (item.type === 'dateRangePicker') {
+            obj.value = selectedValues[item.props.name][0]
+              .format(item.props.format || 'DD-MMM-YYYY')
+              .concat(
+                ' : ',
+                selectedValues[item.props.name][1].format(
+                  item.props.format || 'DD-MMM-YYYY'
+                )
+              )
+          } else if (item.type === 'radioGroup' || item.type === 'select') {
+            if (Array.isArray(selectedValues[item.props.name])) {
+              const selectedLabels = selectedValues[item.props.name].map(selectedValue => {
+                const option = item.props.options.find(opt => opt.value === selectedValue)
+                return option.label
+              })
+              obj.value = selectedLabels
+            } else {
+              const option = item.props.options.find(opt => opt.value === selectedValues[item.props.name])
+              obj.value = option.label
+            }
+          } else if (item.type === 'checkbox') {
+            const selectedLabels = []
+            const hiddenLabelsIndexes = []
+            selectedValues[item.props.name].forEach((selectedValue, index) => {
               const option = item.props.options.find(opt => opt.value === selectedValue)
-              return option.label
+              if (option) {
+                selectedLabels.push(option.label)
+                if (option.hideLabel) {
+                  hiddenLabelsIndexes.push(index)
+                }
+              }
             })
             obj.value = selectedLabels
+            if (hiddenLabelsIndexes.length > 0) { obj.hiddenIndexes = hiddenLabelsIndexes }
           } else {
-            const option = item.props.options.find(opt => opt.value === selectedValues[item.props.name])
-            obj.value = option.label
+            obj.value = selectedValues[item.props.name]
           }
-        } else if (item.type === 'checkbox') {
-          const selectedLabels = []
-          const hiddenLabelsIndexes = []
-          selectedValues[item.props.name].forEach((selectedValue, index) => {
-            const option = item.props.options.find(opt => opt.value === selectedValue)
-            if (option) {
-              selectedLabels.push(option.label)
-              if (option.hideLabel) {
-                hiddenLabelsIndexes.push(index)
-              }
+          list.push(obj)
+        } else if (item.props.required && !detectedErrors[item.props.name]) {
+          hasError = true
+          this.setState(prevState => ({
+            detectedErrors: {
+              ...prevState.detectedErrors,
+              [item.props.name]: 'This is required field'
             }
-          })
-          obj.value = selectedLabels
-          if (hiddenLabelsIndexes.length > 0) { obj.hiddenIndexes = hiddenLabelsIndexes }
-        } else {
-          obj.value = selectedValues[item.props.name]
+          }))
         }
-        list.push(obj)
-      } else if (item.props.required && !detectedErrors[item.props.name]) {
-        hasError = true
-        this.setState(prevState => ({
-          detectedErrors: {
-            ...prevState.detectedErrors,
-            [item.props.name]: 'This is required field'
-          }
-        }))
       }
     })
 
     if (!hasError) {
+      let selectedData = {}
+      if (payload.multipleForm) {
+        let selectedOption = selectedValues[this.state.selectedSelect]
+        if (selectedOption) {
+          Object.keys(selectedValues).forEach(fieldName => {
+            let formDataItem = this.props.payload.formData.find(item => item.props && item.props.name === fieldName)
+            if (formDataItem && formDataItem.dependentField && formDataItem.dependentField.length > 0 && formDataItem.dependentField === selectedOption) {
+              selectedData[fieldName] = selectedValues[fieldName]
+            } else if (formDataItem && formDataItem.props && formDataItem.props.name === selectedSelect) {
+              selectedData[fieldName] = selectedValues[fieldName]
+            }
+          })
+        }
+      } else {
+        selectedData = selectedValues
+      }
       const data = {
         list,
-        selectedData: this.state.selectedValues,
+        selectedData,
         relayData: payload.relayData
       }
       // console.log('data', data, detectedErrors)
@@ -208,7 +259,7 @@ class FormMessageBody extends React.PureComponent {
   };
 
   render() {
-    const { detectedErrors } = this.state
+    const { detectedErrors, selectedSelect } = this.state
     const {
       btn_disabled,
       message,
@@ -240,6 +291,15 @@ class FormMessageBody extends React.PureComponent {
         {payload.formData && payload.formData.length > 0 && (
           <React.Fragment>
             {payload.formData.map((item, index) => {
+              if (
+                payload.multipleForm &&
+                item.dependentField &&
+                item.dependentField.length > 0 &&
+                this.state.selectedValues[selectedSelect] &&
+                item.dependentField !== this.state.selectedValues[selectedSelect]
+              ) {
+                return null
+              }
               switch (item.type) {
                 case 'datePicker':
                   return (
