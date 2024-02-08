@@ -56,7 +56,7 @@ class FormMessageBody extends React.PureComponent {
     })
 
     if (payload.multipleForm) {
-      const selectedSelectItem = payload.formData && payload.formData.length > 0 && formData.find(item => item.type === 'select' && item.selectedSelect)
+      const selectedSelectItem = formData && formData.length > 0 && formData.find(item => item.type === 'select' && item.selectedSelect)
       if (selectedSelectItem) {
         this.setState({
           selectedSelect: selectedSelectItem.props.name
