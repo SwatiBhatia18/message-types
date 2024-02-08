@@ -56,7 +56,7 @@ class FormMessageBody extends React.PureComponent {
     })
 
     if (payload.multipleForm) {
-      const selectedSelectItem = payload.formData.find(item => item.type === 'select' && item.selectedSelect)
+      const selectedSelectItem = payload.formData && payload.formData.length > 0 && formData.find(item => item.type === 'select' && item.selectedSelect)
       if (selectedSelectItem) {
         this.setState({
           selectedSelect: selectedSelectItem.props.name
@@ -125,10 +125,10 @@ class FormMessageBody extends React.PureComponent {
   handleFormChange = (changedValue, errorKey) => {
     const { payload } = this.props
     this.deleteDetectedErrors(errorKey)
-    const updatedSelectedValues = {}
+    let updatedSelectedValues = {}
     if (payload.multipleForm) {
       Object.keys(changedValue).forEach(name => {
-        const item = payload.formData.find(formItem => formItem.props.name === name)
+        const item = payload.formData && payload.formData.length > 0 && payload.formData.find(formItem => formItem.props.name === name)
         if ((item.dependentField && item.dependentField.length > 0 && this.state.selectedValues[this.state.selectedSelect] && item.dependentField === this.state.selectedValues[this.state.selectedSelect]) || item.selectedSelect) {
           updatedSelectedValues[name] = changedValue[name]
         }
@@ -164,10 +164,10 @@ class FormMessageBody extends React.PureComponent {
     const { selectedValues, detectedErrors, selectedSelect } = this.state
     let list = []
     let hasError = Object.keys(detectedErrors).length > 0
-    payload.formData.forEach(item => {
+    payload.formData && payload.formData.length > 0 && payload.formData.forEach(item => {
       const isDependentField = (item.dependentField && item.dependentField.length > 0 && selectedValues[selectedSelect] && item.dependentField === selectedValues[selectedSelect]) || item.selectedSelect
-      const check = payload.multipleForm ? isDependentField : true
-      if (check) {
+      const checkMultipleForm = payload.multipleForm ? isDependentField : true
+      if (checkMultipleForm) {
         if (selectedValues[item.props.name] !== undefined) {
           const obj = { label: item.displayLabel }
           hasError = this.validateSelectedField(item) || hasError
@@ -231,7 +231,7 @@ class FormMessageBody extends React.PureComponent {
         let selectedOption = selectedValues[this.state.selectedSelect]
         if (selectedOption) {
           Object.keys(selectedValues).forEach(fieldName => {
-            let formDataItem = this.props.payload.formData.find(item => item.props && item.props.name === fieldName)
+            let formDataItem = payload.formData && payload.formData.length > 0 && payload.formData.find(item => item.props && item.props.name === fieldName)
             if (formDataItem && formDataItem.dependentField && formDataItem.dependentField.length > 0 && formDataItem.dependentField === selectedOption) {
               selectedData[fieldName] = selectedValues[fieldName]
             } else if (formDataItem && formDataItem.props && formDataItem.props.name === selectedSelect) {
