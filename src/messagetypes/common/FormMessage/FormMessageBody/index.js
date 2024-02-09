@@ -44,10 +44,10 @@ class FormMessageBody extends React.PureComponent {
         let name = val.props.name
         if (val.type && val.type === 'dateRangePicker') {
           updatedSelectedValues = {...updatedSelectedValues,
-            [name]: [moment(updatedSelectedValues[name][0]), moment(updatedSelectedValues[name][1])]
+            [name]: [moment(updatedSelectedValues[name][0], val.props.format || 'DD-MM-YYYY'), moment(updatedSelectedValues[name][1], val.props.format || 'DD-MM-YYYY')]
           }
         } else {
-          updatedSelectedValues = { ...updatedSelectedValues, [name]: moment(updatedSelectedValues[name]) }
+          updatedSelectedValues = { ...updatedSelectedValues, [name]: moment(updatedSelectedValues[name], val.props.format || 'DD-MM-YYYY') }
         }
       }
     })
@@ -173,15 +173,15 @@ class FormMessageBody extends React.PureComponent {
           hasError = this.validateSelectedField(item) || hasError
           if (item.type === 'datePicker') {
             obj.value = selectedValues[item.props.name].format(
-              item.props.format || 'DD-MMM-YYYY'
+              item.props.format || 'DD-MM-YYYY'
             )
           } else if (item.type === 'dateRangePicker') {
             obj.value = selectedValues[item.props.name][0]
-              .format(item.props.format || 'DD-MMM-YYYY')
+              .format(item.props.format || 'DD-MM-YYYY')
               .concat(
                 ' : ',
                 selectedValues[item.props.name][1].format(
-                  item.props.format || 'DD-MMM-YYYY'
+                  item.props.format || 'DD-MM-YYYY'
                 )
               )
           } else if (item.type === 'radioGroup' || item.type === 'select') {
@@ -323,7 +323,7 @@ class FormMessageBody extends React.PureComponent {
                         }
                         disabled={disabled || this.state.defaultDisabled}
                         {...item.props}
-                        value={this.state.selectedValues[item.props.name] && moment(this.state.selectedValues[item.props.name])}
+                        value={this.state.selectedValues[item.props.name] && moment(this.state.selectedValues[item.props.name], item.props.format || 'DD-MM-YYYY')}
                         getPopupContainer={() =>
                           document.getElementById('oriAppContainer')
                         }
@@ -378,7 +378,7 @@ class FormMessageBody extends React.PureComponent {
                           return false
                         }}
                         value={this.state.selectedValues[item.props.name] && this.state.selectedValues[item.props.name].length > 0 && this.state.selectedValues[item.props.name].map((val) => {
-                          if (val) return moment(val)
+                          if (val) return moment(val, item.props.format || 'DD-MM-YYYY')
                         })}
                         getPopupContainer={() =>
                           document.getElementById('oriAppContainer')

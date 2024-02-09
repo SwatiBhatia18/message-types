@@ -215,6 +215,7 @@ class CarouselWithButtonsBody extends React.PureComponent {
           <Carousel
             className={`ori-mt-CarouselContainer ${styles.carouselContainer}`}
             arrows={true}
+            infinite={!payload.disableLoop}
           >
             {payload.options.map((carousel_item, index) => {
               return (
