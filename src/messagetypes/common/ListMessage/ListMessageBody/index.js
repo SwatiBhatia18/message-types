@@ -1,10 +1,21 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+import HtmlText from '../../../../components/HtmlText'
+
 const ListMessageBody = ({ payload }) => {
+  if (payload.submitMessage) {
+    return (
+      <HtmlText
+        text={payload.submitMessage.message}
+        isHtml={payload.submitMessage.containsHtmlMessage}
+      />
+    )
+  }
+
   return (
     <React.Fragment>
-      {payload.list.map((item, index) => {
+      {payload.list && payload.list.length > 0 && payload.list.map((item, index) => {
         if (payload.showLabelOnly) {
           return (
             <p key={index}>{item.label}</p>
@@ -21,7 +32,7 @@ const ListMessageBody = ({ payload }) => {
           }
           return (
             <p key={index}>
-              {item.label && <span >{item.label} </span>}
+              {item.label && <span>{item.label} </span>}
               {renderedValue}
             </p>
           )

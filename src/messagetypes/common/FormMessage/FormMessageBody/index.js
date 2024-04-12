@@ -247,7 +247,12 @@ class FormMessageBody extends React.PureComponent {
         selectedData,
         relayData: payload.relayData
       }
-      // console.log('data', data, detectedErrors)
+      if (payload.submitMessage) {
+        data.submitMessage = {
+          message: payload.submitMessage,
+          containsHtmlMessage: payload.containsHTMLSubmitMessage
+        }
+      }
       this.props.onSubmit(data)
     }
   };
