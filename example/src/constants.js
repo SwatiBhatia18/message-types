@@ -550,12 +550,14 @@ export const formMessage = {
   payload: [
     {
       title: "form title",
-      selectedValue: { rate: 4, rangeDates: [] },
+      selectedValues: { rate: 4, rangeDates: [] },
+      multipleForm: false, // used to render multiple form based on selectedSelect key for a select 
       formData: [
         {
           type: "input",
           title: "Email id",
           displayLabel: "Email",
+          dependentField: ["passport", "up"], // key used to render the form item which is dependent on the select option selected for selectedSelect key select 
           props: {
             type: "email",
             placeholder: "Enter your EmailID",
@@ -569,6 +571,7 @@ export const formMessage = {
           disabledTimestamp: "1629455793767", // disables date before current date
           beforeDisabledTimestamp: "1581705000000", // disables date for a given range
           displayLabel: "Departure date",
+          dependentField: ["saudi iqama"],  // key used to render the form item which is dependent on the select option selected for selectedSelect key select 
           props: {
             placeholder: "departure date",
             name: "departDate",
@@ -581,6 +584,7 @@ export const formMessage = {
           title: "Select Start and End date",
           disabledDateRange: [],
           displayLabel: "Vacation Duration",
+          dependentField: ["passport"],  // key used to render the form item which is dependent on the select option selected for selectedSelect key select 
           props: {
             placeholder: ["Start Date", "End Date"],
             format: "YYYY-MM-DD HH-mm A",
@@ -594,6 +598,7 @@ export const formMessage = {
           type: "radioGroup",
           title: "Passanger1",
           displayLabel: "Passanger 1",
+          dependentField: [ "passport", "saudi iqama"], // key used to render the form item which is dependent on the select option selected for selectedSelect key select 
           props: {
             name: "bag1",
             required: true,
@@ -612,6 +617,7 @@ export const formMessage = {
           title: "Passanger2",
           vertical: true,
           displayLabel: "Passanger 2",
+          dependentField: ["passport"],  // key used to render the form item which is dependent on the select option selected for selectedSelect key select 
           props: {
             name: "bag2",
             required: true,
@@ -625,9 +631,84 @@ export const formMessage = {
           }
         },
         {
+          type: "select",
+          title: "Nationality",
+          displayLabel: "Nationality",
+          isChangableKey: "count1",  // key used when this select form type will determine the option of the name of the select in isChangableKey
+          dependentField: ["passport", "saudi iqama", "national id"],
+          props: {
+            name: "country",
+            placeholder: "Select Country",
+            required: true,
+            options: [
+              { label: "India", value: "India" },
+              { label: "South Africa", value: "SA" }
+            ]
+          }
+        }, 
+        {
+          type: "select",
+          title: "Document Type",
+          displayLabel: "Document Type",
+          selectedSelect: true,
+          dependentSelectFields: {  // this is used for determining the options of the select form type which is variable acc to the option selected in the dependentOn select name  
+            options: {
+              India: [
+                { label: "Passport", value: "passport" },
+                { label: "Nationality", value: "nationality" }
+              ],
+              SA: [
+                { label: "Passport", value: "passport" },
+                { label: "Saudi Iqama", value: "saudi iqama" },
+              ]
+            },
+            dependentOn: "country" // key used for determining the select whose option selected will determine the options of this select 
+          },
+          props: {
+            name: "authority",
+            placeholder: "Select Authority",
+            required: true,
+            options: [
+              { label: "Passport", value: "passport" },
+              { label: "National Id", value: "national id" }
+            ]
+          }
+        },
+        {
+          type: "select",
+          title: "Issuing Country",
+          displayLabel: "Issuing Country",
+          dependentField: [ "passport"],
+          props: {
+            name: "count1",
+            placeholder: "Select Country",
+            required: true,
+            options: [
+              { label: "India", value: "India" },
+              { label: "South Africa", value: "SA" }
+            ]
+          }
+        },
+        {
+          type: "select",
+          title: "Country",
+          displayLabel: "Country",
+          dependentField: ["passport"],
+          props: {
+            name: "count",
+            placeholder: "Select Country",
+            required: true,
+            options: [
+              { label: "India", value: "India" },
+              { label: "South Africa", value: "SA" }
+            ]
+          }
+        },
+        {
           type: "rating",
           title: "rate this feature",
           displayLabel: "rating",
+          dependentField: [ "passport"],
           props: {
             name: "rate",
             required: true
