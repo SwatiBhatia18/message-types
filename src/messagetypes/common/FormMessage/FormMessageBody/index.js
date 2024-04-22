@@ -147,7 +147,7 @@ class FormMessageBody extends React.PureComponent {
           }
           const updatedItem = { ...item, props: { ...item.props, options: dependentOptions } }
 
-          if (!dependentOptions.map(option => option.value).includes(updatedSelectedValues[item.props.name])) {
+          if (dependentOptions && dependentOptions.length > 0 && !dependentOptions.map(option => option.value).includes(updatedSelectedValues[item.props.name])) {
             updatedSelectedValues[item.props.name] = undefined
           }
           return updatedItem
