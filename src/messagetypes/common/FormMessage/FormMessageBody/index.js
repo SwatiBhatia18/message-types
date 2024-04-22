@@ -35,7 +35,8 @@ class FormMessageBody extends React.PureComponent {
     const { selectedValues, formData } = this.state
     const { payload } = this.props
     let updatedSelectedValues = selectedValues || {}
-    let datePayload = formData.filter((val) => {
+    let isNonEmptyFormData = formData && formData.length > 0
+    let datePayload = isNonEmptyFormData && formData.filter((val) => {
       if (val.type && (val.type === 'datePicker' || val.type === 'dateRangePicker')) return true
       return false
     })
@@ -56,7 +57,7 @@ class FormMessageBody extends React.PureComponent {
     })
 
     if (payload.multipleForm) {
-      const selectedSelectItem = formData && formData.length > 0 && formData.find(item => item.type === 'select' && item.selectedSelect)
+      const selectedSelectItem = isNonEmptyFormData && formData.find(item => item.type === 'select' && item.selectedSelect)
       if (selectedSelectItem) {
         this.setState({
           selectedSelect: selectedSelectItem.props.name
@@ -127,19 +128,21 @@ class FormMessageBody extends React.PureComponent {
     const { formData, selectedValues, selectedSelect } = this.state
     this.deleteDetectedErrors(errorKey)
     let updatedSelectedValues = { ...selectedValues, ...changedValue }
+    let isNonEmptyFormData = formData && formData.length > 0
+
     if (payload.multipleForm) {
       Object.keys(changedValue).forEach(name => {
-        const item = formData.find(formItem => formItem.props.name === name)
+        const item = isNonEmptyFormData && formData.find(formItem => formItem.props.name === name)
         if (item && ((item.dependentField && item.dependentField.length > 0 && selectedValues[selectedSelect] && item.dependentField.includes(selectedValues[selectedSelect])) || item.selectedSelect)) {
           updatedSelectedValues[name] = changedValue[name]
         }
       })
 
-      let updatedFormData = formData.map(item => {
+      let updatedFormData = isNonEmptyFormData && formData.map(item => {
         if (item.dependentSelectFields && item.dependentSelectFields.dependentOn === Object.keys(changedValue)[0]) {
           const dependentFieldValue = updatedSelectedValues[item.dependentSelectFields.dependentOn]
           let dependentOptions = []
-          if (item.dependentSelectFields.options[dependentFieldValue] && item.dependentSelectFields.options[dependentFieldValue].length > 0) {
+          if (item.dependentSelectFields.options && item.dependentSelectFields.options[dependentFieldValue] && item.dependentSelectFields.options[dependentFieldValue].length > 0) {
             dependentOptions = item.dependentSelectFields.options[dependentFieldValue]
           }
           const updatedItem = { ...item, props: { ...item.props, options: dependentOptions } }
@@ -152,10 +155,10 @@ class FormMessageBody extends React.PureComponent {
         return item
       })
 
-      const changableItem = formData.find(item => item.isChangableKey)
+      const changableItem = isNonEmptyFormData && formData.find(item => item.isChangableKey)
       if (changableItem.props.name === Object.keys(changedValue)[0]) {
         const changableKeyName = changableItem.isChangableKey
-        const dependentSelectItem = formData.find(item => item.props.name === changableKeyName)
+        const dependentSelectItem = isNonEmptyFormData && formData.find(item => item.props.name === changableKeyName)
         if (dependentSelectItem) {
           updatedSelectedValues[dependentSelectItem.props.name] = updatedSelectedValues[changableItem.props.name]
         }
