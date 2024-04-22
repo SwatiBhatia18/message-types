@@ -26,14 +26,14 @@ class FormMessageBody extends React.PureComponent {
       detectedErrors: {},
       error: false,
       defaultDisabled: props.payload.defaultDisabled,
-      selectedSelect: ''
+      selectedSelect: '',
+      formData: props.payload.formData || []
     }
   }
 
   componentDidMount() {
-    const { selectedValues } = this.state
+    const { selectedValues, formData } = this.state
     const { payload } = this.props
-    let formData = payload.formData || []
     let updatedSelectedValues = selectedValues || {}
     let datePayload = formData.filter((val) => {
       if (val.type && (val.type === 'datePicker' || val.type === 'dateRangePicker')) return true
@@ -124,48 +124,60 @@ class FormMessageBody extends React.PureComponent {
 
   handleFormChange = (changedValue, errorKey) => {
     const { payload } = this.props
+    const { formData, selectedValues, selectedSelect } = this.state
     this.deleteDetectedErrors(errorKey)
-    let updatedSelectedValues = {}
+    let updatedSelectedValues = { ...selectedValues, ...changedValue }
     if (payload.multipleForm) {
       Object.keys(changedValue).forEach(name => {
-        const item = payload.formData && payload.formData.length > 0 && payload.formData.find(formItem => formItem.props.name === name)
-        if ((item.dependentField && item.dependentField.length > 0 && this.state.selectedValues[this.state.selectedSelect] && item.dependentField === this.state.selectedValues[this.state.selectedSelect]) || item.selectedSelect) {
+        const item = formData.find(formItem => formItem.props.name === name)
+        if (item && ((item.dependentField && item.dependentField.length > 0 && selectedValues[selectedSelect] && item.dependentField.includes(selectedValues[selectedSelect])) || item.selectedSelect)) {
           updatedSelectedValues[name] = changedValue[name]
         }
       })
-      this.setState(
-        prevState => ({
-          selectedValues: {
-            ...prevState.selectedValues,
-            ...updatedSelectedValues
+
+      let updatedFormData = formData.map(item => {
+        if (item.dependentSelectFields && item.dependentSelectFields.dependentOn === Object.keys(changedValue)[0]) {
+          const dependentFieldValue = updatedSelectedValues[item.dependentSelectFields.dependentOn]
+          let dependentOptions = []
+          if (item.dependentSelectFields.options[dependentFieldValue] && item.dependentSelectFields.options[dependentFieldValue].length > 0) {
+            dependentOptions = item.dependentSelectFields.options[dependentFieldValue]
           }
-        }),
-        () => {
-          if (payload.autoSubmit) this.handleSubmit()
+          const updatedItem = { ...item, props: { ...item.props, options: dependentOptions } }
+
+          if (!dependentOptions.map(option => option.value).includes(updatedSelectedValues[item.props.name])) {
+            updatedSelectedValues[item.props.name] = undefined
+          }
+          return updatedItem
         }
-      )
+        return item
+      })
+
+      const changableItem = formData.find(item => item.isChangableKey)
+      if (changableItem.props.name === Object.keys(changedValue)[0]) {
+        const changableKeyName = changableItem.isChangableKey
+        const dependentSelectItem = formData.find(item => item.props.name === changableKeyName)
+        if (dependentSelectItem) {
+          updatedSelectedValues[dependentSelectItem.props.name] = updatedSelectedValues[changableItem.props.name]
+        }
+      }
+
+      this.setState({ selectedValues: updatedSelectedValues, formData: updatedFormData }, () => {
+        if (payload.autoSubmit) this.handleSubmit()
+      })
     } else {
-      this.setState(
-        prevState => ({
-          selectedValues: {
-            ...prevState.selectedValues,
-            ...changedValue
-          }
-        }),
-        () => {
-          if (payload.autoSubmit) this.handleSubmit()
-        }
-      )
+      this.setState({ selectedValues: updatedSelectedValues }, () => {
+        if (payload.autoSubmit) this.handleSubmit()
+      })
     }
   }
 
   handleSubmit = () => {
     const { payload } = this.props
-    const { selectedValues, detectedErrors, selectedSelect } = this.state
+    const { selectedValues, detectedErrors, selectedSelect, formData } = this.state
     let list = []
     let hasError = Object.keys(detectedErrors).length > 0
-    payload.formData && payload.formData.length > 0 && payload.formData.forEach(item => {
-      const isDependentField = (item.dependentField && item.dependentField.length > 0 && selectedValues[selectedSelect] && item.dependentField === selectedValues[selectedSelect]) || item.selectedSelect
+    formData && formData.length > 0 && formData.forEach(item => {
+      const isDependentField = (item.dependentField && item.dependentField.length > 0 && selectedValues[selectedSelect] && item.dependentField.includes(selectedValues[selectedSelect])) || item.selectedSelect
       const checkMultipleForm = payload.multipleForm ? isDependentField : true
       if (checkMultipleForm) {
         if (selectedValues[item.props.name] !== undefined) {
@@ -231,8 +243,8 @@ class FormMessageBody extends React.PureComponent {
         let selectedOption = selectedValues[this.state.selectedSelect]
         if (selectedOption) {
           Object.keys(selectedValues).forEach(fieldName => {
-            let formDataItem = payload.formData && payload.formData.length > 0 && payload.formData.find(item => item.props && item.props.name === fieldName)
-            if (formDataItem && formDataItem.dependentField && formDataItem.dependentField.length > 0 && formDataItem.dependentField === selectedOption) {
+            let formDataItem = formData && formData.length > 0 && formData.find(item => item.props && item.props.name === fieldName)
+            if (formDataItem && formDataItem.dependentField && formDataItem.dependentField.length > 0 && formDataItem.dependentField.includes(selectedOption)) {
               selectedData[fieldName] = selectedValues[fieldName]
             } else if (formDataItem && formDataItem.props && formDataItem.props.name === selectedSelect) {
               selectedData[fieldName] = selectedValues[fieldName]
@@ -261,10 +273,10 @@ class FormMessageBody extends React.PureComponent {
     this.setState({
       defaultDisabled: false
     })
-  };
+  }
 
   render() {
-    const { detectedErrors, selectedSelect } = this.state
+    const { detectedErrors, selectedSelect, formData } = this.state
     const {
       btn_disabled,
       message,
@@ -293,15 +305,15 @@ class FormMessageBody extends React.PureComponent {
             isHtml={payload.containsHtmlSubtitle}
           />
         )}
-        {payload.formData && payload.formData.length > 0 && (
+        {formData && formData.length > 0 && (
           <React.Fragment>
-            {payload.formData.map((item, index) => {
+            {formData.map((item, index) => {
               if (
                 payload.multipleForm &&
                 item.dependentField &&
                 item.dependentField.length > 0 &&
                 this.state.selectedValues[selectedSelect] &&
-                item.dependentField !== this.state.selectedValues[selectedSelect]
+                !item.dependentField.includes(this.state.selectedValues[selectedSelect])
               ) {
                 return null
               }
