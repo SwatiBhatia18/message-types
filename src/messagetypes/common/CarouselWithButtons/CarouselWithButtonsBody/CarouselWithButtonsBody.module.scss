@@ -23,3 +23,10 @@
   flex: 1;
   background-color: $black-overlay-light;
 }
+
+.slideNumberContainer {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    left: 20%;
+}

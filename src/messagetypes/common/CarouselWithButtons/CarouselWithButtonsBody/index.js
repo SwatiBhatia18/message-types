@@ -15,7 +15,8 @@ class CarouselWithButtonsBody extends React.PureComponent {
     show_overlay: false,
     selected_carousel_item: null,
     selected_option_indexes: {},
-    isExpanded: false
+    isExpanded: false,
+    currentSlide: 0
   };
 
   componentDidMount() {
@@ -31,6 +32,10 @@ class CarouselWithButtonsBody extends React.PureComponent {
 
   handleOverFlowExpansion = () => {
     this.setState({isExpanded: true})
+  }
+
+  handleSlideChange = (current) => {
+    this.setState({ currentSlide: current })
   }
 
   handleOptionSelection = index => {
@@ -216,6 +221,8 @@ class CarouselWithButtonsBody extends React.PureComponent {
             className={`ori-mt-CarouselContainer ${styles.carouselContainer}`}
             arrows={true}
             infinite={!payload.disableLoop}
+            dots={!payload.disableSliderDots}
+            afterChange={this.handleSlideChange}
           >
             {payload.options.map((carousel_item, index) => {
               return (
@@ -305,6 +312,12 @@ class CarouselWithButtonsBody extends React.PureComponent {
               )
             })}
           </Carousel>
+        )}
+        {payload.showSlideNumbers && (
+          <div className={`ori-carousel-slide-number-container ${styles.slideNumberContainer}`}>
+            <span className='ori-slide-number-numerator'>{this.state.currentSlide + 1}/</span>
+            <span className='ori-slide-number-denominator'>{payload.options.length}</span>
+          </div>
         )}
         {payload.selectable && (
           <Button
