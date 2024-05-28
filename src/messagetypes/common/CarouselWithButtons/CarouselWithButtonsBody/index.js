@@ -113,6 +113,12 @@ class CarouselWithButtonsBody extends React.PureComponent {
     }
   };
 
+  handleGetCommonButtons = () => {
+    const { payload } = this.props
+    const { currentSlide } = this.state
+    return (payload.options && payload.options[currentSlide] && payload.options[currentSlide].commonButtons) || []
+  }
+
   renderPreviewOverlay = () => {
     const { show_overlay, selected_carousel_item } = this.state
     const { img_popup_disable } = this.props
@@ -320,6 +326,20 @@ class CarouselWithButtonsBody extends React.PureComponent {
             <span className='ori-slide-number-denominator'>{payload.options.length}</span>
           </div>
         )}
+        <Buttons
+          className='carouselCommonBtnContainer'
+          buttons={this.handleGetCommonButtons()}
+          display_count={
+            payload.options && payload.options[this.state.currentSlide] && payload.options[this.state.currentSlide].commonBtnDisplayCount
+              ? payload.options[this.state.currentSlide].commonBtnDisplayCount
+              : default_btn_display_count
+          }
+          message={message}
+          handleMsgBtnClick={handleMsgBtnClick}
+          btn_disabled={btn_disabled}
+          showmore={showmore}
+          showless={showless}
+        />
         {payload.selectable && (
           <Button
             size='small'

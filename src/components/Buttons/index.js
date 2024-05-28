@@ -1,6 +1,7 @@
 /* eslint-disable react/jsx-no-bind */
 /* eslint-disable camelcase */
 /* eslint-disable jsx-quotes */
+/* eslint-disable react/no-did-update-set-state */
 import React from 'react'
 import PropTypes from 'prop-types'
 import Button from 'antd/lib/button'
@@ -13,6 +14,13 @@ class Buttons extends React.PureComponent {
     this.state = {
       show_all_buttons: false,
       display_buttons_count: props.display_count
+    }
+  }
+
+  componentDidUpdate(prevProps) {
+    const { display_count } = this.props
+    if (prevProps.display_count !== display_count) {
+      this.setState({ display_buttons_count: display_count })
     }
   }
 
@@ -37,6 +45,11 @@ class Buttons extends React.PureComponent {
     })
   };
 
+  renderButtonIcon = (icon, iconStyle) => {
+    if (!icon) return null
+    return <div className={styles.buttonIconContainer} style={iconStyle} dangerouslySetInnerHTML={{__html: icon}} />
+  }
+
   render() {
     const { btn_disabled, buttons, className, showmore, showless } = this.props
     const { display_buttons_count, show_all_buttons } = this.state
@@ -49,6 +62,8 @@ class Buttons extends React.PureComponent {
             return (
               <Button
                 key={index}
+                icon={this.renderButtonIcon(btn.icon, btn.iconStyle)}
+                iconPositon={btn.iconPositon || 'start'}
                 size="small"
                 className={`${
                   btn.displayType === 'paragraph'
