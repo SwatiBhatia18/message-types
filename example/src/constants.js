@@ -1198,14 +1198,17 @@ export const carouselWithButtonsMessage = {
               postbackRes: "opt1.3"
             }
           ],
-          commonButtons: [
+          outerButtons: [
             {
               text: "Get Direction",
               type: "link",
               url:
                 "https://www.google.com/maps/dir/?api=1&destination=28.946620348185,77.672957582838",
               iconStyle: {},
-              iconPosition: "start", //start or end
+              btnProps: {
+                iconPosition: "end" //start or end
+              },
+              displayType: "paragraph",
               icon: `<svg style="width: inherit;height: inherit;" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none"> <g clip-path="url(#clip0_499_1032)"> <path fill-rule="evenodd" clip-rule="evenodd" d="M9.47441 1.2248C9.7185 0.980729 10.1142 0.980729 10.3582 1.2248L18.6078 9.47441C18.8519 9.7185 18.8519 10.1142 18.6078 10.3582L10.3582 18.6078C10.1142 18.8519 9.7185 18.8519 9.47441 18.6078L1.2248 10.3582C0.980729 10.1142 0.980729 9.7185 1.2248 9.47441L9.47441 1.2248ZM9.91633 2.55063L2.55063 9.91633L9.91633 17.282L17.282 9.91633L9.91633 2.55063Z" fill="#004A8F"/> <path fill-rule="evenodd" clip-rule="evenodd" d="M10.8334 6.61621L12.942 8.72484C13.186 8.96893 13.186 9.36459 12.942 9.60868L10.8334 11.7173L9.94946 10.8334L11.6161 9.16676L9.94946 7.50009L10.8334 6.61621Z" fill="#004A8F"/> <path fill-rule="evenodd" clip-rule="evenodd" d="M6.875 9.16675C6.875 8.82158 7.15482 8.54175 7.5 8.54175H12.0834V9.79175H8.125V11.6667H6.875V9.16675Z" fill="#004A8F"/> </g> <defs> <clipPath id="clip0_499_1032"> <rect width="20" height="20" fill="white"/> </clipPath> </defs> </svg>`
             },
             {
@@ -1220,12 +1223,15 @@ export const carouselWithButtonsMessage = {
                 accesstokenlatlong:
                   "141d0ec13e1e22e921b3776185208a627a94c6479c42bc1a5d6372bf1c48ea6b"
               },
+              displayType: "paragraph",
               iconStyle: {},
-              iconPosition: "start", //start or end
+              btnProps: {
+                iconPosition: "end" //start or end
+              },
               icon: `<svg xmlns="http://www.w3.org/2000/svg" style="width: inherit;height: inherit;" width="20" height="20" viewBox="0 0 20 20" fill="none"> <g clip-path="url(#clip0_499_1040)"> <path d="M7 18C6.86739 18 6.74021 17.9473 6.64645 17.8536C6.55268 17.7598 6.5 17.6326 6.5 17.5V14H2.5C2.36739 14 2.24021 13.9473 2.14645 13.8536C2.05268 13.7598 2 13.6326 2 13.5V2.5C2 2.36739 2.05268 2.24021 2.14645 2.14645C2.24021 2.05268 2.36739 2 2.5 2H17.5C17.6326 2 17.7598 2.05268 17.8536 2.14645C17.9473 2.24021 18 2.36739 18 2.5V13.5C18 13.6326 17.9473 13.7598 17.8536 13.8536C17.7598 13.9473 17.6326 14 17.5 14H11.205L7.35 17.855C7.25687 17.9474 7.13117 17.9994 7 18ZM3 13H7C7.13261 13 7.25979 13.0527 7.35355 13.1464C7.44732 13.2402 7.5 13.3674 7.5 13.5V16.295L10.645 13.15C10.6913 13.1028 10.7465 13.0652 10.8075 13.0394C10.8684 13.0137 10.9338 13.0003 11 13H17V3H3V13Z" fill="#004A8F"/> <path d="M15 5H5V6H15V5Z" fill="#004A8F"/> <path d="M15 7.5H5V8.5H15V7.5Z" fill="#004A8F"/> <path d="M15 10H5V11H15V10Z" fill="#004A8F"/> </g> <defs> <clipPath id="clip0_499_1040"> <rect width="20" height="20" fill="white"/> </clipPath> </defs> </svg>`
             }
           ],
-          commonBtnDisplayCount: 2
+          outerBtnDisplayCount: 4 
         },
         {
           optionInfo: { key: "option2" },

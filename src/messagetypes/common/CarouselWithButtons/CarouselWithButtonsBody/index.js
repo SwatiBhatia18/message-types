@@ -113,10 +113,10 @@ class CarouselWithButtonsBody extends React.PureComponent {
     }
   };
 
-  handleGetCommonButtons = () => {
+  handleGetOuterButtons = () => {
     const { payload } = this.props
     const { currentSlide } = this.state
-    return (payload.options && payload.options[currentSlide] && payload.options[currentSlide].commonButtons) || []
+    return (payload.options && payload.options[currentSlide] && payload.options[currentSlide].outerButtons) || []
   }
 
   renderPreviewOverlay = () => {
@@ -328,10 +328,10 @@ class CarouselWithButtonsBody extends React.PureComponent {
         )}
         <Buttons
           className='carouselCommonBtnContainer'
-          buttons={this.handleGetCommonButtons()}
+          buttons={this.handleGetOuterButtons()}
           display_count={
-            payload.options && payload.options[this.state.currentSlide] && payload.options[this.state.currentSlide].commonBtnDisplayCount
-              ? payload.options[this.state.currentSlide].commonBtnDisplayCount
+            payload.options && payload.options[this.state.currentSlide] && payload.options[this.state.currentSlide].outerBtnDisplayCount
+              ? payload.options[this.state.currentSlide].outerBtnDisplayCount
               : default_btn_display_count
           }
           message={message}
@@ -340,6 +340,7 @@ class CarouselWithButtonsBody extends React.PureComponent {
           showmore={showmore}
           showless={showless}
         />
+
         {payload.selectable && (
           <Button
             size='small'
