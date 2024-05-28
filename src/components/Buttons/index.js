@@ -63,7 +63,6 @@ class Buttons extends React.PureComponent {
               <Button
                 key={index}
                 icon={this.renderButtonIcon(btn.icon, btn.iconStyle)}
-                iconPositon={btn.iconPositon || 'start'}
                 size="small"
                 className={`${
                   btn.displayType === 'paragraph'
@@ -75,6 +74,7 @@ class Buttons extends React.PureComponent {
                 block={btn.displayType === 'paragraph'}
                 disabled={btn_disabled || btn.disabled}
                 onClick={this.handleBtnClick.bind(this, btn)}
+                {...btn.btnProps}
               >
                 {btn.text}
               </Button>
