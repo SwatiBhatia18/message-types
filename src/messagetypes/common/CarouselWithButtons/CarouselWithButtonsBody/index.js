@@ -233,6 +233,7 @@ class CarouselWithButtonsBody extends React.PureComponent {
                         ? 'carouselItemSelected'
                         : ''
                     }`}
+                    style={payload.carouselStyle}
                     key={index}
                   >
                     {carousel_item.mediaType &&
