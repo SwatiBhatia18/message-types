@@ -328,8 +328,8 @@ class FormMessageBody extends React.PureComponent {
                     <div className='ori-b-pad-5' key={index}>
                       {item.title && (
                         <p>
-                          {item.props.required && <span>*</span>}
                           {item.title}
+                          {item.props.required && <span className='ori-form-field-required'> *</span>}
                         </p>
                       )}
                       <DatePicker
@@ -369,8 +369,8 @@ class FormMessageBody extends React.PureComponent {
                     <div className='ori-b-pad-5' key={index}>
                       {item.title && (
                         <p>
-                          {item.props.required && <span>*</span>}
                           {item.title}
+                          {item.props.required && <span className='ori-form-field-required'> *</span>}
                         </p>
                       )}
                       <RangePicker
@@ -425,8 +425,8 @@ class FormMessageBody extends React.PureComponent {
                     <div className='ori-b-pad-5' key={index}>
                       {item.title && (
                         <p>
-                          {item.props.required && <span>*</span>}
                           {item.title}
+                          {item.props.required && <span className='ori-form-field-required'> *</span>}
                         </p>
                       )}
                       <Radio.Group
@@ -458,8 +458,8 @@ class FormMessageBody extends React.PureComponent {
                     <div className='ori-b-pad-5' key={index}>
                       {item.title && (
                         <p>
-                          {item.props.required && <span>*</span>}
                           {item.title}
+                          {item.props.required && <span className='ori-form-field-required'> *</span>}
                         </p>
                       )}
                       <Select
@@ -502,8 +502,8 @@ class FormMessageBody extends React.PureComponent {
                     <div className='ori-b-pad-5' key={index}>
                       {item.title && (
                         <p>
-                          {item.props.required && <span>*</span>}
                           {item.title}
+                          {item.props.required && <span className='ori-form-field-required'> *</span>}
                         </p>
                       )}
                       <Input
@@ -540,8 +540,8 @@ class FormMessageBody extends React.PureComponent {
                     <div className='ori-b-pad-5' key={index}>
                       {item.title && (
                         <p>
-                          {item.props.required && <span>*</span>}
                           {item.title}
+                          {item.props.required && <span> *</span>}
                         </p>
                       )}
                       <Rate
@@ -567,8 +567,8 @@ class FormMessageBody extends React.PureComponent {
                     <div className='ori-b-pad-5 ori-full-width' key={index}>
                       {item.title && (
                         <p>
-                          {item.props.required && <span>*</span>}
                           {item.title}
+                          {item.props.required && <span className='ori-form-field-required'> *</span>}
                         </p>
                       )}
                       {item.props.options && item.props.options.length > 0 && (
