@@ -135,15 +135,19 @@ class CarouselWithButtonsBody extends React.PureComponent {
             />
             {selected_carousel_item.title &&
               selected_carousel_item.title.trim().length > 0 && (
-              <p className='ori-t-mrgn-3 ori-no-b-mrgn ori-font-bold ori-lr-pad-10 ori-capitalize ori-word-wrap ori-word-break '>
-                {selected_carousel_item.title}
-              </p>
+              <HtmlText
+                textClass='ori-t-mrgn-3 ori-no-b-mrgn ori-font-bold ori-lr-pad-10 ori-capitalize ori-word-wrap ori-word-break'
+                text={selected_carousel_item.title}
+                isHtml={selected_carousel_item.containsHtmlTitle}
+              />
             )}
             {selected_carousel_item.subtitle &&
               selected_carousel_item.subtitle.trim().length > 0 && (
-              <p className='ori-t-mrgn-3 ori-no-b-mrgn ori-lr-pad-10 ori-capitalize ori-word-wrap ori-word-break '>
-                {selected_carousel_item.subtitle}
-              </p>
+              <HtmlText
+                textClass='ori-t-mrgn-3 ori-no-b-mrgn ori-lr-pad-10 ori-capitalize ori-word-wrap ori-word-break'
+                text={selected_carousel_item.subtitle}
+                isHtml={selected_carousel_item.containsHtmlSubtitle}
+              />
             )}
             <div className='ori-flex-row ori-flex-jc ori-pad-10'>
               <Button type='danger' size='small' onClick={this.closeOverlay}>
