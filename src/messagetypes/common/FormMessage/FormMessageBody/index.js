@@ -598,7 +598,6 @@ class FormMessageBody extends React.PureComponent {
                             </div>
                           )) }
                         </div>
-
                       ) }
                       {(item.showImage === undefined || item.showImage.enable === false) && (
                         <Rate
