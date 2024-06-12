@@ -328,11 +328,11 @@ class FormMessageBody extends React.PureComponent {
                     <div className='ori-b-pad-5' key={index}>
                       {item.title && (
                         <p>
-                          <HtmlText
-                            textClass='ori-no-t-mrgn ori-no-b-mrgn ori-display-inline-block'
-                            text={item.title}
-                            isHtml={item.containsHtmlTitle}
-                          />
+                          {item.containsHtmlTitle ? (
+                            <span dangerouslySetInnerHTML={{ __html: item.title }} />
+                          ) : (
+                            <span className={`ori-word-wrap ori-word-break`}>{item.title}</span>
+                          )}
                           {item.props.required && <span style={item.fieldRequiredStyle} className='ori-form-field-required'> *</span>}
                         </p>
                       )}
@@ -373,11 +373,11 @@ class FormMessageBody extends React.PureComponent {
                     <div className='ori-b-pad-5' key={index}>
                       {item.title && (
                         <p>
-                          <HtmlText
-                            textClass='ori-no-t-mrgn ori-no-b-mrgn ori-display-inline-block'
-                            text={item.title}
-                            isHtml={item.containsHtmlTitle}
-                          />
+                          {item.containsHtmlTitle ? (
+                            <span dangerouslySetInnerHTML={{ __html: item.title }} />
+                          ) : (
+                            <span className={`ori-word-wrap ori-word-break`}>{item.title}</span>
+                          )}
                           {item.props.required && <span style={item.fieldRequiredStyle} className='ori-form-field-required'> *</span>}
                         </p>
                       )}
@@ -433,11 +433,11 @@ class FormMessageBody extends React.PureComponent {
                     <div className='ori-b-pad-5' key={index}>
                       {item.title && (
                         <p>
-                          <HtmlText
-                            textClass='ori-no-t-mrgn ori-no-b-mrgn ori-display-inline-block'
-                            text={item.title}
-                            isHtml={item.containsHtmlTitle}
-                          />
+                          {item.containsHtmlTitle ? (
+                            <span dangerouslySetInnerHTML={{ __html: item.title }} />
+                          ) : (
+                            <span className={`ori-word-wrap ori-word-break`}>{item.title}</span>
+                          )}
                           {item.props.required && <span style={item.fieldRequiredStyle} className='ori-form-field-required'> *</span>}
                         </p>
                       )}
@@ -470,11 +470,11 @@ class FormMessageBody extends React.PureComponent {
                     <div className='ori-b-pad-5' key={index}>
                       {item.title && (
                         <p>
-                          <HtmlText
-                            textClass='ori-no-t-mrgn ori-no-b-mrgn ori-display-inline-block'
-                            text={item.title}
-                            isHtml={item.containsHtmlTitle}
-                          />
+                          {item.containsHtmlTitle ? (
+                            <span dangerouslySetInnerHTML={{ __html: item.title }} />
+                          ) : (
+                            <span className={`ori-word-wrap ori-word-break`}>{item.title}</span>
+                          )}
                           {item.props.required && <span style={item.fieldRequiredStyle} className='ori-form-field-required'> *</span>}
                         </p>
                       )}
@@ -518,11 +518,11 @@ class FormMessageBody extends React.PureComponent {
                     <div className='ori-b-pad-5' key={index}>
                       {item.title && (
                         <p>
-                          <HtmlText
-                            textClass='ori-no-t-mrgn ori-no-b-mrgn ori-display-inline-block'
-                            text={item.title}
-                            isHtml={item.containsHtmlTitle}
-                          />
+                          {item.containsHtmlTitle ? (
+                            <span dangerouslySetInnerHTML={{ __html: item.title }} />
+                          ) : (
+                            <span className={`ori-word-wrap ori-word-break`}>{item.title}</span>
+                          )}
                           {item.props.required && <span style={item.fieldRequiredStyle} className='ori-form-field-required'> *</span>}
                         </p>
                       )}
@@ -560,11 +560,11 @@ class FormMessageBody extends React.PureComponent {
                     <div className='ori-b-pad-5' key={index}>
                       {item.title && (
                         <p>
-                          <HtmlText
-                            textClass='ori-no-t-mrgn ori-no-b-mrgn ori-display-inline-block'
-                            text={item.title}
-                            isHtml={item.containsHtmlTitle}
-                          />
+                          {item.containsHtmlTitle ? (
+                            <span dangerouslySetInnerHTML={{ __html: item.title }} />
+                          ) : (
+                            <span className={`ori-word-wrap ori-word-break`}>{item.title}</span>
+                          )}
                           {item.props.required && <span style={item.fieldRequiredStyle} className='ori-form-field-required'> *</span>}
                         </p>
                       )}
@@ -623,11 +623,11 @@ class FormMessageBody extends React.PureComponent {
                     <div className='ori-b-pad-5 ori-full-width' key={index}>
                       {item.title && (
                         <p>
-                          <HtmlText
-                            textClass='ori-no-t-mrgn ori-no-b-mrgn ori-display-inline-block'
-                            text={item.title}
-                            isHtml={item.containsHtmlTitle}
-                          />
+                          {item.containsHtmlTitle ? (
+                            <span dangerouslySetInnerHTML={{ __html: item.title }} />
+                          ) : (
+                            <span className={`ori-word-wrap ori-word-break`}>{item.title}</span>
+                          )}
                           {item.props.required && <span style={item.fieldRequiredStyle} className='ori-form-field-required'> *</span>}
                         </p>
                       )}
