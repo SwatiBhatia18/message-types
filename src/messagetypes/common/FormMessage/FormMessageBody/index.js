@@ -333,7 +333,7 @@ class FormMessageBody extends React.PureComponent {
                             text={item.title}
                             isHtml={item.containsHtmlTitle}
                           />
-                          {item.props.required && <span style={item.props.fieldRequiredStyle} className='ori-form-field-required'> *</span>}
+                          {item.props.required && <span style={item.fieldRequiredStyle} className='ori-form-field-required'> *</span>}
                         </p>
                       )}
                       <DatePicker
@@ -378,7 +378,7 @@ class FormMessageBody extends React.PureComponent {
                             text={item.title}
                             isHtml={item.containsHtmlTitle}
                           />
-                          {item.props.required && <span style={item.props.fieldRequiredStyle} className='ori-form-field-required'> *</span>}
+                          {item.props.required && <span style={item.fieldRequiredStyle} className='ori-form-field-required'> *</span>}
                         </p>
                       )}
                       <RangePicker
@@ -438,7 +438,7 @@ class FormMessageBody extends React.PureComponent {
                             text={item.title}
                             isHtml={item.containsHtmlTitle}
                           />
-                          {item.props.required && <span style={item.props.fieldRequiredStyle} className='ori-form-field-required'> *</span>}
+                          {item.props.required && <span style={item.fieldRequiredStyle} className='ori-form-field-required'> *</span>}
                         </p>
                       )}
                       <Radio.Group
@@ -475,7 +475,7 @@ class FormMessageBody extends React.PureComponent {
                             text={item.title}
                             isHtml={item.containsHtmlTitle}
                           />
-                          {item.props.required && <span style={item.props.fieldRequiredStyle} className='ori-form-field-required'> *</span>}
+                          {item.props.required && <span style={item.fieldRequiredStyle} className='ori-form-field-required'> *</span>}
                         </p>
                       )}
                       <Select
@@ -523,7 +523,7 @@ class FormMessageBody extends React.PureComponent {
                             text={item.title}
                             isHtml={item.containsHtmlTitle}
                           />
-                          {item.props.required && <span style={item.props.fieldRequiredStyle} className='ori-form-field-required'> *</span>}
+                          {item.props.required && <span style={item.fieldRequiredStyle} className='ori-form-field-required'> *</span>}
                         </p>
                       )}
                       <Input
@@ -565,7 +565,7 @@ class FormMessageBody extends React.PureComponent {
                             text={item.title}
                             isHtml={item.containsHtmlTitle}
                           />
-                          {item.props.required && <span style={item.props.fieldRequiredStyle} className='ori-form-field-required'> *</span>}
+                          {item.props.required && <span style={item.fieldRequiredStyle} className='ori-form-field-required'> *</span>}
                         </p>
                       )}
                       <Rate
@@ -596,7 +596,7 @@ class FormMessageBody extends React.PureComponent {
                             text={item.title}
                             isHtml={item.containsHtmlTitle}
                           />
-                          {item.props.required && <span style={item.props.fieldRequiredStyle} className='ori-form-field-required'> *</span>}
+                          {item.props.required && <span style={item.props.requiredStyle} className='ori-form-field-required'> *</span>}
                         </p>
                       )}
                       {item.props.options && item.props.options.length > 0 && (
