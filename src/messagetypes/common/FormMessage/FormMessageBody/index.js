@@ -596,7 +596,7 @@ class FormMessageBody extends React.PureComponent {
                             text={item.title}
                             isHtml={item.containsHtmlTitle}
                           />
-                          {item.props.required && <span style={item.props.fieldRequiredStyle} className='ori-form-field-required'> *</span>}
+                          {item.props.required && <span style={item.fieldRequiredStyle} className='ori-form-field-required'> *</span>}
                         </p>
                       )}
                       {item.props.options && item.props.options.length > 0 && (
