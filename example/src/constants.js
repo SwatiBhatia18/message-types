@@ -712,28 +712,28 @@ export const formMessage = {
             enable: true,
             images: [
               {
-                image: "https://picsum.photos/30",
-                text: "Bad",
+                image: "https://s3.ap-south-1.amazonaws.com/oriserve.com/tvs-onebot/150524_0823/Emogis__TVS/angry.png",
+                text: "Terrible",
                 rating: 1,
               },
               {
-                image: "https://picsum.photos/30",
-                text: "Avarage",
+                image: "https://s3.ap-south-1.amazonaws.com/oriserve.com/tvs-onebot/150524_0823/Emogis__TVS/confounded.png",
+                text: "Bad",
                 rating: 2,
               },
               {
-                image: "https://picsum.photos/100",
-                text: "good",
+                image: "https://s3.ap-south-1.amazonaws.com/oriserve.com/tvs-onebot/150524_0823/Emogis__TVS/neutral_face.png",
+                text: "Average",
                 rating : 3,
               },
               {
-                image: "https://picsum.photos/100",
-                text: "very good",
+                image: "https://s3.ap-south-1.amazonaws.com/oriserve.com/tvs-onebot/150524_0823/Emogis__TVS/slightly_smiling_face.png",
+                text: "good",
                 rating: 4
               },
               {
-                image: "https://picsum.photos/100",
-                text: "excellent",
+                image: "https://s3.ap-south-1.amazonaws.com/oriserve.com/tvs-onebot/150524_0823/Emogis__TVS/slightly_smiling_face.png",
+                text: "i love it",
                 rating : 5
               },
             ]
