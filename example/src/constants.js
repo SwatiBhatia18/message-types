@@ -708,6 +708,36 @@ export const formMessage = {
           type: "rating",
           title: "rate this feature",
           displayLabel: "rating",
+          showImage:{
+            enable: true,
+            images: [
+              {
+                image: "https://picsum.photos/30",
+                text: "Bad",
+                rating: 1,
+              },
+              {
+                image: "https://picsum.photos/30",
+                text: "Avarage",
+                rating: 2,
+              },
+              {
+                image: "https://picsum.photos/100",
+                text: "good",
+                rating : 3,
+              },
+              {
+                image: "https://picsum.photos/100",
+                text: "very good",
+                rating: 4
+              },
+              {
+                image: "https://picsum.photos/100",
+                text: "excellent",
+                rating : 5
+              },
+            ]
+          },
           dependentField: [ "passport"],
           props: {
             name: "rate",

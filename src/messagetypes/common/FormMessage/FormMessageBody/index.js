@@ -568,17 +568,50 @@ class FormMessageBody extends React.PureComponent {
                           {item.props.required && <span style={item.fieldRequiredStyle} className='ori-form-field-required'> *</span>}
                         </p>
                       )}
-                      <Rate
-                        disabled={disabled || this.state.defaultDisabled}
-                        {...item.props}
-                        value={this.state.selectedValues[item.props.name]}
-                        onChange={value =>
-                          this.handleFormChange(
-                            { [item.props.name]: value },
-                            item.props.name
-                          )
-                        }
-                      />
+                      {item.showImage && item.showImage.enable && item.showImage.images && Array.isArray(item.showImage.images) && item.showImage.images.length > 0 && (
+                        <div className='ori-rating-image-container' style={{minWidth: '250px', display: 'flex', justifyContent: 'center'}}>
+                          {item.showImage.images.map((imageData, index) => (
+                            <div
+                              key={index}
+                              style={{
+                                width: `40%`,
+                                verticalAlign: 'middle',
+                                pointerEvents: (this.props.disabled || this.state.defaultDisabled) ? 'none' : 'auto',
+                                opacity: (this.props.disabled || this.state.defaultDisabled) ? '0.4' : '1'
+                              }}
+                              className={`ori-cursor-ptr ori-text-center ori-overflow-hidden ori-flex-column ori-flex-ac ori-font-xs ${this.state.selectedValues[item.props.name] === imageData.rating ? 'ori-font-primary ori-emoji-container-selected' : 'ori-font-light ori-emoji-container'}`}
+                              onClick={() => {
+                                this.handleFormChange(
+                                  { [item.props.name]: imageData.rating },
+                                  item.props.name
+                                )
+                              }}
+                            >
+                              {imageData.image &&
+                              <div style={{height: '45px', opacity: 0.8}} className={`ori-flex-ac ori-flex ${(this.state.selectedValues[item.props.name] === imageData.rating) ? 'ori-selected-emoji-rating' : 'ori-unselected-emoji-rating'}`}>
+                                <img alt='rating' height={this.state.selectedValues[item.props.name] === imageData.rating ? '30px' : '24px'} src={imageData.image} />
+                              </div>
+                              }
+                              {imageData.text && (
+                                <p dangerouslySetInnerHTML={{__html: imageData.text}} />
+                              )}
+                            </div>
+                          )) }
+                        </div>
+
+                      ) }
+                      {(item.showImage === undefined || item.showImage.enable === false) && (
+                        <Rate
+                          disabled={disabled || this.state.defaultDisabled}
+                          {...item.props}
+                          onChange={value =>
+                            this.handleFormChange(
+                              { [item.props.name]: value },
+                              item.props.name
+                            )
+                          }
+                        />
+                      )}
                       {detectedErrors[item.props.name] && (
                         <p className='ori-font-xs ori-font-danger'>
                           {detectedErrors[item.props.name]}
