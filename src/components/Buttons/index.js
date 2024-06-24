@@ -8,6 +8,8 @@ import Button from 'antd/lib/button'
 
 import styles from './Buttons.module.scss'
 
+import { blurButtonAfterClick } from '../../data/config/utils'
+
 class Buttons extends React.PureComponent {
   constructor(props) {
     super(props)
@@ -29,20 +31,22 @@ class Buttons extends React.PureComponent {
     if (handleMsgBtnClick) handleMsgBtnClick({ button, message })
   };
 
-  showAllButtons = () => {
+  showAllButtons = (e) => {
     const { buttons } = this.props
     this.setState({
       show_all_buttons: true,
       display_buttons_count: buttons.length
     })
+    blurButtonAfterClick(e)
   };
 
-  showLessButtons = () => {
+  showLessButtons = (e) => {
     const { display_count } = this.props
     this.setState({
       show_all_buttons: false,
       display_buttons_count: display_count
     })
+    blurButtonAfterClick(e)
   };
 
   renderButtonIcon = (icon, iconStyle) => {
@@ -73,7 +77,10 @@ class Buttons extends React.PureComponent {
                 } ${styles.button}`}
                 block={btn.displayType === 'paragraph'}
                 disabled={btn_disabled || btn.disabled}
-                onClick={this.handleBtnClick.bind(this, btn)}
+                onClick={(e) => {
+                  this.handleBtnClick.bind(this, btn)(e)
+                  blurButtonAfterClick(e)
+                }}
                 {...btn.btnProps}
               >
                 {btn.text}

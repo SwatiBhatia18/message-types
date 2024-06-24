@@ -10,6 +10,8 @@ import Buttons from '../../../../components/buttons'
 import CustomPagination from '../../../../components/CustomPagination'
 import HtmlText from '../../../../components/HtmlText'
 
+import { blurButtonAfterClick } from '../../../../data/config/utils'
+
 const LIMIT = 8
 
 class CheckboxWithMediaBody extends React.PureComponent {
@@ -222,7 +224,10 @@ class CheckboxWithMediaBody extends React.PureComponent {
                 size='small'
                 className='ori-btn-bubble-inner'
                 disabled={checkbox_disabled}
-                onClick={this.onClickSubmit}
+                onClick={(e) => {
+                  this.onClickSubmit(e)
+                  blurButtonAfterClick(e)
+                }}
               >
                 {payload.submitBtnText ? payload.submitBtnText : 'Submit'}
               </Button>

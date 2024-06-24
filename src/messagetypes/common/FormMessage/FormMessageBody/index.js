@@ -10,7 +10,7 @@ import Select from 'antd/lib/select'
 import Input from 'antd/lib/input'
 import Checkbox from 'antd/lib/checkbox'
 
-import { isEmail, validateField } from '../../../../data/config/utils'
+import { blurButtonAfterClick, isEmail, validateField } from '../../../../data/config/utils'
 
 import Buttons from '../../../../components/buttons'
 import HtmlText from '../../../../components/HtmlText'
@@ -673,7 +673,10 @@ class FormMessageBody extends React.PureComponent {
                 size='small'
                 className='ori-btn-submit'
                 disabled={disabled}
-                onClick={this.handleSubmit}
+                onClick={(e) => {
+                  this.handleSubmit(e)
+                  blurButtonAfterClick(e)
+                }}
               >
                 {payload.submitBtnText ? payload.submitBtnText : 'Submit'}
               </Button>
@@ -683,7 +686,10 @@ class FormMessageBody extends React.PureComponent {
                 size='small'
                 className='ori-btn-edit'
                 disabled={disabled}
-                onClick={this.handleEdit}
+                onClick={(e) => {
+                  this.handleEdit(e)
+                  blurButtonAfterClick(e)
+                }}
               >
                 {payload.editBtnText ? payload.editBtnText : 'Edit'}
               </Button>

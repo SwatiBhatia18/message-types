@@ -119,3 +119,13 @@ export const formatSizeUnits = (bytes, decimals = 2) => {
   const i = Math.floor(Math.log(bytes) / Math.log(k))
   return `${parseFloat((bytes / Math.pow(k, i)).toFixed(dm))} ${sizes[i]}`
 }
+
+/**
+ * Used to blur click event after the button is clicked
+ * @param {*} e
+ */
+export const blurButtonAfterClick = (e) => {
+  let target = e.target
+  if (target && target.tagName !== 'BUTTON') target = target.parentElement
+  if (target && target.blur) target.blur()
+}

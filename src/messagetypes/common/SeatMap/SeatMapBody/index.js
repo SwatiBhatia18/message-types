@@ -10,6 +10,8 @@ import SeatIcon from 'react-icons/lib/md/event-seat'
 import Buttons from '../../../../components/buttons'
 import Select from 'antd/lib/select'
 
+import { blurButtonAfterClick } from '../../../../data/config/utils'
+
 class SeatMapBody extends React.PureComponent {
   constructor(props) {
     super(props)
@@ -296,7 +298,10 @@ class SeatMapBody extends React.PureComponent {
               size='small'
               className='ori-t-mrgn-5 ori-btn-submit'
               style={{width: '270px'}}
-              onClick={this.handleSubmit}
+              onClick={(e) => {
+                this.handleSubmit(e)
+                blurButtonAfterClick(e)
+              }}
               block
             >
               {this.state.submitButtonText}

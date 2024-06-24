@@ -10,6 +10,8 @@ import Buttons from '../../../../components/buttons'
 import HtmlText from '../../../../components/HtmlText'
 import { OverflowWrapper } from '../../OverflowWrapper'
 
+import { blurButtonAfterClick } from '../../../../data/config/utils'
+
 class CarouselWithButtonsBody extends React.PureComponent {
   state = {
     show_overlay: false,
@@ -297,7 +299,10 @@ class CarouselWithButtonsBody extends React.PureComponent {
                             : 'ori-btn-carousel-item'
                         }`}
                         btn_disabled={btn_disabled}
-                        onClick={() => this.handleOptionSelection(index)}
+                        onClick={(e) => {
+                          this.handleOptionSelection(index)
+                          blurButtonAfterClick(e)
+                        }}
                       >
                         {selected_option_indexes[index] ? 'Selected' : 'Select'}
                       </Button>
@@ -350,7 +355,10 @@ class CarouselWithButtonsBody extends React.PureComponent {
             size='small'
             className='ori-carousel-btn-submit'
             disabled={btn_disabled}
-            onClick={this.handleSubmitSelectedOptions}
+            onClick={(e) => {
+              this.handleSubmitSelectedOptions(e)
+              blurButtonAfterClick(e)
+            }}
           >
             {payload.submitText ? payload.submitText : 'Submit'}
           </Button>
