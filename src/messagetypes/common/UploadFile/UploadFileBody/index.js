@@ -14,8 +14,7 @@ import Buttons from '../../../../components/buttons'
 import {
   fileToBase64,
   getFileMimeType,
-  formatSizeUnits,
-  blurButtonAfterClick
+  formatSizeUnits
 } from '../../../../data/config/utils'
 
 class UploadFileBody extends React.PureComponent {
@@ -208,10 +207,7 @@ class UploadFileBody extends React.PureComponent {
           <Button
             className='ori-full-width uploadButton'
             disabled={disabled}
-            onClick={(e) => {
-              this.onClickFileUpload(e)
-              blurButtonAfterClick(e)
-            }}
+            onClick={this.onClickFileUpload}
           >
             {uploading ? 'Uploading' : 'Upload'}
           </Button>
