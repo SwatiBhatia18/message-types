@@ -31,22 +31,20 @@ class Buttons extends React.PureComponent {
     if (handleMsgBtnClick) handleMsgBtnClick({ button, message })
   };
 
-  showAllButtons = (e) => {
+  showAllButtons = () => {
     const { buttons } = this.props
     this.setState({
       show_all_buttons: true,
       display_buttons_count: buttons.length
     })
-    blurButtonAfterClick(e)
   };
 
-  showLessButtons = (e) => {
+  showLessButtons = () => {
     const { display_count } = this.props
     this.setState({
       show_all_buttons: false,
       display_buttons_count: display_count
     })
-    blurButtonAfterClick(e)
   };
 
   renderButtonIcon = (icon, iconStyle) => {
