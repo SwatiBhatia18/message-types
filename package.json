@@ -1,5 +1,5 @@
 {
-  "name": "chatbot-message-types",
+  "name": "@oriserve-chatbot/message-types",
   "version": "1.0.0",
   "description": "A package of message component for chatbot and their dashboard",
   "author": "Oriserve",
