@@ -4,7 +4,10 @@
   "description": "A package of message component for chatbot and their dashboard",
   "author": "Oriserve",
   "license": "MIT",
-  "repository": "oriserve1/message-types",
+  "repository": {
+    "type": "git",
+    "url": "https://bitbucket.org/oriserve1/message-types.git"
+  },
   "main": "dist/index.js",
   "module": "dist/index.es.js",
   "jsnext:main": "dist/index.es.js",
