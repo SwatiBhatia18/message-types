@@ -39,7 +39,7 @@ export default class App extends Component {
           />
         </OverflowWrapper> */}
         {/* <ListMessage message={message} /> */}
-        {/* <TextWithMedia message={textWithMediaMessage} preferLang="hindi" /> */}
+        <TextWithMedia message={textWithMediaMessage} preferLang="hindi" />
         {/* <CheckboxWithMedia message={checkboxMessage} preferLang="hindi"/> */}
         {/* <DishtvRecharge message={message} /> */}
         {/* <DishtvRechargeDetails message={message} /> */}
@@ -56,7 +56,7 @@ export default class App extends Component {
         /> */}
         {/* <FormMessage message={formMessage} /> */}
         {/* <SeatMap message={seatMapMessage} preferLang="hindi" /> */}
-        <UploadedDocument message={uploadedDocumentMessage}/>
+        {/* <UploadedDocument message={uploadedDocumentMessage}/> */}
       </div>
     );
   }
