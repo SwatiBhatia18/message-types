@@ -12,7 +12,7 @@ import {
   SeatMap,
   UploadFile,
   UploadedDocument
-} from "message-types";
+} from "@oriserve-chatbot/message-types";
 
 import {
   textMessage,
