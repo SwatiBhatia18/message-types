@@ -1,12 +1,12 @@
 export const textMessage = {
-  type: "text",
-  sender: "chatbot",
+  type: 'text',
+  sender: 'chatbot',
   inputLock: false,
   quickReplies: [],
   skipLS: false,
   send_variable_to_apiai: false,
   sendVariableToLS: false,
-  variable_name: "",
+  variable_name: '',
   delay: 0,
   containsHTML: true,
   payload: [
@@ -15,282 +15,282 @@ export const textMessage = {
         "<p class='ori-font-bold'>Information about Ashoka comes from his own inscriptions </p><p>other inscriptions that mention him or are possibly from his reign; and ancient literature, especially Buddhist texts.[14] These sources often contradict each other, although various historians have attempted to correlate their testimony.[15] Plenty is known or not known, and so, for example, while Ashoka is often attributed with building many hospitals during his time, there is no clear evidence any hospitals existed in ancient India during the 3rd century BC or that Ashoka was responsible for commissioning the construction of any</p>"
     },
     {
-      lang: "hindi",
-      text: "Information about Ashoka comes from his own inscriptions; "
+      lang: 'hindi',
+      text: 'Information about Ashoka comes from his own inscriptions; '
     }
   ],
   timestamp: new Date()
-};
+}
 
 export const seatMapMessage = {
-  type: "form",
-  sender: "chatbot",
+  type: 'form',
+  sender: 'chatbot',
   inputLock: false,
   quickReplies: [],
   skipLS: false,
   send_variable_to_apiai: false,
   sendVariableToLS: false,
-  variable_name: "",
+  variable_name: '',
   delay: 0,
   payload: [
     {
-      title: "seat Map title",
+      title: 'seat Map title',
       subtitle: "<p class='ori-font-light'>hello i am html title</p>",
       randomSelection: true,
       clearSelection: true,
-      submitButtonText: "Continue with recommendation for all",
+      submitButtonText: 'Continue with recommendation for all',
       selectedSeats: [
         {
-          name: "Swati Bhatia",
-          seatNo: "1A",
-          cost : 123,
-          isAllowed: true,
-          type: "Super Practical",
-          color: ""
-        },
-        {
-          name: "Vanshika Bhatia",
-          seatNo: "2B",
+          name: 'Swati Bhatia',
+          seatNo: '1A',
           cost: 123,
           isAllowed: true,
-          type: "super Practical",
-          color: ""
+          type: 'Super Practical',
+          color: ''
         },
         {
-          name: "Harsh Bhagtani",
-          seatNo: "1C",
-          cost : 123,
-          isAllowed: true,
-          type: "super Practical",
-          color: ""
-        },
-        {
-          name:"Shweta Bhatia",
-          seatNo:"1D",
+          name: 'Vanshika Bhatia',
+          seatNo: '2B',
           cost: 123,
           isAllowed: true,
-          type: "super Practical",
-          color: ""
+          type: 'super Practical',
+          color: ''
+        },
+        {
+          name: 'Harsh Bhagtani',
+          seatNo: '1C',
+          cost: 123,
+          isAllowed: true,
+          type: 'super Practical',
+          color: ''
+        },
+        {
+          name: 'Shweta Bhatia',
+          seatNo: '1D',
+          cost: 123,
+          isAllowed: true,
+          type: 'super Practical',
+          color: ''
         }
       ],
       passengerSelect: {
-        name: "Passenger Select",
-        placeholder: "Passenger Name",
+        name: 'Passenger Select',
+        placeholder: 'Passenger Name',
         required: false,
         options: [
-          { label: "Swati Bhatia", value: "Swati Bhatia" },
-          { label: "Vanshika Bhatia", value: "Vanshika Bhatia" },
-          { label: "Harsh Bhagtani", value: "Harsh Bhagtani" },
-          { label: "Shweta Bhatia", value: "Shweta Bhatia" }
+          { label: 'Swati Bhatia', value: 'Swati Bhatia' },
+          { label: 'Vanshika Bhatia', value: 'Vanshika Bhatia' },
+          { label: 'Harsh Bhagtani', value: 'Harsh Bhagtani' },
+          { label: 'Shweta Bhatia', value: 'Shweta Bhatia' }
         ]
       },
       seatArrangement: [
         {
-          rowName: "A",
+          rowName: 'A',
           seats: [
             {
-              name: "1A",
+              name: '1A',
               isAllowed: true,
               cost: 123,
-              type: "Super Practical",
-              color: "##EB3F55"
+              type: 'Super Practical',
+              color: '##EB3F55'
             },
             {
-              name: "2A",
+              name: '2A',
               isAllowed: false,
               cost: 123,
-              type: "super Practical",
-              color: "##EB3F55",
-              status: "Reserved"
+              type: 'super Practical',
+              color: '##EB3F55',
+              status: 'Reserved'
             },
             {
-              name: "3A",
+              name: '3A',
               isAllowed: true,
               isNextGap: true,
               cost: 123,
-              type: "super Practical",
-              color: "##EB3F55"
+              type: 'super Practical',
+              color: '##EB3F55'
             },
             {
-              name: "4A",
+              name: '4A',
               isAllowed: false,
               cost: 123,
-              type: "super Practical",
-              color: "##EB3F55",
-              status: "Reserved"
+              type: 'super Practical',
+              color: '##EB3F55',
+              status: 'Reserved'
             },
             {
-              name: "5A",
+              name: '5A',
               isAllowed: true,
               cost: 123,
-              type: "super Practical",
-              color: "##EB3F55"
+              type: 'super Practical',
+              color: '##EB3F55'
             },
             {
-              name: "6A",
+              name: '6A',
               isAllowed: true,
               cost: 123,
-              type: "super Practical",
-              color: "##EB3F55"
+              type: 'super Practical',
+              color: '##EB3F55'
             }
           ]
         },
         {
-          rowName: "B",
+          rowName: 'B',
           seats: [
             {
-              name: "1B",
+              name: '1B',
               isAllowed: true,
               cost: 123,
-              type: "super Practical",
-              color: "#2b589d"
+              type: 'super Practical',
+              color: '#2b589d'
             },
             {
-              name: "2B",
+              name: '2B',
               isAllowed: true,
               cost: 123,
-              type: "super Practical",
-              color: "##EB3F55"
+              type: 'super Practical',
+              color: '##EB3F55'
             },
             {
-              name: "3B",
+              name: '3B',
               isAllowed: false,
               cost: 123,
-              type: "super Practical",
-              color: "##EB3F55",
+              type: 'super Practical',
+              color: '##EB3F55',
               isNextGap: true,
-              status: "Reserved"
+              status: 'Reserved'
             },
             {
-              name: "4B",
+              name: '4B',
               isAllowed: false,
               cost: 123,
-              type: "super Practical",
-              color: "##EB3F55",
-              status: "Reserved"
+              type: 'super Practical',
+              color: '##EB3F55',
+              status: 'Reserved'
             },
             {
-              name: "5B",
+              name: '5B',
               isAllowed: false,
               cost: 123,
-              type: "super Practical",
-              color: "#EB3F55",
-              status: "Reserved"
+              type: 'super Practical',
+              color: '#EB3F55',
+              status: 'Reserved'
             },
             {
-              name: "6B",
+              name: '6B',
               isAllowed: false,
               cost: 123,
-              type: "super Practical",
-              color: "#2b589d",
-              status: "Reserved"
+              type: 'super Practical',
+              color: '#2b589d',
+              status: 'Reserved'
             }
           ]
         },
         {
-          rowName: "C",
+          rowName: 'C',
           seats: [
             {
-              name: "1C",
+              name: '1C',
               isAllowed: true,
               cost: 123,
-              type: "super Practical",
-              color: "#EB3F55"
+              type: 'super Practical',
+              color: '#EB3F55'
             },
             {
-              name: "2C",
+              name: '2C',
               isAllowed: false,
               cost: 123,
-              type: "super Practical",
-              color: "#EB3F55",
-              status: "Reserved"
+              type: 'super Practical',
+              color: '#EB3F55',
+              status: 'Reserved'
             },
             {
-              name: "3C",
+              name: '3C',
               isAllowed: false,
               cost: 123,
-              type: "super Practical",
-              color: "#EB3F55",
+              type: 'super Practical',
+              color: '#EB3F55',
               isNextGap: true,
-              status: "Reserved"
+              status: 'Reserved'
             },
             {
-              name: "4C",
+              name: '4C',
               isAllowed: false,
               cost: 123,
-              type: "super Practical",
-              color: "#EB3F55",
-              status: "Reserved"
+              type: 'super Practical',
+              color: '#EB3F55',
+              status: 'Reserved'
             },
             {
-              name: "5C",
+              name: '5C',
               isAllowed: false,
               cost: 123,
-              type: "super Practical",
-              color: "#EB3F55",
-              status: "Reserved"
+              type: 'super Practical',
+              color: '#EB3F55',
+              status: 'Reserved'
             },
             {
-              name: "6C",
+              name: '6C',
               isAllowed: false,
               cost: 123,
-              type: "super Practical",
-              color: "#EB3F55",
-              status: "Reserved"
+              type: 'super Practical',
+              color: '#EB3F55',
+              status: 'Reserved'
             }
           ]
         },
         {
-          rowName: "D",
+          rowName: 'D',
           seats: [
             {
-              name: "1D",
+              name: '1D',
               isAllowed: true,
               cost: 123,
-              type: "Super Practical",
-              color: "#EB3F55"
+              type: 'Super Practical',
+              color: '#EB3F55'
             },
             {
-              name: "2D",
+              name: '2D',
               isAllowed: false,
               cost: 123,
-              type: "Super Practical",
+              type: 'Super Practical',
               isAllow: true,
-              color: "#EB3F55",
-              status: "Reserved"
+              color: '#EB3F55',
+              status: 'Reserved'
             },
             {
-              name: "3D",
+              name: '3D',
               cost: 123,
-              type: "Super Practical",
-              color: "#EB3F55",
+              type: 'Super Practical',
+              color: '#EB3F55',
               isAllowed: false,
               isNextGap: true,
-              status: "Lady Only"
+              status: 'Lady Only'
             },
             {
-              name: "4D",
+              name: '4D',
               cost: 123,
-              type: "Super Practical",
+              type: 'Super Practical',
               isAllowed: true,
-              color: "#EB3F55",
-              status: "Reserved"
+              color: '#EB3F55',
+              status: 'Reserved'
             },
             {
-              name: "5D",
+              name: '5D',
               cost: 123,
-              type: "super Practical",
+              type: 'super Practical',
               isAllowed: true,
-              color: "#EB3F55",
-              status: "Reserved"
+              color: '#EB3F55',
+              status: 'Reserved'
             },
             {
-              name: "6D",
+              name: '6D',
               isAllowed: false,
               cost: 123,
-              type: "super Practical",
-              color: "#EB3F55",
-              status: "Reserved"
+              type: 'super Practical',
+              color: '#EB3F55',
+              status: 'Reserved'
             }
           ]
         }
@@ -535,291 +535,291 @@ export const seatMapMessage = {
     // }
   ],
   timestamp: new Date()
-};
+}
 
 export const formMessage = {
-  type: "form",
-  sender: "chatbot",
+  type: 'form',
+  sender: 'chatbot',
   inputLock: false,
   quickReplies: [],
   skipLS: false,
   send_variable_to_apiai: false,
   sendVariableToLS: false,
-  variable_name: "",
+  variable_name: '',
   delay: 0,
   payload: [
     {
-      title: "form title",
+      title: 'form title',
       selectedValues: { rate: 4, rangeDates: [] },
-      multipleForm: false, // used to render multiple form based on selectedSelect key for a select 
+      multipleForm: false, // used to render multiple form based on selectedSelect key for a select
       formData: [
         {
-          type: "input",
-          title: "Email id",
-          displayLabel: "Email",
-          dependentField: ["passport", "up"], // key used to render the form item which is dependent on the select option selected for selectedSelect key select 
+          type: 'input',
+          title: 'Email id',
+          displayLabel: 'Email',
+          dependentField: ['passport', 'up'], // key used to render the form item which is dependent on the select option selected for selectedSelect key select
           props: {
-            type: "email",
-            placeholder: "Enter your EmailID",
-            name: "email",
+            type: 'email',
+            placeholder: 'Enter your EmailID',
+            name: 'email',
             required: true
           }
         },
         {
-          type: "datePicker",
-          title: "select your departure date",
-          disabledTimestamp: "1629455793767", // disables date before current date
-          beforeDisabledTimestamp: "1581705000000", // disables date for a given range
-          displayLabel: "Departure date",
-          dependentField: ["saudi iqama"],  // key used to render the form item which is dependent on the select option selected for selectedSelect key select 
+          type: 'datePicker',
+          title: 'select your departure date',
+          disabledTimestamp: '1629455793767', // disables date before current date
+          beforeDisabledTimestamp: '1581705000000', // disables date for a given range
+          displayLabel: 'Departure date',
+          dependentField: ['saudi iqama'], // key used to render the form item which is dependent on the select option selected for selectedSelect key select
           props: {
-            placeholder: "departure date",
-            name: "departDate",
-            format: "DD-MM-YYYY",
+            placeholder: 'departure date',
+            name: 'departDate',
+            format: 'DD-MM-YYYY',
             required: false
           }
         },
         {
-          type: "dateRangePicker",
-          title: "Select Start and End date",
+          type: 'dateRangePicker',
+          title: 'Select Start and End date',
           disabledDateRange: [],
-          displayLabel: "Vacation Duration",
-          dependentField: ["passport"],  // key used to render the form item which is dependent on the select option selected for selectedSelect key select 
+          displayLabel: 'Vacation Duration',
+          dependentField: ['passport'], // key used to render the form item which is dependent on the select option selected for selectedSelect key select
           props: {
-            placeholder: ["Start Date", "End Date"],
-            format: "YYYY-MM-DD HH-mm A",
-            name: "rangeDates",
+            placeholder: ['Start Date', 'End Date'],
+            format: 'YYYY-MM-DD HH-mm A',
+            name: 'rangeDates',
             disabled: [true, false],
             showTime: true,
             required: false
           }
         },
         {
-          type: "radioGroup",
-          title: "Passanger1",
-          displayLabel: "Passanger 1",
-          dependentField: [ "passport", "saudi iqama"], // key used to render the form item which is dependent on the select option selected for selectedSelect key select 
+          type: 'radioGroup',
+          title: 'Passanger1',
+          displayLabel: 'Passanger 1',
+          dependentField: ['passport', 'saudi iqama'], // key used to render the form item which is dependent on the select option selected for selectedSelect key select
           props: {
-            name: "bag1",
+            name: 'bag1',
             required: true,
-            size: "small",
-            buttonStyle: "solid",
-            optionType: "button",
+            size: 'small',
+            buttonStyle: 'solid',
+            optionType: 'button',
             options: [
-              { label: "80kg", value: "80kgId" },
-              { label: "12kg", value: "12kgId" },
-              { label: "15kg", value: "15kgId" }
+              { label: '80kg', value: '80kgId' },
+              { label: '12kg', value: '12kgId' },
+              { label: '15kg', value: '15kgId' }
             ]
           }
         },
         {
-          type: "radioGroup",
-          title: "Passanger2",
+          type: 'radioGroup',
+          title: 'Passanger2',
           vertical: true,
-          displayLabel: "Passanger 2",
-          dependentField: ["passport"],  // key used to render the form item which is dependent on the select option selected for selectedSelect key select 
+          displayLabel: 'Passanger 2',
+          dependentField: ['passport'], // key used to render the form item which is dependent on the select option selected for selectedSelect key select
           props: {
-            name: "bag2",
+            name: 'bag2',
             required: true,
             options: [
-              { label: "10kg", value: "10kgId" },
-              { label: "12kg", value: "12kgId" },
-              { label: "15kg", value: "15kgId" },
-              { label: "20kg", value: "20kgId" },
-              { label: "25kg", value: "25kgId" }
+              { label: '10kg', value: '10kgId' },
+              { label: '12kg', value: '12kgId' },
+              { label: '15kg', value: '15kgId' },
+              { label: '20kg', value: '20kgId' },
+              { label: '25kg', value: '25kgId' }
             ]
           }
         },
         {
-          type: "select",
-          title: "Nationality",
-          displayLabel: "Nationality",
-          isChangableKey: "count1",  // key used when this select form type will determine the option of the name of the select in isChangableKey
-          dependentField: ["passport", "saudi iqama", "national id"],
+          type: 'select',
+          title: 'Nationality',
+          displayLabel: 'Nationality',
+          isChangableKey: 'count1', // key used when this select form type will determine the option of the name of the select in isChangableKey
+          dependentField: ['passport', 'saudi iqama', 'national id'],
           props: {
-            name: "country",
-            placeholder: "Select Country",
+            name: 'country',
+            placeholder: 'Select Country',
             required: true,
             options: [
-              { label: "India", value: "India" },
-              { label: "South Africa", value: "SA" }
+              { label: 'India', value: 'India' },
+              { label: 'South Africa', value: 'SA' }
             ]
           }
-        }, 
+        },
         {
-          type: "select",
-          title: "Document Type",
-          displayLabel: "Document Type",
+          type: 'select',
+          title: 'Document Type',
+          displayLabel: 'Document Type',
           selectedSelect: true,
-          dependentSelectFields: {  // this is used for determining the options of the select form type which is variable acc to the option selected in the dependentOn select name  
+          dependentSelectFields: { // this is used for determining the options of the select form type which is variable acc to the option selected in the dependentOn select name
             options: {
               India: [
-                { label: "Passport", value: "passport" },
-                { label: "Nationality", value: "nationality" }
+                { label: 'Passport', value: 'passport' },
+                { label: 'Nationality', value: 'nationality' }
               ],
               SA: [
-                { label: "Passport", value: "passport" },
-                { label: "Saudi Iqama", value: "saudi iqama" },
+                { label: 'Passport', value: 'passport' },
+                { label: 'Saudi Iqama', value: 'saudi iqama' }
               ]
             },
-            dependentOn: "country" // key used for determining the select whose option selected will determine the options of this select 
+            dependentOn: 'country' // key used for determining the select whose option selected will determine the options of this select
           },
           props: {
-            name: "authority",
-            placeholder: "Select Authority",
+            name: 'authority',
+            placeholder: 'Select Authority',
             required: true,
             options: [
-              { label: "Passport", value: "passport" },
-              { label: "National Id", value: "national id" }
+              { label: 'Passport', value: 'passport' },
+              { label: 'National Id', value: 'national id' }
             ]
           }
         },
         {
-          type: "select",
-          title: "Issuing Country",
-          displayLabel: "Issuing Country",
-          dependentField: [ "passport"],
+          type: 'select',
+          title: 'Issuing Country',
+          displayLabel: 'Issuing Country',
+          dependentField: ['passport'],
           props: {
-            name: "count1",
-            placeholder: "Select Country",
+            name: 'count1',
+            placeholder: 'Select Country',
             required: true,
             options: [
-              { label: "India", value: "India" },
-              { label: "South Africa", value: "SA" }
+              { label: 'India', value: 'India' },
+              { label: 'South Africa', value: 'SA' }
             ]
           }
         },
         {
-          type: "select",
-          title: "Country",
-          displayLabel: "Country",
-          dependentField: ["passport"],
+          type: 'select',
+          title: 'Country',
+          displayLabel: 'Country',
+          dependentField: ['passport'],
           props: {
-            name: "count",
-            placeholder: "Select Country",
+            name: 'count',
+            placeholder: 'Select Country',
             required: true,
             options: [
-              { label: "India", value: "India" },
-              { label: "South Africa", value: "SA" }
+              { label: 'India', value: 'India' },
+              { label: 'South Africa', value: 'SA' }
             ]
           }
         },
         {
-          type: "rating",
-          title: "rate this feature",
-          displayLabel: "rating",
-          showImage:{
+          type: 'rating',
+          title: 'rate this feature',
+          displayLabel: 'rating',
+          showImage: {
             enable: true,
             images: [
               {
-                image: "https://s3.ap-south-1.amazonaws.com/oriserve.com/tvs-onebot/150524_0823/Emogis__TVS/angry.png",
-                text: "Terrible",
-                rating: 1,
+                image: 'https://s3.ap-south-1.amazonaws.com/oriserve.com/tvs-onebot/150524_0823/Emogis__TVS/angry.png',
+                text: 'Terrible',
+                rating: 1
               },
               {
-                image: "https://s3.ap-south-1.amazonaws.com/oriserve.com/tvs-onebot/150524_0823/Emogis__TVS/confounded.png",
-                text: "Bad",
-                rating: 2,
+                image: 'https://s3.ap-south-1.amazonaws.com/oriserve.com/tvs-onebot/150524_0823/Emogis__TVS/confounded.png',
+                text: 'Bad',
+                rating: 2
               },
               {
-                image: "https://s3.ap-south-1.amazonaws.com/oriserve.com/tvs-onebot/150524_0823/Emogis__TVS/neutral_face.png",
-                text: "Average",
-                rating : 3,
+                image: 'https://s3.ap-south-1.amazonaws.com/oriserve.com/tvs-onebot/150524_0823/Emogis__TVS/neutral_face.png',
+                text: 'Average',
+                rating: 3
               },
               {
-                image: "https://s3.ap-south-1.amazonaws.com/oriserve.com/tvs-onebot/150524_0823/Emogis__TVS/slightly_smiling_face.png",
-                text: "good",
+                image: 'https://s3.ap-south-1.amazonaws.com/oriserve.com/tvs-onebot/150524_0823/Emogis__TVS/slightly_smiling_face.png',
+                text: 'good',
                 rating: 4
               },
               {
-                image: "https://s3.ap-south-1.amazonaws.com/oriserve.com/tvs-onebot/150524_0823/Emogis__TVS/slightly_smiling_face.png",
-                text: "i love it",
-                rating : 5
-              },
+                image: 'https://s3.ap-south-1.amazonaws.com/oriserve.com/tvs-onebot/150524_0823/Emogis__TVS/slightly_smiling_face.png',
+                text: 'i love it',
+                rating: 5
+              }
             ]
           },
-          dependentField: [ "passport"],
+          dependentField: ['passport'],
           props: {
-            name: "rate",
+            name: 'rate',
             required: true
           }
         }
       ]
     },
     {
-      lang: "hindi",
-      title: "form title",
+      lang: 'hindi',
+      title: 'form title',
       selectedValue: { rate: 4 },
       formData: [
         {
-          type: "datePicker",
-          title: "select your departure date",
-          disabledTimestamp: "1629455793767",
-          displayLabel: "Departure date",
+          type: 'datePicker',
+          title: 'select your departure date',
+          disabledTimestamp: '1629455793767',
+          displayLabel: 'Departure date',
           props: {
-            placeholder: "departure date",
-            name: "departDate",
-            format: "DD-MM-YYYY",
+            placeholder: 'departure date',
+            name: 'departDate',
+            format: 'DD-MM-YYYY',
             required: false
           }
         },
         {
-          type: "radioGroup",
-          title: "Passanger1",
-          displayLabel: "Passanger 1",
+          type: 'radioGroup',
+          title: 'Passanger1',
+          displayLabel: 'Passanger 1',
           props: {
-            name: "bag1",
+            name: 'bag1',
             required: true,
-            size: "small",
-            buttonStyle: "solid",
-            optionType: "button",
+            size: 'small',
+            buttonStyle: 'solid',
+            optionType: 'button',
             options: [
-              { label: "80kg", value: "80kgId" },
-              { label: "12kg", value: "12kgId" },
-              { label: "15kg", value: "15kgId" }
+              { label: '80kg', value: '80kgId' },
+              { label: '12kg', value: '12kgId' },
+              { label: '15kg', value: '15kgId' }
             ]
           }
         },
         {
-          type: "radioGroup",
-          title: "Passanger2",
+          type: 'radioGroup',
+          title: 'Passanger2',
           vertical: true,
-          displayLabel: "Passanger 2",
+          displayLabel: 'Passanger 2',
           props: {
-            name: "bag2",
+            name: 'bag2',
             required: false,
             options: [
-              { label: "10kg", value: "10kgId" },
-              { label: "12kg", value: "12kgId" },
-              { label: "15kg", value: "15kgId" },
-              { label: "20kg", value: "20kgId" },
-              { label: "25kg", value: "25kgId" }
+              { label: '10kg', value: '10kgId' },
+              { label: '12kg', value: '12kgId' },
+              { label: '15kg', value: '15kgId' },
+              { label: '20kg', value: '20kgId' },
+              { label: '25kg', value: '25kgId' }
             ]
           }
         },
         {
-          type: "select",
-          title: "Pagganger3",
-          displayLabel: "Passanger 3",
+          type: 'select',
+          title: 'Pagganger3',
+          displayLabel: 'Passanger 3',
           props: {
-            name: "bag3",
-            placeholder: "Select Baggage",
+            name: 'bag3',
+            placeholder: 'Select Baggage',
             required: false,
             options: [
-              { label: "10kg", value: "10kgId" },
-              { label: "12kg", value: "12kgId" },
-              { label: "15kg", value: "15kgId" },
-              { label: "20kg", value: "20kgId" },
-              { label: "25kg", value: "25kgId" }
+              { label: '10kg', value: '10kgId' },
+              { label: '12kg', value: '12kgId' },
+              { label: '15kg', value: '15kgId' },
+              { label: '20kg', value: '20kgId' },
+              { label: '25kg', value: '25kgId' }
             ]
           }
         },
         {
-          type: "rating",
-          title: "rate this feature",
-          displayLabel: "rating",
+          type: 'rating',
+          title: 'rate this feature',
+          displayLabel: 'rating',
           props: {
-            name: "rate",
+            name: 'rate',
             required: false
           }
         }
@@ -827,794 +827,794 @@ export const formMessage = {
     }
   ],
   timestamp: new Date()
-};
+}
 
 export const checkboxMessage = {
-  sender: "chatbot",
-  type: "checkbox",
+  sender: 'chatbot',
+  type: 'checkbox',
   inputLock: false,
-  inputLockMessage: "",
+  inputLockMessage: '',
   quickReplies: [],
   skipLS: false,
   send_variable_to_apiai: false,
   sendVariableToLS: false,
-  variable_name: "",
+  variable_name: '',
   delay: 0,
   payload: [
     {
-      subtype: "dishRechargeDetails",
-      title: "Checkbox type message",
-      subtitle: "Your Dish Recharge Details are mentioned below",
+      subtype: 'dishRechargeDetails',
+      title: 'Checkbox type message',
+      subtitle: 'Your Dish Recharge Details are mentioned below',
       imageUrl:
-        "https://maruti-oriserve-images.s3.ap-south-1.amazonaws.com/Spyder_WhatsApp_700x415.jpg",
+        'https://maruti-oriserve-images.s3.ap-south-1.amazonaws.com/Spyder_WhatsApp_700x415.jpg',
       data: {},
       maxSelectionLimit: 3,
       vertical: true,
-      selectedValue:["1 ka haal ba"],
+      selectedValue: ['1 ka haal ba'],
       options: [
         {
-          label: "1 Ka haal ba",
-          value: "1 ka haal ba"
+          label: '1 Ka haal ba',
+          value: '1 ka haal ba'
         },
         {
-          label: "2 Thik ba",
-          value: "2 thik ba"
+          label: '2 Thik ba',
+          value: '2 thik ba'
         },
         {
-          label: "3 Tu aapna bata, kha bare",
-          value: "3 tu aapna bata, kha bare"
+          label: '3 Tu aapna bata, kha bare',
+          value: '3 tu aapna bata, kha bare'
         },
         {
-          label: "4 Hume thike bani",
-          value: "4 hume thike bani"
+          label: '4 Hume thike bani',
+          value: '4 hume thike bani'
         },
         {
-          label: "5 Chaal chal rahal bade, chalak bana tare na",
-          value: "5 chaal chal rahal bade, chalak bana tare na"
+          label: '5 Chaal chal rahal bade, chalak bana tare na',
+          value: '5 chaal chal rahal bade, chalak bana tare na'
         },
         {
-          label: "6 Offer details",
-          value: "6 offer details"
+          label: '6 Offer details',
+          value: '6 offer details'
         },
         {
-          label: "7 Recharge now",
-          value: "7 recharge now"
+          label: '7 Recharge now',
+          value: '7 recharge now'
         },
         {
-          label: "8 Tu aapna bata, kha bare",
-          value: "8 tu aapna bata, kha bare"
+          label: '8 Tu aapna bata, kha bare',
+          value: '8 tu aapna bata, kha bare'
         },
         {
-          label: "9 Hume thike bani",
-          value: "9 hume thike bani"
+          label: '9 Hume thike bani',
+          value: '9 hume thike bani'
         },
         {
-          label: "10 Chaal chal rahal bade, chalak bana tare na",
-          value: "10 chaal chal rahal bade, chalak bana tare na"
+          label: '10 Chaal chal rahal bade, chalak bana tare na',
+          value: '10 chaal chal rahal bade, chalak bana tare na'
         },
         {
-          label: "11 Ka haal ba",
-          value: "11 ka haal ba"
+          label: '11 Ka haal ba',
+          value: '11 ka haal ba'
         },
         {
-          label: "12 Thik ba",
-          value: "12 thik ba"
+          label: '12 Thik ba',
+          value: '12 thik ba'
         },
         {
-          label: "13 Tu aapna bata, kha bare",
-          value: "13 tu aapna bata, kha bare"
+          label: '13 Tu aapna bata, kha bare',
+          value: '13 tu aapna bata, kha bare'
         },
         {
-          label: "14 Hume thike bani",
-          value: "14 hume thike bani"
+          label: '14 Hume thike bani',
+          value: '14 hume thike bani'
         },
         {
-          label: "15 Chaal chal rahal bade, chalak bana tare na",
-          value: "15 chaal chal rahal bade, chalak bana tare na"
+          label: '15 Chaal chal rahal bade, chalak bana tare na',
+          value: '15 chaal chal rahal bade, chalak bana tare na'
         }
       ],
       buttons: [
         {
-          text: "Google",
-          url: "http://www.google.com",
-          postbackRes: ""
+          text: 'Google',
+          url: 'http://www.google.com',
+          postbackRes: ''
         },
         {
-          text: "select option 3.1",
-          url: "",
-          postbackRes: "opt3.1"
+          text: 'select option 3.1',
+          url: '',
+          postbackRes: 'opt3.1'
         },
         {
-          text: "select option 3.2",
-          url: "",
-          postbackRes: "opt3.2"
+          text: 'select option 3.2',
+          url: '',
+          postbackRes: 'opt3.2'
         },
         {
-          text: "select option 3.3",
-          url: "",
-          postbackRes: "hi"
+          text: 'select option 3.3',
+          url: '',
+          postbackRes: 'hi'
         },
         {
-          text: "Google",
-          url: "http://www.google.com",
-          postbackRes: ""
+          text: 'Google',
+          url: 'http://www.google.com',
+          postbackRes: ''
         },
         {
-          text: "select option 4.1",
-          url: "",
-          postbackRes: "opt4.1"
+          text: 'select option 4.1',
+          url: '',
+          postbackRes: 'opt4.1'
         },
         {
-          text: "select option 4.2",
-          url: "",
-          postbackRes: "opt4.2"
+          text: 'select option 4.2',
+          url: '',
+          postbackRes: 'opt4.2'
         },
         {
-          text: "select option 4.3",
-          url: "",
-          postbackRes: "hi"
+          text: 'select option 4.3',
+          url: '',
+          postbackRes: 'hi'
         }
       ]
     },
     {
-      lang: "hindi",
-      subtype: "dishRechargeDetails",
-      title: "Checkbox type message",
-      subtitle: "Your Dish Recharge Details are mentioned below",
+      lang: 'hindi',
+      subtype: 'dishRechargeDetails',
+      title: 'Checkbox type message',
+      subtitle: 'Your Dish Recharge Details are mentioned below',
       imageUrl:
-        "https://maruti-oriserve-images.s3.ap-south-1.amazonaws.com/Spyder_WhatsApp_700x415.jpg",
+        'https://maruti-oriserve-images.s3.ap-south-1.amazonaws.com/Spyder_WhatsApp_700x415.jpg',
       data: {},
       options: [
         {
-          label: "1 Ka haal ba",
-          value: "1 ka haal ba"
+          label: '1 Ka haal ba',
+          value: '1 ka haal ba'
         },
         {
-          label: "2 Thik ba",
-          value: "2 thik ba"
+          label: '2 Thik ba',
+          value: '2 thik ba'
         },
         {
-          label: "3 Tu aapna bata, kha bare",
-          value: "3 tu aapna bata, kha bare"
+          label: '3 Tu aapna bata, kha bare',
+          value: '3 tu aapna bata, kha bare'
         },
         {
-          label: "4 Hume thike bani",
-          value: "4 hume thike bani"
+          label: '4 Hume thike bani',
+          value: '4 hume thike bani'
         },
         {
-          label: "5 Chaal chal rahal bade, chalak bana tare na",
-          value: "5 chaal chal rahal bade, chalak bana tare na"
+          label: '5 Chaal chal rahal bade, chalak bana tare na',
+          value: '5 chaal chal rahal bade, chalak bana tare na'
         },
         {
-          label: "6 Offer details",
-          value: "6 offer details"
+          label: '6 Offer details',
+          value: '6 offer details'
         },
         {
-          label: "7 Recharge now",
-          value: "7 recharge now"
+          label: '7 Recharge now',
+          value: '7 recharge now'
         },
         {
-          label: "8 Tu aapna bata, kha bare",
-          value: "8 tu aapna bata, kha bare"
+          label: '8 Tu aapna bata, kha bare',
+          value: '8 tu aapna bata, kha bare'
         },
         {
-          label: "9 Hume thike bani",
-          value: "9 hume thike bani"
+          label: '9 Hume thike bani',
+          value: '9 hume thike bani'
         },
         {
-          label: "10 Chaal chal rahal bade, chalak bana tare na",
-          value: "10 chaal chal rahal bade, chalak bana tare na"
+          label: '10 Chaal chal rahal bade, chalak bana tare na',
+          value: '10 chaal chal rahal bade, chalak bana tare na'
         },
         {
-          label: "11 Ka haal ba",
-          value: "11 ka haal ba"
+          label: '11 Ka haal ba',
+          value: '11 ka haal ba'
         },
         {
-          label: "12 Thik ba",
-          value: "12 thik ba"
+          label: '12 Thik ba',
+          value: '12 thik ba'
         },
         {
-          label: "13 Tu aapna bata, kha bare",
-          value: "13 tu aapna bata, kha bare"
+          label: '13 Tu aapna bata, kha bare',
+          value: '13 tu aapna bata, kha bare'
         },
         {
-          label: "14 Hume thike bani",
-          value: "14 hume thike bani"
+          label: '14 Hume thike bani',
+          value: '14 hume thike bani'
         },
         {
-          label: "15 Chaal chal rahal bade, chalak bana tare na",
-          value: "15 chaal chal rahal bade, chalak bana tare na"
+          label: '15 Chaal chal rahal bade, chalak bana tare na',
+          value: '15 chaal chal rahal bade, chalak bana tare na'
         }
       ],
       buttons: [
         {
-          text: "Google",
-          url: "http://www.google.com",
-          postbackRes: ""
+          text: 'Google',
+          url: 'http://www.google.com',
+          postbackRes: ''
         },
         {
-          text: "select option 3.1",
-          url: "",
-          postbackRes: "opt3.1"
+          text: 'select option 3.1',
+          url: '',
+          postbackRes: 'opt3.1'
         },
         {
-          text: "select option 3.2",
-          url: "",
-          postbackRes: "opt3.2"
+          text: 'select option 3.2',
+          url: '',
+          postbackRes: 'opt3.2'
         },
         {
-          text: "select option 3.3",
-          url: "",
-          postbackRes: "hi"
+          text: 'select option 3.3',
+          url: '',
+          postbackRes: 'hi'
         },
         {
-          text: "Google",
-          url: "http://www.google.com",
-          postbackRes: ""
+          text: 'Google',
+          url: 'http://www.google.com',
+          postbackRes: ''
         },
         {
-          text: "select option 4.1",
-          url: "",
-          postbackRes: "opt4.1"
+          text: 'select option 4.1',
+          url: '',
+          postbackRes: 'opt4.1'
         },
         {
-          text: "select option 4.2",
-          url: "",
-          postbackRes: "opt4.2"
+          text: 'select option 4.2',
+          url: '',
+          postbackRes: 'opt4.2'
         },
         {
-          text: "select option 4.3",
-          url: "",
-          postbackRes: "hi"
+          text: 'select option 4.3',
+          url: '',
+          postbackRes: 'hi'
         }
       ]
     }
   ]
-};
+}
 
 export const textWithMediaMessage = {
-  sender: "chatbot",
-  type: "checkbox",
+  sender: 'chatbot',
+  type: 'checkbox',
   inputLock: false,
-  inputLockMessage: "",
+  inputLockMessage: '',
   quickReplies: [],
   skipLS: false,
   send_variable_to_apiai: false,
   sendVariableToLS: false,
-  variable_name: "",
+  variable_name: '',
   delay: 0,
   payload: [
     {
-      subtype: "dishRechargeDetails",
-      title: "Checkbox type message",
-      subtitle: "Your Dish Recharge Details are mentioned below",
+      subtype: 'dishRechargeDetails',
+      title: 'Checkbox type message',
+      subtitle: 'Your Dish Recharge Details are mentioned below',
       containsHtmlSubtitle: false,
-      imageRedirectUrl: "https://oriserve.com/",
+      imageRedirectUrl: 'https://oriserve.com/',
       imageUrl:
-        "https://maruti-oriserve-images.s3.ap-south-1.amazonaws.com/Spyder_WhatsApp_700x415.jpg",
+        'https://maruti-oriserve-images.s3.ap-south-1.amazonaws.com/Spyder_WhatsApp_700x415.jpg',
       accordian: [
         {
-          title: "first title",
-          description: "first collapse description"
+          title: 'first title',
+          description: 'first collapse description'
         },
         {
-          title: "second title",
-          description: "second collapse description"
+          title: 'second title',
+          description: 'second collapse description'
         },
         {
-          title: "third title",
-          description: "third collapse description"
+          title: 'third title',
+          description: 'third collapse description'
         },
         {
-          title: "fourth title",
-          description: "fourth collapse description"
+          title: 'fourth title',
+          description: 'fourth collapse description'
         }
       ],
       buttons: [
         {
-          text: "Google",
-          url: "http://www.google.com",
-          postbackRes: ""
+          text: 'Google',
+          url: 'http://www.google.com',
+          postbackRes: ''
         },
         {
-          text: "select option 3.1",
-          url: "",
-          postbackRes: "opt3.1"
+          text: 'select option 3.1',
+          url: '',
+          postbackRes: 'opt3.1'
         },
         {
-          text: "select option 3.2",
-          url: "",
-          postbackRes: "opt3.2"
+          text: 'select option 3.2',
+          url: '',
+          postbackRes: 'opt3.2'
         },
         {
-          text: "select option 3.3",
-          url: "",
-          postbackRes: "hi"
+          text: 'select option 3.3',
+          url: '',
+          postbackRes: 'hi'
         },
         {
-          text: "Google",
-          url: "http://www.google.com",
-          postbackRes: ""
+          text: 'Google',
+          url: 'http://www.google.com',
+          postbackRes: ''
         },
         {
-          text: "select option 4.1",
-          url: "",
-          postbackRes: "opt4.1"
+          text: 'select option 4.1',
+          url: '',
+          postbackRes: 'opt4.1'
         },
         {
-          text: "select option 4.2",
-          url: "",
-          postbackRes: "opt4.2"
+          text: 'select option 4.2',
+          url: '',
+          postbackRes: 'opt4.2'
         },
         {
-          text: "select option 4.3",
-          url: "",
-          postbackRes: "hi"
+          text: 'select option 4.3',
+          url: '',
+          postbackRes: 'hi'
         }
       ]
     },
     {
-      lang: "hindi",
-      title: "Translated title",
-      subtitle: "Your Dish Recharge Details are mentioned below",
+      lang: 'hindi',
+      title: 'Translated title',
+      subtitle: 'Your Dish Recharge Details are mentioned below',
       imageUrl:
-        "https://maruti-oriserve-images.s3.ap-south-1.amazonaws.com/Spyder_WhatsApp_700x415.jpg",
+        'https://maruti-oriserve-images.s3.ap-south-1.amazonaws.com/Spyder_WhatsApp_700x415.jpg',
       buttons: [
         {
-          text: "Google",
-          url: "http://www.google.com",
-          postbackRes: ""
+          text: 'Google',
+          url: 'http://www.google.com',
+          postbackRes: ''
         },
         {
-          text: "select option 4.2",
-          url: "",
-          postbackRes: "opt4.2"
+          text: 'select option 4.2',
+          url: '',
+          postbackRes: 'opt4.2'
         },
         {
-          text: "select option 4.3",
-          url: "",
-          postbackRes: "hi"
+          text: 'select option 4.3',
+          url: '',
+          postbackRes: 'hi'
         }
       ]
     }
   ]
-};
+}
 
 export const carouselWithButtonsMessage = {
-  sender: "chatbot",
-  type: "checkbox",
+  sender: 'chatbot',
+  type: 'checkbox',
   inputLock: false,
-  inputLockMessage: "",
+  inputLockMessage: '',
   quickReplies: [],
   skipLS: false,
   send_variable_to_apiai: false,
   sendVariableToLS: false,
-  variable_name: "",
+  variable_name: '',
   delay: 0,
   payload: [
     {
       text:
-        "my vc_number is 13124214212. i want to recharge with 100rs. how will i get my recharge_details",
-      title: "carousel title",
-      subtitle: "carousel subtitle",
+        'my vc_number is 13124214212. i want to recharge with 100rs. how will i get my recharge_details',
+      title: 'carousel title',
+      subtitle: 'carousel subtitle',
       options: [
         {
-          optionInfo: { key: "option1" },
-          title: "option1 carousel title",
-          subtitle: "option1 carousel subtitle",
-          mediaType: "image",
-          imageRedirectUrl: "https://oriserve.com/",
-          mediaUrl: "http://via.placeholder.com/150x450",
+          optionInfo: { key: 'option1' },
+          title: 'option1 carousel title',
+          subtitle: 'option1 carousel subtitle',
+          mediaType: 'image',
+          imageRedirectUrl: 'https://oriserve.com/',
+          mediaUrl: 'http://via.placeholder.com/150x450',
           buttons:
           [
             {
-              text: "Google",
-              url: "http://www.google.com",
-              postbackRes: ""
+              text: 'Google',
+              url: 'http://www.google.com',
+              postbackRes: ''
             },
             {
-              text: "select option 1.1",
-              url: "",
-              postbackRes: "opt1.1"
+              text: 'select option 1.1',
+              url: '',
+              postbackRes: 'opt1.1'
             },
             {
-              text: "select option 1.2",
-              url: "",
-              postbackRes: "opt1.2"
+              text: 'select option 1.2',
+              url: '',
+              postbackRes: 'opt1.2'
             },
             {
-              text: "select option 1.3",
-              url: "",
-              postbackRes: "opt1.3"
+              text: 'select option 1.3',
+              url: '',
+              postbackRes: 'opt1.3'
             }
           ],
           outerButtons: [
             {
-              text: "Get Direction",
-              type: "link",
+              text: 'Get Direction',
+              type: 'link',
               url:
-                "https://www.google.com/maps/dir/?api=1&destination=28.946620348185,77.672957582838",
+                'https://www.google.com/maps/dir/?api=1&destination=28.946620348185,77.672957582838',
               iconStyle: {},
               btnProps: {
-                iconPosition: "end" //start or end
+                iconPosition: 'end' // start or end
               },
-              displayType: "paragraph",
+              displayType: 'paragraph',
               icon: `<svg style="width: inherit;height: inherit;" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none"> <g clip-path="url(#clip0_499_1032)"> <path fill-rule="evenodd" clip-rule="evenodd" d="M9.47441 1.2248C9.7185 0.980729 10.1142 0.980729 10.3582 1.2248L18.6078 9.47441C18.8519 9.7185 18.8519 10.1142 18.6078 10.3582L10.3582 18.6078C10.1142 18.8519 9.7185 18.8519 9.47441 18.6078L1.2248 10.3582C0.980729 10.1142 0.980729 9.7185 1.2248 9.47441L9.47441 1.2248ZM9.91633 2.55063L2.55063 9.91633L9.91633 17.282L17.282 9.91633L9.91633 2.55063Z" fill="#004A8F"/> <path fill-rule="evenodd" clip-rule="evenodd" d="M10.8334 6.61621L12.942 8.72484C13.186 8.96893 13.186 9.36459 12.942 9.60868L10.8334 11.7173L9.94946 10.8334L11.6161 9.16676L9.94946 7.50009L10.8334 6.61621Z" fill="#004A8F"/> <path fill-rule="evenodd" clip-rule="evenodd" d="M6.875 9.16675C6.875 8.82158 7.15482 8.54175 7.5 8.54175H12.0834V9.79175H8.125V11.6667H6.875V9.16675Z" fill="#004A8F"/> </g> <defs> <clipPath id="clip0_499_1032"> <rect width="20" height="20" fill="white"/> </clipPath> </defs> </svg>`
             },
             {
-              type: "customSocketEvent",
-              eventName: "buttonSelection",
-              text: "Get SMS",
+              type: 'customSocketEvent',
+              eventName: 'buttonSelection',
+              text: 'Get SMS',
               relayData: {
                 relay_wid: 21,
                 relay_next_node: 1,
                 dealerId: 763235,
-                brandId: "301",
+                brandId: '301',
                 accesstokenlatlong:
-                  "141d0ec13e1e22e921b3776185208a627a94c6479c42bc1a5d6372bf1c48ea6b"
+                  '141d0ec13e1e22e921b3776185208a627a94c6479c42bc1a5d6372bf1c48ea6b'
               },
-              displayType: "paragraph",
+              displayType: 'paragraph',
               iconStyle: {},
               btnProps: {
-                iconPosition: "end" //start or end
+                iconPosition: 'end' // start or end
               },
               icon: `<svg xmlns="http://www.w3.org/2000/svg" style="width: inherit;height: inherit;" width="20" height="20" viewBox="0 0 20 20" fill="none"> <g clip-path="url(#clip0_499_1040)"> <path d="M7 18C6.86739 18 6.74021 17.9473 6.64645 17.8536C6.55268 17.7598 6.5 17.6326 6.5 17.5V14H2.5C2.36739 14 2.24021 13.9473 2.14645 13.8536C2.05268 13.7598 2 13.6326 2 13.5V2.5C2 2.36739 2.05268 2.24021 2.14645 2.14645C2.24021 2.05268 2.36739 2 2.5 2H17.5C17.6326 2 17.7598 2.05268 17.8536 2.14645C17.9473 2.24021 18 2.36739 18 2.5V13.5C18 13.6326 17.9473 13.7598 17.8536 13.8536C17.7598 13.9473 17.6326 14 17.5 14H11.205L7.35 17.855C7.25687 17.9474 7.13117 17.9994 7 18ZM3 13H7C7.13261 13 7.25979 13.0527 7.35355 13.1464C7.44732 13.2402 7.5 13.3674 7.5 13.5V16.295L10.645 13.15C10.6913 13.1028 10.7465 13.0652 10.8075 13.0394C10.8684 13.0137 10.9338 13.0003 11 13H17V3H3V13Z" fill="#004A8F"/> <path d="M15 5H5V6H15V5Z" fill="#004A8F"/> <path d="M15 7.5H5V8.5H15V7.5Z" fill="#004A8F"/> <path d="M15 10H5V11H15V10Z" fill="#004A8F"/> </g> <defs> <clipPath id="clip0_499_1040"> <rect width="20" height="20" fill="white"/> </clipPath> </defs> </svg>`
             }
           ],
-          outerBtnDisplayCount: 4 
+          outerBtnDisplayCount: 4
         },
         {
-          optionInfo: { key: "option2" },
-          title: "option2 carousel title",
-          subtitle: "option2 carousel subtitle",
-          mediaType: "image",
-          imageRedirectUrl: "https://oriserve.com/",
-          mediaUrl: "http://via.placeholder.com/200x100",
+          optionInfo: { key: 'option2' },
+          title: 'option2 carousel title',
+          subtitle: 'option2 carousel subtitle',
+          mediaType: 'image',
+          imageRedirectUrl: 'https://oriserve.com/',
+          mediaUrl: 'http://via.placeholder.com/200x100',
           buttons: [
             {
-              text: "Google",
-              url: "http://www.google.com",
-              postbackRes: ""
+              text: 'Google',
+              url: 'http://www.google.com',
+              postbackRes: ''
             },
             {
-              text: "select option 2.1",
-              url: "",
-              postbackRes: "opt2.1"
+              text: 'select option 2.1',
+              url: '',
+              postbackRes: 'opt2.1'
             },
             {
-              text: "select option 2.2",
-              url: "",
-              postbackRes: "opt2.2"
+              text: 'select option 2.2',
+              url: '',
+              postbackRes: 'opt2.2'
             },
             {
-              text: "select option 2.3",
-              url: "",
-              postbackRes: "hi"
+              text: 'select option 2.3',
+              url: '',
+              postbackRes: 'hi'
             }
           ]
         },
         {
-          optionInfo: { key: "option3" },
-          title: "option3 carousel title",
-          subtitle: "option3 carousel subtitle",
-          mediaType: "image",
-          imageRedirectUrl: "https://oriserve.com/",
-          mediaUrl: "http://via.placeholder.com/200x100",
+          optionInfo: { key: 'option3' },
+          title: 'option3 carousel title',
+          subtitle: 'option3 carousel subtitle',
+          mediaType: 'image',
+          imageRedirectUrl: 'https://oriserve.com/',
+          mediaUrl: 'http://via.placeholder.com/200x100',
           buttons: [
             {
-              text: "Google",
-              url: "http://www.google.com",
-              postbackRes: ""
+              text: 'Google',
+              url: 'http://www.google.com',
+              postbackRes: ''
             },
             {
-              text: "select option 3.1",
-              url: "",
-              postbackRes: "opt3.1"
+              text: 'select option 3.1',
+              url: '',
+              postbackRes: 'opt3.1'
             },
             {
-              text: "select option 3.2",
-              url: "",
-              postbackRes: "opt3.2"
+              text: 'select option 3.2',
+              url: '',
+              postbackRes: 'opt3.2'
             },
             {
-              text: "select option 3.3",
-              url: "",
-              postbackRes: "hi"
+              text: 'select option 3.3',
+              url: '',
+              postbackRes: 'hi'
             }
           ]
         }
       ],
       buttons: [
         {
-          text: "main button 1",
-          url: "http://www.google.com",
-          b_id: "",
-          postbackRes: ""
+          text: 'main button 1',
+          url: 'http://www.google.com',
+          b_id: '',
+          postbackRes: ''
         },
         {
-          text: "main button 2",
-          b_id: "",
-          postbackRes: "hi"
+          text: 'main button 2',
+          b_id: '',
+          postbackRes: 'hi'
         },
         {
-          text: "main button 3",
-          url: "",
-          b_id: "",
-          postbackRes: ""
+          text: 'main button 3',
+          url: '',
+          b_id: '',
+          postbackRes: ''
         }
       ]
     },
     {
-      lang: "hindi",
+      lang: 'hindi',
       text:
-        "my vc_number is 13124214212. i want to recharge with 100rs. how will i get my recharge_details",
-      title: "carousel title",
-      subtitle: "carousel subtitle",
+        'my vc_number is 13124214212. i want to recharge with 100rs. how will i get my recharge_details',
+      title: 'carousel title',
+      subtitle: 'carousel subtitle',
       options: [
         {
-          optionInfo: { key: "option1" },
-          title: "option1 carousel title",
-          subtitle: "option1 carousel subtitle",
-          mediaType: "image",
-          imageRedirectUrl: "https://oriserve.com/",
-          mediaUrl: "http://via.placeholder.com/150x450",
+          optionInfo: { key: 'option1' },
+          title: 'option1 carousel title',
+          subtitle: 'option1 carousel subtitle',
+          mediaType: 'image',
+          imageRedirectUrl: 'https://oriserve.com/',
+          mediaUrl: 'http://via.placeholder.com/150x450',
           buttons: [
             {
-              text: "Google",
-              url: "http://www.google.com",
-              postbackRes: ""
+              text: 'Google',
+              url: 'http://www.google.com',
+              postbackRes: ''
             },
             {
-              text: "select option 1.1",
-              url: "",
-              postbackRes: "opt1.1"
+              text: 'select option 1.1',
+              url: '',
+              postbackRes: 'opt1.1'
             },
             {
-              text: "select option 1.2",
-              url: "",
-              postbackRes: "opt1.2"
+              text: 'select option 1.2',
+              url: '',
+              postbackRes: 'opt1.2'
             },
             {
-              text: "select option 1.3",
-              url: "",
-              postbackRes: "opt1.3"
+              text: 'select option 1.3',
+              url: '',
+              postbackRes: 'opt1.3'
             }
           ]
         },
         {
-          optionInfo: { key: "option2" },
-          title: "option2 carousel title",
-          subtitle: "option2 carousel subtitle",
-          mediaType: "image",
-          imageRedirectUrl: "https://oriserve.com/",
-          mediaUrl: "http://via.placeholder.com/200x100",
+          optionInfo: { key: 'option2' },
+          title: 'option2 carousel title',
+          subtitle: 'option2 carousel subtitle',
+          mediaType: 'image',
+          imageRedirectUrl: 'https://oriserve.com/',
+          mediaUrl: 'http://via.placeholder.com/200x100',
           buttons: [
             {
-              text: "Google",
-              url: "http://www.google.com",
-              postbackRes: ""
+              text: 'Google',
+              url: 'http://www.google.com',
+              postbackRes: ''
             },
             {
-              text: "select option 2.1",
-              url: "",
-              postbackRes: "opt2.1"
+              text: 'select option 2.1',
+              url: '',
+              postbackRes: 'opt2.1'
             },
             {
-              text: "select option 2.2",
-              url: "",
-              postbackRes: "opt2.2"
+              text: 'select option 2.2',
+              url: '',
+              postbackRes: 'opt2.2'
             },
             {
-              text: "select option 2.3",
-              url: "",
-              postbackRes: "hi"
+              text: 'select option 2.3',
+              url: '',
+              postbackRes: 'hi'
             }
           ]
         },
         {
-          optionInfo: { key: "option3" },
-          title: "option3 carousel title",
-          subtitle: "option3 carousel subtitle",
-          mediaType: "image",
-          imageRedirectUrl: "https://oriserve.com/",
-          mediaUrl: "http://via.placeholder.com/200x100",
+          optionInfo: { key: 'option3' },
+          title: 'option3 carousel title',
+          subtitle: 'option3 carousel subtitle',
+          mediaType: 'image',
+          imageRedirectUrl: 'https://oriserve.com/',
+          mediaUrl: 'http://via.placeholder.com/200x100',
           buttons: [
             {
-              text: "Google",
-              url: "http://www.google.com",
-              postbackRes: ""
+              text: 'Google',
+              url: 'http://www.google.com',
+              postbackRes: ''
             },
             {
-              text: "select option 3.1",
-              url: "",
-              postbackRes: "opt3.1"
+              text: 'select option 3.1',
+              url: '',
+              postbackRes: 'opt3.1'
             },
             {
-              text: "select option 3.2",
-              url: "",
-              postbackRes: "opt3.2"
+              text: 'select option 3.2',
+              url: '',
+              postbackRes: 'opt3.2'
             },
             {
-              text: "select option 3.3",
-              url: "",
-              postbackRes: "hi"
+              text: 'select option 3.3',
+              url: '',
+              postbackRes: 'hi'
             }
           ]
         }
       ],
       buttons: [
         {
-          text: "main button 1",
-          url: "http://www.google.com",
-          b_id: "",
-          postbackRes: ""
+          text: 'main button 1',
+          url: 'http://www.google.com',
+          b_id: '',
+          postbackRes: ''
         },
         {
-          text: "main button 2",
-          b_id: "",
-          postbackRes: "hi"
+          text: 'main button 2',
+          b_id: '',
+          postbackRes: 'hi'
         },
         {
-          text: "main button 3",
-          url: "",
-          b_id: "",
-          postbackRes: ""
+          text: 'main button 3',
+          url: '',
+          b_id: '',
+          postbackRes: ''
         }
       ]
     }
   ]
-};
+}
 
 export const carouselMenu = {
-  sender: "chatbot",
-  type: "checkbox",
+  sender: 'chatbot',
+  type: 'checkbox',
   inputLock: false,
-  inputLockMessage: "",
+  inputLockMessage: '',
   quickReplies: [],
   skipLS: false,
   send_variable_to_apiai: false,
   sendVariableToLS: false,
-  variable_name: "",
+  variable_name: '',
   delay: 0,
   payload: [
     {
-      title: "carousel title",
-      subtitle: "carousel subtitle",
+      title: 'carousel title',
+      subtitle: 'carousel subtitle',
       selectable: true,
       options: [
         {
-          title: "option1 carousel title",
-          subtitle: "option1 carousel subtitle",
-          mediaType: "image",
-          imageRedirectUrl: "https://oriserve.com/",
-          mediaUrl: "http://via.placeholder.com/150x450",
+          title: 'option1 carousel title',
+          subtitle: 'option1 carousel subtitle',
+          mediaType: 'image',
+          imageRedirectUrl: 'https://oriserve.com/',
+          mediaUrl: 'http://via.placeholder.com/150x450',
           selected: true,
           buttons: [
             {
-              text: "Google",
-              url: "http://www.google.com",
-              postbackRes: ""
+              text: 'Google',
+              url: 'http://www.google.com',
+              postbackRes: ''
             },
             {
-              text: "select option 1.1",
-              url: "",
-              postbackRes: "opt1.1"
+              text: 'select option 1.1',
+              url: '',
+              postbackRes: 'opt1.1'
             }
           ]
         },
         {
-          title: "option2 carousel title",
-          subtitle: "option2 carousel subtitle",
-          mediaType: "image",
-          imageRedirectUrl: "https://oriserve.com/",
-          mediaUrl: "http://via.placeholder.com/200x100",
+          title: 'option2 carousel title',
+          subtitle: 'option2 carousel subtitle',
+          mediaType: 'image',
+          imageRedirectUrl: 'https://oriserve.com/',
+          mediaUrl: 'http://via.placeholder.com/200x100',
           buttons: [
             {
-              text: "Google",
-              url: "http://www.google.com",
-              postbackRes: ""
+              text: 'Google',
+              url: 'http://www.google.com',
+              postbackRes: ''
             },
             {
-              text: "select option 2.1",
-              url: "",
-              postbackRes: "opt2.1"
+              text: 'select option 2.1',
+              url: '',
+              postbackRes: 'opt2.1'
             },
             {
-              text: "select option 2.2",
-              url: "",
-              postbackRes: "opt2.2"
+              text: 'select option 2.2',
+              url: '',
+              postbackRes: 'opt2.2'
             },
             {
-              text: "select option 2.3",
-              url: "",
-              postbackRes: "hi"
+              text: 'select option 2.3',
+              url: '',
+              postbackRes: 'hi'
             }
           ]
         },
         {
-          title: "option3 carousel title",
-          subtitle: "option3 carousel subtitle",
-          mediaType: "image",
-          imageRedirectUrl: "https://oriserve.com/",
-          mediaUrl: "http://via.placeholder.com/200x100",
+          title: 'option3 carousel title',
+          subtitle: 'option3 carousel subtitle',
+          mediaType: 'image',
+          imageRedirectUrl: 'https://oriserve.com/',
+          mediaUrl: 'http://via.placeholder.com/200x100',
           buttons: [
             {
-              text: "Google",
-              url: "http://www.google.com",
-              postbackRes: ""
+              text: 'Google',
+              url: 'http://www.google.com',
+              postbackRes: ''
             },
             {
-              text: "select option 3.1",
-              url: "",
-              postbackRes: "opt3.1"
+              text: 'select option 3.1',
+              url: '',
+              postbackRes: 'opt3.1'
             },
             {
-              text: "select option 3.2",
-              url: "",
-              postbackRes: "opt3.2"
+              text: 'select option 3.2',
+              url: '',
+              postbackRes: 'opt3.2'
             },
             {
-              text: "select option 3.3",
-              url: "",
-              postbackRes: "hi"
+              text: 'select option 3.3',
+              url: '',
+              postbackRes: 'hi'
             }
           ]
         }
       ],
       buttons: [
         {
-          text: "main button 1",
-          url: "http://www.google.com",
-          b_id: "",
-          postbackRes: ""
+          text: 'main button 1',
+          url: 'http://www.google.com',
+          b_id: '',
+          postbackRes: ''
         },
         {
-          text: "main button 3",
-          url: "",
-          b_id: "",
-          postbackRes: ""
+          text: 'main button 3',
+          url: '',
+          b_id: '',
+          postbackRes: ''
         }
       ]
     }
   ]
-};
+}
 
 export const uploadMessage = {
-  sender: "chatbot",
-  type: "upload",
+  sender: 'chatbot',
+  type: 'upload',
   inputLock: false,
-  inputLockMessage: "",
+  inputLockMessage: '',
   quickReplies: [],
   skipLS: false,
   send_variable_to_apiai: false,
   sendVariableToLS: false,
-  variable_name: "",
+  variable_name: '',
   delay: 0,
   payload: [
     {
-      title: "carousel title",
-      subtitle: "carousel subtitle",
-      accept: "",
+      title: 'carousel title',
+      subtitle: 'carousel subtitle',
+      accept: '',
       buttons: [
         {
-          text: "Google",
-          url: "http://www.google.com",
-          postbackRes: ""
+          text: 'Google',
+          url: 'http://www.google.com',
+          postbackRes: ''
         },
         {
-          text: "select option 3.1",
-          url: "",
-          postbackRes: "opt3.1"
+          text: 'select option 3.1',
+          url: '',
+          postbackRes: 'opt3.1'
         },
         {
-          text: "select option 3.2",
-          url: "",
-          postbackRes: "opt3.2"
+          text: 'select option 3.2',
+          url: '',
+          postbackRes: 'opt3.2'
         }
       ]
     }
   ]
-};
+}
 
 export const message = {
   NLPSnapshot: {
@@ -1623,36 +1623,36 @@ export const message = {
         score: 0.971124,
         endIndex: 17,
         startIndex: 10,
-        type: "action_variable::recharge",
-        entity: "recharge"
+        type: 'action_variable::recharge',
+        entity: 'recharge'
       },
       {
         score: 0.6106828,
         endIndex: 27,
         startIndex: 24,
-        type: "troubleshoot_error::101",
-        entity: "101"
+        type: 'troubleshoot_error::101',
+        entity: '101'
       }
     ],
     intentSnapshot: {
       score: 0.8424482,
-      name: "utilities_modify"
+      name: 'utilities_modify'
     }
   },
   payload: {
     list: [
-      { value: "1", label: "hello world" },
-      { value: "2", label: "hii i am vivek" },
+      { value: '1', label: 'hello world' },
+      { value: '2', label: 'hii i am vivek' },
       {
-        value: "5",
+        value: '5',
         label:
-          "playing cricket in ahmedabad india. do you want to play cricket please tell me"
+          'playing cricket in ahmedabad india. do you want to play cricket please tell me'
       },
-      { value: "3", label: "how are you ?" },
-      { value: "4", label: "working hour" }
+      { value: '3', label: 'how are you ?' },
+      { value: '4', label: 'working hour' }
     ]
   }
-  //-----------carousel payload start -----------
+  // -----------carousel payload start -----------
   // payload: {
   //     text: "my vc_number is 13124214212. i want to recharge with 100rs. how will i get my recharge_details",
   //     title: "carousel title",
@@ -1764,7 +1764,7 @@ export const message = {
   //         }
   //     ]
   // },
-  //-----------carousel payload end ------------
+  // -----------carousel payload end ------------
   // containsHTML: true,
   // payload: {
   //   text: `<!DOCTYPE html>
@@ -1945,19 +1945,19 @@ export const message = {
   //   }
   // ],
   // }
-};
+}
 
 export const uploadedDocumentMessage = {
-  type: "uploadedDocument",
-  cmid:"123",
+  type: 'uploadedDocument',
+  cmid: '123',
   // status:"pending",
-  payload: 
+  payload:
     {
-    fileSize: "23512222",
-    fileUrl: "https://oriserve-poc-uploads.s3.amazonaws.com/sandbox/dev/fileupload/1679913485338",
-    fileName: "hello123.pdf",
-    pages: 18,
-    fileType:"application/pdf",
-  },
+      fileSize: '23512222',
+      fileUrl: 'https://oriserve-poc-uploads.s3.amazonaws.com/sandbox/dev/fileupload/1679913485338',
+      fileName: 'hello123.pdf',
+      pages: 18,
+      fileType: 'application/pdf'
+    },
   timestamp: new Date()
-};
+}
