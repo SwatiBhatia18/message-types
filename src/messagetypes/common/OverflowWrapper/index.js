@@ -55,7 +55,7 @@ class OverflowWrapper extends React.Component {
           </div>
           {isChildrenHeightGreater && !expanded && (
             <span onClick={this.handleShowMoreAndLessClick}>
-              {showMoreText ? <span className='ori-cursor-ptr ori-font-light ori-font-xs'>{showMoreText}</span> : showMoreChild }
+              {showMoreText ? <span className='ori-cursor-ptr ori-font-light ori-font-xs oriOverflowWrapperText'>{showMoreText}</span> : showMoreChild }
             </span>
           )}
         </React.Fragment>
@@ -84,7 +84,7 @@ OverflowWrapper.defaultProps = {
   handleExpand: () => {},
   showMoreChild: (
     <span
-      className='ori-cursor-ptr ori-font-light ori-font-xs'
+      className='ori-cursor-ptr ori-font-light ori-font-xs oriOverflowWrapperText'
       style={{
         textDecoration: 'underline',
         userSelect: 'none'
