@@ -298,14 +298,14 @@ class FormMessageBody extends React.PureComponent {
       <div className='ori-word-break ori-mt-FormMessageContainer'>
         {payload.title && (
           <HtmlText
-            textClass='ori-no-t-mrgn ori-no-b-mrgn ori-font-bold ori-capitalize-first ori-FormMessageTitle'
+            textClass='ori-no-t-mrgn ori-no-b-mrgn ori-font-bold ori-capitalize-first ori-mt-title'
             text={payload.title}
             isHtml={payload.containsHtmlTitle}
           />
         )}
         {payload.subtitle && (
           <HtmlText
-            textClass='ori-no-b-mrgn ori-no-t-mrgn ori-FormMessageSubtite'
+            textClass='ori-no-b-mrgn ori-no-t-mrgn ori-mt-subtitle'
             text={payload.subtitle}
             isHtml={payload.containsHtmlSubtitle}
           />

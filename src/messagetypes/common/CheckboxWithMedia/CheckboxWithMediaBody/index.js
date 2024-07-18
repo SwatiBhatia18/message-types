@@ -172,14 +172,14 @@ class CheckboxWithMediaBody extends React.PureComponent {
         )}
         {payload.title && (
           <HtmlText
-            textClass='ori-no-t-mrgn ori-no-b-mrgn ori-font-bold ori-capitalize-first title'
+            textClass='ori-no-t-mrgn ori-no-b-mrgn ori-font-bold ori-capitalize-first ori-mt-title'
             text={payload.title}
             isHtml={payload.containsHtmlTitle}
           />
         )}
         {payload.subtitle && (
           <HtmlText
-            textClass='ori-no-b-mrgn ori-no-t-mrgn subtitle'
+            textClass='ori-no-b-mrgn ori-no-t-mrgn ori-mt-subtitle'
             text={payload.subtitle}
             isHtml={payload.containsHtmlSubtitle}
           />

@@ -179,12 +179,12 @@ class UploadFileBody extends React.PureComponent {
     return (
       <div className='ori-word-break ori-uploadFileContainer'>
         {payload.title && payload.title.trim().length > 0 && (
-          <p className='ori-no-t-mrgn ori-no-b-mrgn ori-font-bold ori-capitalize-first ori-word-break ori-uploadFileTitle'>
+          <p className='ori-no-t-mrgn ori-no-b-mrgn ori-font-bold ori-capitalize-first ori-word-break ori-mt-title'>
             {payload.title}
           </p>
         )}
         {payload.subtitle && payload.subtitle.trim().length > 0 && (
-          <p className='ori-no-b-mrgn ori-no-t-mrgn ori-word-break ori-uploadFileSubtitle'>
+          <p className='ori-no-b-mrgn ori-no-t-mrgn ori-word-break ori-mt-subtitle'>
             {payload.subtitle}
           </p>
         )}
