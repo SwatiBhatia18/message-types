@@ -216,14 +216,14 @@ class CarouselWithButtonsBody extends React.PureComponent {
         {this.renderPreviewOverlay()}
         {payload && payload.title && (
           <HtmlText
-            textClass='ori-no-t-mrgn ori-no-b-mrgn ori-font-bold ori-capitalize-first title'
+            textClass='ori-no-t-mrgn ori-no-b-mrgn ori-font-bold ori-capitalize-first ori-carouselWithButtonsTitle'
             text={payload.title}
             isHtml={payload.containsHtmlTitle}
           />
         )}
         {payload && payload.subtitle && (
           <HtmlText
-            textClass='ori-no-b-mrgn ori-no-t-mrgn subtitle'
+            textClass='ori-no-b-mrgn ori-no-t-mrgn ori-carouselWithButtonsSubtitle'
             text={payload.subtitle}
             isHtml={payload.containsHtmlSubtitle}
           />
