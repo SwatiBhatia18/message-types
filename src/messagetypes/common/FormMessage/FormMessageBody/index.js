@@ -484,6 +484,7 @@ class FormMessageBody extends React.PureComponent {
                         getPopupContainer={triggerNode =>
                           triggerNode.parentNode
                         }
+                        listHeight={215}
                         disabled={disabled || this.state.defaultDisabled}
                         {...item.props}
                         filterOption={(input, option) => (option.label).toLowerCase().includes(input.toLowerCase())}
