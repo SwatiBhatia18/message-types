@@ -3,6 +3,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Carousel from 'antd/lib/carousel'
 import Button from 'antd/lib/button'
+import Tag from 'antd/lib/tag'
 
 import styles from './CarouselWithButtonsBody.module.scss'
 
@@ -322,6 +323,11 @@ class CarouselWithButtonsBody extends React.PureComponent {
                         showmore={showmore}
                         showless={showless}
                       />
+                    )}
+                    {carousel_item.renderTag && carousel_item.tag && (
+                      <Tag className='oriCarouselTagContainer' {...carousel_item.tag.tagProps}>
+                        {carousel_item.tag.text}
+                      </Tag>
                     )}
                   </div>
                 </OverflowWrapper>
