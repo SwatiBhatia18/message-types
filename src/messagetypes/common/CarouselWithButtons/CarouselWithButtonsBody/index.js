@@ -324,7 +324,7 @@ class CarouselWithButtonsBody extends React.PureComponent {
                         showless={showless}
                       />
                     )}
-                    {carousel_item.renderTag && carousel_item.tag && (
+                    {carousel_item.tag && carousel_item.tag.text && (
                       <Tag className='oriCarouselTagContainer' {...carousel_item.tag.tagProps}>
                         {carousel_item.tag.text}
                       </Tag>
