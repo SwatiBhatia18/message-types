@@ -1,0 +1,26 @@
+@import "../../../data/config/styles/colors.scss";
+
+.carouselItem {
+    width: 100%;
+    background-color: $card-bg;
+    border: 1px solid $border-light;
+}
+
+.imageContainer {
+    height: 200px;
+    background-color: #000;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.carouselContainer {
+    margin-bottom: 30px;
+}
+
+.previewOverlayContainer {
+  z-index: 9999999;
+  position: fixed;
+  flex: 1;
+  background-color: $black-overlay-light;
+}

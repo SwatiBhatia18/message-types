@@ -1,0 +1,24 @@
+@import '../../../data/config/styles/colors.scss';
+
+.imageContainer {
+    max-height: 200px;
+    overflow: hidden;
+    margin-bottom: 5px;
+}
+
+.checkboxGroupContainer {
+    background-color: $card-bg;
+    border: 1px solid $border-light;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    border-radius: 3px;
+    padding: 10px;
+}
+
+.checkboxFooterContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap-reverse;
+  padding-top: 10px;
+}
