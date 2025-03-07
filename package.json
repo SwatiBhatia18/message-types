@@ -6,7 +6,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://bitbucket.org/oriserve1/message-types.git"
+    "url": "https://github.com/SwatiBhatia18/message-types.git"
   },
   "main": "dist/index.js",
   "module": "dist/index.es.js",
