@@ -351,7 +351,7 @@ class FormMessageBody extends React.PureComponent {
                         {...item.props}
                         value={this.state.selectedValues[item.props.name] && moment(this.state.selectedValues[item.props.name], item.props.format || 'DD-MM-YYYY')}
                         getPopupContainer={() =>
-                          document.getElementById('oriAppContainer')
+                          document.getElementById('ori-chatbot-root').shadowRoot.querySelector('#oriAppContainer')
                         }
                         onChange={selectedDate =>
                           this.handleFormChange(
@@ -411,7 +411,7 @@ class FormMessageBody extends React.PureComponent {
                           if (val) return moment(val, item.props.format || 'DD-MM-YYYY')
                         })}
                         getPopupContainer={() =>
-                          document.getElementById('oriAppContainer')
+                          document.getElementById('ori-chatbot-root').shadowRoot.querySelector('#oriAppContainer')
                         }
                         onChange={selectedDate =>
                           this.handleFormChange(
