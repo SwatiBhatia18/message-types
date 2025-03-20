@@ -350,8 +350,10 @@ class FormMessageBody extends React.PureComponent {
                         disabled={disabled || this.state.defaultDisabled}
                         {...item.props}
                         value={this.state.selectedValues[item.props.name] && moment(this.state.selectedValues[item.props.name], item.props.format || 'DD-MM-YYYY')}
-                        getPopupContainer={triggerNode =>
-                          triggerNode.parentNode
+                        getPopupContainer={() =>
+                          process.env.REACT_APP_SHADOW_DOM
+                            ? document.getElementById('ori-chatbot-root').shadowRoot.querySelector('#oriAppContainer')
+                            : document.getElementById('oriAppContainer')
                         }
                         onChange={selectedDate =>
                           this.handleFormChange(
