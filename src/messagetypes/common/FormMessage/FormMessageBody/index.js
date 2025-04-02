@@ -1,7 +1,7 @@
 /* eslint-disable camelcase */
 import React from 'react'
 import PropTypes from 'prop-types'
-import moment from 'moment'
+import dayjs from 'dayjs'
 import DatePicker from 'antd/lib/date-picker'
 import Radio from 'antd/lib/radio'
 import Button from 'antd/lib/button'
@@ -10,12 +10,29 @@ import Select from 'antd/lib/select'
 import Input from 'antd/lib/input'
 import Checkbox from 'antd/lib/checkbox'
 
+import customParseFormat from 'dayjs/plugin/customParseFormat'
+import advancedFormat from 'dayjs/plugin/advancedFormat'
+import localeData from 'dayjs/plugin/localeData'
+import weekday from 'dayjs/plugin/weekday'
+import weekOfYear from 'dayjs/plugin/weekOfYear'
+import weekYear from 'dayjs/plugin/weekYear'
+
+import 'dayjs/locale/ar'
+
 import { blurButtonAfterClick, isEmail, validateField } from '../../../../data/config/utils'
 
 import Buttons from '../../../../components/buttons'
 import HtmlText from '../../../../components/HtmlText'
 
 const { RangePicker } = DatePicker
+
+dayjs.locale('en')
+dayjs.extend(customParseFormat)
+dayjs.extend(advancedFormat)
+dayjs.extend(localeData)
+dayjs.extend(weekday)
+dayjs.extend(weekOfYear)
+dayjs.extend(weekYear)
 
 class FormMessageBody extends React.PureComponent {
   constructor(props) {
@@ -36,25 +53,36 @@ class FormMessageBody extends React.PureComponent {
     const { payload } = this.props
     let updatedSelectedValues = selectedValues || {}
     let isNonEmptyFormData = formData && formData.length > 0
-    let datePayload = isNonEmptyFormData && formData.filter((val) => {
-      if (val.type && (val.type === 'datePicker' || val.type === 'dateRangePicker')) return true
-      return false
-    })
+    let datePayload = isNonEmptyFormData && formData.filter((val) =>
+      val.type && (val.type === 'datePicker' || val.type === 'dateRangePicker')
+    )
+    let shouldUpdateState = false
     datePayload.forEach((val) => {
-      if (val.props && val.props.name && updatedSelectedValues && updatedSelectedValues[val.props.name]) {
+      if (val.props && val.props.name && updatedSelectedValues[val.props.name]) {
         let name = val.props.name
-        if (val.type && val.type === 'dateRangePicker') {
-          updatedSelectedValues = {...updatedSelectedValues,
-            [name]: [moment(updatedSelectedValues[name][0], val.props.format || 'DD-MM-YYYY'), moment(updatedSelectedValues[name][1], val.props.format || 'DD-MM-YYYY')]
+        let format = val.props.format || 'DD-MM-YYYY'
+
+        if (val.type === 'dateRangePicker') {
+          let newValue = [
+            dayjs(updatedSelectedValues[name][0], format),
+            dayjs(updatedSelectedValues[name][1], format)
+          ]
+          if (JSON.stringify(updatedSelectedValues[name]) !== JSON.stringify(newValue)) {
+            updatedSelectedValues = { ...updatedSelectedValues, [name]: newValue }
+            shouldUpdateState = true
           }
         } else {
-          updatedSelectedValues = { ...updatedSelectedValues, [name]: moment(updatedSelectedValues[name], val.props.format || 'DD-MM-YYYY') }
+          let newValue = dayjs(updatedSelectedValues[name], format)
+          if (JSON.stringify(updatedSelectedValues[name]) !== JSON.stringify(newValue)) {
+            updatedSelectedValues = { ...updatedSelectedValues, [name]: newValue }
+            shouldUpdateState = true
+          }
         }
       }
     })
-    this.setState({
-      selectedValues: updatedSelectedValues
-    })
+    if (shouldUpdateState) {
+      this.setState({ selectedValues: updatedSelectedValues })
+    }
 
     if (payload.multipleForm) {
       const selectedSelectItem = isNonEmptyFormData && formData.find(item => item.type === 'select' && item.selectedSelect)
@@ -349,9 +377,9 @@ class FormMessageBody extends React.PureComponent {
                         }
                         disabled={disabled || this.state.defaultDisabled}
                         {...item.props}
-                        value={this.state.selectedValues[item.props.name] && moment(this.state.selectedValues[item.props.name], item.props.format || 'DD-MM-YYYY')}
-                        getPopupContainer={() => 
-                          document.getElementById('ori-chatbot-root').shadowRoot.querySelector('#oriAppContainer')
+                        value={this.state.selectedValues[item.props.name] && dayjs(this.state.selectedValues[item.props.name], item.props.format || 'DD-MM-YYYY')}
+                        getPopupContainer={() =>
+                          document.getElementById('oriAppContainer')
                         }
                         onChange={selectedDate =>
                           this.handleFormChange(
@@ -408,10 +436,10 @@ class FormMessageBody extends React.PureComponent {
                           return false
                         }}
                         value={this.state.selectedValues[item.props.name] && this.state.selectedValues[item.props.name].length > 0 && this.state.selectedValues[item.props.name].map((val) => {
-                          if (val) return moment(val, item.props.format || 'DD-MM-YYYY')
+                          if (val) return dayjs(val, item.props.format || 'DD-MM-YYYY')
                         })}
-                        getPopupContainer={() => 
-                          document.getElementById('ori-chatbot-root').shadowRoot.querySelector('#oriAppContainer')
+                        getPopupContainer={() =>
+                          document.getElementById('oriAppContainer')
                         }
                         onChange={selectedDate =>
                           this.handleFormChange(

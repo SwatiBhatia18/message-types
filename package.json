@@ -25,7 +25,8 @@
     "deploy": "gh-pages -d example/build"
   },
   "peerDependencies": {
-    "antd": "4.16.11",
+    "antd": "^5.1.1",
+    "dayjs": "^1.11.13",
     "prop-types": "^15.5.4",
     "react": "^15.0.0 || ^16.0.0",
     "react-dom": "^15.0.0 || ^16.0.0",
