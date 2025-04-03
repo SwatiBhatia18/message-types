@@ -1,6 +1,6 @@
 {
   "name": "test-message-types",
-  "version": "1.0.15",
+  "version": "1.0.16",
   "description": "A package of message component for chatbot and their dashboard",
   "author": "Oriserve",
   "license": "MIT",
